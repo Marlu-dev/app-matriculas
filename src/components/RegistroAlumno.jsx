@@ -1,7 +1,7 @@
 import "../style/registroAlumno.css";
 import React from "react";
 import db from "../services/firebase/firebase.js";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import useValidation from "../hooks/useValidation";
 import useSetFileds from "../hooks/useSetFields";
 
@@ -22,19 +22,37 @@ function RegistroAlumno() {
     errorApellidoPaterno,
     errorApellidoMaterno,
     isButtonDisabled,
+    codigoNuevo,
+    numeroNuevo,
     handleBlur,
   } = useValidation(name, apellidoPaterno, apellidoMaterno, selectedCarrera);
 
   async function registrarAlumno(e) {
     e.preventDefault();
     const fields = Object.fromEntries(new window.FormData(e.target));
+    fields.numero = numeroNuevo;
+    fields.codigo = codigoNuevo;
+    console.log(fields);
     await addDoc(collection(db, "alumnos"), fields);
+    // await setDoc(doc(db, "alumnos", "A7"), fields);
   }
 
   return (
     <main className="formulario-principal">
       <h1>Registro de Alumnos</h1>
       <form className="form-registro" onSubmit={registrarAlumno}>
+        <fieldset className="seccion-form">
+          <div>
+            <label>Codigo</label>
+          </div>
+          <input
+            name="codigo"
+            id="codigo"
+            value={codigoNuevo}
+            readOnly
+            disabled
+          />
+        </fieldset>
         <fieldset className="seccion-form">
           <div>
             <label>Nombre</label>

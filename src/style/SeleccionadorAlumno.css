@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 0.125rem solid #000000;
+    gap: 0.625rem;
+    padding: 0 0.625rem;
+  }
+  
+  .datos {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 2.800rem;
+    margin-right: 2rem;
+  }
+  
+  .codigo {
+    width: 5%;
+    text-align: center;
+  }
+  
+  .name{
+    width: 25%;
+    text-align: center;
+  }
+  .apellidoPaterno{
+    width: 20%;
+    text-align: center;
+  }
+  .apellidoMaterno{
+    width: 20%;
+    text-align: center;
+  }
+  .carrera {
+    width: 10%;
+    text-align: center;
+  }
+  
+  .editar{
+    width: 10%;
+    text-align: center;
+  }
