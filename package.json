@@ -30,5 +30,27 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
+  },
+  "build": {
+    "appId": "com.nobel.applitactivoMatriculas",
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "./src/services/electron/main.cjs",
+      "package.json"
+    ],
+    "nsis": {
+      "uninstallDisplayName": "Unistall this app",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "productName": "Tu App",
+    "directories": {
+      "output": "releases",
+      "buildResources": "dist"
+    }
   }
 }
