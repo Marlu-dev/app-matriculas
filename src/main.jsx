@@ -6,7 +6,7 @@ import RecuperarAlumnos from "./components/RecuperarAlumnos";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* <RecuperarAlumnos /> */}
-    <RegistroAlumno />
+    <RecuperarAlumnos />
+    {/* <RegistroAlumno /> */}
   </React.StrictMode>
 );
