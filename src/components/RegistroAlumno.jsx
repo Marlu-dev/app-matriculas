@@ -4,6 +4,7 @@ import db from "../services/firebase/firebase.js";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import useValidation from "../hooks/useValidation";
 import useSetFileds from "../hooks/useSetFields";
+import BotonAtras from "./BotonAtras";
 
 import Select from "./Select";
 
@@ -13,19 +14,42 @@ function RegistroAlumno() {
     name,
     apellidoPaterno,
     apellidoMaterno,
+    direccion,
+    referencia,
+    dni,
+    telefonoFijo,
+    telefonoCelular,
     selectedCarrera,
+    aactivarCasillaTelefonoFijo,
     handleChange,
+    noTelefonoFijo,
+    noTelefonoCelular,
   } = useSetFileds();
   //errores
   const {
     errorName,
     errorApellidoPaterno,
     errorApellidoMaterno,
+    errorDirection,
+    errorReferencia,
+    errorDni,
+    errorTelefonoFijo,
+    errorTelefonoCelular,
     isButtonDisabled,
     codigoNuevo,
     numeroNuevo,
     handleBlur,
-  } = useValidation(name, apellidoPaterno, apellidoMaterno, selectedCarrera);
+  } = useValidation(
+    name,
+    apellidoPaterno,
+    apellidoMaterno,
+    direccion,
+    referencia,
+    dni,
+    telefonoFijo,
+    telefonoCelular,
+    selectedCarrera
+  );
 
   async function registrarAlumno(e) {
     e.preventDefault();
@@ -53,6 +77,18 @@ function RegistroAlumno() {
             disabled
           />
         </fieldset>
+
+        <fieldset className="seccion-form">
+          <div>
+            <label>Grupo</label>
+          </div>
+          <Select
+            coleccion="grupos"
+            nombre="grupo"
+            onSelectChange={handleChange}
+          />
+        </fieldset>
+
         <fieldset className="seccion-form">
           <div>
             <label>Nombre</label>
@@ -97,8 +133,96 @@ function RegistroAlumno() {
 
         <fieldset className="seccion-form">
           <div>
+            <label>Direccion</label>
+            <label>{errorDirection}</label>
+          </div>
+          <input
+            name="direccion"
+            id="direccion"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={direccion}
+          />
+        </fieldset>
+
+        <fieldset className="seccion-form">
+          <div>
+            <label>Referencia</label>
+            <label>{errorReferencia}</label>
+          </div>
+          <input
+            name="referencia"
+            id="referencia"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={referencia}
+          />
+        </fieldset>
+
+        <fieldset className="seccion-form">
+          <div>
+            <label>DNI</label>
+            <label>{errorDni}</label>
+          </div>
+          <input
+            name="dni"
+            id="dni"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={dni}
+            maxLength="8"
+          />
+        </fieldset>
+
+        <fieldset className="seccion-form">
+          <div>
+            <label>Telefono Fijo</label>
+            <label>{errorTelefonoFijo}</label>
+          </div>
+          <input
+            name="telefonoFijo"
+            id="telefonoFijo"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={telefonoFijo}
+            maxLength="7"
+          />
+          <div>
+            <label>No tiene</label>
+            <input
+              type="checkbox"
+              name="activarCasillaTelefonoFijo"
+              onClick={noTelefonoFijo}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="seccion-form">
+          <div>
+            <label>Telefono Celular</label>
+            <label>{errorTelefonoCelular}</label>
+          </div>
+          <input
+            name="telefonoCelular"
+            id="telefonoCelular"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={telefonoCelular}
+            maxLength="9"
+          />
+          <div>
+            <label>No tiene</label>
+            <input
+              type="checkbox"
+              name="activarCasillaTelefonoFijo"
+              onClick={noTelefonoCelular}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="seccion-form">
+          <div>
             <label>Carrera</label>
-            <label>Error</label>
           </div>
           <Select
             coleccion="carreras"
@@ -111,6 +235,7 @@ function RegistroAlumno() {
           Registrar
         </button>
       </form>
+      <BotonAtras />
     </main>
   );
 }
