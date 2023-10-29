@@ -8,9 +8,27 @@ import BotonAtras from "./BotonAtras";
 
 import Select from "./Select";
 
+import RegistroApoderado from "./RegistroApoderado";
+
 function RegistroAlumno() {
   //campos del formulario
+
+  const [nombreApoderado, setNombreApoderado] = React.useState({});
+  const [apoderadoValido, setApoderadoValido] = React.useState(false);
+
+  const handleNombreApoderado = (e) => {
+    setNombreApoderado(e);
+  };
+
+  const handleApoderadoValido = (e) => {
+    setApoderadoValido(e);
+    console.log(apoderadoValido);
+  };
+
+  console.log(nombreApoderado);
+
   const {
+    selectedGrupo,
     name,
     apellidoPaterno,
     apellidoMaterno,
@@ -20,17 +38,20 @@ function RegistroAlumno() {
     telefonoFijo,
     telefonoCelular,
     selectedCarrera,
-    aactivarCasillaTelefonoFijo,
     handleChange,
+    noReferencia,
     noTelefonoFijo,
     noTelefonoCelular,
+    estadoBotonReferencia,
+    estadoBotonTelefonoFijo,
+    estadoBotonTelefonoCelular,
   } = useSetFileds();
   //errores
   const {
     errorName,
     errorApellidoPaterno,
     errorApellidoMaterno,
-    errorDirection,
+    errorDireccion,
     errorReferencia,
     errorDni,
     errorTelefonoFijo,
@@ -40,6 +61,7 @@ function RegistroAlumno() {
     numeroNuevo,
     handleBlur,
   } = useValidation(
+    selectedGrupo,
     name,
     apellidoPaterno,
     apellidoMaterno,
@@ -48,7 +70,11 @@ function RegistroAlumno() {
     dni,
     telefonoFijo,
     telefonoCelular,
-    selectedCarrera
+    selectedCarrera,
+    estadoBotonReferencia,
+    estadoBotonTelefonoFijo,
+    estadoBotonTelefonoCelular,
+    apoderadoValido
   );
 
   async function registrarAlumno(e) {
@@ -56,6 +82,7 @@ function RegistroAlumno() {
     const fields = Object.fromEntries(new window.FormData(e.target));
     fields.numero = numeroNuevo;
     fields.codigo = codigoNuevo;
+    fields.apoderado = nombreApoderado;
     console.log(fields);
     await addDoc(collection(db, "alumnos"), fields);
     // await setDoc(doc(db, "alumnos", "A7"), fields);
@@ -134,7 +161,7 @@ function RegistroAlumno() {
         <fieldset className="seccion-form">
           <div>
             <label>Direccion</label>
-            <label>{errorDirection}</label>
+            <label>{errorDireccion}</label>
           </div>
           <input
             name="direccion"
@@ -157,6 +184,11 @@ function RegistroAlumno() {
             onBlur={handleBlur}
             value={referencia}
           />
+
+          <div>
+            <label>No tiene</label>
+            <input type="checkbox" name="" onClick={noReferencia} />
+          </div>
         </fieldset>
 
         <fieldset className="seccion-form">
@@ -170,7 +202,7 @@ function RegistroAlumno() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={dni}
-            maxLength="8"
+            maxLength={8}
           />
         </fieldset>
 
@@ -185,15 +217,11 @@ function RegistroAlumno() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={telefonoFijo}
-            maxLength="7"
+            // maxLength="7"
           />
           <div>
             <label>No tiene</label>
-            <input
-              type="checkbox"
-              name="activarCasillaTelefonoFijo"
-              onClick={noTelefonoFijo}
-            />
+            <input type="checkbox" name="" onClick={noTelefonoFijo} />
           </div>
         </fieldset>
 
@@ -208,15 +236,11 @@ function RegistroAlumno() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={telefonoCelular}
-            maxLength="9"
+            maxLength={9}
           />
           <div>
             <label>No tiene</label>
-            <input
-              type="checkbox"
-              name="activarCasillaTelefonoFijo"
-              onClick={noTelefonoCelular}
-            />
+            <input type="checkbox" name="" onClick={noTelefonoCelular} />
           </div>
         </fieldset>
 
@@ -230,6 +254,11 @@ function RegistroAlumno() {
             onSelectChange={handleChange}
           />
         </fieldset>
+
+        <RegistroApoderado
+          registroNombreApoderado={handleNombreApoderado}
+          handleApoderadoValido={handleApoderadoValido}
+        />
 
         <button type="submit" disabled={isButtonDisabled} id="btn-submit">
           Registrar
