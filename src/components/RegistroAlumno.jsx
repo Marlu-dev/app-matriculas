@@ -22,10 +22,10 @@ function RegistroAlumno() {
 
   const handleApoderadoValido = (e) => {
     setApoderadoValido(e);
-    console.log(apoderadoValido);
   };
 
   console.log(nombreApoderado);
+  console.log(apoderadoValido);
 
   const {
     selectedGrupo,
@@ -217,7 +217,7 @@ function RegistroAlumno() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={telefonoFijo}
-            // maxLength="7"
+            maxLength={7}
           />
           <div>
             <label>No tiene</label>

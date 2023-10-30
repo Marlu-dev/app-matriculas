@@ -6,7 +6,7 @@ function useValidationApoderado(
   apellidoMaterno,
   dni,
   telefonoCelular,
-banderaTelefonoCelular
+  banderaTelefonoCelular
 ) {
   const nameRegex = /^[a-zA-ZÀ-ÿ\s]{1,30}$/;
   const [errorName, setErrorName] = useState(null);
@@ -15,10 +15,9 @@ banderaTelefonoCelular
   const [errorDni, setErrorDni] = useState(null);
   const [errorTelefonoCelular, setErrorTelefonoCelular] = useState(null);
   const [errorVerdaderoDNI, setErrorVerdaderoDNI] = useState(null);
-  const apoderadoValido = useRef(false)
-  const apoderadoRetorno = apoderadoValido.current
-  console.log(apoderadoRetorno);
-
+  const [errorVerdaderoTelefonoCelular, setErrorVerdaderoTelefonoCelular] =
+    useState(null);
+  const [apoderadoValido, setApoderadoValido] = useState(false);
 
   function handleBlur(e) {
     if (e.target.value === "") {
@@ -77,96 +76,113 @@ banderaTelefonoCelular
 
   useEffect(() => {
     if (dni !== "") {
-        setErrorDni(null);
-        const timer = setTimeout(() => {
-            console.log(dni.length);
-            if (dni.length < 8) {
-                setErrorDni("El DNI debe contener 8 dígitos");
-            }
-            else{
-                setErrorVerdaderoDNI(null);
-            }
-        }, 1500);
-
-        return () => {
-            clearTimeout(timer);
-        };
-    }
-}, [dni]);
-
-
-useEffect(() => {
-    if (dni !== "") {
-        setErrorDni(null);
-            if (dni.length < 8) {
-                setErrorVerdaderoDNI("El DNI debe contener 8 dígitos");
-            }            else{
-                setErrorVerdaderoDNI(null);
-            }
-    }
-}, [dni]);
-
-console.log(errorVerdaderoDNI);
-console.log(errorDni);
-  
-useEffect(() => {
-    if (telefonoCelular !== "") {
-        setErrorTelefonoCelular(null);
-        const timer = setTimeout(() => {
-            if ((telefonoCelular.length !== 9) && (telefonoCelular !== "No tiene")) {
-                setErrorTelefonoCelular("El número de celular debe contener 9 dígitos");
-            }
-        }, 1500);
-
-        return () => {
-            clearTimeout(timer);
-        };
-    }
-}, [telefonoCelular]);
-
-
-    useEffect(() => {
-        if (
-            errorName === null &&
-            errorApellidoPaterno === null &&
-            errorApellidoMaterno === null &&
-            errorVerdaderoDNI === null &&
-            errorTelefonoCelular === null &&
-            nombre !== "" &&
-            apellidoPaterno !== "" &&
-            apellidoMaterno !== "" &&
-            dni !== "" &&
-            ((telefonoCelular !== "") || (banderaTelefonoCelular === false))
-        ) {
-            apoderadoValido.current = true
+      setErrorDni(null);
+      const timer = setTimeout(() => {
+        console.log(dni.length);
+        if (dni.length < 8) {
+          setErrorDni("El DNI debe contener 8 dígitos");
         } else {
-            apoderadoValido.current = false
+          setErrorDni(null);
         }
-        console.log(errorName);
-        console.log(errorApellidoPaterno);
-        console.log(errorApellidoMaterno);
-        console.log(errorDni);
-        console.log(errorVerdaderoDNI);
-        console.log(errorTelefonoCelular);
-        console.log(nombre);
-        console.log(apellidoPaterno);
-        console.log(apellidoMaterno);
-        console.log(dni);
-        console.log(telefonoCelular);
-        console.log(apoderadoValido.current);
-    }, [
-        errorName,
-        errorApellidoPaterno,
-        errorApellidoMaterno,
-        errorDni,
-        errorTelefonoCelular,
-        nombre,
-        apellidoPaterno,
-        apellidoMaterno,
-        dni,
-        telefonoCelular,
-        banderaTelefonoCelular
-    ]); 
+      }, 1500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [dni]);
+
+  useEffect(() => {
+    if (dni !== "") {
+      setErrorDni(null);
+      if (dni.length < 8) {
+        setErrorVerdaderoDNI("El DNI debe contener 8 dígitos");
+      } else {
+        setErrorVerdaderoDNI(null);
+      }
+    }
+  }, [dni]);
+
+  console.log(errorVerdaderoDNI);
+  console.log(errorDni);
+
+  useEffect(() => {
+    if (telefonoCelular !== "") {
+      setErrorTelefonoCelular(null);
+      const timer = setTimeout(() => {
+        if (telefonoCelular.length !== 9 && telefonoCelular !== "No tiene") {
+          setErrorTelefonoCelular(
+            "El número de celular debe contener 9 dígitos"
+          );
+        }
+      }, 1500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [telefonoCelular]);
+
+  useEffect(() => {
+    if (telefonoCelular !== "") {
+      setErrorVerdaderoTelefonoCelular(null);
+      if (telefonoCelular.length < 9 && telefonoCelular !== "No tiene") {
+        setErrorVerdaderoTelefonoCelular(
+          "El número de celular debe contener 9 dígitos"
+        );
+      }
+    }
+  }, [telefonoCelular]);
+
+  console.log(telefonoCelular.length);
+  console.log(errorVerdaderoTelefonoCelular);
+  console.log(errorTelefonoCelular);
+
+  useEffect(() => {
+    if (
+      errorName === null &&
+      errorApellidoPaterno === null &&
+      errorApellidoMaterno === null &&
+      errorVerdaderoDNI === null &&
+      errorVerdaderoTelefonoCelular === null &&
+      nombre !== "" &&
+      apellidoPaterno !== "" &&
+      apellidoMaterno !== "" &&
+      dni !== "" &&
+      telefonoCelular !== ""
+    ) {
+      setApoderadoValido(true);
+    } else {
+      setApoderadoValido(false);
+    }
+
+    // console.log(errorName);
+    // console.log(errorApellidoPaterno);
+    // console.log(errorApellidoMaterno);
+    // console.log(errorDni);
+    // console.log(errorVerdaderoDNI);
+    // console.log(errorTelefonoCelular);
+    // console.log(nombre);
+    // console.log(apellidoPaterno);
+    // console.log(apellidoMaterno);
+    // console.log(dni);
+    // console.log(telefonoCelular);
+    // console.log(apoderadoValido.current);
+    // console.log(apoderadoValido);
+  }, [
+    errorName,
+    errorApellidoPaterno,
+    errorApellidoMaterno,
+    errorVerdaderoDNI,
+    errorVerdaderoTelefonoCelular,
+    nombre,
+    apellidoPaterno,
+    apellidoMaterno,
+    dni,
+    telefonoCelular,
+    banderaTelefonoCelular,
+    apoderadoValido,
+  ]);
 
   return {
     errorName,
@@ -174,7 +190,7 @@ useEffect(() => {
     errorApellidoMaterno,
     errorDni,
     errorTelefonoCelular,
-    apoderadoRetorno,
+    apoderadoValido,
     handleBlur,
   };
 }

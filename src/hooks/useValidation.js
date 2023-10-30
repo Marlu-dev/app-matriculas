@@ -47,6 +47,12 @@ const useValidation = (
   const [codigoNuevo, setCodigoNuevo] = useState("");
   const [numeroNuevo, setNumeroNuevo] = useState(0);
 
+  const [errorVerdaderoDNI, setErrorVerdaderoDNI] = useState(null);
+  const [errorVerdaderoTelefonoFijo, setErrorVerdaderoTelefonoFijo] =
+    useState(null);
+  const [errorVerdaderoTelefonoCelular, setErrorVerdaderoTelefonoCelular] =
+    useState(null);
+
   const campoReferenciaValido = useRef(false);
   const campoTelefonoFijoValido = useRef(false);
   const campoTelefonoCelularValido = useRef(false);
@@ -99,7 +105,6 @@ const useValidation = (
     isFirstDni.current = dni === "";
     campoDniValido.current = dni && dni.length === 8;
   }, [dni]);
-  
 
   useEffect(() => {
     if (isFirstTelefonoFijo.current) {
@@ -120,7 +125,6 @@ const useValidation = (
       (referencia === "No tiene" && estadoBotonReferencia === true) ||
       (referencia !== "" && estadoBotonReferencia === false);
   }, [referencia, estadoBotonReferencia]);
-  
 
   useEffect(() => {
     campoTelefonoFijoValido.current =
@@ -128,19 +132,15 @@ const useValidation = (
       (telefonoFijo === "No tiene" && estadoBotonTelefonoFijo === true) ||
       (telefonoFijo !== "" && estadoBotonTelefonoFijo === false);
   }, [telefonoFijo, estadoBotonTelefonoFijo]);
-  
-
 
   useEffect(() => {
     campoTelefonoCelularValido.current =
       (telefonoCelular === "" && estadoBotonTelefonoCelular === false) ||
       (telefonoCelular === "No tiene" && estadoBotonTelefonoCelular === true) ||
-      (telefonoCelular !== "" && estadoBotonTelefonoCelular === false && telefonoCelular.length === 9);
+      (telefonoCelular !== "" &&
+        estadoBotonTelefonoCelular === false &&
+        telefonoCelular.length === 9);
   }, [telefonoCelular, estadoBotonTelefonoCelular]);
-  
-
-
-
 
   // console.log(campoReferenciaValido.current);
   // console.log(estadoBotonReferencia);
@@ -215,18 +215,18 @@ const useValidation = (
       }
     }
 
-    if (name === "dni") {
-      if (errorDni === null && newQuery.length !== 8) {
-        setErrorDni("El dni debe contener 8 dígitos");
-        return;
-      }
-    }
+    // if (name === "dni") {
+    //   if (errorDni === null && newQuery.length !== 8) {
+    //     setErrorDni("El dni debe contener 8 dígitos");
+    //     return;
+    //   }
+    // }
 
-    if (name === "telefonoCelular") {
-      if (telefonoCelular.length > 0 && telefonoCelular.length < 9) {
-        setErrorTelefonoCelular("El número celular debe contener 9 dígitos");
-      }
-    }
+    // if (name === "telefonoCelular") {
+    //   if (telefonoCelular.length > 0 && telefonoCelular.length < 9) {
+    //     setErrorTelefonoCelular("El número celular debe contener 9 dígitos");
+    //   }
+    // }
   }
 
   useEffect(() => {
@@ -272,6 +272,35 @@ const useValidation = (
   }, [apellidoMaterno]);
 
   useEffect(() => {
+    if (dni !== "") {
+      setErrorDni(null);
+      const timer = setTimeout(() => {
+        console.log(dni.length);
+        if (dni.length < 8) {
+          setErrorDni("El DNI debe contener 8 dígitos");
+        } else {
+          setErrorDni(null);
+        }
+      }, 1500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [dni]);
+
+  useEffect(() => {
+    if (dni !== "") {
+      setErrorDni(null);
+      if (dni.length < 8) {
+        setErrorVerdaderoDNI("El DNI debe contener 8 dígitos");
+      } else {
+        setErrorVerdaderoDNI(null);
+      }
+    }
+  }, [dni]);
+
+  useEffect(() => {
     setErrorDireccion(null);
   }, [direccion]);
 
@@ -286,8 +315,64 @@ const useValidation = (
   }, [telefonoFijo]);
 
   useEffect(() => {
+    if (telefonoFijo !== "") {
+      setErrorTelefonoFijo(null);
+      const timer = setTimeout(() => {
+        if (telefonoFijo.length !== 7 && telefonoFijo !== "No tiene") {
+          setErrorTelefonoFijo(
+            "El número de teléfono fijo debe contener 7 dígitos"
+          );
+        }
+      }, 1500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [telefonoFijo]);
+
+  useEffect(() => {
+    if (telefonoFijo !== "") {
+      setErrorVerdaderoTelefonoFijo(null);
+      if (telefonoFijo.length < 7 && telefonoFijo !== "No tiene") {
+        setErrorVerdaderoTelefonoFijo(
+          "El número de teléfono fijo debe contener 7 dígitos"
+        );
+      }
+    }
+  }, [telefonoFijo]);
+
+  useEffect(() => {
     setErrorTelefonoCelular(null);
     if (telefonoCelular === "No tiene") return;
+  }, [telefonoCelular]);
+
+  useEffect(() => {
+    if (telefonoCelular !== "") {
+      setErrorTelefonoCelular(null);
+      const timer = setTimeout(() => {
+        if (telefonoCelular.length !== 9 && telefonoCelular !== "No tiene") {
+          setErrorTelefonoCelular(
+            "El número de celular debe contener 9 dígitos"
+          );
+        }
+      }, 1500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [telefonoCelular]);
+
+  useEffect(() => {
+    if (telefonoCelular !== "") {
+      setErrorVerdaderoTelefonoCelular(null);
+      if (telefonoCelular.length < 9 && telefonoCelular !== "No tiene") {
+        setErrorVerdaderoTelefonoCelular(
+          "El número de celular debe contener 9 dígitos"
+        );
+      }
+    }
   }, [telefonoCelular]);
 
   useEffect(() => {
@@ -298,9 +383,9 @@ const useValidation = (
       errorApellidoMaterno !== null ||
       errorDireccion !== null ||
       errorReferencia !== null ||
-      errorDni !== null ||
-      errorTelefonoFijo !== null ||
-      errorTelefonoCelular !== null ||
+      errorVerdaderoDNI !== null ||
+      errorVerdaderoTelefonoFijo !== null ||
+      errorVerdaderoTelefonoCelular !== null ||
       selectedCarrera === "" ||
       isFirstName.current === true ||
       isFirstApellidoPaterno.current === true ||
@@ -334,9 +419,9 @@ const useValidation = (
       errorApellidoMaterno === null &&
       errorDireccion === null &&
       errorReferencia === null &&
-      errorDni === null &&
-      errorTelefonoFijo === null &&
-      errorTelefonoCelular === null &&
+      errorVerdaderoDNI === null &&
+      errorVerdaderoTelefonoFijo === null &&
+      errorVerdaderoTelefonoCelular === null &&
       selectedCarrera !== "" &&
       isFirstName.current === false &&
       isFirstApellidoPaterno.current === false &&
@@ -352,7 +437,7 @@ const useValidation = (
       direccion !== "" &&
       dni !== "" &&
       telefonoFijo !== "" &&
-      telefonoCelular !== "" && 
+      telefonoCelular !== "" &&
       campoReferenciaValido.current === true &&
       campoTelefonoFijoValido.current === true &&
       campoTelefonoCelularValido.current === true &&
@@ -368,9 +453,9 @@ const useValidation = (
     errorApellidoMaterno,
     errorDireccion,
     errorReferencia,
-    errorDni,
-    errorTelefonoFijo,
-    errorTelefonoCelular,
+    errorVerdaderoDNI,
+    errorVerdaderoTelefonoFijo,
+    errorVerdaderoTelefonoCelular,
     selectedCarrera,
     name,
     apellidoPaterno,
@@ -383,7 +468,7 @@ const useValidation = (
     estadoBotonReferencia,
     estadoBotonTelefonoFijo,
     estadoBotonTelefonoCelular,
-    apoderadoValido
+    apoderadoValido,
   ]);
 
   return {

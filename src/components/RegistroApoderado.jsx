@@ -7,6 +7,7 @@ const RegistroApoderado = ({
 }) => {
   const banderaTelefonoCelular = useRef();
   const [bandera, setBandera] = useState(false);
+  const [banderaApoderadoValido, setBanderaApoderadoValido] = useState(false);
 
   const [apoderado, setApoderado] = useState({
     nombre: "",
@@ -27,10 +28,6 @@ const RegistroApoderado = ({
       setApoderado({ ...apoderado, telefonoCelular: "" });
     }
   }, [bandera]);
-
-  useEffect(() => {
-    registroNombreApoderado(apoderado);
-  }, [apoderado]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -80,7 +77,7 @@ const RegistroApoderado = ({
     errorApellidoMaterno,
     errorDni,
     errorTelefonoCelular,
-    apoderadoRetorno,
+    apoderadoValido,
     handleBlur,
   } = useValidationApoderado(
     apoderado.nombre,
@@ -91,7 +88,14 @@ const RegistroApoderado = ({
     bandera
   );
 
-  handleApoderadoValido(apoderadoRetorno);
+  useEffect(() => {
+    registroNombreApoderado(apoderado);
+  }, [apoderado]);
+
+  console.log(apoderadoValido);
+  useEffect(() => {
+    handleApoderadoValido(apoderadoValido);
+  }, [apoderadoValido]);
 
   return (
     <>
