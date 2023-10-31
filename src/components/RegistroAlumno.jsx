@@ -1,5 +1,5 @@
 import "../style/registroAlumno.css";
-import React from "react";
+import React, { useEffect } from "react";
 import db from "../services/firebase/firebase.js";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import useValidation from "../hooks/useValidation";
@@ -76,6 +76,10 @@ function RegistroAlumno() {
     estadoBotonTelefonoCelular,
     apoderadoValido
   );
+
+  useEffect(() => {
+    console.log(selectedGrupo);
+  }, [selectedGrupo]);
 
   async function registrarAlumno(e) {
     e.preventDefault();
@@ -249,7 +253,7 @@ function RegistroAlumno() {
             <label>Carrera</label>
           </div>
           <Select
-            coleccion="carreras"
+            coleccion={selectedGrupo}
             nombre="carrera"
             onSelectChange={handleChange}
           />
