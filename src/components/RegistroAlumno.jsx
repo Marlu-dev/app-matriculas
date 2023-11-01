@@ -9,6 +9,7 @@ import BotonAtras from "./BotonAtras";
 import Select from "./Select";
 
 import RegistroApoderado from "./RegistroApoderado";
+import RegistroInversion from "./RegistroInversion";
 
 function RegistroAlumno() {
   //campos del formulario
@@ -221,7 +222,7 @@ function RegistroAlumno() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={telefonoFijo}
-            maxLength={7}
+            maxLength={9}
           />
           <div>
             <label>No tiene</label>
@@ -263,6 +264,8 @@ function RegistroAlumno() {
           registroNombreApoderado={handleNombreApoderado}
           handleApoderadoValido={handleApoderadoValido}
         />
+
+        <RegistroInversion />
 
         <button type="submit" disabled={isButtonDisabled} id="btn-submit">
           Registrar
