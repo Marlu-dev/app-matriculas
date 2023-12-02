@@ -1,76 +1,75 @@
-import React, { useState, useEffect, useRef } from "react";
-import useValidationApoderado from "../hooks/useValidationApoderado";
+import React, { useState, useEffect, useRef } from 'react'
+import useValidationApoderado from '../hooks/useValidationApoderado'
 
 const RegistroApoderado = ({
   registroNombreApoderado,
-  handleApoderadoValido,
+  handleApoderadoValido
 }) => {
-  const banderaTelefonoCelular = useRef();
-  const [bandera, setBandera] = useState(false);
-  const [banderaApoderadoValido, setBanderaApoderadoValido] = useState(false);
+  const banderaTelefonoCelular = useRef()
+  const [bandera, setBandera] = useState(false)
+  const [banderaApoderadoValido, setBanderaApoderadoValido] = useState(false)
 
   const [apoderado, setApoderado] = useState({
-    nombre: "",
-    apellidoPaterno: "",
-    apellidoMaterno: "",
-    dni: "",
-    telefonoCelular: "",
-  });
+    nombreApoderado: '',
+    apellidoPaternoApoderado: '',
+    apellidoMaternoApoderado: '',
+    dniApoderado: '',
+    telefonoCelularApoderado: ''
+  })
 
-  function noTelefonoCelular() {
-    setBandera(banderaTelefonoCelular.current.checked);
+  function noTelefonoCelular () {
+    setBandera(banderaTelefonoCelular.current.checked)
   }
 
   useEffect(() => {
     if (bandera) {
-      setApoderado({ ...apoderado, telefonoCelular: "No tiene" });
+      setApoderado({ ...apoderado, telefonoCelularApoderado: 'No tiene' })
     } else {
-      setApoderado({ ...apoderado, telefonoCelular: "" });
+      setApoderado({ ...apoderado, telefonoCelularApoderado: '' })
     }
-  }, [bandera]);
+  }, [bandera])
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    const newQuery = value;
-    console.log(newQuery);
-    console.log(e.target.name);
-    if (e.target.name === "dni") {
-      if (/^\d+$/.test(newQuery) || newQuery === "") {
-        setApoderado({ ...apoderado, [name]: value });
-        return;
+  function handleChange (e) {
+    const { name, value } = e.target
+    const newQuery = value
+    // console.log(newQuery);
+    // console.log(e.target.name);
+    if (e.target.name === 'dni') {
+      if (/^\d+$/.test(newQuery) || newQuery === '') {
+        setApoderado({ ...apoderado, [name]: value })
+        return
       }
     }
-    if (e.target.name === "telefonoCelular") {
-      if (/^\d+$/.test(newQuery) || newQuery === "") {
-        setApoderado({ ...apoderado, [name]: value });
-        return;
+    if (e.target.name === 'telefonoCelular') {
+      if (/^\d+$/.test(newQuery) || newQuery === '') {
+        setApoderado({ ...apoderado, [name]: value })
+        return
       }
     }
 
-    if (e.target.name === "nombre") {
-      setApoderado({ ...apoderado, [name]: value });
-      return;
+    if (e.target.name === 'nombreApoderado') {
+      setApoderado({ ...apoderado, [name]: value })
+      return
     }
 
-    if (e.target.name === "apellidoPaterno") {
-      setApoderado({ ...apoderado, [name]: value });
-      return;
+    if (e.target.name === 'apellidoPaternoApoderado') {
+      setApoderado({ ...apoderado, [name]: value })
+      return
     }
 
-    if (e.target.name === "apellidoMaterno") {
-      setApoderado({ ...apoderado, [name]: value });
-      return;
+    if (e.target.name === 'apellidoMaternoApoderado') {
+      setApoderado({ ...apoderado, [name]: value })
+      return
     }
 
-    if (e.target.name === "dni") {
-      if (/^\d+$/.test(newQuery) || newQuery === "") {
-        setApoderado({ ...apoderado, [name]: value });
-        return;
+    if (e.target.name === 'dniApoderado') {
+      if (/^\d+$/.test(newQuery) || newQuery === '') {
+        setApoderado({ ...apoderado, [name]: value })
       }
     }
   }
 
-  console.log(apoderado);
+  // console.log(apoderado);
   const {
     errorName,
     errorApellidoPaterno,
@@ -78,94 +77,94 @@ const RegistroApoderado = ({
     errorDni,
     errorTelefonoCelular,
     apoderadoValido,
-    handleBlur,
+    handleBlur
   } = useValidationApoderado(
-    apoderado.nombre,
-    apoderado.apellidoPaterno,
-    apoderado.apellidoMaterno,
-    apoderado.dni,
-    apoderado.telefonoCelular,
+    apoderado.nombreApoderado,
+    apoderado.apellidoPaternoApoderado,
+    apoderado.apellidoMaternoApoderado,
+    apoderado.dniApoderado,
+    apoderado.telefonoCelularApoderado,
     bandera
-  );
+  )
 
   useEffect(() => {
-    registroNombreApoderado(apoderado);
-  }, [apoderado]);
+    registroNombreApoderado(apoderado)
+  }, [apoderado])
 
-  console.log(apoderadoValido);
+  // console.log(apoderadoValido);
   useEffect(() => {
-    handleApoderadoValido(apoderadoValido);
-  }, [apoderadoValido]);
+    handleApoderadoValido(apoderadoValido)
+  }, [apoderadoValido])
 
   return (
     <>
       <h1>Apoderado</h1>
-      <fieldset className="seccion-form">
+      <fieldset className='seccion-form'>
         <div>
           <label>Nombre</label>
           <label>{errorName}</label>
         </div>
         <input
-          name="nombre"
-          id="nombre"
-          value={apoderado.nombre}
+          name='nombreApoderado'
+          id='nombreApoderado'
+          value={apoderado.nombreApoderado}
           onChange={handleChange}
           onBlur={handleBlur}
         />
       </fieldset>
 
-      <fieldset className="seccion-form">
+      <fieldset className='seccion-form'>
         <div>
           <label>Apellido Paterno</label>
           <label>{errorApellidoPaterno}</label>
         </div>
         <input
-          name="apellidoPaterno"
-          id="apellidoPaterno"
-          value={apoderado.apellidoPaterno}
+          name='apellidoPaternoApoderado'
+          id='apellidoPaternoApoderado'
+          value={apoderado.apellidoPaternoApoderado}
           onChange={handleChange}
           onBlur={handleBlur}
         />
       </fieldset>
 
-      <fieldset className="seccion-form">
+      <fieldset className='seccion-form'>
         <div>
           <label>Apellido Materno</label>
           <label>{errorApellidoMaterno}</label>
         </div>
         <input
-          name="apellidoMaterno"
-          id="apellidoMaterno"
-          value={apoderado.apellidoMaterno}
+          name='apellidoMaternoApoderado'
+          id='apellidoMaternoApoderado'
+          value={apoderado.apellidoMaternoApoderado}
           onChange={handleChange}
           onBlur={handleBlur}
         />
       </fieldset>
 
-      <fieldset className="seccion-form">
+      <fieldset className='seccion-form'>
         <div>
           <label>DNI</label>
           <label>{errorDni}</label>
         </div>
         <input
-          name="dni"
-          id="dni"
-          value={apoderado.dni}
+          name='dniApoderado'
+          id='dniApoderado'
+          value={apoderado.dniApoderado}
           onChange={handleChange}
           onBlur={handleBlur}
           maxLength={8}
         />
       </fieldset>
 
-      <fieldset className="seccion-form">
+      <fieldset className='seccion-form'>
         <div>
           <label>Celular</label>
           <label>{errorTelefonoCelular}</label>
         </div>
         <input
-          name="telefonoCelular"
-          id="telefonoCelular"
-          value={apoderado.telefonoCelular}
+          name='telefonoCelular'
+          id='telefonoCelular'
+          value={apoderado.telefonoCelularApoderado}
           onChange={handleChange}
           onBlur={handleBlur}
           maxLength={9}
@@ -174,15 +173,15 @@ const RegistroApoderado = ({
         <div>
           <label>No tiene</label>
           <input
-            type="checkbox"
-            name=""
+            type='checkbox'
+            name=''
             ref={banderaTelefonoCelular}
             onChange={noTelefonoCelular}
           />
         </div>
       </fieldset>
     </>
-  );
-};
+  )
+}
 
-export default RegistroApoderado;
+export default RegistroApoderado

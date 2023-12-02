@@ -1,0 +1,33 @@
+.btnBarraLateral {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    align-content: center;
+}
+
+.btnBarraLateral:hover {
+    background-color: #4dc6E4;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ffff;
+}
+
+.btnBarraLateral:hover svg {
+    stroke: #ffff;
+}
+
+.icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.btnBarraLateralTitulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+

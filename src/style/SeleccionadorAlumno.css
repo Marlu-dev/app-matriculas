@@ -1,44 +1,36 @@
-.container {
+.container-seleccionador-alumno {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     border: 0.125rem solid #000000;
-    gap: 0.625rem;
-    padding: 0 0.625rem;
-  }
-  
-  .datos {
-    display: flex;
     width: 100%;
-    justify-content: space-between;
-    gap: 2.800rem;
-    margin-right: 2rem;
+  }
+
+  .container-no-hay-alumnos-registrados{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
   
-  .codigo {
-    width: 5%;
-    text-align: center;
+  .datos-seleccionador-alumno {
+    display: grid;
+    width: 90%;
+    gap: 1rem;
+    grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+    grid-template-rows: 1fr;
   }
   
-  .name{
-    width: 25%;
+  .datos-seleccionador-alumno span {
+    align-items: center;
     text-align: center;
   }
-  .apellidoPaterno{
-    width: 20%;
-    text-align: center;
-  }
-  .apellidoMaterno{
-    width: 20%;
-    text-align: center;
-  }
-  .carrera {
-    width: 10%;
-    text-align: center;
-  }
-  
-  .editar{
-    width: 10%;
-    text-align: center;
+
+  .titulo-tabla-lista-de-alumnos{
+    background-color: dimgrey;
+    color: #ffff;
+    font-size: 18px;
   }
