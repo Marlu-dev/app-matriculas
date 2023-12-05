@@ -62,7 +62,8 @@ body {
 }   
 
 .barraLateral1{
-    background-color:var(--colorPrimario);
+    /*background-color:var(--colorPrimario);*/    
+    background-color: var(--primario);
     grid-area: barraLateral1;
     border-radius: 10px;
     /* margin: 0px 0px 0px 8px; */
@@ -70,7 +71,8 @@ body {
 }
 
 .barraLateral2{
-    background-color: var(--colorPrimario);
+    /*background-color: var(--colorPrimario);*/   
+    background-color: var(--primario); 
     grid-area: barraLateral2;
     margin-left: 8px;
     border-radius: 10px;
@@ -163,7 +165,8 @@ body {
 }
 
 .main {
-    background-color: var(--colorPrimario);
+    /* background-color: var(--colorPrimario); */
+    background-color: var(--primario); 
     grid-area: main;
     border-radius: 10px;
     margin: 0px 0px 8px 10px;
