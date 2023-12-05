@@ -26,8 +26,10 @@ const GridAplicacion = () => {
           menuSeleccionado={recuperarMenuSeleccionadoBarraLateral2}
         />
       </div>
-      <div className='header'>Header
-          <header className="menu-de-pruebas">
+
+
+      <header className='header'>
+          
           <div className="logo-nav">
                 <img src= {logo} alt="LOGO NOBEL" />
           </div>
@@ -47,8 +49,10 @@ const GridAplicacion = () => {
             <button>Registrar</button>
             <button>Iniciar Sesion</button>
           </a>
-        </header>
-      </div>
+        
+      </header>
+
+
       <div className='main'>
         <Centro menuSeleccionadoBarraLateral2={menuSeleccionadoBarraLateral2} />
       </div>
