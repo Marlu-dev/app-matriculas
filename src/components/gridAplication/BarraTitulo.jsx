@@ -1,5 +1,6 @@
 import React from 'react'
 import './style/BarraTitulo.css'
+import logo from "/src/style/img/logo.jpg"
 
 const BarraTitulo = () => {
   const closeWindow = () => {
@@ -16,6 +17,9 @@ const BarraTitulo = () => {
   return (
     <>
       <div className='titlebar'>
+        <div className="logo-nav_principal">
+            <img src= {logo} alt="LOGO NOBEL" />
+        </div>
         <div className='name'>Centro Preuniversitario Nobel</div>
         <div className='title' />
         <div className='controls'>

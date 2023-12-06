@@ -15,6 +15,20 @@ body {
     width: 100%;
   }
   
+  .titlebar .logo-nav_principal {
+    cursor: pointer;
+  }
+
+  .titlebar .logo-nav_principal img {
+      height: 25px;
+      width: auto;
+      transition: all 0.3s;
+  }
+
+  .titlebar .logo-nav_principal img:hover {
+      transform: scale(1.2);
+  } 
+
 
   .title {
     font-size: 14px;
