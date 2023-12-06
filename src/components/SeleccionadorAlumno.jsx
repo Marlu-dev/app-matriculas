@@ -1,26 +1,30 @@
-import React from "react";
-import "../style/SeleccionadorAlumno.css";
+import React from 'react'
+import '../style/SeleccionadorAlumno.css'
 
 const SeleccionadorAlumno = ({
   codigo,
   name,
   apellidoPaterno,
   apellidoMaterno,
-  carrera,
+  dni,
+  grupo,
+  carrera
 }) => {
   return (
-    <div className="container">
-      <main className="datos">
-        <span className="codigo">{codigo}</span>
-        <span className="name">{name}</span>
-        <span className="apelldoPaterno">{apellidoPaterno}</span>
-        <span className="apellidoMaterno">{apellidoMaterno}</span>
-        <span className="carrera">{carrera}</span>
+    <div className='container-seleccionador-alumno'>
+      <main className='datos-seleccionador-alumno'>
+        <span className='codigo-seleccionador-alumno'>{codigo}</span>
+        <span className='name-seleccionador-alumno'>{name}</span>
+        <span className='apelldoPaterno-seleccionador-alumno'>{apellidoPaterno}</span>
+        <span className='apellidoMaterno-seleccionador-alumno'>{apellidoMaterno}</span>
+        <span className='grupo-seleccionador-alumno'>{grupo}</span>
+        <span className='carrera-seleccionador-alumno'>{carrera}</span>
+        <span className='dni-seleccionador-alumno'>{dni}</span>
       </main>
 
-      <button className="editar">ojito</button>
+      <button className='editar-seleccionador-alumno' value={codigo}>ojito</button>
     </div>
-  );
-};
+  )
+}
 
-export default SeleccionadorAlumno;
+export default SeleccionadorAlumno

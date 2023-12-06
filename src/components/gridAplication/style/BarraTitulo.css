@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #001845 */
+  }
+  
+  .titlebar {
+    background-color: #0f3170;
+    color: white;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .titlebar .logo-nav_principal {
+    cursor: pointer;
+  }
+
+  .titlebar .logo-nav_principal img {
+      height: 25px;
+      width: auto;
+      transition: all 0.3s;
+  }
+
+  .titlebar .logo-nav_principal img:hover {
+      transform: scale(1.2);
+  } 
+
+
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    width: 94%;
+    height: 100%;
+    -webkit-app-region: drag;
+  }
+
+  .name{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    height: 100%;
+    width: 6%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .close-button,
+  .minimize-button,
+  .maximize-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+
+  .close-button:hover {
+    background-color: red;
+  }
+
+  .minimize-button:hover, .maximize-button:hover {
+    background-color: gray;
+  }
+
+  
+  .content {
+    padding: 20px;
+  }

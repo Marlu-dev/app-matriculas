@@ -1,31 +1,12 @@
-import "./style/index.css";
-import MenuDePruebas from "./components/MenuDePruebas";
-import RegistroAlumno from "./components/RegistroAlumno";
-import RecuperarAlumnos from "./components/RecuperarAlumnos";
+import './style/index.css'
+import GridAplicacion from './components/GridAplicacion'
+import Filtro from './components/Filtro'
 
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import * as React from 'react'
+import * as ReactDOM from 'react-dom/client'
 
-const router = createBrowserRouter([
-  {
-    path: "*",
-    element: <MenuDePruebas />,
-  },
-
-  {
-    path: "/registro",
-    element: <RegistroAlumno />,
-  },
-
-  {
-    path: "/recuperar",
-    element: <RecuperarAlumnos />,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <GridAplicacion />
   </React.StrictMode>
-);
+)
