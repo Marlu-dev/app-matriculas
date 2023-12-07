@@ -2,31 +2,52 @@ const { app, BrowserWindow, ipcMain, screen } = require('electron')
 const path = require('path')
 
 let mainWindow
+let loadingScreen
 
-function createWindow () {
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize
-  const minWidth = Math.floor(width / 2)
-  const minHeight = Math.floor(height / 2)
-
-  mainWindow = new BrowserWindow({
-    width,
-    height,
-    minWidth,
-    minHeight,
-    maxWidth: width,
-    maxHeight: height,
+function createLoadingScreen () {
+  loadingScreen = new BrowserWindow({
+    width: 300,
+    height: 200,
     frame: false,
-
+    transparent: true,
+    alwaysOnTop: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.cjs'),
       nodeIntegration: true
     }
   })
 
-  // mainWindow.setMenu(null);
+  loadingScreen.loadFile(path.join(__dirname, 'loading.html'))
+  loadingScreen.on('closed', () => (loadingScreen = null))
+}
 
-  mainWindow.loadURL('http://localhost:5173/')
-  // mainWindow.loadFile(path.join(app.getAppPath(), "dist/index.html"));
+function createWindow () {
+  createLoadingScreen()
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize
+  const minWidth = Math.floor(width / 2)
+  const minHeight = Math.floor(height / 2)
+
+  setTimeout(() => {
+    mainWindow = new BrowserWindow({
+      width,
+      height,
+      minWidth,
+      minHeight,
+      maxWidth: width,
+      maxHeight: height,
+      frame: false,
+      show: false,
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.cjs'),
+        nodeIntegration: true
+      }
+    })
+    mainWindow.loadURL('http://localhost:5173/')
+
+    mainWindow.once('ready-to-show', () => {
+      loadingScreen.close()
+      mainWindow.show()
+    })
+  }, 3000)
 }
 
 app.whenReady().then(() => {
@@ -42,7 +63,6 @@ app.whenReady().then(() => {
 // IPC event handlers
 ipcMain.on('close-window', () => {
   if (mainWindow) {
-    // console.log("Closing window");
     mainWindow.close()
   }
 })
