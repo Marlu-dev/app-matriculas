@@ -7,7 +7,7 @@ let loadingScreen
 function createLoadingScreen () {
   loadingScreen = new BrowserWindow({
     width: 300,
-    height: 200,
+    height: 300,
     frame: false,
     transparent: true,
     alwaysOnTop: true,
