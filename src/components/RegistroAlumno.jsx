@@ -107,186 +107,226 @@ function RegistroAlumno () {
   }
 
   return (
-    <main className='formulario-principal'>
-      <h1>Registro de Alumnos</h1>
+    <div className="container-register">
+      <header className="header-register">
+        REGISTRO DE ALUMNO
+      </header>
+
       <form className='form-registro' onSubmit={registrarAlumno}>
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Codigo</label>
-          </div>
-          <input
-            name='codigo'
-            id='codigo'
-            value={codigoNuevo}
-            readOnly
-            disabled
-          />
-        </fieldset>
+        <div className='from'>
+          {/* ---REGISTRO TOTAL DE ALUMNoS */}
+          <div className="details person">
+              <span className="title">
+                Datos Alumno
+              </span>
+              <div className="seccion-form">
+                {/* PRIMER DATO */}
+                <div className="input-seccion">
+                  <div>
+                  <label>Codigo</label>
+                  </div>
+                  <input
+                    name='codigo'
+                    id='codigo'
+                    value={codigoNuevo}
+                    readOnly
+                    disabled
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Grupo</label>
-          </div>
-          <Select
-            coleccion='grupos'
-            nombre='grupo'
-            onSelectChange={handleChange}
-          />
-        </fieldset>
+                {/* SEGUNDO DATO */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Grupo</label>
+                  </div>
+                  <Select
+                    coleccion='grupos'
+                    nombre='grupo'
+                    onSelectChange={handleChange}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Nombre</label>
-            <label>{errorName}</label>
-          </div>
-          <input
-            name='name'
-            id='name'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={name}
-          />
-        </fieldset>
+                {/* TERCER DATO */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Nombre</label>
+                    <label>{errorName}</label>
+                  </div>
+                  <input
+                    name='name'
+                    id='name'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={name}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Apellido Paterno</label>
-            <label>{errorApellidoPaterno}</label>
-          </div>
-          <input
-            name='apellidoPaterno'
-            id='apellidoPaterno'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={apellidoPaterno}
-          />
-        </fieldset>
+                {/* CUARTO DATO */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Apellido Paterno</label>
+                    <label>{errorApellidoPaterno}</label>
+                  </div>
+                  <input
+                    name='apellidoPaterno'
+                    id='apellidoPaterno'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={apellidoPaterno}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Apellido Materno</label>
-            <label>{errorApellidoMaterno}</label>
-          </div>
-          <input
-            name='apellidoMaterno'
-            id='apellidoMaterno'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={apellidoMaterno}
-          />
-        </fieldset>
+                {/* QUINTO DATO */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Apellido Materno</label>
+                    <label>{errorApellidoMaterno}</label>
+                  </div>
+                  <input
+                    name='apellidoMaterno'
+                    id='apellidoMaterno'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={apellidoMaterno}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Direccion</label>
-            <label>{errorDireccion}</label>
-          </div>
-          <input
-            name='direccion'
-            id='direccion'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={direccion}
-          />
-        </fieldset>
+                {/* SEXTO DATO: Direccion */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Direccion</label>
+                    <label>{errorDireccion}</label>
+                  </div>
+                  <input
+                    name='direccion'
+                    id='direccion'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={direccion}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Referencia</label>
-            <label>{errorReferencia}</label>
-          </div>
-          <input
-            name='referencia'
-            id='referencia'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={referencia}
-          />
+                {/* SEPTIMO DATO */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Referencia</label>
+                    <label>{errorReferencia}</label>
+                  </div>
+                  <input
+                    name='referencia'
+                    id='referencia'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={referencia}
+                  />
+                  <div>
+                    <label>No tiene</label>
+                    <input type='checkbox' name='' onClick={noReferencia} />
+                  </div>
+                </div>
 
-          <div>
-            <label>No tiene</label>
-            <input type='checkbox' name='' onClick={noReferencia} />
-          </div>
-        </fieldset>
+                {/* OCTAVO DATO: DNI */}
+                <div className="input-seccion">
+                  <div>
+                    <label>DNI</label>
+                    <label>{errorDni}</label>
+                  </div>
+                  <input
+                    name='dni'
+                    id='dni'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={dni}
+                    maxLength={8}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>DNI</label>
-            <label>{errorDni}</label>
-          </div>
-          <input
-            name='dni'
-            id='dni'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={dni}
-            maxLength={8}
-          />
-        </fieldset>
+                {/* NOVENO DATO: Telefono Fijo */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Telefono Fijo</label>
+                    <label>{errorTelefonoFijo}</label>
+                  </div>
+                  <input
+                    name='telefonoFijo'
+                    id='telefonoFijo'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={telefonoFijo}
+                    maxLength={9}
+                  />
+                  <div>
+                    <label>No tiene</label>
+                    <input type='checkbox' name='' onClick={noTelefonoFijo} />
+                  </div>
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Telefono Fijo</label>
-            <label>{errorTelefonoFijo}</label>
-          </div>
-          <input
-            name='telefonoFijo'
-            id='telefonoFijo'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={telefonoFijo}
-            maxLength={9}
-          />
-          <div>
-            <label>No tiene</label>
-            <input type='checkbox' name='' onClick={noTelefonoFijo} />
-          </div>
-        </fieldset>
+                {/* DECIMO DATO: Celular */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Telefono Celular</label>
+                    <label>{errorTelefonoCelular}</label>
+                  </div>
+                  <input
+                    name='telefonoCelular'
+                    id='telefonoCelular'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={telefonoCelular}
+                    maxLength={9}
+                  />
+                  <div>
+                    <label>No tiene</label>
+                    <input type='checkbox' name='' onClick={noTelefonoCelular} />
+                  </div>
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Telefono Celular</label>
-            <label>{errorTelefonoCelular}</label>
-          </div>
-          <input
-            name='telefonoCelular'
-            id='telefonoCelular'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={telefonoCelular}
-            maxLength={9}
-          />
-          <div>
-            <label>No tiene</label>
-            <input type='checkbox' name='' onClick={noTelefonoCelular} />
-          </div>
-        </fieldset>
+                {/* DECIMO PRIMER DATO: Carrera */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Carrera</label>
+                  </div>
+                  <Select
+                    coleccion={selectedGrupo}
+                    nombre='carrera'
+                    onSelectChange={handleChange}
+                  />
+                </div>
 
-        <fieldset className='seccion-form'>
-          <div>
-            <label>Carrera</label>
+              </div>
+              
           </div>
-          <Select
-            coleccion={selectedGrupo}
-            nombre='carrera'
-            onSelectChange={handleChange}
-          />
-        </fieldset>
 
-        <RegistroApoderado
-          registroNombreApoderado={handleNombreApoderado}
-          handleApoderadoValido={handleApoderadoValido}
-        />
 
-        <RegistroInversion />
+      {/* ---REGISTRO TOTAL DE APODERADO 
+          <div className="details person">
+            <RegistroApoderado
+              registroNombreApoderado={handleNombreApoderado}
+              handleApoderadoValido={handleApoderadoValido}
+            />   
+
+          </div>
+
+          ---REGISTRO TOTAL DE INVERSION
+          <div className="details person">
+            <RegistroInversion /> 
+                      
+          </div> */}
+
+
+        </div>
 
         <button type='submit' disabled={isButtonDisabled} id='btn-submit'>
           Registrar
         </button>
+
       </form>
       {/* <BotonAtras /> */}
-    </main>
+    </div>
   )
 }
 
 export default RegistroAlumno
+
+
+
