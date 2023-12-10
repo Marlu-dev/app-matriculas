@@ -113,8 +113,8 @@ function RegistroAlumno () {
       </header>
 
       <form className='form-registro' onSubmit={registrarAlumno}>
-        <div className='from'>
-          {/* ---REGISTRO TOTAL DE ALUMNoS */}
+        <div className='form'>
+          {/* ---REGISTRO TOTAL DE ALUMNOS */}
           <div className="details person">
               <span className="title">
                 Datos Alumno

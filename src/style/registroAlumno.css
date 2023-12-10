@@ -21,3 +21,38 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.container-register {
+  position: relative;
+  padding: 30px;
+  background-color: var(--blanco); /* VERIFICAR */
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); 
+  max-width: 900px;
+  width: 100%;
+  border-radius: 6px; VERIFICAR
+  margin: 0 15px;  */
+}
+
+.container-register .header-register {
+  position: relative;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--azul);
+}
+
+.container-register .header-register::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 27px; 
+  background-color: var(--azul);
+}
+
+.form { /* LINEA DE INICIO */
+  position: relative;
+  min-height: 490px;
+  background-color: var(--blanco);
+  margin-top: 10px;
+}
