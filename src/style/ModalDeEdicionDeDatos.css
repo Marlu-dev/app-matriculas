@@ -1,0 +1,23 @@
+.modal-edicion-datos-fondo-invisible {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.575);
+    z-index: 1;
+
+}
+
+.modal-edicion-datos{
+    display: flex;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
+    border: 2px solid black;
+}
