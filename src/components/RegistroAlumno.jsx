@@ -241,7 +241,7 @@ function RegistroAlumno () {
                   />
                 </div>
 
-                {/* SEXTO DATO: Direccion */}
+                {/* NOVENO DATO: Direccion */}
                 <div className="input-seccion">
                   <div>
                     <label>Direccion</label>
@@ -257,7 +257,7 @@ function RegistroAlumno () {
                   />
                 </div>
 
-                {/* SEPTIMO DATO */}
+                {/* DECIMO DATO: Referencia */}
                 <div className="input-seccion">
                   <div>
                     <label>Referencia</label>
@@ -279,7 +279,7 @@ function RegistroAlumno () {
 
                 
 
-                {/* NOVENO DATO: Telefono Fijo */}
+                {/* DECIMO PRIMER DATO: Telefono Fijo */}
                 <div className="input-seccion">
                   <div>
                     <label>Telefono Fijo</label>
@@ -300,7 +300,7 @@ function RegistroAlumno () {
                   </div>
                 </div>
 
-                {/* DECIMO DATO: Celular */}
+                {/* DECIMO SEGUNDO DATO: Celular */}
                 <div className="input-seccion">
                   <div>
                     <label>Telefono Celular</label>
