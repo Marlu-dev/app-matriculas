@@ -2,52 +2,30 @@ const { app, BrowserWindow, ipcMain, screen } = require('electron')
 const path = require('path')
 
 let mainWindow
-let loadingScreen
-
-function createLoadingScreen () {
-  loadingScreen = new BrowserWindow({
-    width: 300,
-    height: 300,
-    frame: false,
-    transparent: true,
-    alwaysOnTop: true,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  })
-
-  loadingScreen.loadFile(path.join(__dirname, 'loading.html'))
-  loadingScreen.on('closed', () => (loadingScreen = null))
-}
 
 function createWindow () {
-  createLoadingScreen()
   const { width, height } = screen.getPrimaryDisplay().workAreaSize
   const minWidth = Math.floor(width / 2)
   const minHeight = Math.floor(height / 2)
 
-  setTimeout(() => {
-    mainWindow = new BrowserWindow({
-      width,
-      height,
-      minWidth,
-      minHeight,
-      maxWidth: width,
-      maxHeight: height,
-      frame: false,
-      show: false,
-      webPreferences: {
-        preload: path.join(__dirname, 'preload.cjs'),
-        nodeIntegration: true
-      }
-    })
-    mainWindow.loadURL('http://localhost:5173/')
+  mainWindow = new BrowserWindow({
+    minWidth,
+    minHeight,
+    maxWidth: width,
+    maxHeight: height,
+    frame: false,
+    show: false,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.cjs'),
+      nodeIntegration: true
+    }
+  })
+  mainWindow.loadURL('http://localhost:5174/')
 
-    mainWindow.once('ready-to-show', () => {
-      loadingScreen.close()
-      mainWindow.show()
-    })
-  }, 3000)
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.maximize()
+    mainWindow.show()
+  })
 }
 
 app.whenReady().then(() => {
@@ -60,7 +38,7 @@ app.whenReady().then(() => {
   })
 })
 
-// IPC event handlers
+// Manejadores de eventos IPC
 ipcMain.on('close-window', () => {
   if (mainWindow) {
     mainWindow.close()
@@ -73,23 +51,12 @@ ipcMain.on('minimize-window', () => {
   }
 })
 
-let isFirstMaximize = true
-
 ipcMain.on('maximize-window', () => {
   if (mainWindow) {
-    if (isFirstMaximize) {
-      const { width, height } = screen.getPrimaryDisplay().workAreaSize
-      const minWidth = Math.floor(width / 3) * 2
-      const minHeight = Math.floor(height / 3) * 2
-      mainWindow.setSize(minWidth, minHeight)
-      mainWindow.center()
-      isFirstMaximize = false
+    if (mainWindow.isMaximized()) {
+      mainWindow.restore()
     } else {
-      if (mainWindow.isMaximized()) {
-        mainWindow.restore()
-      } else {
-        mainWindow.maximize()
-      }
+      mainWindow.maximize()
     }
   }
 })

@@ -1,0 +1,42 @@
+.seccion-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .logo-loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    grid-area: logo-loading;
+  }
+  
+  .logo-loading img {
+    max-width: 200%;
+    max-height: 200%;
+    object-fit: cover; /* Puedes ajustar 'contain' o 'cover' según tus preferencias */
+  }
+  
+  .message-loading {
+    bottom: 10%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .pantalla-de-carga {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-rows: 30px 1fr;
+    grid-template-areas:
+      "barraDeTitulo"
+      "logo-loading";
+  }
