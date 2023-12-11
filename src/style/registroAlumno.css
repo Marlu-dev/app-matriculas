@@ -43,22 +43,125 @@
 .container-register .header-register::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: 405px;
   bottom: -2px;
   height: 3px;
-  width: 27px; 
+  width: 200px; 
+  border-radius: 10px;
   background-color: var(--azul);
 }
 
-.form { /* LINEA DE INICIO */
+.container-register .form { /* LINEA DE INICIO */
   position: relative;
   min-height: 490px;
   background-color: var(--blanco);
   margin-top: 10px;
 }
 
+.container-register .form .details { 
+  margin-top: 20px;  /* VERIFICAR */
+}
 
-.error-input-registrar-alumnos{
-  color: red;
+/* .container-register .form .details .apoderado { 
+  margin-top: 10px;  --VERIFICAR 
+}
+
+.container-register .form .details .inversion { 
+  margin-top: 10px;  --VERIFICAR
+} */
+
+.container-register .form .title { 
+  font-size: 16px;
+  margin-bottom: 8px; /* VERIFICAR */
+  font-weight: 600;
+  margin: 6px 0;
+  color: var(--letras);
+}
+
+.container-register .form .seccion-form { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap ;
+}
+
+.form .seccion-form .input-seccion { 
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  /* background-color: red; */
+  flex-direction: column;
+  margin: 4px 0;
+  
+}
+
+/* .input-seccion .error-label { 
+  border-color: var(--letras);
+} */
+
+.input-seccion label { 
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--oscuro);
+}
+.input-seccion input { 
+  outline: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--primario);
+  border-radius: 5px;
+  /* border: 1px solid var(--gris); */
+  padding: 0 15px;
+  margin: 8px 0;
+  display: block;
+} 
+
+/* .input-seccion input:is(:focus, :valid) { 
+  box-shadow: 0 3px 5px rgba(0, 0, 0,0.13);
+}  */
+
+/* .input-seccion input:focus { 
+  border: 3px solid var(--azul);
+  outline: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0,0.13);
+}  */
+
+.input-seccion .error-label { 
+  font-size: 12px;
+  margin-bottom: 0;
+  color: red;  
+}  
+
+.error-input{ 
   border: 2px solid red;
+}  
+
+
+
+.container-register .form-registro .btn-register { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--blanco);
+  border-radius: 50px;
+ /*  margin: 25px 0; --VERIFICAR */
+  background-color: var(--primario);
+  transition: all 0.3s linear;
+  /* --cursor: pointer; --VERIFICAR  */
+
+}
+
+.form-registro .btn-register:hover { 
+  background-color: var(--letras);
+}
+
+.check-valor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
+  align-items: center;
 }
