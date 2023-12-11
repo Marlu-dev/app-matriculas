@@ -107,8 +107,8 @@ function RegistroAlumno () {
   }
 
   return (
-    <div className="container-register">
-      <header className="header-register">
+    <div className='container-register'>
+      <header className='header-register'>
         REGISTRO DE ALUMNO
       </header>
 
@@ -124,16 +124,15 @@ function RegistroAlumno () {
                 <div className="input-seccion">
                   <div>
                   <label>Codigo</label>
-                  </div>
-                  <input
-                    name='codigo'
-                    id='codigo'
-                    value={codigoNuevo}
-                    readOnly
-                    disabled
-                  />
                 </div>
-
+                <input
+                  name='codigo'
+                  id='codigo'
+                  value={codigoNuevo}
+                  readOnly
+                  disabled
+                />
+              </div>
                 {/* SEGUNDO DATO: Grupo*/}
                 <div className="input-seccion">
                   <div>
@@ -145,7 +144,12 @@ function RegistroAlumno () {
                     onSelectChange={handleChange}
                   />
                 </div>
-
+                <Select
+                  coleccion='grupos'
+                  nombre='grupo'
+                  onSelectChange={handleChange}
+                />
+              </div>
                 {/* TERCER DATO: Carrera */}
                 <div className="input-seccion">
                   <div>
@@ -174,7 +178,15 @@ function RegistroAlumno () {
                     placeholder='Ingrese nombre de alumno' required
                   />
                 </div>
-
+                <input
+                  className={errorName ? 'error-input-registrar-alumnos' : ''}
+                  name='name'
+                  id='name'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={name}
+                />
+              </div>
                 {/* QUINTO DATO: Apellido Paterno */}
                 <div className="input-seccion">
                   <div>
@@ -191,7 +203,14 @@ function RegistroAlumno () {
                     placeholder='Ingrese apellido paterno' required
                   />
                 </div>
-
+                <input
+                  name='apellidoPaterno'
+                  id='apellidoPaterno'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={apellidoPaterno}
+                />
+              </div>
                 {/* SEXTO DATO: Apellido Materno */}
                 <div className="input-seccion">
                   <div>
@@ -207,7 +226,14 @@ function RegistroAlumno () {
                     value={apellidoMaterno}
                   />
                 </div>
-
+                <input
+                  name='apellidoMaterno'
+                  id='apellidoMaterno'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={apellidoMaterno}
+                />
+              </div>
                 {/* SEPTIMO DATO: DNI */}
                 <div className="input-seccion">
                   <div>
@@ -240,7 +266,14 @@ function RegistroAlumno () {
                     value={direccion}
                   />
                 </div>
-
+                <input
+                  name='direccion'
+                  id='direccion'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={direccion}
+                />
+              </div>
                 {/* NOVENO DATO: Direccion */}
                 <div className="input-seccion">
                   <div>
@@ -276,9 +309,7 @@ function RegistroAlumno () {
                     <input type='checkbox' name='' onClick={noReferencia} />
                   </div>
                 </div>
-
-                
-
+              </div>
                 {/* DECIMO PRIMER DATO: Telefono Fijo */}
                 <div className="input-seccion">
                   <div>
@@ -299,7 +330,15 @@ function RegistroAlumno () {
                     <input type='checkbox' name='' onClick={noTelefonoFijo} />
                   </div>
                 </div>
-
+                <input
+                  name='dni'
+                  id='dni'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={dni}
+                  maxLength={8}
+                />
+              </div>
                 {/* DECIMO SEGUNDO DATO: Celular */}
                 <div className="input-seccion">
                   <div>
@@ -320,20 +359,28 @@ function RegistroAlumno () {
                     <input type='checkbox' name='' onClick={noTelefonoCelular} />
                   </div>
                 </div>
-
-                
-
               </div>
-              
+              {/* DECIMO PRIMER DATO: Carrera */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Carrera</label>
+                </div>
+                <Select
+                  coleccion={selectedGrupo}
+                  nombre='carrera'
+                  onSelectChange={handleChange}
+                />
+              </div>
+
+            </div>
+
           </div>
-
-
       {/* ---REGISTRO TOTAL DE APODERADO 
           <div className="details apoderado">
             <RegistroApoderado
               registroNombreApoderado={handleNombreApoderado}
               handleApoderadoValido={handleApoderadoValido}
-            />   
+            />
 
           </div>
 
@@ -342,7 +389,7 @@ function RegistroAlumno () {
             <RegistroInversion /> 
                       
           </div> */}
-
+          </div> */}
 
         </div>
 
@@ -357,6 +404,3 @@ function RegistroAlumno () {
 }
 
 export default RegistroAlumno
-
-
-
