@@ -271,9 +271,14 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={referencia}
                 />
-                <div className='check-valor'>
-                  <label>No tiene</label>
-                  <input type='checkbox' name='' onClick={noReferencia} />
+                <div className='check-button'>
+                  
+                  <input 
+                  type='checkbox' 
+                  name='checkbox1' 
+                  onClick={noReferencia} 
+                  />
+                  <label for= "checkbox1">No tiene</label>
                 </div>
               </div>
 
@@ -292,9 +297,14 @@ function RegistroAlumno () {
                   value={telefonoFijo}
                   maxLength={9}
                 />
-                <div className='check-valor'>
-                  <label>No tiene</label>
-                  <input type='checkbox' name='' onClick={noTelefonoFijo} />
+                <div className='check-button'>
+                  
+                  <input 
+                  type='checkbox' 
+                  name='checkbox2' 
+                  onClick={noTelefonoFijo} 
+                  />
+                  <label for= "checkbox2">No tiene</label>
                 </div>
               </div>
 
@@ -313,9 +323,14 @@ function RegistroAlumno () {
                   value={telefonoCelular}
                   maxLength={9}
                 />
-                <div className='check-valor'>
-                  <label>No tiene</label>
-                  <input type='checkbox' name='' onClick={noTelefonoCelular} />
+                <div className='check-button'>
+                  
+                  <input 
+                  type='checkbox' 
+                  name='checkbox3' 
+                  onClick={noTelefonoCelular} 
+                  />
+                  <label for= "checkbox3">No tiene</label>
                 </div>
               </div>
 
