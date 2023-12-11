@@ -120,7 +120,7 @@ function RegistroAlumno () {
                 Datos Alumno
               </span>
               <div className="seccion-form">
-                {/* PRIMER DATO */}
+                {/* PRIMER DATO: Codigo*/}
                 <div className="input-seccion">
                   <div>
                   <label>Codigo</label>
@@ -134,7 +134,7 @@ function RegistroAlumno () {
                   />
                 </div>
 
-                {/* SEGUNDO DATO */}
+                {/* SEGUNDO DATO: Grupo*/}
                 <div className="input-seccion">
                   <div>
                     <label>Grupo</label>
@@ -146,43 +146,60 @@ function RegistroAlumno () {
                   />
                 </div>
 
-                {/* TERCER DATO */}
+                {/* TERCER DATO: Carrera */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Carrera</label>
+                  </div>
+                  <Select
+                    coleccion={selectedGrupo}
+                    nombre='carrera'
+                    onSelectChange={handleChange}
+                  />
+                </div>
+
+                {/* CUARTO DATO: Nombre */}
                 <div className="input-seccion">
                   <div>
                     <label>Nombre</label>
-                    <label>{errorName}</label>
+                    <label className='error-label'>{errorName}</label>
                   </div>
-                  <input
+                  <input 
+                    className= {errorName ? 'error-input' : ''}  
                     name='name'
                     id='name'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={name}
+                    placeholder='Ingrese nombre de alumno' required
                   />
                 </div>
 
-                {/* CUARTO DATO */}
+                {/* QUINTO DATO: Apellido Paterno */}
                 <div className="input-seccion">
                   <div>
                     <label>Apellido Paterno</label>
-                    <label>{errorApellidoPaterno}</label>
+                    <label className='error-label'>{errorApellidoPaterno}</label>
                   </div>
                   <input
+                    className= {errorApellidoPaterno ? 'error-input' : ''} 
                     name='apellidoPaterno'
                     id='apellidoPaterno'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={apellidoPaterno}
+                    placeholder='Ingrese apellido paterno' required
                   />
                 </div>
 
-                {/* QUINTO DATO */}
+                {/* SEXTO DATO: Apellido Materno */}
                 <div className="input-seccion">
                   <div>
                     <label>Apellido Materno</label>
-                    <label>{errorApellidoMaterno}</label>
+                    <label className='error-label'>{errorApellidoMaterno}</label>
                   </div>
                   <input
+                    className= {errorApellidoMaterno ? 'error-input' : ''} 
                     name='apellidoMaterno'
                     id='apellidoMaterno'
                     onChange={handleChange}
@@ -191,13 +208,47 @@ function RegistroAlumno () {
                   />
                 </div>
 
+                {/* SEPTIMO DATO: DNI */}
+                <div className="input-seccion">
+                  <div>
+                    <label>DNI</label>
+                    <label className='error-label'>{errorDni}</label>
+                  </div>
+                  <input
+                    className= {errorDni ? 'error-input' : ''}
+                    name='dni'
+                    id='dni'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={dni}
+                    maxLength={8}
+                  />
+                </div>
+                
+                {/* ESTE DATO PARA AGREGAR-- OCTAVO DATO: EDAD */}
+                <div className="input-seccion">
+                  <div>
+                    <label>Edad</label>
+                    <label className='error-label'>{errorDireccion}</label>
+                  </div>
+                  <input
+                    className= {errorDireccion ? 'error-input' : ''}
+                    name='direccion'
+                    id='direccion'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={direccion}
+                  />
+                </div>
+
                 {/* SEXTO DATO: Direccion */}
                 <div className="input-seccion">
                   <div>
                     <label>Direccion</label>
-                    <label>{errorDireccion}</label>
+                    <label className='error-label'>{errorDireccion}</label>
                   </div>
                   <input
+                    className= {errorDireccion ? 'error-input' : ''}
                     name='direccion'
                     id='direccion'
                     onChange={handleChange}
@@ -210,44 +261,32 @@ function RegistroAlumno () {
                 <div className="input-seccion">
                   <div>
                     <label>Referencia</label>
-                    <label>{errorReferencia}</label>
+                    <label className='error-label'>{errorReferencia}</label>
                   </div>
                   <input
+                    className= {errorReferencia ? 'error-input' : ''}
                     name='referencia'
                     id='referencia'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={referencia}
                   />
-                  <div>
+                  <div className='check-valor'>
                     <label>No tiene</label>
                     <input type='checkbox' name='' onClick={noReferencia} />
                   </div>
                 </div>
 
-                {/* OCTAVO DATO: DNI */}
-                <div className="input-seccion">
-                  <div>
-                    <label>DNI</label>
-                    <label>{errorDni}</label>
-                  </div>
-                  <input
-                    name='dni'
-                    id='dni'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={dni}
-                    maxLength={8}
-                  />
-                </div>
+                
 
                 {/* NOVENO DATO: Telefono Fijo */}
                 <div className="input-seccion">
                   <div>
                     <label>Telefono Fijo</label>
-                    <label>{errorTelefonoFijo}</label>
+                    <label className='error-label'>{errorTelefonoFijo}</label>
                   </div>
                   <input
+                    className= {errorTelefonoFijo ? 'error-input' : ''}
                     name='telefonoFijo'
                     id='telefonoFijo'
                     onChange={handleChange}
@@ -255,7 +294,7 @@ function RegistroAlumno () {
                     value={telefonoFijo}
                     maxLength={9}
                   />
-                  <div>
+                  <div className='check-valor'>
                     <label>No tiene</label>
                     <input type='checkbox' name='' onClick={noTelefonoFijo} />
                   </div>
@@ -265,9 +304,10 @@ function RegistroAlumno () {
                 <div className="input-seccion">
                   <div>
                     <label>Telefono Celular</label>
-                    <label>{errorTelefonoCelular}</label>
+                    <label className='error-label'>{errorTelefonoCelular}</label>
                   </div>
                   <input
+                    className= {errorTelefonoCelular ? 'error-input' : ''}
                     name='telefonoCelular'
                     id='telefonoCelular'
                     onChange={handleChange}
@@ -275,23 +315,13 @@ function RegistroAlumno () {
                     value={telefonoCelular}
                     maxLength={9}
                   />
-                  <div>
+                  <div className='check-valor'>
                     <label>No tiene</label>
                     <input type='checkbox' name='' onClick={noTelefonoCelular} />
                   </div>
                 </div>
 
-                {/* DECIMO PRIMER DATO: Carrera */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Carrera</label>
-                  </div>
-                  <Select
-                    coleccion={selectedGrupo}
-                    nombre='carrera'
-                    onSelectChange={handleChange}
-                  />
-                </div>
+                
 
               </div>
               
@@ -299,7 +329,7 @@ function RegistroAlumno () {
 
 
       {/* ---REGISTRO TOTAL DE APODERADO 
-          <div className="details person">
+          <div className="details apoderado">
             <RegistroApoderado
               registroNombreApoderado={handleNombreApoderado}
               handleApoderadoValido={handleApoderadoValido}
@@ -308,7 +338,7 @@ function RegistroAlumno () {
           </div>
 
           ---REGISTRO TOTAL DE INVERSION
-          <div className="details person">
+          <div className="details inversion">
             <RegistroInversion /> 
                       
           </div> */}
@@ -316,7 +346,7 @@ function RegistroAlumno () {
 
         </div>
 
-        <button type='submit' disabled={isButtonDisabled} id='btn-submit'>
+        <button className='btn-register' type='submit' disabled={isButtonDisabled} id='btn-submit'>
           Registrar
         </button>
 
