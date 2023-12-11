@@ -115,14 +115,14 @@ function RegistroAlumno () {
       <form className='form-registro' onSubmit={registrarAlumno}>
         <div className='form'>
           {/* ---REGISTRO TOTAL DE ALUMNOS */}
-          <div className="details person">
-              <span className="title">
-                Datos Alumno
-              </span>
-              <div className="seccion-form">
-                {/* PRIMER DATO: Codigo*/}
-                <div className="input-seccion">
-                  <div>
+          <div className='details person'>
+            <span className='title'>
+              Datos Alumno
+            </span>
+            <div className='seccion-form'>
+              {/* PRIMER DATO: Codigo */}
+              <div className='input-seccion'>
+                <div>
                   <label>Codigo</label>
                 </div>
                 <input
@@ -133,16 +133,11 @@ function RegistroAlumno () {
                   disabled
                 />
               </div>
-                {/* SEGUNDO DATO: Grupo*/}
-                <div className="input-seccion">
-                  <div>
-                    <label>Grupo</label>
-                  </div>
-                  <Select
-                    coleccion='grupos'
-                    nombre='grupo'
-                    onSelectChange={handleChange}
-                  />
+
+              {/* SEGUNDO DATO: Grupo */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Grupo</label>
                 </div>
                 <Select
                   coleccion='grupos'
@@ -150,217 +145,8 @@ function RegistroAlumno () {
                   onSelectChange={handleChange}
                 />
               </div>
-                {/* TERCER DATO: Carrera */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Carrera</label>
-                  </div>
-                  <Select
-                    coleccion={selectedGrupo}
-                    nombre='carrera'
-                    onSelectChange={handleChange}
-                  />
-                </div>
 
-                {/* CUARTO DATO: Nombre */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Nombre</label>
-                    <label className='error-label'>{errorName}</label>
-                  </div>
-                  <input 
-                    className= {errorName ? 'error-input' : ''}  
-                    name='name'
-                    id='name'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={name}
-                    placeholder='Ingrese nombre de alumno' required
-                  />
-                </div>
-                <input
-                  className={errorName ? 'error-input-registrar-alumnos' : ''}
-                  name='name'
-                  id='name'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={name}
-                />
-              </div>
-                {/* QUINTO DATO: Apellido Paterno */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Apellido Paterno</label>
-                    <label className='error-label'>{errorApellidoPaterno}</label>
-                  </div>
-                  <input
-                    className= {errorApellidoPaterno ? 'error-input' : ''} 
-                    name='apellidoPaterno'
-                    id='apellidoPaterno'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={apellidoPaterno}
-                    placeholder='Ingrese apellido paterno' required
-                  />
-                </div>
-                <input
-                  name='apellidoPaterno'
-                  id='apellidoPaterno'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={apellidoPaterno}
-                />
-              </div>
-                {/* SEXTO DATO: Apellido Materno */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Apellido Materno</label>
-                    <label className='error-label'>{errorApellidoMaterno}</label>
-                  </div>
-                  <input
-                    className= {errorApellidoMaterno ? 'error-input' : ''} 
-                    name='apellidoMaterno'
-                    id='apellidoMaterno'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={apellidoMaterno}
-                  />
-                </div>
-                <input
-                  name='apellidoMaterno'
-                  id='apellidoMaterno'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={apellidoMaterno}
-                />
-              </div>
-                {/* SEPTIMO DATO: DNI */}
-                <div className="input-seccion">
-                  <div>
-                    <label>DNI</label>
-                    <label className='error-label'>{errorDni}</label>
-                  </div>
-                  <input
-                    className= {errorDni ? 'error-input' : ''}
-                    name='dni'
-                    id='dni'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={dni}
-                    maxLength={8}
-                  />
-                </div>
-                
-                {/* ESTE DATO PARA AGREGAR-- OCTAVO DATO: EDAD */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Edad</label>
-                    <label className='error-label'>{errorDireccion}</label>
-                  </div>
-                  <input
-                    className= {errorDireccion ? 'error-input' : ''}
-                    name='direccion'
-                    id='direccion'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={direccion}
-                  />
-                </div>
-                <input
-                  name='direccion'
-                  id='direccion'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={direccion}
-                />
-              </div>
-                {/* NOVENO DATO: Direccion */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Direccion</label>
-                    <label className='error-label'>{errorDireccion}</label>
-                  </div>
-                  <input
-                    className= {errorDireccion ? 'error-input' : ''}
-                    name='direccion'
-                    id='direccion'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={direccion}
-                  />
-                </div>
-
-                {/* DECIMO DATO: Referencia */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Referencia</label>
-                    <label className='error-label'>{errorReferencia}</label>
-                  </div>
-                  <input
-                    className= {errorReferencia ? 'error-input' : ''}
-                    name='referencia'
-                    id='referencia'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={referencia}
-                  />
-                  <div className='check-valor'>
-                    <label>No tiene</label>
-                    <input type='checkbox' name='' onClick={noReferencia} />
-                  </div>
-                </div>
-              </div>
-                {/* DECIMO PRIMER DATO: Telefono Fijo */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Telefono Fijo</label>
-                    <label className='error-label'>{errorTelefonoFijo}</label>
-                  </div>
-                  <input
-                    className= {errorTelefonoFijo ? 'error-input' : ''}
-                    name='telefonoFijo'
-                    id='telefonoFijo'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={telefonoFijo}
-                    maxLength={9}
-                  />
-                  <div className='check-valor'>
-                    <label>No tiene</label>
-                    <input type='checkbox' name='' onClick={noTelefonoFijo} />
-                  </div>
-                </div>
-                <input
-                  name='dni'
-                  id='dni'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={dni}
-                  maxLength={8}
-                />
-              </div>
-                {/* DECIMO SEGUNDO DATO: Celular */}
-                <div className="input-seccion">
-                  <div>
-                    <label>Telefono Celular</label>
-                    <label className='error-label'>{errorTelefonoCelular}</label>
-                  </div>
-                  <input
-                    className= {errorTelefonoCelular ? 'error-input' : ''}
-                    name='telefonoCelular'
-                    id='telefonoCelular'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={telefonoCelular}
-                    maxLength={9}
-                  />
-                  <div className='check-valor'>
-                    <label>No tiene</label>
-                    <input type='checkbox' name='' onClick={noTelefonoCelular} />
-                  </div>
-                </div>
-              </div>
-              {/* DECIMO PRIMER DATO: Carrera */}
+              {/* TERCER DATO: Carrera */}
               <div className='input-seccion'>
                 <div>
                   <label>Carrera</label>
@@ -372,10 +158,172 @@ function RegistroAlumno () {
                 />
               </div>
 
+              {/* CUARTO DATO: Nombre */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Nombre</label>
+                  <label className='error-label'>{errorName}</label>
+                </div>
+                <input
+                  className={errorName ? 'error-input' : ''}
+                  name='name'
+                  id='name'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={name}
+                  placeholder='Ingrese nombre de alumno' required
+                />
+              </div>
+
+              {/* QUINTO DATO: Apellido Paterno */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Apellido Paterno</label>
+                  <label className='error-label'>{errorApellidoPaterno}</label>
+                </div>
+                <input
+                  className={errorApellidoPaterno ? 'error-input' : ''}
+                  name='apellidoPaterno'
+                  id='apellidoPaterno'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={apellidoPaterno}
+                  placeholder='Ingrese apellido paterno' required
+                />
+              </div>
+
+              {/* SEXTO DATO: Apellido Materno */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Apellido Materno</label>
+                  <label className='error-label'>{errorApellidoMaterno}</label>
+                </div>
+                <input
+                  className={errorApellidoMaterno ? 'error-input' : ''}
+                  name='apellidoMaterno'
+                  id='apellidoMaterno'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={apellidoMaterno}
+                />
+              </div>
+
+              {/* SEPTIMO DATO: DNI */}
+              <div className='input-seccion'>
+                <div>
+                  <label>DNI</label>
+                  <label className='error-label'>{errorDni}</label>
+                </div>
+                <input
+                  className={errorDni ? 'error-input' : ''}
+                  name='dni'
+                  id='dni'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={dni}
+                  maxLength={8}
+                />
+              </div>
+
+              {/* ESTE DATO PARA AGREGAR-- OCTAVO DATO: EDAD */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Edad</label>
+                  <label className='error-label'>{errorDireccion}</label>
+                </div>
+                <input
+                  className={errorDireccion ? 'error-input' : ''}
+                  name='direccion'
+                  id='direccion'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={direccion}
+                />
+              </div>
+
+              {/* NOVENO DATO: Direccion */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Direccion</label>
+                  <label className='error-label'>{errorDireccion}</label>
+                </div>
+                <input
+                  className={errorDireccion ? 'error-input' : ''}
+                  name='direccion'
+                  id='direccion'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={direccion}
+                />
+              </div>
+
+              {/* DECIMO DATO: Referencia */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Referencia</label>
+                  <label className='error-label'>{errorReferencia}</label>
+                </div>
+                <input
+                  className={errorReferencia ? 'error-input' : ''}
+                  name='referencia'
+                  id='referencia'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={referencia}
+                />
+                <div className='check-valor'>
+                  <label>No tiene</label>
+                  <input type='checkbox' name='' onClick={noReferencia} />
+                </div>
+              </div>
+
+              {/* DECIMO PRIMER DATO: Telefono Fijo */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Telefono Fijo</label>
+                  <label className='error-label'>{errorTelefonoFijo}</label>
+                </div>
+                <input
+                  className={errorTelefonoFijo ? 'error-input' : ''}
+                  name='telefonoFijo'
+                  id='telefonoFijo'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={telefonoFijo}
+                  maxLength={9}
+                />
+                <div className='check-valor'>
+                  <label>No tiene</label>
+                  <input type='checkbox' name='' onClick={noTelefonoFijo} />
+                </div>
+              </div>
+
+              {/* DECIMO SEGUNDO DATO: Celular */}
+              <div className='input-seccion'>
+                <div>
+                  <label>Telefono Celular</label>
+                  <label className='error-label'>{errorTelefonoCelular}</label>
+                </div>
+                <input
+                  className={errorTelefonoCelular ? 'error-input' : ''}
+                  name='telefonoCelular'
+                  id='telefonoCelular'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={telefonoCelular}
+                  maxLength={9}
+                />
+                <div className='check-valor'>
+                  <label>No tiene</label>
+                  <input type='checkbox' name='' onClick={noTelefonoCelular} />
+                </div>
+              </div>
+
             </div>
 
           </div>
-      {/* ---REGISTRO TOTAL DE APODERADO 
+
+          {/* ---REGISTRO TOTAL DE APODERADO
           <div className="details apoderado">
             <RegistroApoderado
               registroNombreApoderado={handleNombreApoderado}
@@ -386,9 +334,8 @@ function RegistroAlumno () {
 
           ---REGISTRO TOTAL DE INVERSION
           <div className="details inversion">
-            <RegistroInversion /> 
-                      
-          </div> */}
+            <RegistroInversion />
+
           </div> */}
 
         </div>
