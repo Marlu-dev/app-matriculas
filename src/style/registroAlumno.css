@@ -43,10 +43,10 @@
 .container-register .header-register::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: 405px;
   bottom: -2px;
   height: 3px;
-  width: 27px; 
+  width: 200px; 
   background-color: var(--azul);
 }
 
