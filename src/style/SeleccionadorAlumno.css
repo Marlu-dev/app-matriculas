@@ -34,3 +34,31 @@
     color: #ffff;
     font-size: 18px;
   }
+
+
+  .ver-seleccionador-alumno{
+    z-index: 0;
+  }
+
+  .editar-seleccionador-alumno{
+    z-index: 0;
+  }
+
+  .ver-seleccionador-alumno:hover {
+    cursor: pointer;
+  }
+
+  .ver-seleccionador-alumno:hover svg{
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+  }
+
+
+  .editar-seleccionador-alumno:hover {
+    cursor: pointer;
+  }
+
+  .editar-seleccionador-alumno:hover svg{
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+  }
