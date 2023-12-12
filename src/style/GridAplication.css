@@ -27,9 +27,9 @@
 body {
     background-color: var(--colorBody);
     /* color: black; */
-    display: grid;
-    margin: 0;
-    padding: 0;
+    /* display: grid; */
+    /* margin: 0;
+    padding: 0; */
     box-sizing: border-box;
 }
 
@@ -99,17 +99,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10%;
+    padding: 0 2%;
     grid-area: header;
     border-radius: 10px;
     margin: 0px 8px 0px 10px;
 }
 
-.container-buttons {
+/*  ESTO ERA LO ANTERIOR
+    .container-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
-    padding: 10px;
+    padding: 6px;
+} */
+
+.container-buttons {
+    display: flex;
+    padding: 0 2%;
 }
 
 .container-buttons ul li {
@@ -119,16 +125,18 @@ body {
 } 
 
 .container-buttons ul li a{
-    display: block;
-    padding: 5px 10px;
+    display: flex;
+    padding: 2% 6%;
     border-radius: 5px;
     transition: .2s;
+    /* position: absolute;
+    left: 10px; */
 }
 
 .container-buttons svg{
     stroke: var(--blanco);
-   /*  width: -20px;
-    height: -20px; */
+    width: 40px;
+        height: 40px;
 } 
 
 .container-buttons ul li a:hover {
@@ -154,8 +162,9 @@ body {
 } 
 
 .btns-nav-container a {
+    display: inline-block;
     text-decoration: none;
-    padding: 15px 30px;
+    padding: 5px 30px;
     font-size: 16px;
     letter-spacing: 2px;
     
@@ -216,6 +225,24 @@ body {
         padding: 5px 20px;
     }
 }
+
+@media screen and (max-width: 850px) {
+    .container-buttons ul li a {
+        padding: 1px 1px;
+    }
+
+    .container-buttons svg{
+     /*    stroke: var(--gris); */
+       width: 20px;
+        height: 20px;
+    } 
+
+    .btns-nav-container a {
+        padding: 5px 4px;
+        letter-spacing: 1px;
+    }
+}
+
 
 
 
