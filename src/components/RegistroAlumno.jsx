@@ -272,13 +272,12 @@ function RegistroAlumno () {
                   value={referencia}
                 />
                 <div className='check-button'>
-                  
-                  <input 
-                  type='checkbox' 
-                  name='checkbox1' 
-                  onClick={noReferencia} 
+                  <input
+                    type='checkbox'
+                    name='checkbox1'
+                    onClick={noReferencia}
                   />
-                  <label for= "checkbox1">No tiene</label>
+                  <label for='checkbox1'>No tiene</label>
                 </div>
               </div>
 
@@ -298,13 +297,13 @@ function RegistroAlumno () {
                   maxLength={9}
                 />
                 <div className='check-button'>
-                  
-                  <input 
-                  type='checkbox' 
-                  name='checkbox2' 
-                  onClick={noTelefonoFijo} 
+
+                  <input
+                    type='checkbox'
+                    name='checkbox2'
+                    onClick={noTelefonoFijo}
                   />
-                  <label for= "checkbox2">No tiene</label>
+                  <label for='checkbox2'>No tiene</label>
                 </div>
               </div>
 
@@ -324,13 +323,13 @@ function RegistroAlumno () {
                   maxLength={9}
                 />
                 <div className='check-button'>
-                  
-                  <input 
-                  type='checkbox' 
-                  name='checkbox3' 
-                  onClick={noTelefonoCelular} 
+
+                  <input
+                    type='checkbox'
+                    name='checkbox3'
+                    onClick={noTelefonoCelular}
                   />
-                  <label for= "checkbox3">No tiene</label>
+                  <label for='checkbox3'>No tiene</label>
                 </div>
               </div>
 
