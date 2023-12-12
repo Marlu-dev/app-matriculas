@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
-import db from "../services/firebase/firebase.js";
+import db from "../../public/services/firebase/firebase.js";
 
 const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {
   const [opciones, setOpciones] = useState([]);

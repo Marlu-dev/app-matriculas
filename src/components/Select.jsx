@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { collection, onSnapshot, query } from 'firebase/firestore'
 
-import db from '../services/firebase/firebase.js'
+import db from '../../public/services/firebase/firebase.js'
 
 const Select = ({ coleccion, nombre, onSelectChange }) => {
   const [opciones, setOpciones] = useState([])
