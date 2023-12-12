@@ -20,8 +20,8 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-  mainWindow.loadURL('http://localhost:5174/')
-
+  // mainWindow.loadURL('http://localhost:5174/')
+  mainWindow.loadFile('dist/index.html')
   mainWindow.once('ready-to-show', () => {
     mainWindow.maximize()
     mainWindow.show()

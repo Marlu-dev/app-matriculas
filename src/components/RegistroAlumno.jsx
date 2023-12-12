@@ -1,6 +1,6 @@
 import '../style/registroAlumno.css'
 import React, { useEffect } from 'react'
-import db from '../services/firebase/firebase.js'
+import db from '../../public/services/firebase/firebase.js'
 import { addDoc, collection } from 'firebase/firestore'
 import useValidation from '../hooks/useValidation'
 import useSetFileds from '../hooks/useSetFields'

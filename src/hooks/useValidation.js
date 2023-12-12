@@ -6,7 +6,7 @@ import {
   orderBy,
   limit
 } from 'firebase/firestore'
-import db from '../services/firebase/firebase.js'
+import db from '../../public/services/firebase/firebase.js'
 
 const useValidation = (
   selectedGrupo,

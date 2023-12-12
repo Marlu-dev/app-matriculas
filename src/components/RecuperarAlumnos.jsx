@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore'
-import db from '../services/firebase/firebase.js'
+import db from '../../public/services/firebase/firebase.js'
 import '../style/SeleccionadorAlumno.css'
 import '../style/RecuperarAlumnos.css'
 import ListaDeAlumnos from './ListaDeAlumnos.jsx'

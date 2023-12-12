@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BarraTitulo from './gridAplication/BarraTitulo'
 import '../style/Loading.css'
+import banner from '../../src/style/img/wallpaper.webp'
 
 const Loading = () => {
   const [dots, setDots] = useState('.')
@@ -22,7 +23,7 @@ const Loading = () => {
     <div className='pantalla-de-carga'>
       <BarraTitulo />
       <div className='logo-loading'>
-        <img src='../../src/style/img/wallpaper.webp' alt='' />
+        <img src={banner} alt='' />
         <h3 className='message-loading'>Cargando aplicativo {dots}</h3>
       </div>
     </div>
