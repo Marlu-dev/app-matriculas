@@ -31,7 +31,8 @@
   "build": {
     "appId": "com.nobel.applitactivoMatriculas",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "./dist/icon/icon.ico"
     },
     "files": [
       "dist/**/*",
