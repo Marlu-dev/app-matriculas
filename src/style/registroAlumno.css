@@ -12,7 +12,9 @@
     --medicas: #01a7ffff;
     --letras: #b52228ff;
     --azul: #00167fff;
-}
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+  }
 
 *{
     margin: 0;
@@ -20,6 +22,10 @@
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
+
+/* div {
+  border-bottom: 1px;
+} */
 
 .container-register {
   position: relative;
@@ -43,10 +49,10 @@
 .container-register .header-register::before {
   content: "";
   position: absolute;
-  left: 405px;
-  bottom: -2px;
+  left: 0px;
+  bottom: -20px;
   height: 3px;
-  width: 200px; 
+  width: 70px; 
   border-radius: 10px;
   background-color: var(--azul);
 }
@@ -75,7 +81,7 @@
   margin-bottom: 8px; /* VERIFICAR */
   font-weight: 600;
   margin: 6px 0;
-  color: var(--letras);
+  color: var(--negro);
 }
 
 .container-register .form .seccion-form { 
@@ -90,24 +96,23 @@
   width: calc(100% / 3 - 15px);
   /* background-color: red; */
   flex-direction: column;
-  margin: 4px 0;
+  margin: 10px 0;
   
 }
 
-/* .input-seccion .error-label { 
-  border-color: var(--letras);
-} */
-
 .input-seccion label { 
+  display: flex;
   font-size: 14px;
   font-weight: 600;
   color: var(--oscuro);
+  padding: 5px;
 }
 .input-seccion input { 
+  height: 40px;
   outline: none;
   font-size: 15px;
   font-weight: 400;
-  color: var(--primario);
+  color: var(--oscuro);
   border-radius: 5px;
   /* border: 1px solid var(--gris); */
   padding: 0 15px;
@@ -125,17 +130,16 @@
   box-shadow: 0 3px 5px rgba(0, 0, 0,0.13);
 }  */
 
+
 .input-seccion .error-label { 
   font-size: 12px;
   margin-bottom: 0;
-  color: red;  
+  color: var(--rojo);  
 }  
 
 .error-input{ 
-  border: 2px solid red;
+  border: 2px solid var(--rojo);
 }  
-
-
 
 .container-register .form-registro .btn-register { 
   display: flex;
@@ -155,13 +159,40 @@
 }
 
 .form-registro .btn-register:hover { 
-  background-color: var(--letras);
+  background-color: var(--letras); /* CAMBIAR COLOR */
 }
 
-.check-valor {
+/* .check-valor {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 25%;
   align-items: center;
+} */
+
+.input-seccion .check-button {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.input-seccion .check-button label{
+  display: inline-block;
+  background: var(--azul);
+  border: 1px solid var(--negro);
+  color: var(--blanco);
+  border-radius: 25px;
+  transition: .2s all ease;
+  padding: 2px 8px;
+}
+
+.input-seccion .check-button label:hover{
+  border: 1px solid var(--medicas);
+  
+}
+
+.input-seccion .check-button input[type="checkbox"]:checked + label {
+  border: 1px solid var(--letras);
+  background-color: var(--letras);
+  color: var(--blanco);
 }
