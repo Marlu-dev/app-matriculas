@@ -120,6 +120,43 @@
   display: block;
 } 
 
+
+
+.input-seccion .select-box {
+  display: flex;
+  width: 100%;
+
+}
+
+.select-box select {
+  position: relative;
+  width: 300px;
+  
+}
+
+.select-box select {
+  position: relative;
+  width: 100%;
+  padding: 5% 10% 5% 15%;
+  border-radius: 5px;
+  /* -webkit-appearance: none; */
+  appearance: none;
+  color: var(--azul);
+  border: 2px solid var(--negro);
+}
+
+.select-box select::-ms-expand {
+  display: none;
+
+}
+
+.select-box select:focus {
+  outline: none;
+  
+}
+
+
+
 /* .input-seccion input:is(:focus, :valid) { 
   box-shadow: 0 3px 5px rgba(0, 0, 0,0.13);
 }  */
@@ -129,8 +166,7 @@
   outline: none;
   box-shadow: 0 3px 5px rgba(0, 0, 0,0.13);
 }  */
-
-
+/* ERRORES INPUT Y TEXTO */
 .input-seccion .error-label { 
   font-size: 12px;
   margin-bottom: 0;
@@ -141,62 +177,7 @@
   border: 2px solid var(--rojo);
 }  
 
-.container-register .form-registro .btn-register { 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 200px;
-  width: 100%;
-  border: none;
-  outline: none;
-  color: var(--blanco);
-  border-radius: 50px;
- /*  margin: 25px 0; --VERIFICAR */
-  background-color: var(--primario);
-  transition: all 0.3s linear;
-  /* --cursor: pointer; --VERIFICAR  */
-
-}
-
-.form-registro .btn-register:hover { 
-  background-color: var(--letras); /* CAMBIAR COLOR */
-}
-
-/* .check-valor {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 25%;
-  align-items: center;
-} */
-
-/* .input-seccion .check-button {
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
-}
-
-.input-seccion .check-button label{
-  display: inline-block;
-  background: var(--azul);
-  border: 1px solid var(--negro);
-  color: var(--blanco);
-  border-radius: 25px;
-  transition: .2s all ease;
-  padding: 2px 8px;
-}
-
-.input-seccion .check-button label:hover{
-  border: 1px solid var(--medicas);
-  
-}
-
-.input-seccion .check-button input[type="checkbox"]:checked + label {
-  border: 1px solid var(--letras);
-  background-color: var(--letras);
-  color: var(--blanco);
-} */
-
+/* CHECK-BOX */
 .input-seccion input[type='checkbox'] {
   display: none;
 }
@@ -240,4 +221,26 @@
 
 .input-seccion input[type="checkbox"]:checked + label::before {
   display: none;
+}
+
+/* BOTON DE REGISTRAR */
+.container-register .form-registro .btn-register { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--blanco);
+  border-radius: 50px;
+ /*  margin: 25px 0; --VERIFICAR */
+  background-color: var(--primario);
+  transition: all 0.3s linear;
+  /* --cursor: pointer; --VERIFICAR  */
+
+}
+
+.form-registro .btn-register:hover { 
+  background-color: var(--letras); /* CAMBIAR COLOR */
 }
