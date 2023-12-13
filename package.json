@@ -43,9 +43,12 @@
     "nsis": {
       "uninstallDisplayName": "Unistall this app",
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "directory": "C:\\Program Files\\Aplicacion Academia Nobel",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     },
-    "productName": "Tu App",
+    "productName": "Aplicacion Academia Nobel",
     "directories": {
       "output": "releases",
       "buildResources": "dist"

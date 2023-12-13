@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import '../style/ModalDeEdicionDeDatos.css'
 import { motion } from 'framer-motion'
+import VistaDeDatosAlumno from './VistaDeDatosAlumno'
 
-const ModalDeEdicionDeDatos = ({ cerrar }) => {
+const ModalDeEdicionDeDatos = ({ cerrar, codigo }) => {
   const sonidoRef = useRef(new Audio('../../src/sound/error.mp3'))
 
   const ejecutarSonido = () => {
@@ -14,6 +15,8 @@ const ModalDeEdicionDeDatos = ({ cerrar }) => {
   const detenerPropagacion = (event) => {
     event.stopPropagation()
   }
+
+
 
   return (
     <div
@@ -37,7 +40,7 @@ const ModalDeEdicionDeDatos = ({ cerrar }) => {
             </div>
           </div>
         </div>
-        <div>ModalDeEdicionDeDatos</div>
+        <div><VistaDeDatosAlumno codigo={codigo}/></div>
       </motion.div>
       ;
     </div>
