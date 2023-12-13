@@ -1,0 +1,209 @@
+[
+  {
+    "codigo": "A2",
+    "numero": 2,
+    "nombre": "Juan",
+    "apellidoPaterno": "Perez",
+    "apellidoMaterno": "Gomez",
+    "edad": 20,
+    "dni": "12345678",
+    "grupo": "semestral medicas",
+    "carrera": "Biología Pesquera",
+    "direccion": "Av. Los Alamos 123",
+    "telefonoCelular": "987654321",
+    "apoderado": {
+      "nombreApoderado": "Maria",
+      "apellidoPaternoApoderado": "Gomez",
+      "apellidoMaternoApoderado": "Perez",
+      "dniApoderado": "87654321",
+      "telefonoCelularApoderado": "987654321"
+    }
+  },
+  {
+    "codigo": "A2",
+    "numero": 2,
+    "nombre": "Gabriela",
+    "apellidoPaterno": "Hernández",
+    "apellidoMaterno": "López",
+    "edad": 21,
+    "dni": "23456789",
+    "grupo": "anual psicología",
+    "carrera": "Psicología Infantil",
+    "direccion": "Av. Emociones 345",
+    "telefonoCelular": "876543210",
+    "apoderado": {
+      "nombreApoderado": "Alejandro",
+      "apellidoPaternoApoderado": "López",
+      "apellidoMaternoApoderado": "Hernández",
+      "dniApoderado": "76543210",
+      "telefonoCelularApoderado": "876543210"
+    }
+  },
+
+  {
+    "codigo": "A3",
+    "numero": 3,
+    "nombre": "Javier",
+    "apellidoPaterno": "Gómez",
+    "apellidoMaterno": "Martínez",
+    "edad": 22,
+    "dni": "34567890",
+    "grupo": "trimestral ingeniería",
+    "carrera": "Ingeniería Civil",
+    "direccion": "Calle Obras 456",
+    "telefonoCelular": "765432109",
+    "apoderado": {
+      "nombreApoderado": "Carmen",
+      "apellidoPaternoApoderado": "Martínez",
+      "apellidoMaternoApoderado": "Gómez",
+      "dniApoderado": "65432109",
+      "telefonoCelularApoderado": "765432109"
+    }
+  },
+
+  {
+    "codigo": "A4",
+    "numero": 4,
+    "nombre": "Sara",
+    "apellidoPaterno": "Martínez",
+    "apellidoMaterno": "Hernández",
+    "edad": 20,
+    "dni": "45678901",
+    "grupo": "semestral biología",
+    "carrera": "Biología Molecular",
+    "direccion": "Av. Genética 567",
+    "telefonoCelular": "654321098",
+    "apoderado": {
+      "nombreApoderado": "Fernando",
+      "apellidoPaternoApoderado": "Hernández",
+      "apellidoMaternoApoderado": "Martínez",
+      "dniApoderado": "54321098",
+      "telefonoCelularApoderado": "654321098"
+    }
+  },
+  {
+    "codigo": "A5",
+    "numero": 5,
+    "nombre": "Diego",
+    "apellidoPaterno": "López",
+    "apellidoMaterno": "Gómez",
+    "edad": 23,
+    "dni": "56789012",
+    "grupo": "anual arquitectura",
+    "carrera": "Arquitectura Urbanística",
+    "direccion": "Calle Diseño 678",
+    "telefonoCelular": "876543210",
+    "apoderado": {
+      "nombreApoderado": "Eva",
+      "apellidoPaternoApoderado": "Gómez",
+      "apellidoMaternoApoderado": "López",
+      "dniApoderado": "01234567",
+      "telefonoCelularApoderado": "876543210"
+    }
+  },
+
+  {
+    "codigo": "A6",
+    "numero": 6,
+    "nombre": "Lucía",
+    "apellidoPaterno": "Hernández",
+    "apellidoMaterno": "Martínez",
+    "edad": 24,
+    "dni": "67890123",
+    "grupo": "trimestral química",
+    "carrera": "Química Orgánica",
+    "direccion": "Av. Reactivos 789",
+    "telefonoCelular": "234567890",
+    "apoderado": {
+      "nombreApoderado": "Roberto",
+      "apellidoPaternoApoderado": "Martínez",
+      "apellidoMaternoApoderado": "Hernández",
+      "dniApoderado": "78901234",
+      "telefonoCelularApoderado": "234567890"
+    }
+  },
+
+  {
+    "codigo": "A7",
+    "numero": 7,
+    "nombre": "Miguel",
+    "apellidoPaterno": "Gómez",
+    "apellidoMaterno": "López",
+    "edad": 21,
+    "dni": "78901234",
+    "grupo": "semestral turismo",
+    "carrera": "Turismo Cultural",
+    "direccion": "Calle Viaje 123",
+    "telefonoCelular": "345678901",
+    "apoderado": {
+      "nombreApoderado": "Isabel",
+      "apellidoPaternoApoderado": "López",
+      "apellidoMaternoApoderado": "Gómez",
+      "dniApoderado": "90123456",
+      "telefonoCelularApoderado": "345678901"
+    }
+  },
+
+  {
+    "codigo": "A8",
+    "numero": 8,
+    "nombre": "Elena",
+    "apellidoPaterno": "Martínez",
+    "apellidoMaterno": "Hernández",
+    "edad": 22,
+    "dni": "89012345",
+    "grupo": "anual comunicaciones",
+    "carrera": "Comunicaciones Audiovisuales",
+    "direccion": "Av. Cámara 234",
+    "telefonoCelular": "456789012",
+    "apoderado": {
+      "nombreApoderado": "Carlos",
+      "apellidoPaternoApoderado": "Hernández",
+      "apellidoMaternoApoderado": "Martínez",
+      "dniApoderado": "56789012",
+      "telefonoCelularApoderado": "89012345"
+    }
+  },
+
+  {
+    "codigo": "A9",
+    "numero": 9,
+    "nombre": "Roberto",
+    "apellidoPaterno": "López",
+    "apellidoMaterno": "Martínez",
+    "edad": 23,
+    "dni": "90123456",
+    "grupo": "trimestral derecho",
+    "carrera": "Derecho Penal",
+    "direccion": "Calle Justicia 567",
+    "telefonoCelular": "567890123",
+    "apoderado": {
+      "nombreApoderado": "Ana",
+      "apellidoPaternoApoderado": "Martínez",
+      "apellidoMaternoApoderado": "López",
+      "dniApoderado": "67890123",
+      "telefonoCelularApoderado": "90123456"
+    }
+  },
+
+  {
+    "codigo": "A10",
+    "numero": 10,
+    "nombre": "Isabel",
+    "apellidoPaterno": "Hernández",
+    "apellidoMaterno": "Gómez",
+    "edad": 24,
+    "dni": "01234567",
+    "grupo": "semestral medicina",
+    "carrera": "Medicina Interna",
+    "direccion": "Av. Salud 789",
+    "telefonoCelular": "678901234",
+    "apoderado": {
+      "nombreApoderado": "Juan",
+      "apellidoPaternoApoderado": "Gómez",
+      "apellidoMaternoApoderado": "Hernández",
+      "dniApoderado": "12345678",
+      "telefonoCelularApoderado": "678901234"
+    }
+  }
+]
