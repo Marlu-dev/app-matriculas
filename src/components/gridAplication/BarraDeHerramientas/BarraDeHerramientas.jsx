@@ -1,4 +1,5 @@
 import React from "react";
+import "./style/BarraDeHerramientas.css"
 
 const BarraDeHerramientas = () => {
   return (

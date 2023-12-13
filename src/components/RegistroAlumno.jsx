@@ -139,11 +139,35 @@ function RegistroAlumno () {
                 <div>
                   <label>Grupo</label>
                 </div>
-                <Select
-                  coleccion='grupos'
-                  nombre='grupo'
-                  onSelectChange={handleChange}
-                />
+                <div className='dropdwon'> 
+                  <div className='select-box'>
+                    <span className='label-select'>
+                      Opción:  
+                    </span>
+                    <Select
+                      coleccion='grupos'
+                      nombre='grupo'
+                      onSelectChange={handleChange}
+                    />
+                  </div>
+                  <div className='icon-select'>
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        class="icon icon-tabler icon-tabler-square-rounded-chevron-down-filled" 
+                        width="30" 
+                        height="30" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="#2c3e50" 
+                        fill="none" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001zm-3.707 8.293a1 1 0 0 1 1.32 -.083l.094 .083l2.293 2.292l2.293 -2.292a1 1 0 0 1 1.32 -.083l.094 .083a1 1 0 0 1 .083 1.32l-.083 .094l-3 3a1 1 0 0 1 -1.32 .083l-.094 -.083l-3 -3a1 1 0 0 1 0 -1.414z" fill="currentColor" stroke-width="0" />
+                      </svg>
+                  </div>
+
+                </div>
               </div>
 
               {/* TERCER DATO: Carrera */}
@@ -151,11 +175,33 @@ function RegistroAlumno () {
                 <div>
                   <label>Carrera</label>
                 </div>
-                <Select
-                  coleccion={selectedGrupo}
-                  nombre='carrera'
-                  onSelectChange={handleChange}
-                />
+                <div className='select-box'>
+                  <span className='label-select'>
+                    Opción:  
+                  </span>
+                  <Select
+                    coleccion={selectedGrupo}
+                    nombre='carrera'
+                    onSelectChange={handleChange}
+                  />
+                  <div className='icon-select'>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      class="icon icon-tabler icon-tabler-square-rounded-chevron-down-filled" 
+                      width="30" 
+                      height="30" 
+                      viewBox="0 0 24 24" 
+                      stroke-width="1.5" 
+                      stroke="#2c3e50" 
+                      fill="none" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001zm-3.707 8.293a1 1 0 0 1 1.32 -.083l.094 .083l2.293 2.292l2.293 -2.292a1 1 0 0 1 1.32 -.083l.094 .083a1 1 0 0 1 .083 1.32l-.083 .094l-3 3a1 1 0 0 1 -1.32 .083l-.094 -.083l-3 -3a1 1 0 0 1 0 -1.414z" fill="currentColor" stroke-width="0" />
+                    </svg>
+                  </div>
+                </div>
+                
               </div>
 
               {/* CUARTO DATO: Nombre */}
@@ -275,9 +321,12 @@ function RegistroAlumno () {
                   <input
                     type='checkbox'
                     name='checkbox1'
+                    id='checkbox1'
                     onClick={noReferencia}
                   />
-                  <label for='checkbox1'>No tiene</label>
+                  <label for='checkbox1' className='checkbox'>
+                    {/* No tiene */}
+                  </label>
                 </div>
               </div>
 
@@ -301,9 +350,12 @@ function RegistroAlumno () {
                   <input
                     type='checkbox'
                     name='checkbox2'
+                    id='checkbox2'
                     onClick={noTelefonoFijo}
                   />
-                  <label for='checkbox2'>No tiene</label>
+                  <label for='checkbox2' className='checkbox'>
+                    {/* No tiene */}
+                  </label>
                 </div>
               </div>
 
@@ -323,13 +375,16 @@ function RegistroAlumno () {
                   maxLength={9}
                 />
                 <div className='check-button'>
-
+                  
                   <input
                     type='checkbox'
                     name='checkbox3'
+                    id='checkbox3'
                     onClick={noTelefonoCelular}
-                  />
-                  <label for='checkbox3'>No tiene</label>
+                    />
+                    <label for='checkbox3' className='checkbox'>
+                    {/* No tiene */}
+                  </label>
                 </div>
               </div>
 
