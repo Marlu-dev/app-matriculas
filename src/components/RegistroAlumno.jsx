@@ -324,8 +324,8 @@ function RegistroAlumno () {
                     id='checkbox1'
                     onClick={noReferencia}
                   />
-                  <label for='checkbox1'>
-                    No tiene
+                  <label for='checkbox1' className='checkbox'>
+                    {/* No tiene */}
                   </label>
                 </div>
               </div>
@@ -353,7 +353,9 @@ function RegistroAlumno () {
                     id='checkbox2'
                     onClick={noTelefonoFijo}
                   />
-                  <label for='checkbox2'>No tiene</label>
+                  <label for='checkbox2' className='checkbox'>
+                    {/* No tiene */}
+                  </label>
                 </div>
               </div>
 
@@ -380,8 +382,8 @@ function RegistroAlumno () {
                     id='checkbox3'
                     onClick={noTelefonoCelular}
                     />
-                    <label for='checkbox3'>
-                    No tiene
+                    <label for='checkbox3' className='checkbox'>
+                    {/* No tiene */}
                   </label>
                 </div>
               </div>

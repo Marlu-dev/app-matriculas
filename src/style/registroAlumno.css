@@ -128,6 +128,20 @@
   justify-content: center;
 }
 
+.select-box {
+  position: relative;
+  width: 100%;
+}
+
+.select-box select {
+  width: 100%;
+  position: relative;
+  padding: 16px 30px 16px 85px;
+  border-radius: 50px ;
+  appearance: none;
+  color: var(--azul);
+}
+
 
 
 /* .input-seccion input:is(:focus, :valid) { 
@@ -155,7 +169,7 @@
   display: none;
 } */
 
-.input-seccion .check-button label{
+/* .input-seccion .check-button label{
   color: var(--negro);
   background: var(--grisClaro);
   padding: 5px 15px 5px 40px;
@@ -174,8 +188,8 @@
 .input-seccion .check-button label::before {
   content: "";
   display: inline-block;
-  /* width: 14px;
-  height: 14px; */
+  --width: 14px;
+  height: 14px; --
   background: none;
   border: 3px solid var(--azul);
   border-radius: 5px;
@@ -194,7 +208,49 @@
 
 .input-seccion input[type="checkbox"]:checked + label::before {
   display: none;
+} */
+
+.input-seccion input[type='checkbox'] {
+  display: none;
 }
+
+.check-button {
+  margin: 10px;
+}
+
+.check-button .checkbox {
+  display: inline-block;
+  width: 55px;
+  height: 30px; 
+  background: var(--grisClaro);
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label {
+  background: var(--azul);
+}
+
+.check-button .checkbox:after {
+  position: absolute;
+  content: '';
+  width: 22px;
+  height: 22px;
+  background: var(--blanco);
+  border-radius: 100px;
+  top: 4px;
+  left: 5px;
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:checked + label::after {
+  left: 28px;
+}
+
+
+
+
 
 /* BOTON DE REGISTRAR */
 .container-register .form-registro .btn-register { 
