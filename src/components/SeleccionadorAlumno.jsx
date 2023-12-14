@@ -33,7 +33,7 @@ const SeleccionadorAlumno = ({
         <span className='carrera-seleccionador-alumno'>{carrera}</span>
         <span className='dni-seleccionador-alumno'>{dni}</span>
         <AnimatePresence>
-          {modal && <ModalDeEdicionDeDatos cerrar={activarModal} />}
+          {modal && <ModalDeEdicionDeDatos cerrar={activarModal} codigo={codigo} />}
         </AnimatePresence>
       </main>
 

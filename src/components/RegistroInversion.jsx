@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const RegistroInversion = () => {
   return (
@@ -26,9 +26,8 @@ const RegistroInversion = () => {
             </div>
         </div>
       </div>
-
     </>
-  );
-};
+  )
+}
 
-export default RegistroInversion;
+export default RegistroInversion
