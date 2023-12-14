@@ -98,88 +98,117 @@ const RegistroApoderado = ({
 
   return (
     <>
-      <h1>Apoderado</h1>
-      <fieldset className='seccion-form'>
-        <div>
-          <label>Nombre</label>
-          <label>{errorName}</label>
-        </div>
-        <input
-          name='nombreApoderado'
-          id='nombreApoderado'
-          value={apoderado.nombreApoderado}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </fieldset>
+      <div className='from '>
+        <div className="details person">
+          <span className="title">
+            Datos Apoderado 
+          </span>
 
-      <fieldset className='seccion-form'>
-        <div>
-          <label>Apellido Paterno</label>
-          <label>{errorApellidoPaterno}</label>
-        </div>
-        <input
-          name='apellidoPaternoApoderado'
-          id='apellidoPaternoApoderado'
-          value={apoderado.apellidoPaternoApoderado}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </fieldset>
+          {/* -- INICIO --  */}
+          <div className="seccion-form">
+            {/* PRIMER DATO: Nombre */}
+            <div className="input-seccion">
+              <div>
+                <label>Nombre</label>
+                <label className='error-label'>{errorName}</label>
+              </div>
+              <input
+                className={errorName ? 'error-input' : ''}
+                name='nombreApoderado'
+                id='nombreApoderado'
+                value={apoderado.nombreApoderado}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder='Fernando Roman' required
+              />
+            </div>
 
-      <fieldset className='seccion-form'>
-        <div>
-          <label>Apellido Materno</label>
-          <label>{errorApellidoMaterno}</label>
-        </div>
-        <input
-          name='apellidoMaternoApoderado'
-          id='apellidoMaternoApoderado'
-          value={apoderado.apellidoMaternoApoderado}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </fieldset>
+            {/* SEGUNDO DATO: Apellido Paterno */}
+            <div className="input-seccion">
+              <div>
+                <label>Apellido Paterno</label>
+                <label className='error-label'>{errorApellidoPaterno}</label>
+              </div>
+              <input
+                className={errorApellidoPaterno ? 'error-input' : ''}
+                name='apellidoPaternoApoderado'
+                id='apellidoPaternoApoderado'
+                value={apoderado.apellidoPaternoApoderado}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder='Navarro' required
+              />
+            </div>
 
-      <fieldset className='seccion-form'>
-        <div>
-          <label>DNI</label>
-          <label>{errorDni}</label>
-        </div>
-        <input
-          name='dniApoderado'
-          id='dniApoderado'
-          value={apoderado.dniApoderado}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          maxLength={8}
-        />
-      </fieldset>
+            {/* TECER DATO: Apellido Materno */}
+            <div className="input-seccion">
+              <div>
+                <label>Apellido Materno</label>
+                <label className='error-label'>{errorApellidoMaterno}</label>
+              </div>
+              <input
+                className={errorApellidoMaterno ? 'error-input' : ''}
+                name='apellidoMaternoApoderado'
+                id='apellidoMaternoApoderado'
+                value={apoderado.apellidoMaternoApoderado}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder='Lopez' required
+              />
+            </div>
 
-      <fieldset className='seccion-form'>
-        <div>
-          <label>Celular</label>
-          <label>{errorTelefonoCelular}</label>
-        </div>
-        <input
-          name='telefonoCelular'
-          id='telefonoCelular'
-          value={apoderado.telefonoCelularApoderado}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          maxLength={9}
-        />
+            {/* CUARTO DATO: DNI */}
+            <div className="input-seccion">
+              <div>
+                <label>DNI</label>
+                <label className='error-label'>{errorDni}</label>
+              </div>
+              <input
+                className={errorDni ? 'error-input' : ''}
+                name='dniApoderado'
+                id='dniApoderado'
+                value={apoderado.dniApoderado}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                maxLength={8}
+                placeholder='89693566' required
+              />
+            </div>
 
-        <div>
-          <label>No tiene</label>
-          <input
-            type='checkbox'
-            name=''
-            ref={banderaTelefonoCelular}
-            onChange={noTelefonoCelular}
-          />
+            {/* QUINTO DATO: CELULAR  */}
+            <div className="input-seccion">
+              <div>
+                <label>Celular</label>
+                <label className='error-label'>{errorTelefonoCelular}</label>
+              </div>
+              <input
+                className={errorTelefonoCelular ? 'error-input' : ''}
+                name='telefonoCelular'
+                id='telefonoCelular'
+                value={apoderado.telefonoCelularApoderado}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                maxLength={9}
+                placeholder='949363534' required
+              />
+
+              <div className='check-button'>
+                <input
+                  type='checkbox'
+                  name='checkbox1'
+                  ref={banderaTelefonoCelular}
+                  onChange={noTelefonoCelular}
+                />
+                <label for='checkbox1' className='checkbox'>
+                  {/* No tiene */}
+                </label>
+              </div>
+            </div>
+            {/* -- FIN --  */}
+            
+          </div>
         </div>
-      </fieldset>
+      </div>
     </>
   )
 }

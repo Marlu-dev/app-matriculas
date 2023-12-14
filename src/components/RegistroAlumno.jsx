@@ -119,6 +119,8 @@ function RegistroAlumno () {
             <span className='title'>
               Datos Alumno
             </span>
+
+            {/* -- INICIO --  */}
             <div className='seccion-form'>
               {/* PRIMER DATO: Codigo */}
               <div className='input-seccion'>
@@ -213,7 +215,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={name}
-                  placeholder='Ingrese nombre de alumno' required
+                  placeholder='Diego Alejandro' required
                 />
               </div>
 
@@ -230,7 +232,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={apellidoPaterno}
-                  placeholder='Ingrese apellido paterno' required
+                  placeholder='Suarez' required
                 />
               </div>
 
@@ -247,6 +249,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={apellidoMaterno}
+                  placeholder='Velasquez' required
                 />
               </div>
 
@@ -264,6 +267,7 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={dni}
                   maxLength={8}
+                  placeholder='75657567' required
                 />
               </div>
 
@@ -280,6 +284,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={direccion}
+                  placeholder='23' required
                 />
               </div>
 
@@ -296,6 +301,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={direccion}
+                  placeholder='Av. Pedro Muñiz 225' required
                 />
               </div>
 
@@ -312,6 +318,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={referencia}
+                  placeholder='A una cuadra de Bomberos' required
                 />
                 <div className='check-button'>
                   <input
@@ -340,6 +347,7 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={telefonoFijo}
                   maxLength={9}
+                  placeholder='044566545' required
                 />
                 <div className='check-button'>
 
@@ -369,6 +377,7 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={telefonoCelular}
                   maxLength={9}
+                  placeholder='944363534' required
                 />
                 <div className='check-button'>
                   
@@ -383,25 +392,23 @@ function RegistroAlumno () {
                   </label>
                 </div>
               </div>
-
             </div>
-
           </div>
+          {/* -- FIN --  */}
 
-          {/* ---REGISTRO TOTAL DE APODERADO
+          {/* ---REGISTRO TOTAL DE APODERADO*/}
           <div className="details apoderado">
             <RegistroApoderado
               registroNombreApoderado={handleNombreApoderado}
               handleApoderadoValido={handleApoderadoValido}
             />
-
           </div>
 
-          ---REGISTRO TOTAL DE INVERSION
+          {/*---REGISTRO TOTAL DE INVERSION */}
           <div className="details inversion">
             <RegistroInversion />
 
-          </div> */}
+          </div> 
 
         </div>
 
