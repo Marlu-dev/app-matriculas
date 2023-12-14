@@ -119,19 +119,23 @@ function RegistroAlumno () {
             <span className='title'>
               Datos Alumno
             </span>
+
+            {/* -- INICIO --  */}
             <div className='seccion-form'>
               {/* PRIMER DATO: Codigo */}
               <div className='input-seccion'>
                 <div>
                   <label>Codigo</label>
                 </div>
-                <input
-                  name='codigo'
-                  id='codigo'
-                  value={codigoNuevo}
-                  readOnly
-                  disabled
-                />
+                <div className='codigo-sec'>
+                  <input
+                    name='codigo'
+                    id='codigo'
+                    value={codigoNuevo}
+                    readOnly
+                    disabled
+                  />
+                </div>
               </div>
 
               {/* SEGUNDO DATO: Grupo */}
@@ -139,34 +143,30 @@ function RegistroAlumno () {
                 <div>
                   <label>Grupo</label>
                 </div>
-                <div className='dropdwon'> 
-                  <div className='select-box'>
-                    <span className='label-select'>
-                      Opción:  
-                    </span>
+                <div className='main-dropdwon'> 
+                  <div className='select-container'>
                     <Select
                       coleccion='grupos'
                       nombre='grupo'
                       onSelectChange={handleChange}
                     />
+                    <div className='select-icon'>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      class="icon icon-tabler icon-tabler-chevron-down" 
+                      width="25" 
+                      height="25" 
+                      viewBox="0 0 24 24" 
+                      stroke-width="3.5" 
+                      stroke="#2c3e50" 
+                      fill="none" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M6 9l6 6l6 -6" />
+                    </svg>
+                    </div>
                   </div>
-                  <div className='icon-select'>
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        class="icon icon-tabler icon-tabler-square-rounded-chevron-down-filled" 
-                        width="30" 
-                        height="30" 
-                        viewBox="0 0 24 24" 
-                        stroke-width="1.5" 
-                        stroke="#2c3e50" 
-                        fill="none" 
-                        stroke-linecap="round" 
-                        stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001zm-3.707 8.293a1 1 0 0 1 1.32 -.083l.094 .083l2.293 2.292l2.293 -2.292a1 1 0 0 1 1.32 -.083l.094 .083a1 1 0 0 1 .083 1.32l-.083 .094l-3 3a1 1 0 0 1 -1.32 .083l-.094 -.083l-3 -3a1 1 0 0 1 0 -1.414z" fill="currentColor" stroke-width="0" />
-                      </svg>
-                  </div>
-
                 </div>
               </div>
 
@@ -175,33 +175,31 @@ function RegistroAlumno () {
                 <div>
                   <label>Carrera</label>
                 </div>
-                <div className='select-box'>
-                  <span className='label-select'>
-                    Opción:  
-                  </span>
-                  <Select
-                    coleccion={selectedGrupo}
-                    nombre='carrera'
-                    onSelectChange={handleChange}
-                  />
-                  <div className='icon-select'>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      class="icon icon-tabler icon-tabler-square-rounded-chevron-down-filled" 
-                      width="30" 
-                      height="30" 
-                      viewBox="0 0 24 24" 
-                      stroke-width="1.5" 
-                      stroke="#2c3e50" 
-                      fill="none" 
-                      stroke-linecap="round" 
-                      stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                      <path d="M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001zm-3.707 8.293a1 1 0 0 1 1.32 -.083l.094 .083l2.293 2.292l2.293 -2.292a1 1 0 0 1 1.32 -.083l.094 .083a1 1 0 0 1 .083 1.32l-.083 .094l-3 3a1 1 0 0 1 -1.32 .083l-.094 -.083l-3 -3a1 1 0 0 1 0 -1.414z" fill="currentColor" stroke-width="0" />
-                    </svg>
+                <div className="main-dropdwon">
+                  <div className='select-container'>
+                    <Select
+                      coleccion={selectedGrupo}
+                      nombre='carrera'
+                      onSelectChange={handleChange}
+                    />
+                    <div className='select-icon'>
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        class="icon icon-tabler icon-tabler-chevron-down" 
+                        width="25" 
+                        height="25" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="3.5" 
+                        stroke="#2c3e50" 
+                        fill="none" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M6 9l6 6l6 -6" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-                
+                </div>                
               </div>
 
               {/* CUARTO DATO: Nombre */}
@@ -217,7 +215,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={name}
-                  placeholder='Ingrese nombre de alumno' required
+                  placeholder='Diego Alejandro' required
                 />
               </div>
 
@@ -234,7 +232,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={apellidoPaterno}
-                  placeholder='Ingrese apellido paterno' required
+                  placeholder='Suarez' required
                 />
               </div>
 
@@ -251,6 +249,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={apellidoMaterno}
+                  placeholder='Velasquez' required
                 />
               </div>
 
@@ -268,6 +267,7 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={dni}
                   maxLength={8}
+                  placeholder='75657567' required
                 />
               </div>
 
@@ -284,6 +284,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={direccion}
+                  placeholder='23' required
                 />
               </div>
 
@@ -300,6 +301,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={direccion}
+                  placeholder='Av. Pedro Muñiz 225' required
                 />
               </div>
 
@@ -316,6 +318,7 @@ function RegistroAlumno () {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={referencia}
+                  placeholder='A una cuadra de Bomberos' required
                 />
                 <div className='check-button'>
                   <input
@@ -344,6 +347,7 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={telefonoFijo}
                   maxLength={9}
+                  placeholder='044566545' required
                 />
                 <div className='check-button'>
 
@@ -373,6 +377,7 @@ function RegistroAlumno () {
                   onBlur={handleBlur}
                   value={telefonoCelular}
                   maxLength={9}
+                  placeholder='944363534' required
                 />
                 <div className='check-button'>
                   
@@ -387,25 +392,23 @@ function RegistroAlumno () {
                   </label>
                 </div>
               </div>
-
             </div>
-
           </div>
+          {/* -- FIN --  */}
 
-          {/* ---REGISTRO TOTAL DE APODERADO
+          {/* ---REGISTRO TOTAL DE APODERADO*/}
           <div className="details apoderado">
             <RegistroApoderado
               registroNombreApoderado={handleNombreApoderado}
               handleApoderadoValido={handleApoderadoValido}
             />
-
           </div>
 
-          ---REGISTRO TOTAL DE INVERSION
+          {/*---REGISTRO TOTAL DE INVERSION */}
           <div className="details inversion">
             <RegistroInversion />
 
-          </div> */}
+          </div> 
 
         </div>
 
