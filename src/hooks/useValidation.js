@@ -281,14 +281,20 @@ const useValidation = (
 
   useEffect(() => {
     setErrorEdad(null)
-    if (edad !== '') {
-      if (edad > 120) {
-        setErrorEdad('Estás seguro que tienes mas de 120 años?')
-      } else if (edad < 5) {
-        setErrorEdad('Estás seguro que tienes menos de 5 años?')
-      } else {
-        setErrorEdad(null)
+    const timer = setTimeout(() => {
+      if (edad !== '') {
+        if (edad > 120) {
+          setErrorEdad('Estás seguro que tienes mas de 120 años?')
+        } else if (edad < 5) {
+          setErrorEdad('Estás seguro que tienes menos de 5 años?')
+        } else {
+          setErrorEdad(null)
+        }
       }
+    }, 1500)
+
+    return () => {
+      clearTimeout(timer)
     }
   }, [edad])
 
