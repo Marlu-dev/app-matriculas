@@ -91,7 +91,6 @@ const RegistroApoderado = ({
     registroNombreApoderado(apoderado)
   }, [apoderado])
 
-  // console.log(apoderadoValido);
   useEffect(() => {
     handleApoderadoValido(apoderadoValido)
   }, [apoderadoValido])
@@ -99,15 +98,15 @@ const RegistroApoderado = ({
   return (
     <>
       <div className='from '>
-        <div className="details person">
-          <span className="title">
-            Datos Apoderado 
+        <div className='details person'>
+          <span className='title'>
+            Datos Apoderado
           </span>
 
           {/* -- INICIO --  */}
-          <div className="seccion-form">
+          <div className='seccion-form'>
             {/* PRIMER DATO: Nombre */}
-            <div className="input-seccion">
+            <div className='input-seccion'>
               <div>
                 <label>Nombre</label>
                 <label className='error-label'>{errorName}</label>
@@ -124,7 +123,7 @@ const RegistroApoderado = ({
             </div>
 
             {/* SEGUNDO DATO: Apellido Paterno */}
-            <div className="input-seccion">
+            <div className='input-seccion'>
               <div>
                 <label>Apellido Paterno</label>
                 <label className='error-label'>{errorApellidoPaterno}</label>
@@ -141,7 +140,7 @@ const RegistroApoderado = ({
             </div>
 
             {/* TECER DATO: Apellido Materno */}
-            <div className="input-seccion">
+            <div className='input-seccion'>
               <div>
                 <label>Apellido Materno</label>
                 <label className='error-label'>{errorApellidoMaterno}</label>
@@ -158,7 +157,7 @@ const RegistroApoderado = ({
             </div>
 
             {/* CUARTO DATO: DNI */}
-            <div className="input-seccion">
+            <div className='input-seccion'>
               <div>
                 <label>DNI</label>
                 <label className='error-label'>{errorDni}</label>
@@ -176,15 +175,15 @@ const RegistroApoderado = ({
             </div>
 
             {/* QUINTO DATO: CELULAR  */}
-            <div className="input-seccion">
+            <div className='input-seccion'>
               <div>
                 <label>Celular</label>
                 <label className='error-label'>{errorTelefonoCelular}</label>
               </div>
               <input
                 className={errorTelefonoCelular ? 'error-input' : ''}
-                name='telefonoCelular'
-                id='telefonoCelular'
+                name='telefonoCelularApoderado'
+                id='telefonoCelularApoderado'
                 value={apoderado.telefonoCelularApoderado}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -205,7 +204,7 @@ const RegistroApoderado = ({
               </div>
             </div>
             {/* -- FIN --  */}
-            
+
           </div>
         </div>
       </div>
