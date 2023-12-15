@@ -8,6 +8,7 @@ function useSetFileds () {
   const [direccion, setDireccion] = useState('')
   const [referencia, setReferencia] = useState('')
   const [dni, setDni] = useState('')
+  const [edad, setEdad] = useState('')
   const [telefonoFijo, setTelefonoFijo] = useState('')
   const [telefonoCelular, setTelefonoCelular] = useState('')
   const [selectedCarrera, setSelectedCarrera] = useState('')
@@ -97,6 +98,13 @@ function useSetFileds () {
       }
     }
 
+    if (e.target.name === 'edad') {
+      if (/^\d+$/.test(newQuery) || newQuery === '') {
+        setEdad(newQuery)
+        return
+      }
+    }
+
     if (e.target.name === 'telefonoFijo') {
       if (/^\d+$/.test(newQuery) || newQuery === '') {
         setTelefonoFijo(newQuery)
@@ -124,6 +132,7 @@ function useSetFileds () {
     direccion,
     referencia,
     dni,
+    edad,
     telefonoFijo,
     telefonoCelular,
     selectedCarrera,

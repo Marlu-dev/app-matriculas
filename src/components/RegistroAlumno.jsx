@@ -36,6 +36,7 @@ function RegistroAlumno () {
     direccion,
     referencia,
     dni,
+    edad,
     telefonoFijo,
     telefonoCelular,
     selectedCarrera,
@@ -57,6 +58,7 @@ function RegistroAlumno () {
     errorDireccion,
     errorReferencia,
     errorDni,
+    errorEdad,
     errorTelefonoFijo,
     errorTelefonoCelular,
     isButtonDisabled,
@@ -71,6 +73,7 @@ function RegistroAlumno () {
     direccion,
     referencia,
     dni,
+    edad,
     telefonoFijo,
     telefonoCelular,
     selectedCarrera,
@@ -143,7 +146,7 @@ function RegistroAlumno () {
                 <div>
                   <label>Grupo</label>
                 </div>
-                <div className='main-dropdwon'> 
+                <div className='main-dropdwon'>
                   <div className='select-container'>
                     <Select
                       coleccion='grupos'
@@ -151,20 +154,21 @@ function RegistroAlumno () {
                       onSelectChange={handleChange}
                     />
                     <div className='select-icon'>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      class="icon icon-tabler icon-tabler-chevron-down" 
-                      width="25" 
-                      height="25" 
-                      viewBox="0 0 24 24" 
-                      stroke-width="3.5" 
-                      stroke="#2c3e50" 
-                      fill="none" 
-                      stroke-linecap="round" 
-                      stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                      <path d="M6 9l6 6l6 -6" />
-                    </svg>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        class='icon icon-tabler icon-tabler-chevron-down'
+                        width='25'
+                        height='25'
+                        viewBox='0 0 24 24'
+                        stroke-width='3.5'
+                        stroke='#2c3e50'
+                        fill='none'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      >
+                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                        <path d='M6 9l6 6l6 -6' />
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -175,7 +179,7 @@ function RegistroAlumno () {
                 <div>
                   <label>Carrera</label>
                 </div>
-                <div className="main-dropdwon">
+                <div className='main-dropdwon'>
                   <div className='select-container'>
                     <Select
                       coleccion={selectedGrupo}
@@ -183,23 +187,24 @@ function RegistroAlumno () {
                       onSelectChange={handleChange}
                     />
                     <div className='select-icon'>
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        class="icon icon-tabler icon-tabler-chevron-down" 
-                        width="25" 
-                        height="25" 
-                        viewBox="0 0 24 24" 
-                        stroke-width="3.5" 
-                        stroke="#2c3e50" 
-                        fill="none" 
-                        stroke-linecap="round" 
-                        stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M6 9l6 6l6 -6" />
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        class='icon icon-tabler icon-tabler-chevron-down'
+                        width='25'
+                        height='25'
+                        viewBox='0 0 24 24'
+                        stroke-width='3.5'
+                        stroke='#2c3e50'
+                        fill='none'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      >
+                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                        <path d='M6 9l6 6l6 -6' />
                       </svg>
                     </div>
                   </div>
-                </div>                
+                </div>
               </div>
 
               {/* CUARTO DATO: Nombre */}
@@ -210,8 +215,8 @@ function RegistroAlumno () {
                 </div>
                 <input
                   className={errorName ? 'error-input' : ''}
-                  name='name'
-                  id='name'
+                  name='nombre'
+                  id='nombre'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={name}
@@ -275,15 +280,15 @@ function RegistroAlumno () {
               <div className='input-seccion'>
                 <div>
                   <label>Edad</label>
-                  <label className='error-label'>{errorDireccion}</label>
+                  <label className='error-label'>{errorEdad}</label>
                 </div>
                 <input
-                  className={errorDireccion ? 'error-input' : ''}
-                  name='direccion'
-                  id='direccion'
+                  className={errorEdad ? 'error-input' : ''}
+                  name='edad'
+                  id='edad'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={direccion}
+                  value={edad}
                   placeholder='23' required
                 />
               </div>
@@ -380,14 +385,14 @@ function RegistroAlumno () {
                   placeholder='944363534' required
                 />
                 <div className='check-button'>
-                  
+
                   <input
                     type='checkbox'
                     name='checkbox3'
                     id='checkbox3'
                     onClick={noTelefonoCelular}
-                    />
-                    <label for='checkbox3' className='checkbox'>
+                  />
+                  <label for='checkbox3' className='checkbox'>
                     {/* No tiene */}
                   </label>
                 </div>
@@ -396,19 +401,19 @@ function RegistroAlumno () {
           </div>
           {/* -- FIN --  */}
 
-          {/* ---REGISTRO TOTAL DE APODERADO*/}
-          <div className="details apoderado">
+          {/* ---REGISTRO TOTAL DE APODERADO */}
+          <div className='details apoderado'>
             <RegistroApoderado
               registroNombreApoderado={handleNombreApoderado}
               handleApoderadoValido={handleApoderadoValido}
             />
           </div>
 
-          {/*---REGISTRO TOTAL DE INVERSION */}
-          <div className="details inversion">
+          {/* ---REGISTRO TOTAL DE INVERSION */}
+          <div className='details inversion'>
             <RegistroInversion />
 
-          </div> 
+          </div>
 
         </div>
 

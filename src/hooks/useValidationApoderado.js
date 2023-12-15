@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 function useValidationApoderado (
   nombre,
@@ -21,19 +21,19 @@ function useValidationApoderado (
 
   function handleBlur (e) {
     if (e.target.value === '') {
-      if (e.target.name === 'nombre') {
+      if (e.target.name === 'nombreApoderado') {
         setErrorName('Se require el ingreso de un nombre válido')
       }
-      if (e.target.name === 'apellidoPaterno') {
+      if (e.target.name === 'apellidoPaternoApoderado') {
         setErrorApellidoPaterno('Se requiere el ingreso de un apellido válido')
       }
-      if (e.target.name === 'apellidoMaterno') {
+      if (e.target.name === 'apellidoMaternoApoderado') {
         setErrorApellidoMaterno('Se requiere el ingreso de un apellido válido')
       }
-      if (e.target.name === 'dni') {
+      if (e.target.name === 'dniApoderado') {
         setErrorDni('Se require el ingreso de un DNI válido')
       }
-      if (e.target.name === 'telefonoCelular') {
+      if (e.target.name === 'telefonoCelularApoderado') {
         setErrorTelefonoCelular(
           'Se require el ingreso de un número de celular válido'
         )
@@ -134,10 +134,6 @@ function useValidationApoderado (
     }
   }, [telefonoCelular])
 
-  // console.log(telefonoCelular.length);
-  // console.log(errorVerdaderoTelefonoCelular);
-  // console.log(errorTelefonoCelular);
-
   useEffect(() => {
     if (
       errorName === null &&
@@ -155,20 +151,6 @@ function useValidationApoderado (
     } else {
       setApoderadoValido(false)
     }
-
-    // // console.log(errorName);
-    // // console.log(errorApellidoPaterno);
-    // // console.log(errorApellidoMaterno);
-    // // console.log(errorDni);
-    // // console.log(errorVerdaderoDNI);
-    // // console.log(errorTelefonoCelular);
-    // // console.log(nombre);
-    // // console.log(apellidoPaterno);
-    // // console.log(apellidoMaterno);
-    // // console.log(dni);
-    // // console.log(telefonoCelular);
-    // // console.log(apoderadoValido.current);
-    // // console.log(apoderadoValido);
   }, [
     errorName,
     errorApellidoPaterno,

@@ -16,6 +16,7 @@ const useValidation = (
   direccion,
   referencia,
   dni,
+  edad,
   telefonoFijo,
   telefonoCelular,
   selectedCarrera,
@@ -31,6 +32,7 @@ const useValidation = (
   const [errorDireccion, setErrorDireccion] = useState(null)
   const [errorReferencia, setErrorReferencia] = useState(null)
   const [errorDni, setErrorDni] = useState(null)
+  const [errorEdad, setErrorEdad] = useState(null)
   const [errorTelefonoFijo, setErrorTelefonoFijo] = useState(null)
   const [errorTelefonoCelular, setErrorTelefonoCelular] = useState(null)
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
@@ -41,6 +43,7 @@ const useValidation = (
   const isFirstDireccion = useRef(true)
   const isFirstReferencia = useRef(true)
   const isFirstDni = useRef(true)
+  const isFirstEdad = useRef(true)
   const isFirstTelefonoFijo = useRef(true)
   const isFirstTelefonoCelular = useRef(true)
 
@@ -96,10 +99,15 @@ const useValidation = (
   }, [referencia])
 
   useEffect(() => {
-    setErrorDni(null)
     isFirstDni.current = dni === ''
     campoDniValido.current = dni && dni.length === 8
   }, [dni])
+
+  useEffect(() => {
+    if (isFirstEdad.current) {
+      isFirstEdad.current = edad === ''
+    }
+  }, [edad])
 
   useEffect(() => {
     if (isFirstTelefonoFijo.current) {
@@ -134,25 +142,6 @@ const useValidation = (
         estadoBotonTelefonoCelular === false &&
         telefonoCelular.length === 9)
   }, [telefonoCelular, estadoBotonTelefonoCelular])
-
-  // // console.log(campoReferenciaValido.current);
-  // // console.log(estadoBotonReferencia);
-
-  // // console.log(campoTelefonoFijoValido.current);
-  // // console.log(estadoBotonTelefonoFijo);
-
-  // // console.log(campoTelefonoCelularValido.current);
-  // // console.log(estadoBotonTelefonoCelular);
-
-  // // console.log(campoDniValido.current);
-  // // console.log(isFirstName.current);
-  // // console.log(isFirstApellidoPaterno.current);
-  // // console.log(isFirstApellidoMaterno.current);
-  // // console.log(isFirstDireccion.current);
-  // // console.log(isFirstReferencia.current);
-  // // console.log(isFirstDni.current);
-  // // console.log(isFirstTelefonoFijo.current);
-  // // console.log(isFirstTelefonoCelular.current);
 
   function handleBlur (e) {
     const newQuery = e.target.value
@@ -191,6 +180,11 @@ const useValidation = (
         return
       }
 
+      if (name === 'edad') {
+        setErrorEdad('Se requiere el ingreso de una edad válida')
+        return
+      }
+
       if (name === 'telefonoFijo') {
         if (telefonoFijoElement.disabled === false) {
           setErrorTelefonoFijo(
@@ -206,19 +200,6 @@ const useValidation = (
         )
       }
     }
-
-    // if (name === "dni") {
-    //   if (errorDni === null && newQuery.length !== 8) {
-    //     setErrorDni("El dni debe contener 8 dígitos");
-    //     return;
-    //   }
-    // }
-
-    // if (name === "telefonoCelular") {
-    //   if (telefonoCelular.length > 0 && telefonoCelular.length < 9) {
-    //     setErrorTelefonoCelular("El número celular debe contener 9 dígitos");
-    //   }
-    // }
   }
 
   useEffect(() => {
@@ -297,6 +278,19 @@ const useValidation = (
       }
     }
   }, [dni])
+
+  useEffect(() => {
+    setErrorEdad(null)
+    if (edad !== '') {
+      if (edad > 120) {
+        setErrorEdad('Estás seguro que tienes mas de 120 años?')
+      } else if (edad < 5) {
+        setErrorEdad('Estás seguro que tienes menos de 5 años?')
+      } else {
+        setErrorEdad(null)
+      }
+    }
+  }, [edad])
 
   useEffect(() => {
     setErrorDireccion(null)
@@ -382,6 +376,7 @@ const useValidation = (
       errorDireccion !== null ||
       errorReferencia !== null ||
       errorVerdaderoDNI !== null ||
+      errorEdad !== null ||
       errorVerdaderoTelefonoFijo !== null ||
       errorVerdaderoTelefonoCelular !== null ||
       selectedCarrera === '' ||
@@ -391,6 +386,7 @@ const useValidation = (
       isFirstDireccion.current === true ||
       isFirstReferencia.current === true ||
       isFirstDni.current === true ||
+      isFirstEdad.current === true ||
       isFirstTelefonoFijo.current === true ||
       isFirstTelefonoCelular.current === true ||
       name === '' ||
@@ -398,6 +394,7 @@ const useValidation = (
       apellidoMaterno === '' ||
       direccion === '' ||
       dni === '' ||
+      edad === '' ||
       telefonoFijo === '' ||
       telefonoCelular === '' ||
       campoReferenciaValido.current === false ||
@@ -407,42 +404,6 @@ const useValidation = (
       apoderadoValido === false
     ) {
       setIsButtonDisabled(true)
-      return
-    }
-
-    if (
-      selectedGrupo !== '' &&
-      errorName === null &&
-      errorApellidoPaterno === null &&
-      errorApellidoMaterno === null &&
-      errorDireccion === null &&
-      errorReferencia === null &&
-      errorVerdaderoDNI === null &&
-      errorVerdaderoTelefonoFijo === null &&
-      errorVerdaderoTelefonoCelular === null &&
-      selectedCarrera !== '' &&
-      isFirstName.current === false &&
-      isFirstApellidoPaterno.current === false &&
-      isFirstApellidoMaterno.current === false &&
-      isFirstDireccion.current === false &&
-      isFirstReferencia.current === false &&
-      isFirstDni.current === false &&
-      isFirstTelefonoFijo.current === false &&
-      isFirstTelefonoCelular.current === false &&
-      name !== '' &&
-      apellidoPaterno !== '' &&
-      apellidoMaterno !== '' &&
-      direccion !== '' &&
-      dni !== '' &&
-      telefonoFijo !== '' &&
-      telefonoCelular !== '' &&
-      campoReferenciaValido.current === true &&
-      campoTelefonoFijoValido.current === true &&
-      campoTelefonoCelularValido.current === true &&
-      campoDniValido.current === true &&
-      apoderadoValido === true
-    ) {
-      setIsButtonDisabled(false)
     }
   }, [
     selectedGrupo,
@@ -461,6 +422,7 @@ const useValidation = (
     direccion,
     referencia,
     dni,
+    edad,
     telefonoFijo,
     telefonoCelular,
     estadoBotonReferencia,
@@ -476,6 +438,7 @@ const useValidation = (
     errorDireccion,
     errorReferencia,
     errorDni,
+    errorEdad,
     errorTelefonoFijo,
     errorTelefonoCelular,
     isButtonDisabled,
