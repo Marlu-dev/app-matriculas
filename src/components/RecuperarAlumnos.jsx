@@ -189,6 +189,7 @@ const RecuperarAlumnos = () => {
               coleccion='grupos' 
               funcionObtenerFiltros={obtenerFiltrosGrupo}
             />
+            
           </div>
           <div className="select-filter">
             {/* FILTRO: Carrera */}
