@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import db from '../../public/services/firebase/firebase'
+import '../style/Filtro.css'
 
 const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {
   const [opciones, setOpciones] = useState([])
@@ -63,22 +64,31 @@ const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {
 
   return (
     <>
-      <div>{nombre}</div>
-      <div>
-        <input type='text' onChange={buscarOpcion} />
-        <div className='opciones' />
-        {filtrarBusqueda(opciones, busqueda).map((opcion) => (
-          <div key={opcion.id}>
-            {opcion.nombre}
-            <input
-              type='checkbox'
-              name={opcion.nombre}
-              id={opcion.id}
-              onChange={checkboxSeleccionado}
-            />
+      <div className="content">
+        <div className="search">
+          <div className="image-search">
           </div>
-        ))}
+          <input 
+            type='text' 
+            onChange={buscarOpcion} 
+            placeholder='Buscar...' required
+          />
+        </div>
+        <div className='options' />
+          {filtrarBusqueda(opciones, busqueda).map((opcion) => (
+            <div key={opcion.id}>
+              {opcion.nombre}
+              <input
+                type='checkbox'
+                name={opcion.nombre}
+                id={opcion.id}
+                onChange={checkboxSeleccionado}
+                
+              />
+            </div>
+          ))}
       </div>
+
     </>
   )
 }

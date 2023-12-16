@@ -116,9 +116,10 @@ const RecuperarAlumnos = () => {
 
   return (
     <div className='container-recuperar-alumnos'>
+      {/* CONTAINER PRINCIPAL */}
       <div className='container-izquierda-recuperar-alumnos'>
         <div>
-          <h1>Recuperar Alumnos</h1>
+          <h1>DATOS DE ALUMNOS</h1>
           <input
             onChange={handleChange}
             value={busqueda}
@@ -131,24 +132,78 @@ const RecuperarAlumnos = () => {
         </div>
 
         <ListaDeAlumnos alumnos={resultadosAlumnos} />
-      </div>
-      <div className='container-derecha'>
-        <h1>Ordenar</h1>
-        <label>Ordenar por</label>
-        <select name='' id='' onChange={handleChangeSelect}>
-          <option value='numero'>Codigo</option>
-          <option value='nombre'>Nombre</option>
-          <option value='apellidoPaterno'>Apellido Paterno</option>
-          <option value='apellidoMaterno'>Apellido Materno</option>
-          <option value='carrera'>Carrera</option>
-        </select>
-        <h1>Filtros</h1>
-        <section>
-          <Filtro nombre='Grupo' coleccion='grupos' funcionObtenerFiltros={obtenerFiltrosGrupo} />
+      </div> {/* FIN: CONTAINER PRINCIPAL */}
 
-          <Filtro nombre='Carrera' coleccion='carreras' funcionObtenerFiltros={obtenerFiltrosCarrera} />
+      {/* CONTAINER SECUNDARIO */}
+      <div className='container-register'>
+        <span className='header-register'>
+            Orden de busqueda
+        </span>
+        <div className="input-seccion">
+          <label>
+            Ordenar por: 
+          </label>
+          <div className="main-dropdwon">
+            <div className="select-container">
+              <select name='' id='' onChange={handleChangeSelect}>
+                <option value='numero'>Codigo</option>
+                <option value='nombre'>Nombre</option>
+                <option value='apellidoPaterno'>Apellido Paterno</option>
+                <option value='apellidoMaterno'>Apellido Materno</option>
+                <option value='carrera'>Carrera</option>
+              </select>
+              <div className='select-icon'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    class='icon icon-tabler icon-tabler-chevron-down'
+                    width='25'
+                    height='25'
+                    viewBox='0 0 24 24'
+                    stroke-width='3.5'
+                    stroke='#2c3e50'
+                    fill='none'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                  >
+                    <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                    <path d='M6 9l6 6l6 -6' />
+                  </svg>
+              </div>
+            </div>
+          </div>
+        </div>   
+
+        <span className='header-register'>
+            Filtros de Busqueda
+        </span>
+
+        {/* FILTROS DE BUSQUEDA */} 
+        <section className="filtros-busqueda">
+          <div className="select-filter">
+            {/* FILTRO: Grupo */}
+            <label>
+            Grupo: 
+            </label>
+            <Filtro 
+              nombre='Grupo' 
+              coleccion='grupos' 
+              funcionObtenerFiltros={obtenerFiltrosGrupo}
+            />
+          </div>
+          <div className="select-filter">
+            {/* FILTRO: Carrera */}
+            <label>
+            Carrera: 
+            </label>
+            <Filtro 
+              nombre='Carrera' 
+              coleccion='carreras' 
+              funcionObtenerFiltros={obtenerFiltrosCarrera} 
+            />
+          </div>
         </section>
-      </div>
+        {/* FIN: FILTROS DE BUSQUEDA */}
+      </div> {/* FIN: CONTAINER SECUNDARIO */}
     </div>
   )
 }

@@ -1,3 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* CONTAINER PRINCIPAL*/
 .container-recuperar-alumnos{
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -14,7 +43,10 @@
     border-radius: 10px;
 }
 
-.container-recuperar-alumnos .container-derecha{
+
+/* CONTAINER SECUNDARIO*/
+
+.container-recuperar-alumnos .container-register {
     background-color: #ffffff;
     border-radius: 10px;
 }
