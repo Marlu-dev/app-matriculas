@@ -181,9 +181,11 @@ const RecuperarAlumnos = () => {
         <section className="filtros-busqueda">
           <div className="select-filter">
             {/* FILTRO: Grupo */}
-            <label>
-            Grupo: 
-            </label>
+            <div className="title-filter">
+              <label>
+              Grupo: 
+              </label>
+            </div>
             <Filtro 
               nombre='Grupo' 
               coleccion='grupos' 
@@ -193,9 +195,11 @@ const RecuperarAlumnos = () => {
           </div>
           <div className="select-filter">
             {/* FILTRO: Carrera */}
-            <label>
-            Carrera: 
-            </label>
+            <div className="title-filter">
+              <label>
+              Carrera: 
+              </label>
+            </div>
             <Filtro 
               nombre='Carrera' 
               coleccion='carreras' 

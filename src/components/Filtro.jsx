@@ -73,7 +73,7 @@ const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {
               width="15" 
               height="15" 
               viewBox="0 0 24 24" 
-              stroke-width="3" 
+              stroke-width="4" 
               stroke="#2c3e50" 
               fill="none" 
               stroke-linecap="round" 

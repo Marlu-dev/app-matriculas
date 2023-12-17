@@ -36,6 +36,7 @@
     margin-top: 5px;
     border-radius: 7px;
     background-color: var(--gris);
+    color: var(--azul);
     /* max-height: 200px;
     overflow-y: auto;
     margin-top: 10px; */
@@ -51,9 +52,12 @@
 
 .search .image-search {
     left: 8px;
-    width: 100%;
     position: absolute;
-    top: 5px;
+    line-height: 35px;
+}
+
+.search .image-search .stroke {
+    color: var(--azul);
 }
 
 .search input {
