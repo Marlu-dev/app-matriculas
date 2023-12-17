@@ -31,12 +31,15 @@
 
 /* contenido global */
 .content {
-    /* display: none; --ACTIVAR */
-    padding: 20px;
+    /* display: none;  */
+    padding: 4%;
     margin-top: 5px;
-    border-radius: 7px;
-    background-color: var(--gris);
+    border-radius: 10px;
+    background-color: var(--grisClaro);
     color: var(--azul);
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
     /* max-height: 200px;
     overflow-y: auto;
     margin-top: 10px; */
@@ -91,14 +94,13 @@
     border-radius: 25px;
 }
 
-.options input[type='checkbox'] {
+/* .options input[type='checkbox'] {
     display: none;
-} 
-.options .checkbox {
-    cursor: pointer;
-}
+}  */
 
-.options .checkbox {
+
+
+/* .options .checkbox {
     height: 60px;
     padding: 0 10px;
     border-radius: 5px;
@@ -108,4 +110,27 @@
 .options .checkbox:hover {
     background: var(--grisClaro);
 }
+ */
 
+.options .checkbox {
+    margin-left: 5px; 
+    font-weight: 500;
+}
+
+.options .checkbox {
+    cursor: pointer;
+    
+}
+
+.options input{
+    cursor: pointer;
+}
+
+.options input:checked {
+    accent-color: var(--letras);
+}
+
+.options input:checked + label{
+    color: var(--letras);
+    font-weight: 600;
+}
