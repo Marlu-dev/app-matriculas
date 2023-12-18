@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FILTROOOO */
+/* .content {
+    width: 100%;
+    -- margin: 1% auto 0;
+} */
+
+/* contenido global */
+.content {
+    /* display: none;  */
+    padding: 4%;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: var(--grisClaro);
+    color: var(--azul);
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    /* max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px; */
+}
+
+/* .select-filter.active .content{
+    display: block; --ACTIVAR
+} */
+
+.content .search {
+    position: relative;
+}
+
+.search .image-search {
+    left: 8px;
+    position: absolute;
+    line-height: 35px;
+}
+
+.search .image-search .stroke {
+    color: var(--azul);
+}
+
+.search input {
+    height: 30px;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 0 15px 0 28px;
+    border: 2px solid var(--negro);
+}
+
+.content .options {
+    margin-top: 10px;
+    max-height: 180px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.content .options::-webkit-scrollbar{
+    width: 5px;
+}
+
+.content .options::-webkit-scrollbar-track{
+    background: var(--gris);
+    border-radius: 25px;
+}
+
+.content .options::-webkit-scrollbar-thumb{
+    background: var(--blanco);
+    border-radius: 25px;
+}
+
+/* .options input[type='checkbox'] {
+    display: none;
+}  */
+
+
+
+/* .options .checkbox {
+    height: 60px;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.options .checkbox:hover {
+    background: var(--grisClaro);
+}
+ */
+
+.options .checkbox {
+    margin-left: 5px; 
+    font-weight: 500;
+}
+
+.options .checkbox {
+    cursor: pointer;
+    
+}
+
+.options input{
+    cursor: pointer;
+}
+
+.options input:checked {
+    accent-color: var(--letras);
+}
+
+.options input:checked + label{
+    color: var(--letras);
+    font-weight: 600;
+}

@@ -27,6 +27,7 @@
   border-bottom: 1px;
 } */
 
+/* CONTAINER GENERAL */
 .container-register {
   position: relative;
   padding: 30px;
@@ -38,6 +39,7 @@
   margin: 0 15px;  */
 }
 
+
 .container-register .header-register {
   position: relative;
   font-size: 30px;
@@ -46,6 +48,7 @@
   color: var(--azul);
 }
 
+/* -- LINEA IMAGINARIA DE INICIO-- */
 .container-register .header-register::before {
   content: "";
   position: absolute;
@@ -54,19 +57,20 @@
   height: 3px;
   width: 70px; 
   border-radius: 10px;
-  background-color: var(--azul);
+  /* background-color: var(--azul); */
 }
 
-.container-register .form { /* LINEA DE INICIO */
+.container-register .form { /* -- LINEA IMAGINARIA DE INICIO-- */
   position: relative;
   min-height: 490px;
   background-color: var(--blanco);
   margin-top: 10px;
 }
 
+
 .container-register .form .details { 
-  margin-top: 20px;  /* VERIFICAR */
-}
+  margin-top: 20px;  /* -- VERIFICAR -- */
+}  
 
 /* .container-register .form .details .apoderado { 
   margin-top: 10px;  --VERIFICAR 
@@ -227,8 +231,8 @@
   cursor: pointer;
 }
 
-input[type="checkbox"]:checked + label {
-  background: var(--azul);
+.check-button input[type="checkbox"]:checked + label {
+  background: var(--medicas);
 }
 
 .check-button .checkbox:after {

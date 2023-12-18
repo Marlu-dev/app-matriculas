@@ -6,6 +6,32 @@
     padding: 6px;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .container-buttons {
     display: flex;
     padding: 0 2%;
@@ -113,7 +139,7 @@
 
     .container-buttons svg{
      /*    stroke: var(--gris); */
-       width: 30px;
+        width: 30px;
         height: 30px;
     } 
 
@@ -129,7 +155,7 @@
 
     .container-buttons svg{
      /*    stroke: var(--gris); */
-       width: 20px;
+        width: 20px;
         height: 20px;
     } 
 

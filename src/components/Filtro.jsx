@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import db from '../../public/services/firebase/firebase'
+import '../style/Filtro.css'
 
 const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {
   const [opciones, setOpciones] = useState([])
@@ -63,22 +64,56 @@ const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {
 
   return (
     <>
-      <div>{nombre}</div>
-      <div>
-        <input type='text' onChange={buscarOpcion} />
-        <div className='opciones' />
-        {filtrarBusqueda(opciones, busqueda).map((opcion) => (
-          <div key={opcion.id}>
-            {opcion.nombre}
-            <input
-              type='checkbox'
-              name={opcion.nombre}
-              id={opcion.id}
-              onChange={checkboxSeleccionado}
-            />
+      <div className="content">
+        <div className="search">
+          <div className="image-search">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              class="icon icon-tabler icon-tabler-search" 
+              width="15" 
+              height="15" 
+              viewBox="0 0 24 24" 
+              stroke-width="4" 
+              stroke="#2c3e50" 
+              fill="none" 
+              stroke-linecap="round" 
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+              <path d="M21 21l-6 -6" />
+            </svg>
           </div>
-        ))}
+          <input 
+            type='text' 
+            onChange={buscarOpcion} 
+            placeholder='Buscar...' required
+          />
+        </div>
+        <div className='options'>
+          <div className="options"/>
+            {filtrarBusqueda(opciones, busqueda).map((opcion) => (
+              <div key={opcion.id}>   
+                <div className='check-options'>
+                  <input
+                    type='checkbox' 
+                    name={opcion.nombre}
+                    id={opcion.id}
+                    onChange={checkboxSeleccionado}  
+                  />
+                  <label 
+                    for={opcion.id}
+                    className='checkbox'
+                  >
+                    {opcion.nombre} {/* No tiene */}
+                  </label>
+                </div>
+              </div>
+            ))}
+
+        </div>
+        
       </div>
+
     </>
   )
 }
