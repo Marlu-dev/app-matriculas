@@ -5,9 +5,9 @@ const RegistroApoderado = ({
   registroNombreApoderado,
   handleApoderadoValido
 }) => {
-  const banderaTelefonoCelular = useRef()
+  const banderaTelefonoCelularApoderado = useRef()
   const [bandera, setBandera] = useState(false)
-  const [banderaApoderadoValido, setBanderaApoderadoValido] = useState(false)
+  // const [banderaApoderadoValido, setBanderaApoderadoValido] = useState(false)
 
   const [apoderado, setApoderado] = useState({
     nombreApoderado: '',
@@ -18,29 +18,39 @@ const RegistroApoderado = ({
   })
 
   function noTelefonoCelular () {
-    setBandera(banderaTelefonoCelular.current.checked)
+    setBandera(banderaTelefonoCelularApoderado.current.checked)
+    const telefonoCelularApoderadoElement = document.getElementById(
+      'telefonoCelularApoderado'
+    )
+    if (telefonoCelularApoderadoElement.disabled) {
+      telefonoCelularApoderadoElement.disabled = false
+      telefonoCelularApoderadoElement.focus()
+      setApoderado({ ...apoderado, telefonoCelularApoderado: '' })
+    } else {
+      telefonoCelularApoderadoElement.disabled = true
+      setApoderado({ ...apoderado, telefonoCelularApoderado: 'No tiene' })
+    }
   }
 
-  useEffect(() => {
-    if (bandera) {
-      setApoderado({ ...apoderado, telefonoCelularApoderado: 'No tiene' })
-    } else {
-      setApoderado({ ...apoderado, telefonoCelularApoderado: '' })
-    }
-  }, [bandera])
+  // useEffect(() => {
+  //   if (bandera) {
+  //     setApoderado({ ...apoderado, telefonoCelularApoderado: 'No tiene' })
+  //   } else {
+  //     setApoderado({ ...apoderado, telefonoCelularApoderado: '' })
+  //   }
+  // }, [bandera])
 
   function handleChange (e) {
     const { name, value } = e.target
     const newQuery = value
-    // console.log(newQuery);
-    // console.log(e.target.name);
+
     if (e.target.name === 'dni') {
       if (/^\d+$/.test(newQuery) || newQuery === '') {
         setApoderado({ ...apoderado, [name]: value })
         return
       }
     }
-    if (e.target.name === 'telefonoCelular') {
+    if (e.target.name === 'telefonoCelularApoderado') {
       if (/^\d+$/.test(newQuery) || newQuery === '') {
         setApoderado({ ...apoderado, [name]: value })
         return
@@ -194,11 +204,13 @@ const RegistroApoderado = ({
               <div className='check-button'>
                 <input
                   type='checkbox'
-                  name='checkbox1'
-                  ref={banderaTelefonoCelular}
+                  name='checkbox4'
+                  ref={banderaTelefonoCelularApoderado}
                   onChange={noTelefonoCelular}
+                  onBlur={handleBlur}
+                  id='checkbox4'
                 />
-                <label for='checkbox1' className='checkbox'>
+                <label for='checkbox4' className='checkbox'>
                   {/* No tiene */}
                 </label>
               </div>

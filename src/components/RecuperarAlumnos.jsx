@@ -137,14 +137,14 @@ const RecuperarAlumnos = () => {
       {/* CONTAINER SECUNDARIO */}
       <div className='container-register'>
         <span className='header-register'>
-            Orden de busqueda
+          Orden de busqueda
         </span>
-        <div className="input-seccion">
+        <div className='input-seccion'>
           <label>
-            Ordenar por: 
+            Ordenar por:
           </label>
-          <div className="main-dropdwon">
-            <div className="select-container">
+          <div className='main-dropdwon'>
+            <div className='select-container'>
               <select name='' id='' onChange={handleChangeSelect}>
                 <option value='numero'>Codigo</option>
                 <option value='nombre'>Nombre</option>
@@ -153,60 +153,59 @@ const RecuperarAlumnos = () => {
                 <option value='carrera'>Carrera</option>
               </select>
               <div className='select-icon'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    class='icon icon-tabler icon-tabler-chevron-down'
-                    width='25'
-                    height='25'
-                    viewBox='0 0 24 24'
-                    stroke-width='3.5'
-                    stroke='#2c3e50'
-                    fill='none'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                  >
-                    <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                    <path d='M6 9l6 6l6 -6' />
-                  </svg>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  class='icon icon-tabler icon-tabler-chevron-down'
+                  width='25'
+                  height='25'
+                  viewBox='0 0 24 24'
+                  stroke-width='3.5'
+                  stroke='#2c3e50'
+                  fill='none'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                >
+                  <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                  <path d='M6 9l6 6l6 -6' />
+                </svg>
               </div>
             </div>
           </div>
-        </div>   
+        </div>
 
         <span className='header-register'>
-            Filtros de Busqueda
+          Filtros de Busqueda
         </span>
 
-        {/* FILTROS DE BUSQUEDA */} 
-        <section className="filtros-busqueda">
-          <div className="select-filter">
+        {/* FILTROS DE BUSQUEDA */}
+        <section className='filtros-busqueda'>
+          <div className='select-filter'>
             {/* FILTRO: Grupo */}
-            <div className="title-filter">
+            <div className='title-filter'>
               <label>
-              Grupo: 
+                Grupo:
               </label>
             </div>
-            <div className="filter-main">
-              <Filtro 
-                nombre='Grupo' 
-                coleccion='grupos' 
+            <div className='filter-main'>
+              <Filtro
+                nombre='Grupo'
+                coleccion='grupos'
                 funcionObtenerFiltros={obtenerFiltrosGrupo}
               />
             </div>
-            
-            
+
           </div>
-          <div className="select-filter">
+          <div className='select-filter'>
             {/* FILTRO: Carrera */}
-            <div className="title-filter">
+            <div className='title-filter'>
               <label>
-              Carrera: 
+                Carrera:
               </label>
             </div>
-            <Filtro 
-              nombre='Carrera' 
-              coleccion='carreras' 
-              funcionObtenerFiltros={obtenerFiltrosCarrera} 
+            <Filtro
+              nombre='Carrera'
+              coleccion='carreras'
+              funcionObtenerFiltros={obtenerFiltrosCarrera}
             />
           </div>
         </section>
