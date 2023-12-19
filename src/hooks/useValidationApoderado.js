@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 function useValidationApoderado (
   nombre,
@@ -18,6 +18,14 @@ function useValidationApoderado (
   const [errorVerdaderoTelefonoCelular, setErrorVerdaderoTelefonoCelular] =
     useState(null)
   const [apoderadoValido, setApoderadoValido] = useState(false)
+
+  const isFirstTelefonoCelularApoderado = useRef(true)
+
+  useEffect(() => {
+    if (isFirstTelefonoCelularApoderado.current) {
+      isFirstTelefonoCelularApoderado.current = telefonoCelular === ''
+    }
+  }, [telefonoCelular])
 
   function handleBlur (e) {
     if (e.target.value === '') {

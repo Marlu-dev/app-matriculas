@@ -16,8 +16,6 @@ const ModalDeEdicionDeDatos = ({ cerrar, codigo }) => {
     event.stopPropagation()
   }
 
-
-
   return (
     <div
       className='modal-edicion-datos-fondo-invisible'
@@ -40,7 +38,7 @@ const ModalDeEdicionDeDatos = ({ cerrar, codigo }) => {
             </div>
           </div>
         </div>
-        <div><VistaDeDatosAlumno codigo={codigo}/></div>
+        <div><VistaDeDatosAlumno codigo={codigo} /></div>
       </motion.div>
       ;
     </div>
