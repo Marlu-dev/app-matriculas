@@ -15,13 +15,21 @@ const RecuperarAlumnos = () => {
   const [filtrosObtenidosGrupo, setFiltrosObtenidosGrupo] = useState([])
   const [filtrosObtenidosCarrera, setFiltrosObtenidosCarrera] = useState([])
 
+  console.log(ordenarPor)
+
   useEffect(() => {
     const q = query(collection(db, 'alumnos'), orderBy(ordenarPor, 'asc'))
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const listaDeAlumnos = querySnapshot.docs.map((doc) => doc.data())
       setAlumnosListaCompleta(listaDeAlumnos)
     })
+
+    return () => unsubscribe()
   }, [ordenarPor])
+
+  useEffect(() => {
+    ejecutarbusqueda()
+  }, [alumnosListaCompleta])
 
   const filtrarBusqueda = (alumnosListaCompleta, carreraFiltrada) => {
     return alumnosListaCompleta.filter((alumno) => {
@@ -69,7 +77,8 @@ const RecuperarAlumnos = () => {
 
   const handleChangeSelect = (e) => {
     setOrdenarPor(e.target.value)
-    // console.log(e.target.value)
+    console.log(e.target.value)
+    console.log(ordenarPor)
   }
 
   const obtenerFiltrosGrupo = (e) => {
