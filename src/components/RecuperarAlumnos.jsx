@@ -15,7 +15,7 @@ const RecuperarAlumnos = () => {
   const [filtrosObtenidosGrupo, setFiltrosObtenidosGrupo] = useState([])
   const [filtrosObtenidosCarrera, setFiltrosObtenidosCarrera] = useState([])
 
-  console.log(ordenarPor)
+  // console.log(ordenarPor)
 
   useEffect(() => {
     const q = query(collection(db, 'alumnos'), orderBy(ordenarPor, 'asc'))
@@ -25,11 +25,27 @@ const RecuperarAlumnos = () => {
     })
 
     return () => unsubscribe()
-  }, [ordenarPor])
+  }, [])
+
+  // console.log(alumnosListaCompleta)
 
   useEffect(() => {
-    ejecutarbusqueda()
-  }, [alumnosListaCompleta])
+    const listaDeAlumnosFinal = ordenarAlumnos(aplicarFiltroRecibidos(filtrarBusqueda(alumnosListaCompleta, ''), filtrosObtenidosGrupo, filtrosObtenidosCarrera), ordenarPor)
+
+    setResultadosAlumnos(listaDeAlumnosFinal)
+  }, [ordenarPor])
+
+  const ordenarAlumnos = (alumnosListaCompleta, ordenarPor) => {
+    return alumnosListaCompleta.sort((a, b) => {
+      if (a[ordenarPor] > b[ordenarPor]) {
+        return 1
+      }
+      if (a[ordenarPor] < b[ordenarPor]) {
+        return -1
+      }
+      return 0
+    })
+  }
 
   const filtrarBusqueda = (alumnosListaCompleta, carreraFiltrada) => {
     return alumnosListaCompleta.filter((alumno) => {
@@ -77,8 +93,6 @@ const RecuperarAlumnos = () => {
 
   const handleChangeSelect = (e) => {
     setOrdenarPor(e.target.value)
-    console.log(e.target.value)
-    console.log(ordenarPor)
   }
 
   const obtenerFiltrosGrupo = (e) => {
