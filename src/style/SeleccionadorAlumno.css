@@ -24,70 +24,100 @@
     box-sizing: border-box;
 }
 
-.container-seleccionador-alumno {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    border: 0.125rem solid #000000;
-    width: 100%;
-  }
+.container-no-hay-alumnos-registrados{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--rojo);
+  font-weight: 600;
+  font-size: 16px;
+}
 
-  .container-no-hay-alumnos-registrados{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    color: var(--rojo);
-    font-weight: 600;
-    font-size: 16px;
-  }
-
-  .datos-seleccionador-alumno {
-    display: grid;
-    width: 90%;
-    gap: 1rem;
-    grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
-    grid-template-rows: 1fr;
-  }
-  
-  .datos-seleccionador-alumno span {
-    align-items: center;
-    text-align: center;
-  }
-
-  .titulo-tabla-lista-de-alumnos{
-    background-color: dimgrey;
-    color: #ffff;
-    font-size: 18px;
-  }
+.container-select-alumno .datos-select-alumno {
+  position: relative;
+  margin: 0 auto;
+  padding: 1%;
+  width: 95%;
+  background-color: var(--grisClaro); /* VERIFICAR */
+  box-shadow: 8px 8px 5px 2px var(--gris);
+  border-radius: 10px;
+}
 
 
-  .ver-seleccionador-alumno{
-    z-index: 0;
-  }
+/* .container-select-alumno  {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8px 8px 5px 0px var(--gris);
+  width: 100%;
+  background-color: var(--blanco); 
+  border-radius: 10px;
+} */
 
-  .editar-seleccionador-alumno{
-    z-index: 0;
-  }
+.datos-select-alumno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 4% 0;
+}
 
-  .ver-seleccionador-alumno:hover {
-    cursor: pointer;
-  }
+/* 
+.container-select-alumno {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 0.125rem solid var(--azul);
+  width: 100%;
+  border-radius: 5px;
+}
 
-  .ver-seleccionador-alumno:hover svg{
-    transform: scale(1.2);
-    transition: transform 0.2s ease-in-out;
-  }
+.datos-select-alumno {
+  display: grid;
+  width: 90%;
+  gap: 1rem;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-rows: 1fr;
+}
+
+.datos-select-alumno span {
+  align-items: center;
+  text-align: center;
+}
+
+.titulo-tabla-lista-de-alumnos{
+  background-color: dimgrey;
+  color: #ffff;
+  font-size: 18px;
+}
 
 
-  .editar-seleccionador-alumno:hover {
-    cursor: pointer;
-  }
+.ver-select-alumno{
+  z-index: 0;
+}
 
-  .editar-seleccionador-alumno:hover svg{
-    transform: scale(1.2);
-    transition: transform 0.2s ease-in-out;
-  }
+.editar-select-alumno{
+  z-index: 0;
+}
+
+.ver-select-alumno:hover {
+  cursor: pointer;
+}
+
+.ver-select-alumno:hover svg{
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+
+.editar-select-alumno:hover {
+  cursor: pointer;
+}
+
+.editar-select-alumno:hover svg{
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+ */
