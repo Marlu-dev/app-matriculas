@@ -35,70 +35,103 @@
   font-weight: 600;
   font-size: 16px;
 }
-
+/*
 .container-select-alumno .datos-select-alumno {
   position: relative;
   margin: 0 auto;
   padding: 1%;
   width: 95%;
-  background-color: var(--grisClaro); /* VERIFICAR */
+  background-color: var(--grisClaro); -- VERIFICAR --
   box-shadow: 8px 8px 5px 2px var(--gris);
   border-radius: 10px;
 }
-
-
-/* .container-select-alumno  {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 8px 8px 5px 0px var(--gris);
-  width: 100%;
-  background-color: var(--blanco); 
-  border-radius: 10px;
-} */
 
 .datos-select-alumno {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2% 4% 0;
+  border-spacing: 0;
+  margin-top: 10px;  
 }
 
-/* 
-.container-select-alumno {
+.datos-select-alumno span{
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--gris);  
+}
+
+.datos-select-alumno .icons-select-alumno{
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  border: 0.125rem solid var(--azul);
-  width: 100%;
-  border-radius: 5px;
+  font-size: 20px; 
+  cursor: pointer;
+  margin-right: 5px;
+}
+ */
+
+.container-select-alumno .datos-select-alumno {
+  position: relative;
+  margin: 0 auto;
+  padding: 1%;
+  width: 95%;
+  box-shadow: 8px 8px 5px 2px var(--gris);
+  border-radius: 10px;
 }
 
 .datos-select-alumno {
   display: grid;
+  align-items: center;
   width: 90%;
   gap: 1rem;
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
   grid-template-rows: 1fr;
 }
 
 .datos-select-alumno span {
   align-items: center;
   text-align: center;
+  padding: 4% 0 4% 0;
+  text-align: center;
 }
 
 .titulo-tabla-lista-de-alumnos{
-  background-color: dimgrey;
-  color: #ffff;
+  background-color: var(--grisClaro);
+  color: var(--azul);
   font-size: 18px;
 }
 
+.icons-select-alumno {
+  display: flex;
+  padding: 2%;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+
+  
+}
+
+.icons-select-alumno svg {
+  stroke: var(--azul);
+  margin: 0 5px;
+}
+
+.ver-seleccionador-alumno:hover {
+  transform: translate(-4px, -4px);
+  border-radius: 5px;
+}
+
+.modificar-seleccionador-alumno:hover {
+  transform: translate(-4px, -4px);
+  border-radius: 5px;
+}
 
 .ver-select-alumno{
   z-index: 0;
 }
 
-.editar-select-alumno{
+.modificar-select-alumno{
   z-index: 0;
 }
 
@@ -112,12 +145,11 @@
 }
 
 
-.editar-select-alumno:hover {
+.modificar-select-alumno:hover {
   cursor: pointer;
 }
 
-.editar-select-alumno:hover svg{
+.modificar-select-alumno:hover svg{
   transform: scale(1.2);
   transition: transform 0.2s ease-in-out;
 }
- */

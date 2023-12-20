@@ -20,7 +20,7 @@ const SeleccionadorAlumno = ({
 
   return (
     <div className='container-select-alumno'>
-      <main className='datos-select-alumno'>
+      <div className='datos-select-alumno'>
         <span className='codigo-select-alumno'>
           {codigo}
         </span>
@@ -42,6 +42,7 @@ const SeleccionadorAlumno = ({
         <span className='dni-select-alumno'>
           {dni}
         </span>
+
         <AnimatePresence>
           {modal && 
             <ModalDeEdicionDeDatos 
@@ -52,7 +53,7 @@ const SeleccionadorAlumno = ({
         </AnimatePresence>
 
         <div className="icons-select-alumno">
-          <div
+          <div 
             className='ver-seleccionador-alumno'
             value={codigo}
             onClick={activarModal}
@@ -60,10 +61,10 @@ const SeleccionadorAlumno = ({
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='icon icon-tabler icon-tabler-eye'
-              width='40'
-              height='40'
+              width='25'
+              height='25'
               viewBox='0 0 24 24'
-              strokeWidth='1.5'
+              strokeWidth='2'
               stroke='black'
               fill='none'
               strokeLinecap='round'
@@ -76,17 +77,17 @@ const SeleccionadorAlumno = ({
           </div>
 
           <div
-            className='editar-seleccionador-alumno'
+            className='modificar-seleccionador-alumno'
             value={codigo}
             onClick={activarModal}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='icon icon-tabler icon-tabler-edit'
-              width='40'
-              height='40'
+              width='25'
+              height='25'
               viewBox='0 0 24 24'
-              strokeWidth='1.5'
+              strokeWidth='2'
               stroke='black'
               fill='none'
               strokeLinecap='round'
@@ -99,7 +100,7 @@ const SeleccionadorAlumno = ({
             </svg>
           </div>
         </div>
-      </main>
+      </div>
 
       
     </div>
