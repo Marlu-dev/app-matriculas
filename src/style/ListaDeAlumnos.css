@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.titulo-container-select-alumno .title-datos-select-alumno {
+    position: sticky;
+    top: 0px;
+    margin: 0 auto;
+    padding: 1%;
+    width: 92%;
+    height: 10%;
+    box-shadow: 8px 8px 5px 2px var(--gris);
+    border-radius: 10px;
+}
+
+.title-datos-select-alumno {
+    display: grid;
+    align-items: center;
+    width: 90%;
+    height: 10%;
+    gap: 1rem;
+    grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+    grid-template-rows: 1fr;
+    background-color: var(--primario);
+    color: var(--blanco);
+    
+}
+
+.title-datos-select-alumno span {
+    align-items: center;
+    text-align: center;
+    padding: 4% 0 4% 0;
+    text-align: center;
+}

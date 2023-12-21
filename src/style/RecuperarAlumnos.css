@@ -35,27 +35,76 @@
     gap: 8px;
     background-color: #e7e4e4;
 }
-
+/* CONTAINER PRINCIPAL*/
 .container-recuperar .container-principal{
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-recuperar .container-principal .header-register{
     padding: 20px;
 }
 
-
-/* CONTAINER SECUNDARIO*/
-
-.container-recuperar-alumnos .container-register {
-    background-color: #ffffff;
-    border-radius: 10px;
-    overflow: auto;
+/* CONTAINER SEARCH */
+.container-search {
+    display: flex;
+    height: 30%;
+    width: 18%; 
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--blanco);
+    border-radius: 30px;
+    align-items: center; 
+    transition: 0.8s;
+    box-shadow: 0 10px 25px var(--negro);
 }
 
+.container-search:hover {
+    width:100%;
+}
+
+.container-search:hover input{
+    width:100%;
+}
+
+.container-search input {
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    transition: 0.8s;
+    color: var(--azul);
+    background: transparent;
+}
+
+.container-search .button-search{
+    cursor: pointer;
+}
+
+
+/* CONTAINER SECUNDARIO*/
+/* .container-register {
+    position: sticky;
+    top: 0px;
+} */
+
+.container-register {
+    background-color: var(--blanco);
+    border-radius: 10px;
+    margin: 0 auto;
+/*     overflow: auto; */
+}
+
+/* .container-register .header-register  {
+    position: sticky;
+    top: 0px;
+}
+ */
 .filtros-busqueda .title-filter { 
     display: flex;
     font-size: 14px;

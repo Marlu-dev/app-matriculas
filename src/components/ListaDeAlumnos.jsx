@@ -1,5 +1,6 @@
 import React from 'react'
 import SeleccionadorAlumno from './SeleccionadorAlumno'
+import '../style/ListaDeAlumnos.css'
 
 const ListaDeAlumnos = ({ alumnos }) => {
   // console.log(alumnos)
@@ -13,8 +14,8 @@ const ListaDeAlumnos = ({ alumnos }) => {
   } else {
     return (
       <>
-        <div className='container-select-alumno titulo-tabla-lista-de-alumnos'>
-          <main className='datos-select-alumno'>
+        <div className='titulo-container-select-alumno titulo-tabla-lista-de-alumnos'>
+          <main className='title-datos-select-alumno'>
             <span className='codigo-seleccionador-alumno'>Código</span>
             <span className='name-seleccionador-alumno'>Nombre</span>
             <span className='apelldoPaterno-seleccionador-alumno'>
