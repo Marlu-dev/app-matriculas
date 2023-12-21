@@ -49,6 +49,7 @@
 .container-recuperar-alumnos .container-register {
     background-color: #ffffff;
     border-radius: 10px;
+    overflow: auto;
 }
 
 .filtros-busqueda .title-filter { 

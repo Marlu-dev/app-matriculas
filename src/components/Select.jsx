@@ -3,7 +3,7 @@ import { collection, onSnapshot, query } from 'firebase/firestore'
 
 import db from '../../public/services/firebase/firebase.js'
 
-const Select = ({ coleccion, nombre, onSelectChange }) => {
+const Select = ({ coleccion, nombre, onSelectChange, opcionDefault }) => {
   const [opciones, setOpciones] = useState([])
 
   // console.log(coleccion);
@@ -31,14 +31,18 @@ const Select = ({ coleccion, nombre, onSelectChange }) => {
   return (
     <div>
       <select name={nombre} id='opcion' onChange={onSelectChange}>
-        <option value=''>Seleccione una opcion</option>
-        {opciones.map((opcion) => (
-          <option key={opcion.id} value={opcion.nombre}>
-            {opcion.nombre}
-          </option>
-        ))}
+        <option value=''>{opcionDefault || 'Selecciona una opción'}</option>
+        {opciones
+          .slice() // Crear una copia para no modificar el array original
+          .sort((a, b) => a.nombre.localeCompare(b.nombre)) // Ordenar alfabéticamente
+          .map((opcion) => (
+            <option key={opcion.id} value={opcion.nombre}>
+              {opcion.nombre}
+            </option>
+          ))}
       </select>
     </div>
+
   )
 }
 

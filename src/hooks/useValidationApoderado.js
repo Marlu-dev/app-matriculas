@@ -85,17 +85,20 @@ function useValidationApoderado (
   useEffect(() => {
     if (dni !== '') {
       setErrorDni(null)
-      const timer = setTimeout(() => {
-        // console.log(dni.length);
-        if (dni.length < 8) {
-          setErrorDni('El DNI debe contener 8 dígitos')
-        } else {
-          setErrorDni(null)
-        }
-      }, 1500)
 
-      return () => {
-        clearTimeout(timer)
+      if (dni) {
+        const timer = setTimeout(() => {
+          // console.log(dni.length);
+          if (dni.length < 8) {
+            setErrorDni('El DNI debe contener 8 dígitos')
+          } else {
+            setErrorDni(null)
+          }
+        }, 1500)
+
+        return () => {
+          clearTimeout(timer)
+        }
       }
     }
   }, [dni])
@@ -103,10 +106,12 @@ function useValidationApoderado (
   useEffect(() => {
     if (dni !== '') {
       setErrorDni(null)
-      if (dni.length < 8) {
-        setErrorVerdaderoDNI('El DNI debe contener 8 dígitos')
-      } else {
-        setErrorVerdaderoDNI(null)
+      if (dni) {
+        if (dni.length < 8) {
+          setErrorVerdaderoDNI('El DNI debe contener 8 dígitos')
+        } else {
+          setErrorVerdaderoDNI(null)
+        }
       }
     }
   }, [dni])
@@ -117,16 +122,18 @@ function useValidationApoderado (
   useEffect(() => {
     if (telefonoCelular !== '') {
       setErrorTelefonoCelular(null)
-      const timer = setTimeout(() => {
-        if (telefonoCelular.length !== 9 && telefonoCelular !== 'No tiene') {
-          setErrorTelefonoCelular(
-            'El número de celular debe contener 9 dígitos'
-          )
-        }
-      }, 1500)
+      if (telefonoCelular) {
+        const timer = setTimeout(() => {
+          if (telefonoCelular.length !== 9 && telefonoCelular !== 'No tiene') {
+            setErrorTelefonoCelular(
+              'El número de celular debe contener 9 dígitos'
+            )
+          }
+        }, 1500)
 
-      return () => {
-        clearTimeout(timer)
+        return () => {
+          clearTimeout(timer)
+        }
       }
     }
   }, [telefonoCelular])
@@ -134,10 +141,12 @@ function useValidationApoderado (
   useEffect(() => {
     if (telefonoCelular !== '') {
       setErrorVerdaderoTelefonoCelular(null)
-      if (telefonoCelular.length < 9 && telefonoCelular !== 'No tiene') {
-        setErrorVerdaderoTelefonoCelular(
-          'El número de celular debe contener 9 dígitos'
-        )
+      if (telefonoCelular) {
+        if (telefonoCelular.length < 9 && telefonoCelular !== 'No tiene') {
+          setErrorVerdaderoTelefonoCelular(
+            'El número de celular debe contener 9 dígitos'
+          )
+        }
       }
     }
   }, [telefonoCelular])

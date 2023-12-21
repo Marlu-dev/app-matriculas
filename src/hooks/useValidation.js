@@ -139,15 +139,14 @@ const useValidation = (
       (telefonoCelular === '' && estadoBotonTelefonoCelular === false) ||
       (telefonoCelular === 'No tiene' && estadoBotonTelefonoCelular === true) ||
       (telefonoCelular !== '' &&
-        estadoBotonTelefonoCelular === false &&
-        telefonoCelular.length === 9)
+        estadoBotonTelefonoCelular === false)
   }, [telefonoCelular, estadoBotonTelefonoCelular])
 
   function handleBlur (e) {
     const newQuery = e.target.value
     const name = e.target.name
 
-    const telefonoFijoElement = document.getElementById('telefonoFijo')
+    // const telefonoFijoElement = document.getElementById('telefonoFijo')
 
     if (newQuery === '') {
       if (name === 'nombre') {
@@ -186,12 +185,9 @@ const useValidation = (
       }
 
       if (name === 'telefonoFijo') {
-        if (telefonoFijoElement.disabled === false) {
-          setErrorTelefonoFijo(
-            'Se requiere el ingreso de un teléfono fijo válido'
-          )
-          return
-        }
+        setErrorTelefonoFijo(
+          'Se requiere el ingreso de un teléfono fijo válido'
+        )
       }
 
       if (name === 'telefonoCelular') {
@@ -253,28 +249,32 @@ const useValidation = (
   useEffect(() => {
     if (dni !== '') {
       setErrorDni(null)
-      const timer = setTimeout(() => {
-        // console.log(dni.length);
-        if (dni.length < 8) {
-          setErrorDni('El DNI debe contener 8 dígitos')
-        } else {
-          setErrorDni(null)
-        }
-      }, 1500)
+      if (dni) {
+        const timer = setTimeout(() => {
+          // console.log(dni.length);
+          if (dni.length < 8) {
+            setErrorDni('El DNI debe contener 8 dígitos')
+          } else {
+            setErrorDni(null)
+          }
+        }, 1500)
 
-      return () => {
-        clearTimeout(timer)
+        return () => {
+          clearTimeout(timer)
+        }
       }
     }
   }, [dni])
 
   useEffect(() => {
     if (dni !== '') {
-      setErrorDni(null)
-      if (dni.length < 8) {
-        setErrorVerdaderoDNI('El DNI debe contener 8 dígitos')
-      } else {
-        setErrorVerdaderoDNI(null)
+      if (dni) {
+        setErrorDni(null)
+        if (dni.length < 8) {
+          setErrorVerdaderoDNI('El DNI debe contener 8 dígitos')
+        } else {
+          setErrorVerdaderoDNI(null)
+        }
       }
     }
   }, [dni])
@@ -315,16 +315,18 @@ const useValidation = (
   useEffect(() => {
     if (telefonoFijo !== '') {
       setErrorTelefonoFijo(null)
-      const timer = setTimeout(() => {
-        if (telefonoFijo.length !== 7 && telefonoFijo !== 'No tiene') {
-          setErrorTelefonoFijo(
-            'El número de teléfono fijo debe contener 7 dígitos'
-          )
-        }
-      }, 1500)
+      if (telefonoFijo) {
+        const timer = setTimeout(() => {
+          if (telefonoFijo.length !== 7 && telefonoFijo !== 'No tiene') {
+            setErrorTelefonoFijo(
+              'El número de teléfono fijo debe contener 7 dígitos'
+            )
+          }
+        }, 1500)
 
-      return () => {
-        clearTimeout(timer)
+        return () => {
+          clearTimeout(timer)
+        }
       }
     }
   }, [telefonoFijo])
@@ -332,10 +334,12 @@ const useValidation = (
   useEffect(() => {
     if (telefonoFijo !== '') {
       setErrorVerdaderoTelefonoFijo(null)
-      if (telefonoFijo.length < 7 && telefonoFijo !== 'No tiene') {
-        setErrorVerdaderoTelefonoFijo(
-          'El número de teléfono fijo debe contener 7 dígitos'
-        )
+      if (telefonoFijo) {
+        if (telefonoFijo.length < 7 && telefonoFijo !== 'No tiene') {
+          setErrorVerdaderoTelefonoFijo(
+            'El número de teléfono fijo debe contener 7 dígitos'
+          )
+        }
       }
     }
   }, [telefonoFijo])
@@ -348,16 +352,18 @@ const useValidation = (
   useEffect(() => {
     if (telefonoCelular !== '') {
       setErrorTelefonoCelular(null)
-      const timer = setTimeout(() => {
-        if (telefonoCelular.length !== 9 && telefonoCelular !== 'No tiene') {
-          setErrorTelefonoCelular(
-            'El número de celular debe contener 9 dígitos'
-          )
-        }
-      }, 1500)
+      if (telefonoCelular) {
+        const timer = setTimeout(() => {
+          if (telefonoCelular.length !== 9 && telefonoCelular !== 'No tiene') {
+            setErrorTelefonoCelular(
+              'El número de celular debe contener 9 dígitos'
+            )
+          }
+        }, 1500)
 
-      return () => {
-        clearTimeout(timer)
+        return () => {
+          clearTimeout(timer)
+        }
       }
     }
   }, [telefonoCelular])
@@ -365,10 +371,12 @@ const useValidation = (
   useEffect(() => {
     if (telefonoCelular !== '') {
       setErrorVerdaderoTelefonoCelular(null)
-      if (telefonoCelular.length < 9 && telefonoCelular !== 'No tiene') {
-        setErrorVerdaderoTelefonoCelular(
-          'El número de celular debe contener 9 dígitos'
-        )
+      if (telefonoCelular) {
+        if (telefonoCelular.length < 9 && telefonoCelular !== 'No tiene') {
+          setErrorVerdaderoTelefonoCelular(
+            'El número de celular debe contener 9 dígitos'
+          )
+        }
       }
     }
   }, [telefonoCelular])

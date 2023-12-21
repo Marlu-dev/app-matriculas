@@ -3,19 +3,48 @@ import useValidationApoderado from '../hooks/useValidationApoderado'
 
 const RegistroApoderado = ({
   registroNombreApoderado,
-  handleApoderadoValido
+  handleApoderadoValido,
+  datosApoderado
 }) => {
   const banderaTelefonoCelularApoderado = useRef()
   const [bandera, setBandera] = useState(false)
   // const [banderaApoderadoValido, setBanderaApoderadoValido] = useState(false)
+  const [apoderado, setApoderado] = useState({})
+  const [copiaCelularApoderado, setCopiaCelularApoderado] = useState('')
 
-  const [apoderado, setApoderado] = useState({
-    nombreApoderado: '',
-    apellidoPaternoApoderado: '',
-    apellidoMaternoApoderado: '',
-    dniApoderado: '',
-    telefonoCelularApoderado: ''
-  })
+  console.log(datosApoderado)
+
+  useEffect(() => {
+    if (datosApoderado) {
+      setApoderado({
+        nombreApoderado: datosApoderado.nombreApoderado,
+        apellidoPaternoApoderado: datosApoderado.apellidoPaternoApoderado,
+        apellidoMaternoApoderado: datosApoderado.apellidoMaternoApoderado,
+        dniApoderado: datosApoderado.dniApoderado,
+        telefonoCelularApoderado: datosApoderado.telefonoCelularApoderado
+      })
+
+      if (datosApoderado.telefonoCelularApoderado === 'No tiene') {
+        setCopiaCelularApoderado('')
+      } else {
+        setCopiaCelularApoderado(datosApoderado.telefonoCelularApoderado)
+      }
+    }
+  }, [datosApoderado])
+
+  // const nombreApoderado = datosApoderado.nombreApoderado
+  // const apellidoPaternoApoderado = datosApoderado.apellidoPaternoApoderado
+  // const apellidoMaternoApoderado = datosApoderado.apellidoMaternoApoderado
+  // const dniApoderado = datosApoderado.dniApoderado
+  // const telefonoCelularApoderado = datosApoderado.telefonoCelularApoderado
+
+  // const [apoderado, setApoderado] = useState({
+  //   nombreApoderado: '',
+  //   apellidoPaternoApoderado: '',
+  //   apellidoMaternoApoderado: '',
+  //   dniApoderado: '',
+  //   telefonoCelularApoderado: ''
+  // })
 
   function noTelefonoCelular () {
     setBandera(banderaTelefonoCelularApoderado.current.checked)
@@ -25,7 +54,7 @@ const RegistroApoderado = ({
     if (telefonoCelularApoderadoElement.disabled) {
       telefonoCelularApoderadoElement.disabled = false
       telefonoCelularApoderadoElement.focus()
-      setApoderado({ ...apoderado, telefonoCelularApoderado: '' })
+      setApoderado({ ...apoderado, telefonoCelularApoderado: copiaCelularApoderado })
     } else {
       telefonoCelularApoderadoElement.disabled = true
       setApoderado({ ...apoderado, telefonoCelularApoderado: 'No tiene' })
@@ -199,6 +228,7 @@ const RegistroApoderado = ({
                 onBlur={handleBlur}
                 maxLength={9}
                 placeholder='949363534' required
+                disabled={apoderado.telefonoCelularApoderado === 'No tiene'}
               />
 
               <div className='check-button'>
@@ -209,6 +239,7 @@ const RegistroApoderado = ({
                   onChange={noTelefonoCelular}
                   onBlur={handleBlur}
                   id='checkbox4'
+                  checked={apoderado.telefonoCelularApoderado === 'No tiene'}
                 />
                 <label for='checkbox4' className='checkbox'>
                   {/* No tiene */}

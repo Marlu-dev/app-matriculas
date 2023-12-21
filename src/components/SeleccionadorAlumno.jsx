@@ -14,9 +14,13 @@ const SeleccionadorAlumno = ({
   carrera
 }) => {
   const [modal, setModal] = useState(false)
-  const activarModal = () => {
+  const [accion, setAccion] = useState('')
+  const activarModal = (accion) => {
     setModal(!modal)
+    setAccion(accion)
   }
+
+  // console.log(accion)
 
   return (
     <div className='container-seleccionador-alumno'>
@@ -33,14 +37,13 @@ const SeleccionadorAlumno = ({
         <span className='carrera-seleccionador-alumno'>{carrera}</span>
         <span className='dni-seleccionador-alumno'>{dni}</span>
         <AnimatePresence>
-          {modal && <ModalDeEdicionDeDatos cerrar={activarModal} codigo={codigo} />}
+          {modal && <ModalDeEdicionDeDatos cerrar={activarModal} codigo={codigo} accion={accion} />}
         </AnimatePresence>
       </main>
 
       <div
         className='ver-seleccionador-alumno'
-        value={codigo}
-        onClick={activarModal}
+        onClick={() => activarModal('ver')}
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -62,8 +65,7 @@ const SeleccionadorAlumno = ({
 
       <div
         className='editar-seleccionador-alumno'
-        value={codigo}
-        onClick={activarModal}
+        onClick={() => activarModal('editar')}
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
