@@ -14,9 +14,13 @@ const SeleccionadorAlumno = ({
   carrera
 }) => {
   const [modal, setModal] = useState(false)
-  const activarModal = () => {
+  const [accion, setAccion] = useState('')
+  const activarModal = (accion) => {
     setModal(!modal)
+    setAccion(accion)
   }
+
+  // console.log(accion)
 
   return (
     <div className='container-select-alumno'>
@@ -44,19 +48,13 @@ const SeleccionadorAlumno = ({
         </span>
 
         <AnimatePresence>
-          {modal && 
-            <ModalDeEdicionDeDatos 
-            cerrar={activarModal} 
-            codigo={codigo} 
-            />
-          }
+          {modal && <ModalDeEdicionDeDatos cerrar={activarModal} codigo={codigo} accion={accion} />}
         </AnimatePresence>
-
         <div className="icons-select-alumno">
           <div 
             className='ver-seleccionador-alumno'
             value={codigo}
-            onClick={activarModal}
+            onClick={() => activarModal('ver')}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -79,7 +77,7 @@ const SeleccionadorAlumno = ({
           <div
             className='modificar-seleccionador-alumno'
             value={codigo}
-            onClick={activarModal}
+            onClick={() => activarModal('editar')}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'

@@ -2,8 +2,9 @@ import React, { useRef } from 'react'
 import '../style/ModalDeEdicionDeDatos.css'
 import { motion } from 'framer-motion'
 import VistaDeDatosAlumno from './VistaDeDatosAlumno'
+import VistaEdicionDeDatosAlumno from './VistaEdicionDeDatosAlumno'
 
-const ModalDeEdicionDeDatos = ({ cerrar, codigo }) => {
+const ModalDeEdicionDeDatos = ({ cerrar, codigo, accion }) => {
   const sonidoRef = useRef(new Audio('../../src/sound/error.mp3'))
 
   const ejecutarSonido = () => {
@@ -38,7 +39,12 @@ const ModalDeEdicionDeDatos = ({ cerrar, codigo }) => {
             </div>
           </div>
         </div>
-        <div><VistaDeDatosAlumno codigo={codigo} /></div>
+        <div style={{ overflowY: 'auto' }}>
+
+          {
+            accion === 'ver' ? (<VistaDeDatosAlumno codigo={codigo} />) : accion === 'editar' ? (<VistaEdicionDeDatosAlumno codigo={codigo} />) : (<div>Accion no definida</div>)
+          }
+        </div>
       </motion.div>
       ;
     </div>

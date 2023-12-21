@@ -10,7 +10,9 @@
     "grupo": "semestral medicas",
     "carrera": "Biología Pesquera",
     "direccion": "Av. Los Alamos 123",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "987654321",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Maria",
       "apellidoPaternoApoderado": "Gomez",
@@ -30,7 +32,9 @@
     "grupo": "anual psicología",
     "carrera": "Psicología Infantil",
     "direccion": "Av. Emociones 345",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "876543210",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Alejandro",
       "apellidoPaternoApoderado": "López",
@@ -51,7 +55,9 @@
     "grupo": "trimestral ingeniería",
     "carrera": "Ingeniería Civil",
     "direccion": "Calle Obras 456",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "765432109",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Carmen",
       "apellidoPaternoApoderado": "Martínez",
@@ -72,7 +78,9 @@
     "grupo": "semestral biología",
     "carrera": "Biología Molecular",
     "direccion": "Av. Genética 567",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "654321098",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Fernando",
       "apellidoPaternoApoderado": "Hernández",
@@ -92,7 +100,9 @@
     "grupo": "anual arquitectura",
     "carrera": "Arquitectura Urbanística",
     "direccion": "Calle Diseño 678",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "876543210",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Eva",
       "apellidoPaternoApoderado": "Gómez",
@@ -113,7 +123,9 @@
     "grupo": "trimestral química",
     "carrera": "Química Orgánica",
     "direccion": "Av. Reactivos 789",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "234567890",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Roberto",
       "apellidoPaternoApoderado": "Martínez",
@@ -134,7 +146,9 @@
     "grupo": "semestral turismo",
     "carrera": "Turismo Cultural",
     "direccion": "Calle Viaje 123",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "345678901",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Isabel",
       "apellidoPaternoApoderado": "López",
@@ -155,7 +169,9 @@
     "grupo": "anual comunicaciones",
     "carrera": "Comunicaciones Audiovisuales",
     "direccion": "Av. Cámara 234",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "456789012",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Carlos",
       "apellidoPaternoApoderado": "Hernández",
@@ -176,7 +192,9 @@
     "grupo": "trimestral derecho",
     "carrera": "Derecho Penal",
     "direccion": "Calle Justicia 567",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "567890123",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Ana",
       "apellidoPaternoApoderado": "Martínez",
@@ -197,7 +215,9 @@
     "grupo": "semestral medicina",
     "carrera": "Medicina Interna",
     "direccion": "Av. Salud 789",
+    "referencia": "Cerca a la comisaria de la Molina",
     "telefonoCelular": "678901234",
+    "telefonoFijo": "No tiene",
     "apoderado": {
       "nombreApoderado": "Juan",
       "apellidoPaternoApoderado": "Gómez",
