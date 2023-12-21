@@ -40,7 +40,7 @@
 }
 
 
-.container-register .header-register {
+.header-register {
   position: relative;
   font-size: 30px;
   font-weight: 700;
@@ -49,7 +49,7 @@
 }
 
 /* -- LINEA IMAGINARIA DE INICIO-- */
-.container-register .header-register::before {
+.header-register::before {
   content: "";
   position: absolute;
   left: 0px;

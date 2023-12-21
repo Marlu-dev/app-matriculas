@@ -138,11 +138,13 @@ const RecuperarAlumnos = () => {
   // // console.log("listaFinal",listaFinal);
 
   return (
-    <div className='container-recuperar-alumnos'>
+    <div className='container-recuperar'>
       {/* CONTAINER PRINCIPAL */}
-      <div className='container-izquierda-recuperar-alumnos'>
+      <div className='container-principal'>
         <div>
-          <h1>DATOS DE ALUMNOS</h1>
+          <header className='header-register'>
+            DATOS DE ALUMNOS
+          </header>
           <input
             onChange={handleChange}
             value={busqueda}
@@ -150,7 +152,11 @@ const RecuperarAlumnos = () => {
             placeholder='Buscar...'
           />
 
-          <button onClick={ejecutarbusqueda}>Buscar</button>
+          <button 
+            onClick={ejecutarbusqueda}
+          >
+            Buscar
+          </button>
 
         </div>
 
