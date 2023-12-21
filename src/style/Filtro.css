@@ -40,6 +40,8 @@
     width: 70%;
     height: 100%;
     margin: 0 auto;
+    /* position: sticky;
+    top: 0px; */
     /* max-height: 200px;
     overflow-y: auto;
     margin-top: 10px; */
@@ -85,12 +87,12 @@
 }
 
 .content .options::-webkit-scrollbar-track{
-    background: var(--gris);
+    background: var(--grisClaro);
     border-radius: 25px;
 }
 
 .content .options::-webkit-scrollbar-thumb{
-    background: var(--blanco);
+    background: var(--gris);
     border-radius: 25px;
 }
 

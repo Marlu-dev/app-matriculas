@@ -71,13 +71,14 @@
 }
  */
 
-.container-select-alumno .datos-select-alumno {
-  position: relative;
+.datos-select-alumno {
+/*   position:; */
   margin: 0 auto;
   padding: 1%;
   width: 95%;
   box-shadow: 8px 8px 5px 2px var(--gris);
   border-radius: 10px;
+
 }
 
 .datos-select-alumno {
@@ -97,7 +98,6 @@
 }
 
 .titulo-tabla-lista-de-alumnos{
-  background-color: var(--grisClaro);
   color: var(--azul);
   font-size: 18px;
 }
