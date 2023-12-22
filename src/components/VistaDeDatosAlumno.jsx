@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import db from '../../public/services/firebase/firebase'
 import { collection, query, where, onSnapshot } from 'firebase/firestore'
+import "../style/VistaDeDatosAlumno.css"
 
 const collectionAlumnos = collection(db, 'alumnos')
 
@@ -39,100 +40,183 @@ const VistaDeDatosAlumno = ({ codigo }) => {
 
   return (
     <>
-      <div>
-        <h1>Alumno</h1>
-        <div>
-          <label>Nombre: </label>
-          <label>{alumno.nombre}</label>
-        </div>
-        <div>
-          <label>Apellido Paterno: </label>
-          <label>{alumno.apellidoPaterno}</label>
-        </div>
-        <div>
-          <label>Apellido Materno: </label>
-          <label>{alumno.apellidoMaterno}</label>
-        </div>
-        <div>
-          <label>DNI: </label>
-          <label>{alumno.dni}</label>
-        </div>
-        <div>
-          <label>Grupo: </label>
-          <label>{alumno.grupo}</label>
-        </div>
-        <div>
-          <label>Carrera: </label>
-          <label>{alumno.carrera}</label>
-        </div>
-        <div>
-          <label>Dirección: </label>
-          <label>{alumno.direccion}</label>
-        </div>
-        <div>
-          <label>Teléfono Celular: </label>
-          <label>{alumno.telefonoCelular}</label>
-        </div>
-      </div>
+    <div className="main-container"> {/* MAIN CONTAINER */}
+      {/* CONTAINER ALUMNO */}
+      <div className='person-container'>
+        <header className='header-register'>
+        DATOS DE ALUMNO
+        </header>
 
-      <div>
-        <h1>Apoderado</h1>
-        {alumno.apoderado
-          ? (
-            <div>
-              <label>Nombre: </label>
-              <label>{alumno.apoderado.nombreApoderado}</label>
-            </div>
-            )
-          : (
-            <label>No hay información de apoderado</label>
-            )}
+        {/* DATOS ALUMNO */}
+        <div className="datos-container">
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Nombre: 
+            </label>
+            <label className='content-dato'>
+              {alumno.nombre}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Apellido Paterno: 
+            </label>
+            <label className='content-dato'>
+              {alumno.apellidoPaterno}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Apellido Materno: 
+            </label>
+            <label className='content-dato'>
+              {alumno.apellidoMaterno}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              DNI: 
+            </label>
+            <label className='content-dato'>
+              {alumno.dni}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Grupo: 
+            </label>
+            <label className='content-dato'>
+              {alumno.grupo}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Carrera: 
+            </label>
+            <label className='content-dato'>
+              {alumno.carrera}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Dirección: 
+            </label>
+            <label className='content-dato'>
+              {alumno.direccion}
+            </label>
+          </div>
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Teléfono Celular: 
+            </label>
+            <label className='content-dato'>
+              {alumno.telefonoCelular}
+            </label>
+          </div>
 
-        {alumno.apoderado
-          ? (
-            <div>
-              <label>Apellido Paterno: </label>
-              <label>{alumno.apoderado.apellidoPaternoApoderado}</label>
-            </div>
-            )
-          : (
-            <label>No hay información de apoderado</label>
-            )}
+        </div> {/* FIN DATOS ALUMNO */}
 
-        {alumno.apoderado
-          ? (
-            <div>
-              <label>Apellido Materno: </label>
-              <label>{alumno.apoderado.apellidoMaternoApoderado}</label>
-            </div>
-            )
-          : (
-            <label>No hay información de apoderado</label>
-            )}
+      </div>{/* FIN CONTAINER ALUMNO */}
 
-        {alumno.apoderado
-          ? (
-            <div>
-              <label>DNI : </label>
-              <label>{alumno.apoderado.dniApoderado}</label>
-            </div>
-            )
-          : (
-            <label>No hay información de apoderado</label>
-            )}
+      {/* CONTAINER APODERADO */}
+      <div className='person-container'>
+        <header className='header-register'>
+        DATOS DE APODERADO
+        </header>
 
-        {alumno.apoderado
-          ? (
-            <div>
-              <label>Teléfono Celular : </label>
-              <label>{alumno.apoderado.telefonoCelularApoderado}</label>
-            </div>
-            )
-          : (
-            <label>No hay información de apoderado</label>
-            )}
+        {/* DATOS APODERADO */}
+        <div className="datos-container">
+          {alumno.apoderado
+            ? (
+              <div className='container-dato'>
+                <label className='title-dato'>
+                  Nombre: 
+                </label>
+                <label className='content-dato'>
+                  {alumno.apoderado.nombreApoderado}
+                </label>
+              </div>
+              )
+            : (
+              <label className='error-dato'>
+                No hay información de apoderado
+              </label>
+              )}
 
-      </div>
+          {alumno.apoderado
+            ? (
+              <div className='container-dato'>
+                <label className='title-dato'>
+                  Apellido Paterno: 
+                </label>
+                <label className='content-dato'>
+                  {alumno.apoderado.apellidoPaternoApoderado}
+                </label>
+              </div>
+              )
+            : (
+              <label className='error-dato'>
+                No hay información de apoderado
+              </label>
+              )}
+
+          {alumno.apoderado
+            ? (
+              <div className='container-dato'>
+                <label className='title-dato'>
+                  Apellido Materno: 
+                </label>
+                <label className='content-dato'>
+                  {alumno.apoderado.apellidoMaternoApoderado}
+                </label>
+              </div>
+              )
+            : (
+              <label className='error-dato'>
+                No hay información de apoderado
+              </label>
+              )}
+
+          {alumno.apoderado
+            ? (
+              <div className='container-dato'>
+                <label className='title-dato'>
+                  DNI : 
+                </label>
+                <label className='content-dato'>
+                  {alumno.apoderado.dniApoderado}
+                </label>
+              </div>
+              )
+            : (
+              <label className='error-dato'>
+                No hay información de apoderado
+              </label>
+              )}
+
+          {alumno.apoderado
+            ? (
+              <div className='container-dato'>
+                <label className='title-dato'>
+                  Teléfono Celular : 
+                </label>
+                <label className='content-dato'>
+                  {alumno.apoderado.telefonoCelularApoderado}
+                </label>
+              </div>
+              )
+            : (
+              <label className='error-dato'>
+                No hay información de apoderao
+              </label>
+              )}
+
+        </div>{/* FIN DATOS APODERADO */}
+
+      </div>{/* FIN CONTAINER APODERADO */}
+
+    </div> {/* FIN MAIN CONTAINER */}
+      
 
       {/* <div>
         <label>Apoderado</label>
