@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+.datos-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    margin: 0 auto;
+    box-shadow: 0 0 12px var(--negro);
+    background-color: var(--grisClaro);
+    border-radius: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.container-dato {
+    width: 40%;
+    margin: 0 auto;
+    list-style: none;
+    align-items: center;
+}
+
+.datos-container .title-dato {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--azul);
+    padding: 10px;
+}
+
+.datos-container .content-dato {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid var(--blanco);
+    font-size: 14px;
+}
+
+/* .datos-container div{
+    width: 40%;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.datos-container div label{
+    padding: 5px 0;
+    margin-right: 10px;
+    vertical-align: middle;
+} */
