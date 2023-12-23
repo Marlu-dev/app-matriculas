@@ -411,7 +411,7 @@ function RegistroAlumno () {
 
           {/* ---REGISTRO TOTAL DE INVERSION */}
           <div className='details inversion'>
-            <RegistroInversion />
+            <RegistroInversion grupo={selectedGrupo} />
 
           </div>
 
