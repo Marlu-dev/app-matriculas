@@ -97,6 +97,26 @@
   text-align: center;
 }
 
+.container-select-alumno .datos-select-alumno {
+  margin-top: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.container-select-alumno .datos-select-alumno::-webkit-scrollbar{
+  width: 5px;
+}
+
+.container-select-alumno .datos-select-alumno::-webkit-scrollbar-track{
+  background: var(--grisClaro);
+  border-radius: 25px;
+}
+
+.container-select-alumno .datos-select-alumno::-webkit-scrollbar-thumb{
+  background: var(--gris);
+  border-radius: 25px;
+}
+
 .titulo-tabla-lista-de-alumnos{
   color: var(--azul);
   font-size: 18px;

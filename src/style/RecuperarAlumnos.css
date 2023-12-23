@@ -96,7 +96,6 @@
 .container-register {
     background-color: var(--blanco);
     border-radius: 10px;
-    margin: 0 auto;
 /*     overflow: auto; */
 }
 
@@ -111,8 +110,10 @@
 
 .main-register .header-register{
     display: flex;
-    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 }
+
 /* .container-register .header-register  {
     position: sticky;
     top: 0px;

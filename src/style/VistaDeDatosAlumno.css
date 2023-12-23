@@ -33,10 +33,18 @@
     border-radius: 10px;
     text-align: center;
     width: 60%;
+    overflow-y: auto;
 }
 
+/* .main-container .person-container {
+    margin-top: 10px;
+    max-height: 180px;
+    overflow-y: auto;
+    margin-top: 10px;
+} */
+
 .container-dato {
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     list-style: none;
     align-items: center;
@@ -55,10 +63,23 @@
     padding: 8px 10px;
     margin-bottom: 15px;
     box-sizing: border-box;
-    border: 1px solid var(--blanco);
+    /* border: 1px solid var(--blanco); */
     font-size: 14px;
 }
 
+/* .person-container::-webkit-scrollbar{
+    width: 5px;
+}
+
+.person-container::-webkit-scrollbar-track{
+    background: var(--grisClaro);
+    border-radius: 25px;
+}
+
+.person-container::-webkit-scrollbar-thumb{
+    background: var(--gris);
+    border-radius: 25px;
+} */
 /* .datos-container div{
     width: 40%;
     margin: 0 auto;
