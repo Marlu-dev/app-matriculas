@@ -180,8 +180,10 @@ const RecuperarAlumnos = () => {
           
 
         </div>
-
-        <ListaDeAlumnos alumnos={resultadosAlumnos} />
+        
+        <div className="mostrar-main-alumnos">
+          <ListaDeAlumnos alumnos={resultadosAlumnos} />
+        </div> 
       </div> {/* FIN: CONTAINER PRINCIPAL */}
 
       {/* CONTAINER SECUNDARIO */}
