@@ -1,6 +1,7 @@
 //* Esto es para agregar un solo documento, por el momento estará comentado
 import { Timestamp } from 'firebase/firestore'
-import { crearJsonDesdeObjeto } from '../librerias/manipularDatos.js'
+import { agregarArrayDatosColeccionVacia } from '../librerias/manipularDatos.js'
+import { db } from '../public/services/firebase/firebase.js'
 
 const ciclos = [
   {
@@ -14,17 +15,23 @@ const ciclos = [
       dias: 'Lunes a Sabado',
       hora: '7:30am - 1:00pm + 3 tardes'
     },
-    precios: {
-      contado: 1400,
-      crédito: {
+    precios:
+    [
+      {
+        nombre: 'Contado',
+        total: 1400
+      },
+      {
+        nombre: 'Credito',
         total: 1500,
         cuotas: {
           1: 600,
           2: 500,
           3: 400
         }
+
       }
-    },
+    ],
 
     descuentos: {
       excelencia: 0,
@@ -33,11 +40,8 @@ const ciclos = [
 
     simulacroCarnet: 120,
 
-    tipo: {
-      1: 'Ingeniería',
-      2: 'Letras',
-      3: 'Médicas',
-      4: 'Ciencias'
+    grupo: {
+      1: 'Único'
     }
   },
   {
@@ -48,9 +52,14 @@ const ciclos = [
       dias: 'Lunes a Sabado',
       hora: '7:00am - 1:00pm + 3 tardes (3:00pm - 8:30pm)'
     },
-    precios: {
-      contado: 1900,
-      crédito: {
+    precios: [
+      {
+        nombre: 'Contado',
+        total: 1900
+
+      },
+      {
+        nombre: 'Credito',
         total: 2000,
         cuotas: {
           1: 600,
@@ -58,31 +67,28 @@ const ciclos = [
           3: 500,
           4: 400
         }
-      },
 
-      descuentos: {
-        excelencia: {
-          contado: 1520,
-          crédito: {
-            total: 1600,
-            cuotas: {
-              1: 550,
-              2: 550,
-              3: 500
-            }
+      }],
+
+    descuentos: {
+      excelencia: {
+        contado: 1520,
+        credito: {
+          total: 1600,
+          cuotas: {
+            1: 550,
+            2: 550,
+            3: 500
           }
-        },
-        exAlumno: 0
-      }
+        }
+      },
+      exAlumno: 0
     },
 
     simulacroCarnet: 180,
 
-    tipo: {
-      1: 'Ingeniería',
-      2: 'Letras',
-      3: 'Médicas',
-      4: 'Ciencias'
+    grupo: {
+      1: 'Único'
     }
   },
 
@@ -96,36 +102,36 @@ const ciclos = [
     },
     precios: {
       contado: 1500,
-      crédito: {
+      credito: {
         total: 1600,
         cuotas: {
           1: 600,
           2: 500,
           3: 500
         }
-      },
+      }
+    },
 
-      descuentos: {
-        excelencia: {
-          contado: 1200,
-          crédito: {
-            total: 1280,
-            cuotas: {
-              1: 500,
-              2: 400,
-              3: 380
-            }
+    descuentos: {
+      excelencia: {
+        contado: 1200,
+        credito: {
+          total: 1280,
+          cuotas: {
+            1: 500,
+            2: 400,
+            3: 380
           }
-        },
-        exAlumno: {
-          contado: 1400,
-          crédito: {
-            total: 1500,
-            cuotas: {
-              1: 500,
-              2: 500,
-              3: 500
-            }
+        }
+      },
+      exAlumno: {
+        contado: 1400,
+        credito: {
+          total: 1500,
+          cuotas: {
+            1: 500,
+            2: 500,
+            3: 500
           }
         }
       }
@@ -133,11 +139,10 @@ const ciclos = [
 
     simulacroCarnet: 120,
 
-    tipo: {
+    grupo: {
       1: 'Ingeniería',
       2: 'Letras',
-      3: 'Médicas',
-      4: 'Ciencias'
+      3: 'Médicas'
     }
   },
 
@@ -151,28 +156,27 @@ const ciclos = [
     },
     precios: {
       contado: 1000,
-      crédito: {
+      credito: {
         total: 1100,
         cuotas: {
           1: 400,
           2: 400,
           3: 300
         }
-      },
-
-      descuentos: {
-        excelencia: 0,
-        exAlumno: 0
       }
+    },
+
+    descuentos: {
+      excelencia: 0,
+      exAlumno: 0
     },
 
     simulacroCarnet: 120,
 
-    tipo: {
+    grupo: {
       1: 'Ingeniería',
       2: 'Letras',
-      3: 'Médicas',
-      4: 'Ciencias'
+      3: 'Médicas'
     }
   },
 
@@ -186,27 +190,24 @@ const ciclos = [
     },
     precios: {
       contado: 600,
-      crédito: {
+      credito: {
         total: 700,
         cuotas: {
           1: 400,
           2: 300
         }
-      },
-
-      descuentos: {
-        excelencia: 0,
-        exAlumno: 0
       }
+    },
+
+    descuentos: {
+      excelencia: 0,
+      exAlumno: 0
     },
 
     simulacroCarnet: 10,
 
-    tipo: {
-      1: 'Ingeniería',
-      2: 'Letras',
-      3: 'Médicas',
-      4: 'Ciencias'
+    grupo: {
+      1: 'Único'
     }
   },
 
@@ -221,30 +222,77 @@ const ciclos = [
 
     precios: {
       contado: 600,
-      crédito: {
+      credito: {
         total: 700,
         cuotas: {
           1: 400,
           2: 300
         }
-      },
-
-      descuentos: {
-        excelencia: 0,
-        exAlumno: 0
       }
+    },
+
+    descuentos: {
+      excelencia: 0,
+      exAlumno: 0
     },
 
     simulacroCarnet: 10,
 
-    tipo: {
+    grupo: {
       1: 'Ingeniería',
       2: 'Letras',
-      3: 'Médicas',
-      4: 'Ciencias'
+      3: 'Médicas'
     }
   }
 
 ]
 
-crearJsonDesdeObjeto(ciclos)
+const carreritas = [
+  {
+    nombre: 'Medicina',
+    ciclos: [
+      {
+        nombre: 'Anual Nuevo',
+        grupos: [
+          {
+            nombre: 'Único'
+          }
+        ]
+
+      },
+
+      {
+        nombre: 'Anual Continuo (Formativos)',
+        grupos: [
+
+          {
+            nombre: 'Semestral Letras'
+          },
+          {
+            nombre: 'Semestral Ingeniería'
+          },
+          {
+            nombre: 'Semestral Médicas'
+          }
+        ]
+
+      },
+      {
+        nombre: 'Semestral',
+        grupos: [
+          {
+            nombre: 'Semestral Médicas'
+          }
+        ]
+      }
+    ]
+  }
+
+]
+
+// crearJsonDesdeObjeto(ciclos)
+// const grupos = recuperarColeccion('grupos')
+// console.log(grupos)
+
+// agregarArrayDatosColeccionVacia(db, ciclos, 'ciclos', 'ciclo')
+agregarArrayDatosColeccionVacia(db, carreritas, 'carreritas', 'carrera')
