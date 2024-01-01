@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import db from '../../public/services/firebase/firebase'
+import { db } from '../../public/services/firebase/firebase'
 import { collection, query, where, onSnapshot } from 'firebase/firestore'
 import '../style/VistaDeDatosAlumno.css'
 

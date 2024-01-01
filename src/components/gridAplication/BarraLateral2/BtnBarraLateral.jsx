@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './style/BtnBarralateral.css'
 
-const BtnBarraLateral = ({ name, titulo, funcion, expandido, seleccion }) => {
+const BtnBarraLateral = ({ name, titulo, funcion, expandido, seleccion, tituloParaMostrar }) => {
   const root = document.getElementById('root')
   const btnRef = useRef(null)
   const iconoRef = useRef(null)
@@ -33,7 +33,6 @@ const BtnBarraLateral = ({ name, titulo, funcion, expandido, seleccion }) => {
     seleccion(titulo)
     // console.log(titulo);
   }
-  899
 
   return (
     <div className='btnBarraLateral' onClick={funcionQueRealiza}>
@@ -41,7 +40,7 @@ const BtnBarraLateral = ({ name, titulo, funcion, expandido, seleccion }) => {
         {name}
       </div>
       <div className='btnBarraLateralTitulo' ref={btnRef}>
-        {titulo}
+        {tituloParaMostrar}
       </div>
     </div>
   )

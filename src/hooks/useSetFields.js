@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 function useSetFileds () {
   const [selectedGrupo, setSelectedGrupo] = useState('')
+  const [selectedCarrera, setSelectedCarrera] = useState('')
+  const [selectedCiclo, setSelectedCiclo] = useState('')
   const [name, setName] = useState('')
   const [apellidoPaterno, setApellidoPaterno] = useState('')
   const [apellidoMaterno, setApellidoMaterno] = useState('')
@@ -11,7 +13,6 @@ function useSetFileds () {
   const [edad, setEdad] = useState('')
   const [telefonoFijo, setTelefonoFijo] = useState('')
   const [telefonoCelular, setTelefonoCelular] = useState('')
-  const [selectedCarrera, setSelectedCarrera] = useState('')
   const [estadoBotonReferencia, setEstadoBotonReferencia] = useState(false)
   const [estadoBotonTelefonoFijo, setEstadoBotonTelefonoFijo] = useState(false)
   const [estadoBotonTelefonoCelular, setEstadoBotonTelefonoCelular] =
@@ -68,7 +69,7 @@ function useSetFileds () {
       return
     }
 
-    if (e.target.name === 'name') {
+    if (e.target.name === 'nombre') {
       setName(newQuery)
       return
     }
@@ -122,6 +123,10 @@ function useSetFileds () {
     if (e.target.name === 'carrera') {
       setSelectedCarrera(newQuery)
     }
+
+    if (e.target.name === 'ciclo') {
+      setSelectedCiclo(newQuery)
+    }
   }
 
   return {
@@ -136,6 +141,7 @@ function useSetFileds () {
     telefonoFijo,
     telefonoCelular,
     selectedCarrera,
+    selectedCiclo,
     handleChange,
     noReferencia,
     noTelefonoFijo,

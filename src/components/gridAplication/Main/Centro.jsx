@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RegistroAlumno from '../../RegistroAlumno'
 import RecuperarAlumnos from '../../RecuperarAlumnos'
 import './style/Centro.css'
+import RegistroMatricula from '../../RegistroMatricula'
 
 const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
   let menu
@@ -28,6 +29,10 @@ const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
 
     case 'Contraer':
       menu = menuAnterior
+      break
+
+    case 'RegistroMatricula':
+      menu = <RegistroMatricula />
       break
   }
 

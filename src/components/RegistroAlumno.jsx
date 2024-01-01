@@ -1,15 +1,13 @@
 import '../style/registroAlumno.css'
 import React, { useEffect } from 'react'
-import db from '../../public/services/firebase/firebase.js'
-import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../public/services/firebase/firebase.js'
+import { addDoc, collection, setDoc, doc } from 'firebase/firestore'
 import useValidation from '../hooks/useValidation'
 import useSetFileds from '../hooks/useSetFields'
 // import BotonAtras from "./BotonAtras";
 
-import Select from './Select'
-
 import RegistroApoderado from './RegistroApoderado'
-import RegistroInversion from './RegistroInversion'
+// import RegistroInversion from './RegistroInversion'
 
 function RegistroAlumno () {
   // campos del formulario
@@ -40,6 +38,7 @@ function RegistroAlumno () {
     telefonoFijo,
     telefonoCelular,
     selectedCarrera,
+    selectedCiclo,
     handleChange,
     noReferencia,
     noTelefonoFijo,
@@ -66,7 +65,7 @@ function RegistroAlumno () {
     numeroNuevo,
     handleBlur
   } = useValidation(
-    selectedGrupo,
+
     name,
     apellidoPaterno,
     apellidoMaterno,
@@ -76,7 +75,6 @@ function RegistroAlumno () {
     edad,
     telefonoFijo,
     telefonoCelular,
-    selectedCarrera,
     estadoBotonReferencia,
     estadoBotonTelefonoFijo,
     estadoBotonTelefonoCelular,
@@ -85,6 +83,9 @@ function RegistroAlumno () {
 
   // console.log(name)
   // console.log(apellidoMaterno)
+  console.log(selectedCiclo)
+
+  console.log(isButtonDisabled)
 
   useEffect(() => {
     // console.log(selectedGrupo)
@@ -97,6 +98,18 @@ function RegistroAlumno () {
     fields.codigo = codigoNuevo
     fields.apoderado = nombreApoderado
     fields.nombre = name
+    fields.apellidoPaterno = apellidoPaterno
+    fields.apellidoMaterno = apellidoMaterno
+    fields.direccion = direccion
+    fields.referencia = referencia
+    fields.dni = dni
+    fields.edad = edad
+    fields.telefonoFijo = telefonoFijo
+    fields.telefonoCelular = telefonoCelular
+    delete fields.checkbox1
+    delete fields.checkbox2
+    delete fields.checkbox3
+    delete fields.checkbox4
     delete fields.nombreApoderado
     delete fields.apellidoPaternoApoderado
     delete fields.apellidoMaternoApoderado
@@ -104,7 +117,8 @@ function RegistroAlumno () {
     delete fields.telefonoCelularApoderado
     console.log(fields)
     // console.log(fields)
-    await addDoc(collection(db, 'alumnos'), fields)
+    // await addDoc(collection(db, 'alumnos'), fields)
+    await setDoc(doc(db, 'alumnos', codigoNuevo), fields)
     console.log(fields)
     // await setDoc(doc(db, "alumnos", "A7"), fields);
   }
@@ -138,72 +152,6 @@ function RegistroAlumno () {
                     readOnly
                     disabled
                   />
-                </div>
-              </div>
-
-              {/* SEGUNDO DATO: Grupo */}
-              <div className='input-seccion'>
-                <div>
-                  <label>Grupo</label>
-                </div>
-                <div className='main-dropdwon'>
-                  <div className='select-container'>
-                    <Select
-                      coleccion='grupos'
-                      nombre='grupo'
-                      onSelectChange={handleChange}
-                    />
-                    <div className='select-icon'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        class='icon icon-tabler icon-tabler-chevron-down'
-                        width='25'
-                        height='25'
-                        viewBox='0 0 24 24'
-                        stroke-width='3.5'
-                        stroke='#2c3e50'
-                        fill='none'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      >
-                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                        <path d='M6 9l6 6l6 -6' />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* TERCER DATO: Carrera */}
-              <div className='input-seccion'>
-                <div>
-                  <label>Carrera</label>
-                </div>
-                <div className='main-dropdwon'>
-                  <div className='select-container'>
-                    <Select
-                      coleccion={selectedGrupo}
-                      nombre='carrera'
-                      onSelectChange={handleChange}
-                    />
-                    <div className='select-icon'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        class='icon icon-tabler icon-tabler-chevron-down'
-                        width='25'
-                        height='25'
-                        viewBox='0 0 24 24'
-                        stroke-width='3.5'
-                        stroke='#2c3e50'
-                        fill='none'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      >
-                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                        <path d='M6 9l6 6l6 -6' />
-                      </svg>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -409,11 +357,11 @@ function RegistroAlumno () {
             />
           </div>
 
-          {/* ---REGISTRO TOTAL DE INVERSION */}
+          {/* ---REGISTRO TOTAL DE INVERSION
           <div className='details inversion'>
-            <RegistroInversion grupo={selectedGrupo} />
+            <RegistroInversion grupo={selectedGrupo} ciclo={selectedCiclo} dni={dni} />
 
-          </div>
+          </div> */}
 
         </div>
 
