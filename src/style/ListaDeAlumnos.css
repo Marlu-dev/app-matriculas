@@ -55,3 +55,8 @@
     padding: 4% 0 4% 0;
     text-align: center;
 }
+
+.titulo-container-select-alumno SeleccionadorAlumno {
+    font-size: 18px;
+    overflow-y: auto;
+}

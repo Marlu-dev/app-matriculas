@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
 .modal-edicion-datos-fondo-invisible {
     position: absolute;
     top: 0;
@@ -17,7 +42,27 @@
     flex-direction: column;
     top: 50%;
     left: 50%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--blanco);
     z-index: 2;
-    border: 2px solid black;
+    border: 2px solid var(--negro);
+}
+
+.modal-edicion-datos .container-register {
+    /* margin-top: 10px; */
+    max-height: 100%;
+    overflow-y: auto;
+} 
+
+.modal-edicion-datos .container-register::-webkit-scrollbar{
+    width: 10px;
+}
+
+.modal-edicion-datos .container-register::-webkit-scrollbar-track{
+    background: var(--grisClaro);
+    border-radius: 25px;
+}
+
+.modal-edicion-datos .container-register::-webkit-scrollbar-thumb{
+    background: var(--gris);
+    border-radius: 25px;
 }
