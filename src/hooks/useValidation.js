@@ -6,10 +6,9 @@ import {
   orderBy,
   limit
 } from 'firebase/firestore'
-import db from '../../public/services/firebase/firebase.js'
+import { db } from '../../public/services/firebase/firebase.js'
 
 const useValidation = (
-  selectedGrupo,
   name,
   apellidoPaterno,
   apellidoMaterno,
@@ -19,7 +18,6 @@ const useValidation = (
   edad,
   telefonoFijo,
   telefonoCelular,
-  selectedCarrera,
   estadoBotonReferencia,
   estadoBotonTelefonoFijo,
   estadoBotonTelefonoCelular,
@@ -60,6 +58,8 @@ const useValidation = (
   const campoTelefonoFijoValido = useRef(false)
   const campoTelefonoCelularValido = useRef(false)
   const campoDniValido = useRef(false)
+
+  console.log(dni)
 
   // // console.log(campoReferenciaValido.current);
   // // console.log(estadoBotonReferencia);
@@ -208,6 +208,8 @@ const useValidation = (
       const listaDeOpciones = querySnapshot.docs.map((doc) => ({
         id: 'A' + (parseInt(doc.data().codigo.slice(1), 10) + 1)
       }))
+
+      console.log(listaDeOpciones)
 
       if (listaDeOpciones.length === 0) {
         setCodigoNuevo('A1')
@@ -383,7 +385,6 @@ const useValidation = (
 
   useEffect(() => {
     if (
-      selectedGrupo === '' ||
       errorName !== null ||
       errorApellidoPaterno !== null ||
       errorApellidoMaterno !== null ||
@@ -393,7 +394,6 @@ const useValidation = (
       errorEdad !== null ||
       errorVerdaderoTelefonoFijo !== null ||
       errorVerdaderoTelefonoCelular !== null ||
-      selectedCarrera === '' ||
       isFirstName.current === true ||
       isFirstApellidoPaterno.current === true ||
       isFirstApellidoMaterno.current === true ||
@@ -418,9 +418,10 @@ const useValidation = (
       apoderadoValido === false
     ) {
       setIsButtonDisabled(true)
+    } else {
+      setIsButtonDisabled(false)
     }
   }, [
-    selectedGrupo,
     errorName,
     errorApellidoPaterno,
     errorApellidoMaterno,
@@ -429,7 +430,6 @@ const useValidation = (
     errorVerdaderoDNI,
     errorVerdaderoTelefonoFijo,
     errorVerdaderoTelefonoCelular,
-    selectedCarrera,
     name,
     apellidoPaterno,
     apellidoMaterno,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { collection, onSnapshot, query } from 'firebase/firestore'
-import db from '../../public/services/firebase/firebase'
+import { db } from '../../public/services/firebase/firebase'
 import '../style/Filtro.css'
 
 const Filtro = ({ nombre, coleccion, funcionObtenerFiltros }) => {

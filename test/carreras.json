@@ -1,0 +1,214 @@
+[
+  {
+    "nombre": "Anual Continuo (Formativos)",
+    "inicio": {
+      "Ciencias": "2024-03-30T07:30:00.000Z",
+      "Letras": "2024-04-03T07:30:00.000Z"
+    },
+    "fin": "2024-09-01T00:00:00.000Z",
+    "horario": {
+      "dias": "Lunes a Sabado",
+      "hora": "7:30am - 1:00pm + 3 tardes"
+    },
+    "precios": {
+      "contado": 1400,
+      "crédito": {
+        "total": 1500,
+        "cuotas": {
+          "1": 600,
+          "2": 500,
+          "3": 400
+        }
+      }
+    },
+    "descuentos": {
+      "excelencia": 0,
+      "exAlumno": 0
+    },
+    "simulacroCarnet": 120,
+    "tipo": {
+      "1": "Ingeniería",
+      "2": "Letras",
+      "3": "Médicas"
+    }
+  },
+  {
+    "nombre": "Anual Nuevo",
+    "inicio": "2024-04-13T07:30:00.000Z",
+    "fin": "2024-12-01T00:00:00.000Z",
+    "horario": {
+      "dias": "Lunes a Sabado",
+      "hora": "7:00am - 1:00pm + 3 tardes (3:00pm - 8:30pm)"
+    },
+    "precios": {
+      "contado": 1900,
+      "crédito": {
+        "total": 2000,
+        "cuotas": {
+          "1": 600,
+          "2": 500,
+          "3": 500,
+          "4": 400
+        }
+      },
+      "descuentos": {
+        "excelencia": {
+          "contado": 1520,
+          "crédito": {
+            "total": 1600,
+            "cuotas": {
+              "1": 550,
+              "2": 550,
+              "3": 500
+            }
+          }
+        },
+        "exAlumno": 0
+      }
+    },
+    "simulacroCarnet": 180,
+    "tipo": {
+      "1": "Ingeniería",
+      "2": "Letras",
+      "3": "Médicas"
+    }
+  },
+  {
+    "nombre": "Semestral",
+    "inicio": "2024-04-13T07:30:00.000Z",
+    "fin": "2024-09-01T00:00:00.000Z",
+    "horario": {
+      "dias": "Lunes a Sabado",
+      "hora": "7:00am - 1:00pm + 3 tardes (3:00pm - 8:30pm)"
+    },
+    "precios": {
+      "contado": 1500,
+      "crédito": {
+        "total": 1600,
+        "cuotas": {
+          "1": 600,
+          "2": 500,
+          "3": 500
+        }
+      },
+      "descuentos": {
+        "excelencia": {
+          "contado": 1200,
+          "crédito": {
+            "total": 1280,
+            "cuotas": {
+              "1": 500,
+              "2": 400,
+              "3": 380
+            }
+          }
+        },
+        "exAlumno": {
+          "contado": 1400,
+          "crédito": {
+            "total": 1500,
+            "cuotas": {
+              "1": 500,
+              "2": 500,
+              "3": 500
+            }
+          }
+        }
+      }
+    },
+    "simulacroCarnet": 120,
+    "tipo": {
+      "1": "Ingeniería",
+      "2": "Letras",
+      "3": "Médicas"
+    }
+  },
+  {
+    "nombre": "Semestral Tarde",
+    "inicio": "2024-04-17T15:00:00.000Z",
+    "fin": "2024-09-01T00:00:00.000Z",
+    "horario": {
+      "dias": "Lunes a Sabado",
+      "hora": "3:00pm - 8:30pm + 3 tardes, Domingo(Simulacro)"
+    },
+    "precios": {
+      "contado": 1000,
+      "crédito": {
+        "total": 1100,
+        "cuotas": {
+          "1": 400,
+          "2": 400,
+          "3": 300
+        }
+      },
+      "descuentos": {
+        "excelencia": 0,
+        "exAlumno": 0
+      }
+    },
+    "simulacroCarnet": 120,
+    "tipo": {
+      "1": "Ingeniería",
+      "2": "Letras",
+      "3": "Médicas"
+    }
+  },
+  {
+    "nombre": "Alfa",
+    "inicio": "2024-04-17T16:00:00.000Z",
+    "fin": "2024-09-01T00:00:00.000Z",
+    "horario": {
+      "dias": "Interdiario",
+      "hora": "4:00pm - 8:00pm"
+    },
+    "precios": {
+      "contado": 600,
+      "crédito": {
+        "total": 700,
+        "cuotas": {
+          "1": 400,
+          "2": 300
+        }
+      },
+      "descuentos": {
+        "excelencia": 0,
+        "exAlumno": 0
+      }
+    },
+    "simulacroCarnet": 10,
+    "tipo": {
+      "1": "Ingeniería",
+      "2": "Letras",
+      "3": "Médicas"
+    }
+  },
+  {
+    "nombre": "Paralelo",
+    "inicio": "2024-04-24T15:00:00.000Z",
+    "fin": "2024-08-01T00:00:00.000Z",
+    "horario": {
+      "dias": "Lunes a Sabado",
+      "hora": "3:00pm - 9:00pm, Domingo(Simulacro)"
+    },
+    "precios": {
+      "contado": 600,
+      "crédito": {
+        "total": 700,
+        "cuotas": {
+          "1": 400,
+          "2": 300
+        }
+      },
+      "descuentos": {
+        "excelencia": 0,
+        "exAlumno": 0
+      }
+    },
+    "simulacroCarnet": 10,
+    "tipo": {
+      "1": "Ingeniería",
+      "2": "Letras",
+      "3": "Médicas"
+    }
+  }
+]

@@ -1,0 +1,37 @@
+.container-registro-matricula {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    gap: 8px;
+    background-color: #e7e4e4;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "identificar-alumno gestionar-descuentos"
+        "identificar-alumno gestionar-descuentos"
+        "matricular-alumno ver-resumen-pagos"
+        "matricular-alumno ver-resumen-pagos"
+        "matricular-alumno ver-resumen-pagos"
+        "matricular-alumno ver-resumen-pagos"
+        "matricular-alumno ver-resumen-pagos";
+}
+
+.container-identificar-alumno {
+    background-color: #ffff;
+    grid-area: identificar-alumno;
+}
+
+.container-matricular-alumno {
+    background-color: #ffff;
+    grid-area: matricular-alumno;
+}
+
+.container-gestionar-descuentos {
+    background-color: #ffff;
+    grid-area: gestionar-descuentos;
+}
+
+.container-ver-resumen-pagos {
+    background-color: #ffff;
+    grid-area: ver-resumen-pagos;
+}
