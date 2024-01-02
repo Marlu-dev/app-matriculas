@@ -74,6 +74,7 @@ async function agregarDatosExcelencia (codigo) {
   const documento = await getDoc(coleccionRef)
   if (documento.exists()) {
     await updateDoc(coleccionRef, { docExcelencia: true })
+    console.log('Datos agregados')
   } else {
     console.error('El documento no existe')
   }

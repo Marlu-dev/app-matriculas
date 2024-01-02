@@ -11,46 +11,61 @@ const RegistroMatricula = () => {
   const [coincidencia, setCoincidencia] = useState([])
   const [listaDeCiclos, setListaDeCiclos] = useState([])
   const [tipoDePagoSeleccionado, setTipoDePagoSeleccionado] = useState()
-  const [montoSeleccionado, setMontoSeleccionado] = useState()
+  // const [montoSeleccionado, setMontoSeleccionado] = useState()
   const [descuentoExAlumno, setDescuentoExAlumno] = useState(false)
   const [descuentoExcelencia, setDescuentoExcelencia] = useState(false)
   const [infoDocumentoExcelencia, setInfoDocumentoExcelencia] = useState()
-  const [descuentoQueSeAplicara, setDescuentoQueSeAplicara] = useState()
+  const [relevanteDelAlumno, setRelevanteDelAlumno] = useState()
   const [montoFinal, setMontoFinal] = useState()
+  const [montosOriginales, setMontosOriginales] = useState()
+  const [descuentosDelCiclo, setDescuentosDelCiclo] = useState([])
+  const [descuentosDisponibles, setDescuentosDisponibles] = useState()
+  const [descuentoQueSeAplicara, setDescuentoQueSeAplicara] = useState()
+  const [montoOriginal, setMontoOriginal] = useState()
+  const [montoSimulacroCarnet, setMontoSimulacroCarnet] = useState()
+  const [montoTotal, setMontoTotal] = useState()
+
+  console.log(tipoDePagoSeleccionado)
 
   useEffect(() => {
     if (descuentoExcelencia && descuentoExAlumno) {
-      setDescuentoQueSeAplicara('Excelencia')
+      setRelevanteDelAlumno('excelencia')
     } else if (descuentoExcelencia && !descuentoExAlumno) {
-      setDescuentoQueSeAplicara('Excelencia')
+      setRelevanteDelAlumno('excelencia')
     } else if (!descuentoExcelencia && descuentoExAlumno) {
-      setDescuentoQueSeAplicara('Ex-alumno')
+      setRelevanteDelAlumno('exAlumno')
     } else {
-      setDescuentoQueSeAplicara('Ninguno')
+      setRelevanteDelAlumno('nada')
     }
   }, [descuentoExcelencia, descuentoExAlumno])
 
-  console.log(listaDeCiclos)
-  console.log(descuentoQueSeAplicara)
-  console.log(montoSeleccionado)
+  useEffect(() => {
+    console.log(relevanteDelAlumno)
+  }, [relevanteDelAlumno])
+  // console.log(listaDeCiclos)
+  // console.log(RelevanteDelAlumno)
+  // console.log(montoSeleccionado)
+  // console.log(selectedCarrera)
+  // console.log(selectedCiclo)
 
   const actualizarInfoDocumentoExcelencia = (e) => {
     setInfoDocumentoExcelencia(e.target.files[0])
   }
 
   useEffect(() => {
-    console.log('infoDocumentoExcelencia: ', infoDocumentoExcelencia)
+    console.log(infoDocumentoExcelencia)
   }, [infoDocumentoExcelencia])
 
-  const enviarDocumentoExcelencia = () => {
+  const enviarDocumentoExcelencia = async () => {
     if (!infoDocumentoExcelencia) {
       return
     }
 
-    console.log(coincidencia[0].id)
+    // console.log(coincidencia[0].id)
     const ref = subirDocumentoExcelencia(infoDocumentoExcelencia, dni)
-    console.log(ref)
-    agregarDatosExcelencia(coincidencia[0].id)
+    // console.log(ref)
+    await agregarDatosExcelencia(coincidencia[0].id)
+    identificarAlumno()
   }
 
   useEffect(() => {
@@ -61,17 +76,106 @@ const RegistroMatricula = () => {
 
   // console.log(selectedCiclo)
 
-  const precio = listaDeCiclos.find((c) => {
+  const datosCiclo = listaDeCiclos.find((c) => {
     return c.nombre === selectedCiclo
   })
 
-  // console.log(precio)
+  useEffect(() => {
+    const datosCiclo = listaDeCiclos.find((c) => {
+      return c.nombre === selectedCiclo
+    })
 
-  const montos = precio ? precio.precios : null
-  const descuentos = precio ? precio.descuentos : null
+    if (!datosCiclo) {
+      return
+    }
 
-  console.log(montos)
-  console.log(descuentos)
+    setDescuentosDelCiclo(datosCiclo.descuentos)
+    console.log(tipoDePagoSeleccionado)
+
+    if (tipoDePagoSeleccionado === undefined || tipoDePagoSeleccionado === '') {
+      setMontoSimulacroCarnet('')
+    } else setMontoSimulacroCarnet(datosCiclo.simulacroCarnet)
+
+    // console.log(datosCiclo.simulacroCarnet)
+  }, [listaDeCiclos, tipoDePagoSeleccionado])
+
+  useEffect(() => {
+  //   console.log(descuentosDelCiclo.exAlumno)
+  //   if (descuentosDelCiclo.exAlumno !== 0) {
+  //     setDescuentosDisponibles({ ...descuentosDisponibles, exAlumno: descuentosDelCiclo.exAlumno })
+  //   }
+
+    //   console.log(descuentosDelCiclo.excelencia)
+    //   if (descuentosDelCiclo.excelencia !== 0) {
+    //     setDescuentosDisponibles({ ...descuentosDisponibles, excelencia: descuentosDelCiclo.excelencia })
+    //   }
+    // }, [descuentosDelCiclo])
+
+    if (descuentosDelCiclo.exAlumno !== 0 && descuentosDelCiclo.excelencia !== 0) {
+      setDescuentosDisponibles('ambos')
+    }
+
+    if (descuentosDelCiclo.exAlumno !== 0 && descuentosDelCiclo.excelencia === 0) {
+      setDescuentosDisponibles('exAlumno')
+    }
+
+    if (descuentosDelCiclo.exAlumno === 0 && descuentosDelCiclo.excelencia !== 0) {
+      setDescuentosDisponibles('excelencia')
+    }
+
+    if (descuentosDelCiclo.exAlumno === 0 && descuentosDelCiclo.excelencia === 0) {
+      setDescuentosDisponibles('nada')
+    }
+    // console.log(descuentosDelCiclo
+  }, [descuentosDelCiclo, selectedCiclo])
+  // console.log(datosCiclo)
+
+  useEffect(() => {
+    console.log(descuentosDisponibles)
+    console.log(relevanteDelAlumno)
+
+    if (descuentosDisponibles === 'ambos') {
+      if (relevanteDelAlumno === 'excelencia') {
+        setDescuentoQueSeAplicara('excelencia')
+      } else if (relevanteDelAlumno === 'exAlumno') {
+        setDescuentoQueSeAplicara('exAlumno')
+      }
+    }
+
+    if (descuentosDisponibles === 'exAlumno') {
+      if (relevanteDelAlumno === 'exAlumno') {
+        setDescuentoQueSeAplicara('exAlumno')
+      } else {
+        setDescuentoQueSeAplicara('nada')
+      }
+    }
+
+    if (descuentosDisponibles === 'excelencia') {
+      if (relevanteDelAlumno === 'excelencia') {
+        setDescuentoQueSeAplicara('excelencia')
+      } else {
+        setDescuentoQueSeAplicara('nada')
+      }
+    }
+
+    if (descuentosDisponibles === 'nada') {
+      setDescuentoQueSeAplicara('nada')
+    }
+  }, [descuentosDisponibles, relevanteDelAlumno])
+
+  useEffect(() => {
+    console.log(descuentoQueSeAplicara)
+  }, [descuentoQueSeAplicara])
+
+  useEffect(() => {
+    const montos = datosCiclo && Array.isArray(datosCiclo.precios) ? datosCiclo.precios : null
+    setMontosOriginales(montos)
+  }, [selectedCiclo, datosCiclo])
+
+  // const descuentos = datosCiclo ? datosCiclo.descuentos : null
+
+  // console.log(montos)
+  // console.log(descuentos)
 
   const identificarAlumno = () => {
     recuperarColeccion('alumnos')
@@ -84,43 +188,88 @@ const RegistroMatricula = () => {
   }
 
   useEffect(() => {
-    console.log(montos)
-    console.log(tipoDePagoSeleccionado)
-    if (montos) {
-      const montoEncontrado = montos.find((m) => m.nombre === tipoDePagoSeleccionado)
+    console.log(montoFinal)
+    console.log(montoSimulacroCarnet)
+    console.log(montoFinal + montoSimulacroCarnet)
+    if (montoFinal === undefined || montoSimulacroCarnet === undefined) {
+      setMontoTotal('')
+    } else {
+      setMontoTotal(montoFinal + montoSimulacroCarnet)
+    }
+  }, [montoFinal, montoSimulacroCarnet])
 
-      if (descuentoQueSeAplicara === 'Excelencia') {
-        const montosFinales = descuentos.excelencia
-        console.log(montosFinales)
-        if (tipoDePagoSeleccionado === 'Contado') {
-          setMontoFinal(montosFinales.contado)
+  useEffect(() => {
+    console.log(descuentosDisponibles)
+    console.log(descuentosDelCiclo)
+    console.log(descuentoQueSeAplicara)
+    console.log(tipoDePagoSeleccionado)
+    const montosOriginales = datosCiclo && Array.isArray(datosCiclo.precios) ? datosCiclo.precios : null
+
+    if (montosOriginales) {
+      const montoEncontrado = montosOriginales.find((m) => m.nombre === tipoDePagoSeleccionado)
+
+      if (montoEncontrado) {
+        setMontoOriginal(montoEncontrado.total)
+      } else {
+        setMontoOriginal('')
+      }
+
+      if (tipoDePagoSeleccionado === undefined || tipoDePagoSeleccionado === '') {
+        setMontoFinal('')
+      } else {
+        if (descuentoQueSeAplicara === 'exAlumno') {
+          if (tipoDePagoSeleccionado === 'Contado') {
+            setMontoFinal(descuentosDelCiclo.exAlumno.contado)
+          } else if (tipoDePagoSeleccionado === 'Credito') {
+            if (descuentosDelCiclo.exAlumno.credito) {
+              setMontoFinal(descuentosDelCiclo.exAlumno.credito.total)
+            }
+          }
         }
 
-        console.log(montoFinal)
+        if (descuentoQueSeAplicara === 'excelencia') {
+          if (tipoDePagoSeleccionado === 'Contado') {
+            if (descuentosDelCiclo.excelencia.contado) {
+              setMontoFinal(descuentosDelCiclo.excelencia.contado)
+            }
+          } else if (tipoDePagoSeleccionado === 'Credito') {
+            if (descuentosDelCiclo.excelencia.credito) {
+              setMontoFinal(descuentosDelCiclo.excelencia.credito.total)
+            }
+          }
+        }
 
-        if (montoEncontrado) {
-          setMontoSeleccionado(montoEncontrado.total)
-        } else {
-          setMontoSeleccionado('')
+        if (descuentoQueSeAplicara === 'nada') {
+          if (tipoDePagoSeleccionado === 'Contado') {
+            setMontoFinal(montoEncontrado.total)
+          } else if (tipoDePagoSeleccionado === 'Credito') {
+            setMontoFinal(montoEncontrado.total)
+          }
         }
       }
+
+      console.log(montoEncontrado)
     }
-  }, [tipoDePagoSeleccionado, montos])
+  }, [tipoDePagoSeleccionado, selectedCiclo, montosOriginales, descuentosDisponibles, descuentosDelCiclo, descuentoQueSeAplicara, descuentoExAlumno, descuentoExcelencia])
+
+  useEffect(() => {
+    console.log(montoFinal)
+  }, [montoFinal])
 
   // useEffect(() => {
-  //   if (descuentoQueSeAplicara === 'Excelencia') {
+  //   if (RelevanteDelAlumno === 'Excelencia') {
   //     setMontoFinal('xd')
-  //   } else if (descuentoQueSeAplicara === 'Ex-alumno') {
+  //   } else if (RelevanteDelAlumno === 'Ex-alumno') {
   //     setMontoFinal('xd')
   //   } else {
   //     setMontoFinal('xd')
   //   }
-  // }, [descuentoQueSeAplicara])
+  // }, [RelevanteDelAlumno])
 
   useEffect(() => {
-    console.log('alumnos: ', alumnos)
+    // console.log('alumnos: ', alumnos)
     setCoincidencia(alumnos.filter(alumno => alumno.dni === dni))
-    console.log(coincidencia)
+    // console.log(coincidencia)
   }, [alumnos])
 
   useEffect(() => {
@@ -128,8 +277,8 @@ const RegistroMatricula = () => {
     //   console.log(coincidencia.matriculas.length)
     // }
 
-    console.log('cambio en coincidencia')
-    console.log(coincidencia)
+    // console.log('cambio en coincidencia')
+    // console.log(coincidencia)
 
     if (coincidencia.length > 0) {
       if (coincidencia[0].matriculas.length > 0) {
@@ -325,7 +474,7 @@ const RegistroMatricula = () => {
       <div className='container-gestionar-descuentos'>
         <div className='input-seccion'>
           <div>
-            <label>Descuentos</label>
+            <label>Datos del alumno Relevantes para la matrícula</label>
             <div>
               <label>Ex-alumno</label>
               {coincidencia && coincidencia.length > 0 && <span>{descuentoExAlumno ? 'Sí' : 'No'}</span>}
@@ -347,12 +496,52 @@ const RegistroMatricula = () => {
             <label>Monto</label>
           </div>
           <div className='input-seccion'>
+            <label>Descuentos Diponibles</label>
+            <span>{descuentosDisponibles === 'ambos' ? 'Ex-alumno y Excelencia' : descuentosDisponibles === 'exalumno' ? 'Ex-alumno' : descuentosDisponibles === 'excelencia' ? 'Excelencia' : descuentosDisponibles === 'nada' ? 'Ninguno' : ''}</span>
+          </div>
+          <div className='input-seccion'>
+            <label>Descuentos a los que califica</label>
+            <span>
+              {descuentosDisponibles === 'ambos'
+                ? (
+                    descuentoExAlumno && descuentoExcelencia
+                      ? 'Ex-alumno y Excelencia'
+                      : descuentoExAlumno
+                        ? 'Ex-alumno'
+                        : descuentoExcelencia
+                          ? 'Excelencia'
+                          : 'Ninguno'
+                  )
+                : (
+                    descuentosDisponibles === 'exAlumno'
+                      ? descuentoExAlumno
+                        ? 'Ex-alumno'
+                        : 'Ninguno'
+                      : (
+                          descuentosDisponibles === 'excelencia'
+                            ? descuentoExcelencia
+                              ? 'Excelencia'
+                              : 'Ninguno'
+                            : 'Ninguno'
+                        )
+                  )}
+            </span>
+          </div>
+
+          <div className='input-seccion'>
+            <label>Descueto que se aplicará</label>
+            <span>
+              {descuentoQueSeAplicara === 'exAlumno' ? 'Ex-alumno' : descuentoQueSeAplicara === 'excelencia' ? 'Excelencia' : descuentoQueSeAplicara === 'nada' ? 'Ninguno' : ''}
+            </span>
+          </div>
+
+          <div className='input-seccion'>
             <div>
               <label>Forma de Pago</label>
             </div>
             <div className='main-dropdwon'>
               <div className='select-container'>
-                <Select onSelectChange={seleccionDeTipoDePago} arrayDeObjetos={montos} />
+                <Select onSelectChange={seleccionDeTipoDePago} arrayDeObjetos={montosOriginales} />
                 <div className='select-icon'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -373,10 +562,23 @@ const RegistroMatricula = () => {
               </div>
             </div>
           </div>
-          <div>
-            <span>Monto original: {montoSeleccionado}</span>
+          <div className='input-seccion'>
+            <label>Precio Matricula: </label>
+            {montoOriginal && <span>{montoOriginal}</span>}
           </div>
 
+          <div className='input-seccion'>
+            <label>Precio Matricula con Descuento: </label>
+            {montoFinal && <span>{montoFinal}</span>}
+          </div>
+          <div className='input-seccion'>
+            <label>Derecho a simulacros y carnet: </label>
+            {montoSimulacroCarnet && <span>{montoSimulacroCarnet}</span>}
+          </div>
+          <div className='input-seccion'>
+            <label>Monto TOTAL:  </label>
+            {montoTotal && <span>{montoTotal}</span>}
+          </div>
         </div>
       </div>
     </div>

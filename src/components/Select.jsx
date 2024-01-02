@@ -19,8 +19,8 @@ const Select = ({
   // console.log(nombre);
 
   useEffect(() => {
-    // console.log(nombreCarreraSeleccionada)
-    // console.log(nombreCicloSeleccionado)
+    console.log(nombreCarreraSeleccionada)
+    console.log(nombreCicloSeleccionado)
     // console.log(propiedadesObjeto)
     if (!coleccion) {
       setOpciones([])
@@ -51,7 +51,8 @@ const Select = ({
       })
 
       setOpciones(listaDeOpciones)
-      // console.log(listaDeOpciones)
+      console.log(listaDeOpciones)
+      console.log(opciones)
     })
   }, [coleccion, nombreCarreraSeleccionada, nombreCicloSeleccionado])
 
@@ -84,7 +85,7 @@ const Select = ({
                   </option>
                 ))
             )
-            : arrayDeObjetos
+            : Array.isArray(arrayDeObjetos)
               ? arrayDeObjetos.map((opcion) => (
                 <option key={opcion.nombre} value={opcion.nombre}>
                   {opcion.nombre}

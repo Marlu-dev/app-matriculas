@@ -100,9 +100,12 @@ const ciclos = [
       dias: 'Lunes a Sabado',
       hora: '7:00am - 1:00pm + 3 tardes (3:00pm - 8:30pm)'
     },
-    precios: {
-      contado: 1500,
-      credito: {
+    precios: [
+      {
+        nombre: 'Contado',
+        total: 1500
+      }, {
+        nombre: 'Credito',
         total: 1600,
         cuotas: {
           1: 600,
@@ -110,7 +113,7 @@ const ciclos = [
           3: 500
         }
       }
-    },
+    ],
 
     descuentos: {
       excelencia: {
@@ -154,9 +157,13 @@ const ciclos = [
       dias: 'Lunes a Sabado',
       hora: '3:00pm - 8:30pm + 3 tardes, Domingo(Simulacro)'
     },
-    precios: {
-      contado: 1000,
-      credito: {
+    precios: [
+      {
+        nombre: 'Contado',
+        total: 1000
+      },
+      {
+        nombre: 'Credito',
         total: 1100,
         cuotas: {
           1: 400,
@@ -164,7 +171,7 @@ const ciclos = [
           3: 300
         }
       }
-    },
+    ],
 
     descuentos: {
       excelencia: 0,
@@ -188,16 +195,20 @@ const ciclos = [
       dias: 'Interdiario',
       hora: '4:00pm - 8:00pm'
     },
-    precios: {
-      contado: 600,
-      credito: {
+    precios: [
+      {
+        nombre: 'Contado',
+        total: 600
+      },
+      {
+        nombre: 'Credito',
         total: 700,
         cuotas: {
           1: 400,
           2: 300
         }
       }
-    },
+    ],
 
     descuentos: {
       excelencia: 0,
@@ -220,16 +231,20 @@ const ciclos = [
       hora: '3:00pm - 9:00pm, Domingo(Simulacro)'
     },
 
-    precios: {
-      contado: 600,
-      credito: {
+    precios: [
+      {
+        nombre: 'Contado',
+        total: 600
+      },
+      {
+        nombre: 'Credito',
         total: 700,
         cuotas: {
           1: 400,
           2: 300
         }
       }
-    },
+    ],
 
     descuentos: {
       excelencia: 0,
@@ -294,5 +309,5 @@ const carreritas = [
 // const grupos = recuperarColeccion('grupos')
 // console.log(grupos)
 
-// agregarArrayDatosColeccionVacia(db, ciclos, 'ciclos', 'ciclo')
-agregarArrayDatosColeccionVacia(db, carreritas, 'carreritas', 'carrera')
+agregarArrayDatosColeccionVacia(db, ciclos, 'ciclos', 'ciclo')
+// agregarArrayDatosColeccionVacia(db, carreritas, 'carreritas', 'carrera')
