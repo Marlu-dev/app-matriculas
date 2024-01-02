@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Loading from './Loading'
 import GridAplicacion from './GridAplicacion'
 
+export const userContext = React.createContext()
+
 const CargarAplicacion = () => {
+  const [user, setUser] = useState()
+  const [temporada, setTemporada] = useState()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Simulamos la carga durante 3 segundos
     const timeout = setTimeout(() => {
+      setUser({ nombre: 'Juan' })
+      setTemporada('2021-1')
       setLoading(false)
     }, 5000)
 
@@ -22,7 +28,9 @@ const CargarAplicacion = () => {
           <Loading />
           )
         : (
-          <GridAplicacion />
+          <userContext.Provider value={{ user, temporada }}>
+            <GridAplicacion />
+          </userContext.Provider>
           )}
     </>
   )

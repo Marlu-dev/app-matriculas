@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { recuperarColeccion, subirDocumentoExcelencia, agregarDatosExcelencia } from '../../librerias/manipularDatos'
+import React, { useContext, useEffect, useState } from 'react'
+import { recuperarColeccion, subirDocumentoExcelencia, agregarDatosExcelencia, agregarMatricula } from '../../librerias/manipularDatos'
 import '../style/RegistroMatricula.css'
 import Select from './Select'
+import { userContext } from './CargarAplicacion'
 
 const RegistroMatricula = () => {
+  const [codigo, setCodigo] = useState('')
   const [alumnos, setAlumnos] = useState([])
   const [dni, setDni] = useState('')
   const [selectedCarrera, setSelectedCarrera] = useState('')
@@ -24,8 +26,33 @@ const RegistroMatricula = () => {
   const [montoOriginal, setMontoOriginal] = useState()
   const [montoSimulacroCarnet, setMontoSimulacroCarnet] = useState()
   const [montoTotal, setMontoTotal] = useState()
+  const [descuentoAdicional, setDescuentoAdicional] = useState(0)
+  const [observacionDescuentoAdicional, setObservacionDescuentoAdicional] = useState('')
+
+  const [estadoMatricula, setEstadoMatricula] = useState('')
+
+  const [matricula, setMatricula] = useState({})
+
+  const { user, temporada } = useContext(userContext)
+  console.log(user)
+  console.log(temporada)
 
   console.log(tipoDePagoSeleccionado)
+
+  const handleChangeDescuentoAdicional = (e) => {
+    const newQuery = e.target.value
+    if (/^\d+$/.test(newQuery) || newQuery === '') {
+      setDescuentoAdicional(newQuery)
+    }
+  }
+
+  const handleChangeObservacionDescuentoAdicional = (e) => {
+    setObservacionDescuentoAdicional(e.target.value)
+  }
+
+  const registrarMatricula = () => {
+    agregarMatricula(matricula, codigo)
+  }
 
   useEffect(() => {
     if (descuentoExcelencia && descuentoExAlumno) {
@@ -51,6 +78,21 @@ const RegistroMatricula = () => {
   const actualizarInfoDocumentoExcelencia = (e) => {
     setInfoDocumentoExcelencia(e.target.files[0])
   }
+
+  useEffect(() => {
+    if (descuentoQueSeAplicara === 'excelencia') {
+      setEstadoMatricula('pendiente')
+    } else if (descuentoAdicional > 0) {
+      setEstadoMatricula('pendiente')
+    } else {
+      setEstadoMatricula('aceptado')
+    }
+  }, [])
+
+  useEffect(() => {
+    setMatricula({ ...matricula, temporada, carrera: selectedCarrera, ciclo: selectedCiclo, tipoDePago: tipoDePagoSeleccionado, monto: montoFinal, descuentoQueSeAplicara, descuentoAdicional, observacionDescuentoAdicional, montonTotal: montoTotal })
+  }
+  , [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal])
 
   useEffect(() => {
     console.log(infoDocumentoExcelencia)
@@ -125,6 +167,10 @@ const RegistroMatricula = () => {
 
     if (descuentosDelCiclo.exAlumno === 0 && descuentosDelCiclo.excelencia === 0) {
       setDescuentosDisponibles('nada')
+    }
+
+    if (descuentosDelCiclo.exAlumno === undefined && descuentosDelCiclo.excelencia === undefined) {
+      setDescuentosDisponibles('')
     }
     // console.log(descuentosDelCiclo
   }, [descuentosDelCiclo, selectedCiclo])
@@ -273,6 +319,7 @@ const RegistroMatricula = () => {
   }, [alumnos])
 
   useEffect(() => {
+    setCodigo(coincidencia[0].codigo)
     // if (coincidencia.matriculas.length > 0) {
     //   console.log(coincidencia.matriculas.length)
     // }
@@ -297,6 +344,10 @@ const RegistroMatricula = () => {
       }
     }
   }, [coincidencia])
+
+  useEffect(() => {
+    console.log(codigo)
+  }, [codigo])
 
   const handleChange = (e) => {
     const newQuery = e.target.value
@@ -537,6 +588,29 @@ const RegistroMatricula = () => {
 
           <div className='input-seccion'>
             <div>
+              <label>Descuento Adicional</label>
+            </div>
+            <input
+              name='descuentoAdicional'
+              id='descuentoAdicional'
+              onChange={handleChangeDescuentoAdicional}
+              placeholder='' required
+              value={descuentoAdicional}
+            />
+            <div>
+              <label>Observación</label>
+            </div>
+            <input
+              name='observacionDescuentoAdicional'
+              id='observacionDescuentoAdicional'
+              onChange={handleChangeObservacionDescuentoAdicional}
+              placeholder='' required
+              value={observacionDescuentoAdicional}
+            />
+          </div>
+
+          <div className='input-seccion'>
+            <div>
               <label>Forma de Pago</label>
             </div>
             <div className='main-dropdwon'>
@@ -578,6 +652,9 @@ const RegistroMatricula = () => {
           <div className='input-seccion'>
             <label>Monto TOTAL:  </label>
             {montoTotal && <span>{montoTotal}</span>}
+          </div>
+          <div className='input-seccion'>
+            <button onClick={registrarMatricula}>Registrar matrícula</button>
           </div>
         </div>
       </div>

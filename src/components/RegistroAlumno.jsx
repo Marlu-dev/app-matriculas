@@ -106,6 +106,8 @@ function RegistroAlumno () {
     fields.edad = edad
     fields.telefonoFijo = telefonoFijo
     fields.telefonoCelular = telefonoCelular
+    fields.matriculas = []
+    fields.docExcelencia = false
     delete fields.checkbox1
     delete fields.checkbox2
     delete fields.checkbox3
