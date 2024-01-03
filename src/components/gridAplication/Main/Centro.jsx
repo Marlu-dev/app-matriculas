@@ -3,6 +3,7 @@ import RegistroAlumno from '../../RegistroAlumno'
 import RecuperarAlumnos from '../../RecuperarAlumnos'
 import './style/Centro.css'
 import RegistroMatricula from '../../RegistroMatricula'
+import GestionPagos from '../../GestionPagos'
 
 const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
   let menu
@@ -33,6 +34,10 @@ const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
 
     case 'RegistroMatricula':
       menu = <RegistroMatricula />
+      break
+
+    case 'GestionPagos':
+      menu = <GestionPagos />
       break
   }
 

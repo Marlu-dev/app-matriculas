@@ -80,4 +80,9 @@ async function agregarDatosExcelencia (codigo) {
   }
 }
 
-export { crearJsonDesdeObjeto, agregarArrayDatosColeccionVacia, recuperarColeccion, subirDocumentoExcelencia, crearTemporada, agregarMatricula, agregarDatosExcelencia }
+function agregarMatriculaAColeccion (datos, codigoMatricula) {
+  const coleccionRef = collection(db, 'matriculas')
+  setDoc(doc(coleccionRef, `${codigoMatricula}`), datos)
+}
+
+export { crearJsonDesdeObjeto, agregarArrayDatosColeccionVacia, recuperarColeccion, subirDocumentoExcelencia, crearTemporada, agregarMatricula, agregarDatosExcelencia, agregarMatriculaAColeccion }

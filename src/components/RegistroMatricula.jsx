@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { recuperarColeccion, subirDocumentoExcelencia, agregarDatosExcelencia, agregarMatricula } from '../../librerias/manipularDatos'
+import { recuperarColeccion, subirDocumentoExcelencia, agregarDatosExcelencia, agregarMatricula, agregarMatriculaAColeccion } from '../../librerias/manipularDatos'
 import '../style/RegistroMatricula.css'
 import Select from './Select'
 import { userContext } from './CargarAplicacion'
@@ -28,10 +28,14 @@ const RegistroMatricula = () => {
   const [montoTotal, setMontoTotal] = useState()
   const [descuentoAdicional, setDescuentoAdicional] = useState(0)
   const [observacionDescuentoAdicional, setObservacionDescuentoAdicional] = useState('')
+  const [dniAlumnoCoincidencia, setDniAlumnoCoincidencia] = useState('')
 
   const [estadoMatricula, setEstadoMatricula] = useState('')
 
   const [matricula, setMatricula] = useState({})
+  const [referenciaMatricula, setReferenciaMatricula] = useState('')
+  const [codigoMatricula, setCodigoMatricula] = useState('')
+  const [estadoDocumentoExcelencia, setEstadoDocumentoExcelencia] = useState(false)
 
   const { user, temporada } = useContext(userContext)
   console.log(user)
@@ -41,8 +45,11 @@ const RegistroMatricula = () => {
 
   const handleChangeDescuentoAdicional = (e) => {
     const newQuery = e.target.value
+    const valorMaximo = montoFinal + montoSimulacroCarnet
     if (/^\d+$/.test(newQuery) || newQuery === '') {
-      setDescuentoAdicional(newQuery)
+      if (newQuery > valorMaximo) {
+        setDescuentoAdicional(valorMaximo)
+      } else { setDescuentoAdicional(newQuery) }
     }
   }
 
@@ -50,8 +57,24 @@ const RegistroMatricula = () => {
     setObservacionDescuentoAdicional(e.target.value)
   }
 
-  const registrarMatricula = () => {
-    agregarMatricula(matricula, codigo)
+  const registrarMatricula = async () => {
+    try {
+      const res = await recuperarColeccion('matriculas')
+      const nuevoCodigoMatricula = res.length + 1
+
+      // Actualizar el estado
+      setCodigoMatricula(nuevoCodigoMatricula)
+
+      if (nuevoCodigoMatricula !== '') {
+        console.log(codigo)
+        console.log(nuevoCodigoMatricula)
+
+        await agregarMatriculaAColeccion(matricula, 'M' + nuevoCodigoMatricula)
+        await agregarMatricula({ codigoMatricula: 'M' + nuevoCodigoMatricula, temporada, secretaria: user }, codigo)
+      }
+    } catch (error) {
+      console.error('Error en la función registrarMatricula:', error)
+    }
   }
 
   useEffect(() => {
@@ -69,28 +92,29 @@ const RegistroMatricula = () => {
   useEffect(() => {
     console.log(relevanteDelAlumno)
   }, [relevanteDelAlumno])
-  // console.log(listaDeCiclos)
-  // console.log(RelevanteDelAlumno)
-  // console.log(montoSeleccionado)
-  // console.log(selectedCarrera)
-  // console.log(selectedCiclo)
 
   const actualizarInfoDocumentoExcelencia = (e) => {
     setInfoDocumentoExcelencia(e.target.files[0])
   }
 
   useEffect(() => {
-    if (descuentoQueSeAplicara === 'excelencia') {
+    if (descuentoAdicional !== 0) {
       setEstadoMatricula('pendiente')
-    } else if (descuentoAdicional > 0) {
-      setEstadoMatricula('pendiente')
-    } else {
-      setEstadoMatricula('aceptado')
+    } else if (descuentoQueSeAplicara === 'excelencia') {
+      if (estadoDocumentoExcelencia === true) {
+        setEstadoMatricula('validado')
+      } else if (estadoDocumentoExcelencia === false) {
+        setEstadoMatricula('pendiente')
+      }
+    } else if (descuentoQueSeAplicara === 'exAlumno') {
+      setEstadoMatricula('validado')
+    } else if (descuentoQueSeAplicara === 'nada') {
+      setEstadoMatricula('validado')
     }
-  }, [])
+  }, [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal, estadoDocumentoExcelencia, descuentoQueSeAplicara])
 
   useEffect(() => {
-    setMatricula({ ...matricula, temporada, carrera: selectedCarrera, ciclo: selectedCiclo, tipoDePago: tipoDePagoSeleccionado, monto: montoFinal, descuentoQueSeAplicara, descuentoAdicional, observacionDescuentoAdicional, montonTotal: montoTotal })
+    setMatricula({ codigoAlumno: codigo, dni: dniAlumnoCoincidencia, temporada, carrera: selectedCarrera, ciclo: selectedCiclo, tipoDePago: tipoDePagoSeleccionado, monto: montoFinal, descuentoQueSeAplicara, descuentoAdicional, observacionDescuentoAdicional, montonTotal: montoTotal, estado: estadoMatricula, secretaria: user })
   }
   , [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal])
 
@@ -240,9 +264,9 @@ const RegistroMatricula = () => {
     if (montoFinal === undefined || montoSimulacroCarnet === undefined) {
       setMontoTotal('')
     } else {
-      setMontoTotal(montoFinal + montoSimulacroCarnet)
+      setMontoTotal(montoFinal + montoSimulacroCarnet - descuentoAdicional)
     }
-  }, [montoFinal, montoSimulacroCarnet])
+  }, [montoFinal, montoSimulacroCarnet, descuentoAdicional])
 
   useEffect(() => {
     console.log(descuentosDisponibles)
@@ -315,11 +339,17 @@ const RegistroMatricula = () => {
   useEffect(() => {
     // console.log('alumnos: ', alumnos)
     setCoincidencia(alumnos.filter(alumno => alumno.dni === dni))
-    // console.log(coincidencia)
+    console.log(coincidencia)
   }, [alumnos])
 
   useEffect(() => {
-    setCodigo(coincidencia[0].codigo)
+    console.log(coincidencia)
+    if (coincidencia.length > 0) {
+      setCodigo(coincidencia[0].codigo)
+      setEstadoDocumentoExcelencia(coincidencia[0].docExcelenciaValidado)
+      setDniAlumnoCoincidencia(coincidencia[0].dni)
+    }
+
     // if (coincidencia.matriculas.length > 0) {
     //   console.log(coincidencia.matriculas.length)
     // }
@@ -348,6 +378,10 @@ const RegistroMatricula = () => {
   useEffect(() => {
     console.log(codigo)
   }, [codigo])
+
+  useEffect(() => {
+    console.log(estadoDocumentoExcelencia)
+  }, [estadoDocumentoExcelencia])
 
   const handleChange = (e) => {
     const newQuery = e.target.value
