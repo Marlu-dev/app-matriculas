@@ -240,14 +240,14 @@
 }
 
 .check-button {
-  margin: 10px;
+  margin: 0px;
 }
 
 .check-button .checkbox {
   display: inline-block;
   width: 55px;
   height: 30px; 
-  background: var(--grisClaro);
+  background: var(--gris);
   border-radius: 100px;
   position: relative;
   cursor: pointer;
@@ -288,7 +288,7 @@ input[type="checkbox"]:checked + label::after {
  /*  margin: 25px 0; --VERIFICAR */
   background-color: var(--grisClaro);
   transition: all 0.3s linear;
-  /* --cursor: pointer; --VERIFICAR  */
+  cursor: pointer;
 
 }
 

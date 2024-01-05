@@ -316,30 +316,89 @@ const RegistroMatricula = () => {
   return (
     <div className='container-registro-matricula'>
       <div className='container-identificar-alumno' style={{ display: 'flex', flexDirection: 'column' }}>
-        <h1>Registro de Matrícula</h1>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <header className='header-register'>
+          REGISTRO DE MATRÍCULA
+        </header>
+        <div className="container-indentificar">
+          
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
 
-          <div>
-            <input type='text' value={dni} onChange={handleChange} maxLength={8} />
-            <button onClick={identificarAlumno}>Identificar</button>
+          <div className='container-search-identificar'>
+            <input 
+              type='text' 
+              value={dni} 
+              onChange={handleChange} 
+              maxLength={8} 
+              placeholder='Buscar con DNI...'
+            />
+            {/* <button onClick={identificarAlumno}>Identificar</button> */}
+            <div className='button-search-identificar' onClick={identificarAlumno}>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                class='icon icon-tabler icon-tabler-search'
+                width='25'
+                height='25'
+                viewBox='0 0 24 24'
+                stroke-width='3.5'
+                stroke='#2c3e50'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0' />
+                <path d='M21 21l-6 -6' />
+              </svg>
+            </div>
+            {/*  */}
           </div>
+
           <div className='container-identificar-alumno-datos'>
             <div>
-              <label>DNI: </label>
-              <span>{coincidencia && coincidencia.length > 0 ? coincidencia[0].dni : ''}</span>
+              {/* <label>DNI: </label> */}
+              <label className='title-dato'>
+                DNI:
+              </label>
+              <span className='content-dato'>
+              {coincidencia && 
+              coincidencia.length > 0 ? 
+              coincidencia[0].dni : ''}
+              </span>
             </div>
             <div>
-              <label>Nombre: </label>
-              <span>{coincidencia && coincidencia.length > 0 ? coincidencia[0].nombre : ''}</span>
+              {/* <label>Nombre: </label> */}
+              <label className='title-dato'>
+                Nombre:
+              </label>
+              <span className='content-dato'>
+              {coincidencia && 
+              coincidencia.length > 0 ? 
+              coincidencia[0].nombre : ''}
+              </span>
             </div>
             <div>
-              <label>Apellido Paterno: </label>
-              <span>{coincidencia && coincidencia.length > 0 ? coincidencia[0].apellidoPaterno : ''}</span>
+              {/* <label>Apellido Paterno: </label> */}
+              <label className='title-dato'>
+                Apellido Paterno:
+              </label>
+              <span className='content-dato'>
+              {coincidencia && 
+              coincidencia.length > 0 ? 
+              coincidencia[0].apellidoPaterno : ''}
+              </span>
             </div>
             <div>
-              <label>Apellido Materno: </label>
-              <span>{coincidencia && coincidencia.length > 0 ? coincidencia[0].apellidoMaterno : ''}</span>
+              {/* <label>Apellido Materno: </label> */}
+              <label className='title-dato'>
+                Apellido Materno:
+              </label>
+              <span className='content-dato'>
+              {coincidencia && 
+              coincidencia.length > 0 ? 
+              coincidencia[0].apellidoMaterno : ''}
+              </span>
             </div>
+          </div>
           </div>
         </div>
 
@@ -348,7 +407,10 @@ const RegistroMatricula = () => {
       <div className='container-matricular-alumno'>
         <div className='form'>
           <div className='details person'>
-            <span className='title'>Inversión</span>
+            <label className='title-dato'>
+              INVERSIÓN
+            </label>
+            {/* <span className='title-dato'>Inversión</span> */}
             <div className='seccion-form'>
               {/* TERCER DATO: Carrera */}
               <div className='input-seccion'>
@@ -474,7 +536,12 @@ const RegistroMatricula = () => {
       <div className='container-gestionar-descuentos'>
         <div className='input-seccion'>
           <div>
-            <label>Datos del alumno Relevantes para la matrícula</label>
+            <label className='title-dato'>
+              DATOS DEL ALUMNO RELEVANTES PARA MATRICULAR
+            </label>
+            {/* <label>
+              Datos del alumno Relevantes para la matrícula
+            </label> */}
             <div>
               <label>Ex-alumno</label>
               {coincidencia && coincidencia.length > 0 && <span>{descuentoExAlumno ? 'Sí' : 'No'}</span>}
@@ -490,10 +557,15 @@ const RegistroMatricula = () => {
 
         </div>
       </div>
+
+
       <div className='container-ver-resumen-pagos'>
         <div className='input-seccion'>
           <div>
-            <label>Monto</label>
+            <label className='title-dato'>
+              MONTO
+            </label>
+            {/* <label>Monto</label> */}
           </div>
           <div className='input-seccion'>
             <label>Descuentos Diponibles</label>
@@ -541,7 +613,10 @@ const RegistroMatricula = () => {
             </div>
             <div className='main-dropdwon'>
               <div className='select-container'>
-                <Select onSelectChange={seleccionDeTipoDePago} arrayDeObjetos={montosOriginales} />
+                <Select 
+                onSelectChange={seleccionDeTipoDePago} 
+                arrayDeObjetos={montosOriginales} 
+                />
                 <div className='select-icon'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
