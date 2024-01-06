@@ -1,9 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+    --fondo: #e7e4e4;   
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container-registro-matricula {
     display: grid;
     width: 100%;
     height: 100%;
     gap: 8px;
-    background-color: #e7e4e4;
+    background-color: var(--fondo);
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -17,21 +43,273 @@
 }
 
 .container-identificar-alumno {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: identificar-alumno;
+    border-radius: 10px;
 }
 
 .container-matricular-alumno {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: matricular-alumno;
+    border-radius: 10px;
 }
 
 .container-gestionar-descuentos {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: gestionar-descuentos;
+    border-radius: 10px;
 }
 
 .container-ver-resumen-pagos {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: ver-resumen-pagos;
+    border-radius: 10px;
+}
+
+
+/* -- container-identificar-alumno -- */
+.container-indentificar{
+    display: inline-block;
+    justify-content:space-around;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.container-indentificar::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container-indentificar::-webkit-scrollbar-track{
+background: var(--grisClaro);
+border-radius: 20px;
+}
+
+.container-indentificar::-webkit-scrollbar-thumb{
+background: var(--gris);
+border-radius: 20px;
+}
+
+
+/* CONTAINER SEARCH */
+.container-search-identificar {
+    display: flex;
+    height: 8%;
+    width: 6%; 
+    cursor: pointer;
+    /* margin: 0 auto; */
+    padding: 5px;
+    background: var(--blanco);
+    border-radius: 30px;
+    align-items: center; 
+    margin-left: 4%;
+    margin-top: 4%;
+    transition: 0.8s;
+    box-shadow: 0 6px 15px var(--negro);
+    margin-right: 4%;
+}
+
+.container-search-identificar:hover {
+    width: 30%;
+}
+
+.container-search-identificar:hover input{
+    width: 100%;
+}
+
+.container-search-identificar input {
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    transition: 0.8s;
+    color: var(--azul);
+    background: transparent;
+}
+
+.container-search-identificar .button-search-identificar{
+    cursor: pointer;
+}
+
+.container-identificar-alumno-datos .title-dato {
+    /* display: block; */
+    /* margin-bottom: 5px; */
+    font-weight: bold;
+    color: var(--azul);
+    position: sticky;
+    top: 0px;
+    /* padding: 10px; */
+}
+
+.container-identificar-alumno-datos .content-dato {
+    /* width: 100%; */
+    padding: 0px 10px;
+    font-size: 14px;
+    color: var(--negro);
+    font-weight: 500;
+    /* margin-bottom: 5px; */
+    /* box-sizing: border-box; */
+    /* border: 1px solid var(--blanco); */
+    
+}
+
+/* -- container-matricular-alumno -- */
+
+.container-matricular-alumno {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.container-matricular-alumno::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container-matricular-alumno::-webkit-scrollbar-track{
+background: var(--grisClaro);
+border-radius: 20px;
+}
+
+.container-matricular-alumno::-webkit-scrollbar-thumb{
+background: var(--gris);
+border-radius: 20px;
+}
+
+.container-matricular-alumno .title-dato {
+    /* display: block; */
+    /* margin-bottom: 5px; */
+    padding: 0px 10px;
+    font-weight: bold;
+    color: var(--azul);
+    background: var(--blanco);
+    font-size: 18px;
+    position: sticky;
+    top: 0px;
+    /* padding: 10px; */
+}
+
+/*DROPDWON*/
+.container-matricular-alumno .select-container {
+position: relative;
+width: 150%;
+height: 100%;
+margin-left: 150px;
+/* margin: 5px 0 15px 0; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+
+
+/* -- container-gestionar-descuentos -- */
+
+.container-gestionar-descuentos {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.container-gestionar-descuentos::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container-gestionar-descuentos::-webkit-scrollbar-track{
+background: var(--grisClaro);
+border-radius: 20px;
+}
+
+.container-gestionar-descuentos::-webkit-scrollbar-thumb{
+background: var(--gris);
+border-radius: 20px;
+}
+
+.container-gestionar-descuentos .title-dato {
+    /* display: block; */
+    /* margin-bottom: 5px; */
+    padding: 0px 10px;
+    font-weight: bold;
+    color: var(--azul);
+    background: var(--blanco);
+    font-size: 18px;
+    position: sticky;
+    top: 0px;
+    /* padding: 10px; */
+}
+
+.container-gestionar-descuentos .content-dato {
+    /* width: 100%; */
+    padding: 0px 10px;
+    font-size: 14px;
+    color: var(--negro);
+    font-weight: 500;
+    /* margin-bottom: 5px; */
+    /* box-sizing: border-box; */
+    /* border: 1px solid var(--blanco); */
+    
+}
+
+.container-gestionar-descuentos .btn-register { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 200px;
+    height: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+   /*  margin: 25px 0; --VERIFICAR */
+    background-color: var(--grisClaro);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+}
+
+.container-gestionar-descuentos .btn-register:hover { 
+background-color: var(--primario); /* CAMBIAR COLOR */
+}
+
+/* -- container-ver-resumen-pagos -- */
+
+.container-ver-resumen-pagos {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.container-ver-resumen-pagos::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container-ver-resumen-pagos::-webkit-scrollbar-track{
+background: var(--grisClaro);
+border-radius: 20px;
+}
+
+.container-ver-resumen-pagos::-webkit-scrollbar-thumb{
+background: var(--gris);
+border-radius: 20px;
+}
+
+.container-ver-resumen-pagos .title-dato {
+    /* display: block; */
+    /* margin-bottom: 5px; */
+    padding: 0px 10px;
+    font-weight: bold;
+    color: var(--azul);
+    background: var(--blanco);
+    font-size: 18px;
+    position: sticky;
+    top: 0px;
+    /* padding: 10px; */
+}
+
+.container-ver-resumen-pagos .content-dato {
+    /* width: 100%; */
+    padding: 0px 10px;
+    font-size: 14px;
+    color: var(--negro);
+    font-weight: 500;
+    /* margin-bottom: 5px; */
+    /* box-sizing: border-box; */
+    /* border: 1px solid var(--blanco); */
+    
 }
