@@ -544,13 +544,44 @@ const RegistroMatricula = () => {
             </label> */}
             <div>
               <label>Ex-alumno</label>
-              {coincidencia && coincidencia.length > 0 && <span>{descuentoExAlumno ? 'Sí' : 'No'}</span>}
+              <div className='content-dato'>
+                {coincidencia && 
+                coincidencia.length > 0 && 
+                  <span>
+                    {descuentoExAlumno ? 'Sí' : 'No'
+                    }
+                  </span>
+                }
+              </div>
             </div>
 
             <div>
               <label>Excelencia</label>
-              {coincidencia && coincidencia.length > 0 && <span>{descuentoExcelencia ? 'Sí' : 'No'}</span>}
-              {descuentoExcelencia ? '' : <><input type='file' name='' id='' onChange={actualizarInfoDocumentoExcelencia} /><button onClick={enviarDocumentoExcelencia}>Subir</button></>}
+              <div className='content-dato'>
+                {coincidencia && 
+                coincidencia.length > 0 && 
+                  <span>
+                    {descuentoExcelencia ? 'Sí' : 'No'}
+                  </span>
+                }
+              </div>
+
+              <div className='content-dato'>
+                {descuentoExcelencia ? '' : <>
+                  <input 
+                  type='file' 
+                  name='' 
+                  id='' 
+                  onChange={actualizarInfoDocumentoExcelencia} 
+                  />
+                  <button 
+                    onClick={enviarDocumentoExcelencia}
+                    className='btn-register'> 
+                      Subir
+                  </button>
+                  </>
+                }
+              </div>
             </div>
 
           </div>
@@ -561,19 +592,22 @@ const RegistroMatricula = () => {
 
       <div className='container-ver-resumen-pagos'>
         <div className='input-seccion'>
-          <div>
             <label className='title-dato'>
               MONTO
             </label>
             {/* <label>Monto</label> */}
-          </div>
           <div className='input-seccion'>
             <label>Descuentos Diponibles</label>
-            <span>{descuentosDisponibles === 'ambos' ? 'Ex-alumno y Excelencia' : descuentosDisponibles === 'exalumno' ? 'Ex-alumno' : descuentosDisponibles === 'excelencia' ? 'Excelencia' : descuentosDisponibles === 'nada' ? 'Ninguno' : ''}</span>
+            <span className='content-dato'>
+              {descuentosDisponibles === 'ambos' ? 'Ex-alumno y Excelencia' : 
+              descuentosDisponibles === 'exalumno' ? 'Ex-alumno' : 
+              descuentosDisponibles === 'excelencia' ? 'Excelencia' : 
+              descuentosDisponibles === 'nada' ? 'Ninguno' : ''}
+            </span>
           </div>
           <div className='input-seccion'>
             <label>Descuentos a los que califica</label>
-            <span>
+            <span className='content-dato'>
               {descuentosDisponibles === 'ambos'
                 ? (
                     descuentoExAlumno && descuentoExcelencia
@@ -602,8 +636,12 @@ const RegistroMatricula = () => {
 
           <div className='input-seccion'>
             <label>Descueto que se aplicará</label>
-            <span>
-              {descuentoQueSeAplicara === 'exAlumno' ? 'Ex-alumno' : descuentoQueSeAplicara === 'excelencia' ? 'Excelencia' : descuentoQueSeAplicara === 'nada' ? 'Ninguno' : ''}
+            <span className='content-dato'>
+              {
+                descuentoQueSeAplicara === 'exAlumno' ? 'Ex-alumno' : 
+                descuentoQueSeAplicara === 'excelencia' ? 'Excelencia' : 
+                descuentoQueSeAplicara === 'nada' ? 'Ninguno' : ''
+              }
             </span>
           </div>
 
@@ -639,20 +677,32 @@ const RegistroMatricula = () => {
           </div>
           <div className='input-seccion'>
             <label>Precio Matricula: </label>
-            {montoOriginal && <span>{montoOriginal}</span>}
+            {montoOriginal && 
+            <span className='content-dato'>
+              {montoOriginal}
+            </span>}
           </div>
 
           <div className='input-seccion'>
             <label>Precio Matricula con Descuento: </label>
-            {montoFinal && <span>{montoFinal}</span>}
+            {montoFinal && 
+            <span className='content-dato'>
+              {montoFinal}
+            </span>}
           </div>
           <div className='input-seccion'>
             <label>Derecho a simulacros y carnet: </label>
-            {montoSimulacroCarnet && <span>{montoSimulacroCarnet}</span>}
+            {montoSimulacroCarnet && 
+            <span className='content-dato'>
+              {montoSimulacroCarnet}
+            </span>}
           </div>
           <div className='input-seccion'>
             <label>Monto TOTAL:  </label>
-            {montoTotal && <span>{montoTotal}</span>}
+            {montoTotal && 
+            <span className='content-dato'>
+              {montoTotal}
+            </span>}
           </div>
         </div>
       </div>
