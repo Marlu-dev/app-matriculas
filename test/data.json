@@ -1,0 +1,18 @@
+[
+  {
+    "monto": 1280,
+    "descuentoAdicional": "1000",
+    "codigoAlumno": "A1",
+    "montonTotal": 400,
+    "estado": "pendiente",
+    "observacionDescuentoAdicional": "",
+    "ciclo": "Semestral",
+    "secretaria": { "nombre": "Juan" },
+    "carrera": "Medicina",
+    "dni": "76656800",
+    "tipoDePago": "Credito",
+    "descuentoQueSeAplicara": "excelencia",
+    "temporada": "2021-1",
+    "id": 1
+  }
+]

@@ -170,74 +170,6 @@ function VistaEdicionDeDatosAlumno ({ codigo }) {
                 </div>
               </div>
 
-              {/* SEGUNDO DATO: Grupo */}
-              <div className='input-seccion'>
-                <div>
-                  <label>Grupo</label>
-                </div>
-                <div className='main-dropdwon'>
-                  <div className='select-container'>
-                    <Select
-                      coleccion='grupos'
-                      nombre='grupo'
-                      onSelectChange={handleChange}
-                      opcionDefault={alumno.grupo}
-                    />
-                    <div className='select-icon'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        class='icon icon-tabler icon-tabler-chevron-down'
-                        width='25'
-                        height='25'
-                        viewBox='0 0 24 24'
-                        stroke-width='3.5'
-                        stroke='#2c3e50'
-                        fill='none'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      >
-                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                        <path d='M6 9l6 6l6 -6' />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* TERCER DATO: Carrera */}
-              <div className='input-seccion'>
-                <div>
-                  <label>Carrera</label>
-                </div>
-                <div className='main-dropdwon'>
-                  <div className='select-container'>
-                    <Select
-                      coleccion={selectedGrupo}
-                      nombre='carrera'
-                      onSelectChange={handleChange}
-                      opcionDefault={alumno.carrera}
-                    />
-                    <div className='select-icon'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        class='icon icon-tabler icon-tabler-chevron-down'
-                        width='25'
-                        height='25'
-                        viewBox='0 0 24 24'
-                        stroke-width='3.5'
-                        stroke='#2c3e50'
-                        fill='none'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      >
-                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                        <path d='M6 9l6 6l6 -6' />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* CUARTO DATO: Nombre */}
               <div className='input-seccion'>
                 <div>
@@ -447,16 +379,10 @@ function VistaEdicionDeDatosAlumno ({ codigo }) {
             />
           </div>
 
-          {/* ---REGISTRO TOTAL DE INVERSION */}
-          <div className='details inversion'>
-            <RegistroInversion />
-
-          </div>
-
         </div>
 
         <button className='btn-register' type='submit' disabled={isButtonDisabled} id='btn-submit'>
-          Registrar
+          Actualizar Datos
         </button>
 
       </form>

@@ -43,7 +43,6 @@ const ListaDeAlumnos = ({ alumnos }) => {
             />
           ))}
         </div>
-        
       </>
     )
   }
