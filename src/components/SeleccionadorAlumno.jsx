@@ -50,8 +50,8 @@ const SeleccionadorAlumno = ({
         <AnimatePresence>
           {modal && <ModalDeEdicionDeDatos cerrar={activarModal} codigo={codigo} accion={accion} />}
         </AnimatePresence>
-        <div className="icons-select-alumno">
-          <div 
+        <div className='icons-select-alumno'>
+          <div
             className='ver-seleccionador-alumno'
             value={codigo}
             onClick={() => activarModal('ver')}
@@ -100,7 +100,6 @@ const SeleccionadorAlumno = ({
         </div>
       </div>
 
-      
     </div>
   )
 }

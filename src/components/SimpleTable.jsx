@@ -1,70 +1,115 @@
 import React from 'react'
-import { useReactTable } from '@tanstack/react-table'
+import {
+  useReactTable,
+  getCoreRowModel,
+  flexRender
+} from '@tanstack/react-table'
+
+import '../style/SimpleTable.css'
+// import data from '../../test/data.json'
 
 const SimpleTable = () => {
   const columns = [
     {
-      Header: 'Codigo',
-      accessor: 'id'
+      header: 'Codigo',
+      accessorKey: 'id'
     },
     {
-      Header: 'DNI',
-      accessor: 'dni'
+      header: 'DNI',
+      accessorKey: 'dni'
     },
     {
-      Header: 'Codigo Alumno',
-      accessor: 'codigoAlumno'
-    },
+      header: 'Codigo Alumno',
+      accessorKey: 'codigoAlumno'
+    }
+    // {
+    //   header: 'Carrera',
+    //   accessor: 'carrera'
+    // },
+    // {
+    //   header: 'Ciclo',
+    //   accessor: 'ciclo'
+    // },
+    // {
+    //   header: 'Monto',
+    //   accessor: 'monto'
+    // },
+    // {
+    //   header: 'Descuento',
+    //   accessor: 'descuentoAdicional'
+    // },
+    // {
+    //   header: 'Descuento que se aplicara',
+    //   accessor: 'descuentoQueSeAplicara'
+    // },
+    // {
+    //   header: 'Monto Total',
+    //   accessor: 'montonTotal'
+    // },
+    // {
+    //   header: 'Tipo de pago',
+    //   accessor: 'tipoDePago'
+    // },
+    // {
+    //   header: 'Temporada',
+    //   accessor: 'temporada'
+    // },
+    // {
+    //   header: 'Estado',
+    //   accessor: 'estado'
+    // },
+    // {
+    //   header: 'Observacion',
+    //   accessor: 'observacionDescuentoAdicional'
+    // },
+    // {
+    //   header: 'Secretaria',
+    //   accessor: 'secretaria.nombre'
+    // }
+  ]
+
+  const data = [
     {
-      Header: 'Carrera',
-      accessor: 'carrera'
-    },
-    {
-      Header: 'Ciclo',
-      accessor: 'ciclo'
-    },
-    {
-      Header: 'Monto',
-      accessor: 'monto'
-    },
-    {
-      Header: 'Descuento',
-      accessor: 'descuentoAdicional'
-    },
-    {
-      Header: 'Descuento que se aplicara',
-      accessor: 'descuentoQueSeAplicara'
-    },
-    {
-      Header: 'Monto Total',
-      accessor: 'montonTotal'
-    },
-    {
-      Header: 'Tipo de pago',
-      accessor: 'tipoDePago'
-    },
-    {
-      Header: 'Temporada',
-      accessor: 'temporada'
-    },
-    {
-      Header: 'Estado',
-      accessor: 'estado'
-    },
-    {
-      Header: 'Observacion',
-      accessor: 'observacionDescuentoAdicional'
-    },
-    {
-      Header: 'Secretaria',
-      accessor: 'secretaria.nombre'
+      id: 1,
+      dni: '76656800',
+      codigoAlumno: 'A1'
     }
   ]
 
-  useReactTable({ listaDeMatriculas, columns })
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel()
+  })
+
+  // console.log('Data:', data)
+  // console.log('Columns:', columns)
 
   return (
-    <div>SimpleTable</div>
+    <div>
+      <table>
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>{header.column.columnDef.header}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

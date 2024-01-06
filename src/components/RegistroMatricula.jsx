@@ -29,13 +29,28 @@ const RegistroMatricula = () => {
   const [descuentoAdicional, setDescuentoAdicional] = useState(0)
   const [observacionDescuentoAdicional, setObservacionDescuentoAdicional] = useState('')
   const [dniAlumnoCoincidencia, setDniAlumnoCoincidencia] = useState('')
+  const [cuotas, setCuotas] = useState([])
 
   const [estadoMatricula, setEstadoMatricula] = useState('')
+  const [estadoCuotas, setEstadoCuotas] = useState()
+  const [fechaCuotas, setFechaCuotas] = useState()
 
   const [matricula, setMatricula] = useState({})
   const [referenciaMatricula, setReferenciaMatricula] = useState('')
   const [codigoMatricula, setCodigoMatricula] = useState('')
   const [estadoDocumentoExcelencia, setEstadoDocumentoExcelencia] = useState(false)
+
+  const valorDefaultCuotas = {
+    1: 'sin pagar',
+    2: 'sin pagar',
+    3: 'sin pagar'
+  }
+
+  const varlorDefaultFechaCoutas = {
+    1: 'sin determinar',
+    2: 'sin determinar',
+    3: 'sin determinar'
+  }
 
   const { user, temporada } = useContext(userContext)
   console.log(user)
@@ -98,7 +113,15 @@ const RegistroMatricula = () => {
   }
 
   useEffect(() => {
-    if (descuentoAdicional !== 0) {
+    console.log(descuentoAdicional)
+  }, [descuentoAdicional])
+
+  useEffect(() => {
+    console.log(estadoMatricula)
+  }, [estadoMatricula])
+
+  useEffect(() => {
+    if (parseInt(descuentoAdicional) !== 0) {
       setEstadoMatricula('pendiente')
     } else if (descuentoQueSeAplicara === 'excelencia') {
       if (estadoDocumentoExcelencia === true) {
@@ -111,12 +134,12 @@ const RegistroMatricula = () => {
     } else if (descuentoQueSeAplicara === 'nada') {
       setEstadoMatricula('validado')
     }
-  }, [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal, estadoDocumentoExcelencia, descuentoQueSeAplicara])
+  }, [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal, estadoDocumentoExcelencia, descuentoQueSeAplicara, estadoMatricula])
 
   useEffect(() => {
-    setMatricula({ codigoAlumno: codigo, dni: dniAlumnoCoincidencia, temporada, carrera: selectedCarrera, ciclo: selectedCiclo, tipoDePago: tipoDePagoSeleccionado, monto: montoFinal, descuentoQueSeAplicara, descuentoAdicional, observacionDescuentoAdicional, montonTotal: montoTotal, estado: estadoMatricula, secretaria: user })
+    setMatricula({ codigoAlumno: codigo, dni: dniAlumnoCoincidencia, temporada, carrera: selectedCarrera, ciclo: selectedCiclo, tipoDePago: tipoDePagoSeleccionado, monto: montoFinal, descuentoQueSeAplicara, descuentoAdicional: parseInt(descuentoAdicional), observacionDescuentoAdicional, montonTotal: montoTotal, estado: estadoMatricula, secretaria: user, estadoPago: 'activo', cuotas, estadoCuotas, fechaCuotas, montoSimulacroCarnet, estadoSimulacroCarnet: 'pendiente', montoOriginal, montoMatriculaConDescuento: montoFinal, estadoPagoMontoContado: 'sin pagar' })
   }
-  , [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal])
+  , [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal, estadoMatricula, descuentoQueSeAplicara, cuotas, estadoCuotas, fechaCuotas, montoSimulacroCarnet, montoOriginal])
 
   useEffect(() => {
     console.log(infoDocumentoExcelencia)
@@ -290,9 +313,27 @@ const RegistroMatricula = () => {
         if (descuentoQueSeAplicara === 'exAlumno') {
           if (tipoDePagoSeleccionado === 'Contado') {
             setMontoFinal(descuentosDelCiclo.exAlumno.contado)
+            if (parseInt(descuentoAdicional) !== 0) {
+              setCuotas([])
+              setEstadoCuotas({})
+              setFechaCuotas({})
+            } else {
+              setCuotas([])
+              setEstadoCuotas({})
+              setFechaCuotas({})
+            }
           } else if (tipoDePagoSeleccionado === 'Credito') {
             if (descuentosDelCiclo.exAlumno.credito) {
               setMontoFinal(descuentosDelCiclo.exAlumno.credito.total)
+              if (parseInt(descuentoAdicional) !== 0) {
+                setCuotas([])
+                setEstadoCuotas(valorDefaultCuotas)
+                setFechaCuotas(varlorDefaultFechaCoutas)
+              } else {
+                setCuotas(descuentosDelCiclo.exAlumno.credito.cuotas)
+                setEstadoCuotas(valorDefaultCuotas)
+                setFechaCuotas(varlorDefaultFechaCoutas)
+              }
             }
           }
         }
@@ -301,10 +342,28 @@ const RegistroMatricula = () => {
           if (tipoDePagoSeleccionado === 'Contado') {
             if (descuentosDelCiclo.excelencia.contado) {
               setMontoFinal(descuentosDelCiclo.excelencia.contado)
+              if (parseInt(descuentoAdicional) !== 0) {
+                setCuotas([])
+                setEstadoCuotas({})
+                setFechaCuotas({})
+              } else {
+                setCuotas([])
+                setEstadoCuotas({})
+                setFechaCuotas({})
+              }
             }
           } else if (tipoDePagoSeleccionado === 'Credito') {
             if (descuentosDelCiclo.excelencia.credito) {
               setMontoFinal(descuentosDelCiclo.excelencia.credito.total)
+              if (parseInt(descuentoAdicional) !== 0) {
+                setCuotas([])
+                setEstadoCuotas(valorDefaultCuotas)
+                setFechaCuotas(varlorDefaultFechaCoutas)
+              } else {
+                setCuotas(descuentosDelCiclo.excelencia.credito.cuotas)
+                setEstadoCuotas(valorDefaultCuotas)
+                setFechaCuotas(varlorDefaultFechaCoutas)
+              }
             }
           }
         }
@@ -312,19 +371,45 @@ const RegistroMatricula = () => {
         if (descuentoQueSeAplicara === 'nada') {
           if (tipoDePagoSeleccionado === 'Contado') {
             setMontoFinal(montoEncontrado.total)
+            if (parseInt(descuentoAdicional) !== 0) {
+              setCuotas([])
+              setEstadoCuotas({})
+              setFechaCuotas({})
+            } else {
+              setCuotas([])
+              setEstadoCuotas({})
+              setFechaCuotas({})
+            }
           } else if (tipoDePagoSeleccionado === 'Credito') {
             setMontoFinal(montoEncontrado.total)
+            if (parseInt(descuentoAdicional) !== 0) {
+              setCuotas([])
+              setEstadoCuotas(valorDefaultCuotas)
+              setFechaCuotas(varlorDefaultFechaCoutas)
+            } else {
+              setCuotas(montoEncontrado.cuotas)
+              setEstadoCuotas(valorDefaultCuotas)
+              setFechaCuotas(varlorDefaultFechaCoutas)
+            }
           }
         }
       }
 
       console.log(montoEncontrado)
     }
-  }, [tipoDePagoSeleccionado, selectedCiclo, montosOriginales, descuentosDisponibles, descuentosDelCiclo, descuentoQueSeAplicara, descuentoExAlumno, descuentoExcelencia])
+  }, [tipoDePagoSeleccionado, selectedCiclo, montosOriginales, descuentosDisponibles, descuentosDelCiclo, descuentoQueSeAplicara, descuentoExAlumno, descuentoExcelencia, descuentoAdicional])
 
   useEffect(() => {
     console.log(montoFinal)
   }, [montoFinal])
+
+  useEffect(() => {
+    console.log(descuentoAdicional)
+  }, [descuentoAdicional])
+
+  useEffect(() => {
+    console.log(cuotas)
+  }, [cuotas])
 
   // useEffect(() => {
   //   if (RelevanteDelAlumno === 'Excelencia') {
