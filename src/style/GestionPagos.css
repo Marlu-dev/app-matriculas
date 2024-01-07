@@ -1,9 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+    --fondo: #e7e4e4;   
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .container-gestion-de-pagos {
     display: grid;
     width: 100%;
     height: 100%;
     gap: 8px;
-    background-color: #e7e4e4;
+    background-color: var(--fondo);
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
@@ -17,16 +44,110 @@
 }
 
 .container-identificar-alumno-gestion-de-pagos {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: identificar-alumno;
 }
 
 .container-recuperar-pagos {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: recuperar-pagos;
 }
 
 .container-revisar-pagos {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: revisar-pagos;
+}
+
+/* -- .container-identificar-alumno-gestion-de-pagos -- */
+
+.container-identificar-alumno-gestion-de-pagos {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.container-identificar-alumno-gestion-de-pagos .header-register {
+    position: sticky;
+    top: 0px;
+    background: var(--blanco);
+}
+
+.container-identificar-alumno-gestion-de-pagos::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container-identificar-alumno-gestion-de-pagos::-webkit-scrollbar-track{
+background: var(--grisClaro);
+border-radius: 20px;
+}
+
+.container-identificar-alumno-gestion-de-pagos::-webkit-scrollbar-thumb{
+background: var(--gris);
+border-radius: 20px;
+}
+
+/* CONTAINER SEARCH */
+.container-identificar-alumno-gestion-de-pagos .container-indentificar-1 .container-search-identificar {
+    display: flex;
+    height: 75%;
+    width: 8%; 
+    cursor: pointer;
+    /* margin: 0 auto; */
+    padding: 5px;
+    background: var(--blanco);
+    border-radius: 30px;
+    align-items: center; 
+    margin-left: 6%;
+    margin-top: 4%;
+    transition: 0.8s;
+    box-shadow: 0 6px 15px var(--negro);
+    /* margin-right: 2%; */
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-search-identificar:hover {
+    width: 30%;
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-search-identificar:hover input{
+    width: 100%;
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-search-identificar input {
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    transition: 0.8s;
+    color: var(--azul);
+    background: transparent;
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-search-identificar .button-search-identificar{
+    cursor: pointer;
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-identificar-2 .container-identificar-alumno-datos {
+    float: right;
+    margin-top: -10%;
+    margin-right: 20%;
+
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-identificar-alumno-datos .title-dato {
+    /* display: block; */
+    /* margin-bottom: 5px; */
+    font-weight: bold;
+    color: var(--azul);
+    /* padding: 10px; */
+}
+
+.container-identificar-alumno-gestion-de-pagos .container-identificar-alumno-datos .content-dato {
+    /* width: 100%; */
+    padding: 0px 5px;
+    font-size: 14px;
+    color: var(--negro);
+    font-weight: 500;
+    /* margin-bottom: 5px; */
+    /* box-sizing: border-box; */
+    /* border: 1px solid var(--blanco); */
+    
 }

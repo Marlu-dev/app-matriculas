@@ -489,9 +489,8 @@ const RegistroMatricula = () => {
         <header className='header-register'>
           REGISTRO DE MATRÍCULA
         </header>
-        <div className="container-indentificar">
+        <div className="container-indentificar-1">
           
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
 
           <div className='container-search-identificar'>
             <input 
@@ -523,53 +522,57 @@ const RegistroMatricula = () => {
             {/*  */}
           </div>
 
+          
+        </div>
+
+        <div className="container-identificar-2">
           <div className='container-identificar-alumno-datos'>
-            <div>
-              {/* <label>DNI: </label> */}
-              <label className='title-dato'>
-                DNI:
-              </label>
-              <span className='content-dato'>
-              {coincidencia && 
-              coincidencia.length > 0 ? 
-              coincidencia[0].dni : ''}
-              </span>
-            </div>
-            <div>
-              {/* <label>Nombre: </label> */}
-              <label className='title-dato'>
-                Nombre:
-              </label>
-              <span className='content-dato'>
-              {coincidencia && 
-              coincidencia.length > 0 ? 
-              coincidencia[0].nombre : ''}
-              </span>
-            </div>
-            <div>
-              {/* <label>Apellido Paterno: </label> */}
-              <label className='title-dato'>
-                Apellido Paterno:
-              </label>
-              <span className='content-dato'>
-              {coincidencia && 
-              coincidencia.length > 0 ? 
-              coincidencia[0].apellidoPaterno : ''}
-              </span>
-            </div>
-            <div>
-              {/* <label>Apellido Materno: </label> */}
-              <label className='title-dato'>
-                Apellido Materno:
-              </label>
-              <span className='content-dato'>
-              {coincidencia && 
-              coincidencia.length > 0 ? 
-              coincidencia[0].apellidoMaterno : ''}
-              </span>
-            </div>
-          </div>
-          </div>
+              <div>
+                {/* <label>DNI: </label> */}
+                <label className='title-dato'>
+                  DNI:
+                </label>
+                <span className='content-dato'>
+                {coincidencia && 
+                coincidencia.length > 0 ? 
+                coincidencia[0].dni : ''}
+                </span>
+              </div>
+              <div>
+                {/* <label>Nombre: </label> */}
+                <label className='title-dato'>
+                  Nombre:
+                </label>
+                <span className='content-dato'>
+                {coincidencia && 
+                coincidencia.length > 0 ? 
+                coincidencia[0].nombre : ''}
+                </span>
+              </div>
+              <div>
+                {/* <label>Apellido Paterno: </label> */}
+                <label className='title-dato'>
+                  Apellido Paterno:
+                </label>
+                <span className='content-dato'>
+                {coincidencia && 
+                coincidencia.length > 0 ? 
+                coincidencia[0].apellidoPaterno : ''}
+                </span>
+              </div>
+              <div>
+                {/* <label>Apellido Materno: </label> */}
+                <label className='title-dato'>
+                  Apellido Materno:
+                </label>
+                <span className='content-dato'>
+                {coincidencia && 
+                coincidencia.length > 0 ? 
+                coincidencia[0].apellidoMaterno : ''}
+                </span>
+              </div>
+          </div> {/*  */}
+
         </div>
 
       </div>
@@ -741,9 +744,13 @@ const RegistroMatricula = () => {
                   <input 
                   type='file' 
                   name='' 
-                  id='' 
+                  id='uploadBtn' 
                   onChange={actualizarInfoDocumentoExcelencia} 
                   />
+                  {/* <label className='uploadBtn' for="uploadBtn">
+                    Subir Archivo
+                    Sin archivos 
+                  </label> */}
                   <button 
                     onClick={enviarDocumentoExcelencia}
                     className='btn-register'> 
@@ -819,21 +826,21 @@ const RegistroMatricula = () => {
             <div>
               <label>Descuento Adicional</label>
             </div>
-            <input
+            <input  className='input-descuento-A'
               name='descuentoAdicional'
               id='descuentoAdicional'
               onChange={handleChangeDescuentoAdicional}
-              placeholder='' required
+              placeholder='0' required
               value={descuentoAdicional}
             />
             <div>
               <label>Observación</label>
             </div>
-            <input
+            <input className='input-descuento-Ob'
               name='observacionDescuentoAdicional'
               id='observacionDescuentoAdicional'
               onChange={handleChangeObservacionDescuentoAdicional}
-              placeholder='' required
+              placeholder='...' required  
               value={observacionDescuentoAdicional}
             />
           </div>
@@ -898,7 +905,11 @@ const RegistroMatricula = () => {
             </span>}
           </div>
           <div className='input-seccion'>
-            <button onClick={registrarMatricula}>Registrar matrícula</button>
+            <button 
+            onClick={registrarMatricula}
+            className='btn-register'>
+              Registrar matrícula
+            </button>
           </div>
         </div>
       </div>

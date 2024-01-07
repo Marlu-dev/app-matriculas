@@ -1,4 +1,5 @@
 import React from 'react'
+import '../style/SeleccionadorPago.css'
 
 const SeleccionadorPago = ({ datos, estadoPago, funcionRevisarMatricula }) => {
   const revisarMatricula = () => {
