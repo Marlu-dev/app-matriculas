@@ -10,15 +10,20 @@ const SeleccionadorPago = ({ datos, estadoPago, funcionRevisarMatricula }) => {
     <>
       {datos.estadoPago === estadoPago
         ? (
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', border: '2px solid black', cursor: 'pointer' }} onClick={revisarMatricula}>
-            <div>
-              <span>{datos.temporada}</span>
-            </div>
-            <div>
-              <span>{datos.ciclo}</span>
-            </div>
-            <div>
-              <span>{datos.estadoPago}</span>
+          <div style={{ cursor: 'pointer' }} onClick={revisarMatricula}>
+            <div className="container-select-un-dato">
+              <div className="datos-select-un-dato">
+                <span>
+                  {datos.temporada}
+                </span>
+                <span>
+                  {datos.ciclo}
+                </span>
+                <span>
+                  {datos.estadoPago}
+                </span>
+
+              </div>
             </div>
           </div>
           )

@@ -402,164 +402,214 @@ const RevisarPagos = ({ datos }) => {
 
   return (
     <>
+
       <div className='contenerdor-datos-recuperados-matricula'>
-        <h2>Datos de la Matrícula</h2>
-        <div>
-          <label>ID: </label>
-          <span>{id}</span>
-        </div>
+        {/* CONTAINER recuperados-matricula */}
+          <h2 className='header-register'>
+            Datos de la Matrícula
+          </h2>
+          <div className='datos-container'>
+            {/* DATOS ALUMNO */}
+            <div className='container-dato'>
+              <label className='title-dato'>
+                ID: 
+              </label>
+              <span className='content-dato'>
+                {id}
+              </span>
+            </div>
 
-        <div>
-          <label>Ciclo: </label>
-          <span>{ciclo}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Ciclo: 
+              </label>
+              <span className='content-dato'>
+                {ciclo}
+              </span>
+            </div>
 
-        <div>
-          <label>Descuento Especial: </label>
-          <span>{descuentoQueSeAplicara}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Descuento Especial: 
+              </label>
+              <span className='content-dato'>
+                {descuentoQueSeAplicara}
+              </span>
+            </div>
 
-        <div>
-          <label>Tipo de Pago: </label>
-          <span>{tipoDePago}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Tipo de Pago: 
+              </label>
+              <span className='content-dato'>
+                {tipoDePago}
+              </span>
+            </div>
 
-        <div>
-          <label>Estado del Pago: </label>
-          <span>{estadoPago}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Estado del Pago: 
+              </label>
+              <span className='content-dato'>
+                {estadoPago}
+              </span>
+            </div>
 
-        <div>
-          <label>Descuento Adicional: </label>
-          <span>{descuentoAdicional}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Descuento Adicional: 
+              </label>
+              <span className='content-dato'>
+                {descuentoAdicional}
+              </span>
+            </div>
 
-        <div>
-          <label>Estado de la matrícula: </label>
-          <span>{estado}</span>
-        </div>
-      </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Estado de la matrícula: 
+              </label>
+              <span className='content-dato'>
+                {estado}
+              </span>
+            </div>
+          </div>
+          
+
+      </div>{/* CONTAINER recuperados-matricula */}
+
+
       <div className='contenedor-de-gestion-de-pagos'>
-        <h2>Gestión de pagos</h2>
-        {estado === 'pendiente'
-          ? (
-              'No se pueden asignar pagos hasta que la matrícula sea validada por un administrador'
-            )
-          : estado === 'rechazado'
+        <h2 className='header-register'>
+          Gestión de pagos
+        </h2> 
+          <div className='datos-container'>
+            {estado === 'pendiente'
             ? (
-                'La matrícula fue rechazada por el administrador, por favor revisa las observaciones antes de generar una nueva matrícula'
+                'No se pueden asignar pagos hasta que la matrícula sea validada por un administrador'
               )
-            : estado === 'validado'
+            : estado === 'rechazado'
               ? (
-                <div>
-                  <div>
-                    {estadoPago === 'cancelado'
-                      ? 'No se registra deuda pendiente'
-                      : estadoPago === 'retrasado'
-                        ? 'Se registra pagos atrasados pendientes'
-                        : estadoPago === 'activo'
-                          ? 'El alumno tiene pagos pendientes'
-                          : ''}
-                  </div>
-                </div>
+                  'La matrícula fue rechazada por el administrador, por favor revisa las observaciones antes de generar una nueva matrícula'
                 )
-              : (
-                  ''
-                )}
-      </div>
-      <div>
-        {activarSeccionPagos && tipoDePago === 'Contado'
-          ? (
-            <div>
-              <h2>Contado</h2>
-              {descuentoQueSeAplicara !== 'nada'
+              : estado === 'validado'
                 ? (
-                  <div>
-                    <label>
-                      <del>Costo de Matrícula</del>
-                    </label>
-                    <span>
-                      <del>{montoOriginal}</del>
-                    </span>
+                  <div className='title-dato'>
+                    <div >
+                      {estadoPago === 'cancelado'
+                        ? 'No se registra deuda pendiente'
+                        : estadoPago === 'retrasado'
+                          ? 'Se registra pagos atrasados pendientes'
+                          : estadoPago === 'activo'
+                            ? 'El alumno tiene pagos pendientes'
+                            : ''}
+                    </div>
                   </div>
                   )
                 : (
-                  <div>
-                    <label>Costo de Matrícula</label>
-                    <span>{montoOriginal}</span>
-                  </div>
+                    ''
                   )}
+          </div>
+        
+      </div>
 
-              <div>
+      <div>
+        {activarSeccionPagos && tipoDePago === 'Contado'
+          ? (
+            <div> {/* TOTALL */}
+              <h2 className='header-register'>
+                Contado
+              </h2>
+              <div className="datos-container">
                 {descuentoQueSeAplicara !== 'nada'
                   ? (
-                    <>
+                    <div>
                       <label>
-                        Costo de Matrícula con descuento especial (
-                        {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                        <del>Costo de Matrícula: </del>
                       </label>
-                      <span>{montoMatriculaConDescuento}</span>
-                    </>
+                      <span>
+                        <del>{montoOriginal}</del>
+                      </span>
+                    </div>
                     )
                   : (
-                      ''
+                    <div>
+                      <label>Costo de Matrícula: </label>
+                      <span>{montoOriginal}</span>
+                    </div>
                     )}
+
+                <div>
+                  {descuentoQueSeAplicara !== 'nada'
+                    ? (
+                      <>
+                        <label>
+                          Costo de Matrícula con descuento especial (
+                          {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                        </label>
+                        <span>{montoMatriculaConDescuento}</span>
+                      </>
+                      )
+                    : (
+                        ''
+                      )}
+                </div>
+                <div>
+                  {descuentoAdicional !== 0
+                    ? (
+                      <>
+                        <label>Descuento Adicional: </label>
+                        <span>{descuentoAdicional}</span>
+                      </>
+                      )
+                    : (
+                        ''
+                      )}
+                </div>
+                <div>
+                  <label>Costo de Simulacro y Carnet: </label>
+                  <span>{simulacroCarnet}</span>
+                  {estadoSimulacroCarnet === 'pendiente'
+                    ? (
+                      <button onClick={() => pagarSimulacroCarnet()}>Pagar</button>
+                      )
+                    : (
+                        ' (Cancelado)'
+                      )}
+                </div>
+                <div>
+                  <label>Costo Matrícula Final: </label>
+                  <span>{montoMatriculaConDescuento - descuentoAdicional} ({estadoPagoMontoContado === 'pagado' ? 'Cancelado' : ''})</span>
+                  {
+                      estadoPagoMontoContado === 'sin pagar'
+                        ? (
+                          <div>
+                            <DatePicker
+                              showIcon
+                              locale='es'
+                              dateFormat='dd/MM/yyyy'
+                              selected={diaActual}
+                              onChange={(date) => setDiaActual(date)}
+                            />
+                            <button onClick={realizarPagoContado}>Realizar pago</button>
+                          </div>
+                          )
+                        : ''
+                  }
+                </div>
+                <div>
+                  <label>Costo TOTAL: </label>
+                  <span>{montoTotal}</span>
+                </div>
+                <PDFDownloadLink
+                  document={<ComprobanteDePago matriculaId={id} />}
+                  fileName={id + '_' + dni + '.pdf'}
+                >
+                  {({ loading }) =>
+                    loading ? 'Loading document...' : 'Descargar PDF'}
+                </PDFDownloadLink>
               </div>
-              <div>
-                {descuentoAdicional !== 0
-                  ? (
-                    <>
-                      <label>Descuento Adicional: </label>
-                      <span>{descuentoAdicional}</span>
-                    </>
-                    )
-                  : (
-                      ''
-                    )}
-              </div>
-              <div>
-                <label>Costo de Simulacro y Carnet: </label>
-                <span>{simulacroCarnet}</span>
-                {estadoSimulacroCarnet === 'pendiente'
-                  ? (
-                    <button onClick={() => pagarSimulacroCarnet()}>Pagar</button>
-                    )
-                  : (
-                      ' (Cancelado)'
-                    )}
-              </div>
-              <div>
-                <label>Costo Matrícula Final: </label>
-                <span>{montoMatriculaConDescuento - descuentoAdicional} ({estadoPagoMontoContado === 'pagado' ? 'Cancelado' : ''})</span>
-                {
-                    estadoPagoMontoContado === 'sin pagar'
-                      ? (
-                        <div>
-                          <DatePicker
-                            showIcon
-                            locale='es'
-                            dateFormat='dd/MM/yyyy'
-                            selected={diaActual}
-                            onChange={(date) => setDiaActual(date)}
-                          />
-                          <button onClick={realizarPagoContado}>Realizar pago</button>
-                        </div>
-                        )
-                      : ''
-                }
-              </div>
-              <div>
-                <label>Costo TOTAL: </label>
-                <span>{montoTotal}</span>
-              </div>
-              <PDFDownloadLink
-                document={<ComprobanteDePago matriculaId={id} />}
-                fileName={id + '_' + dni + '.pdf'}
-              >
-                {({ loading }) =>
-                  loading ? 'Loading document...' : 'Descargar PDF'}
-              </PDFDownloadLink>
-            </div>
+              
+            </div> /* FIN TOTAL */
             )
           : activarSeccionPagos && tipoDePago === 'Credito'
             ? (
@@ -567,8 +617,10 @@ const RevisarPagos = ({ datos }) => {
                 {Object.keys(cuotas).length > 0
                   ? (
                     <>
-                      <div>
-                        <h2>Crédito</h2>
+                      <div >
+                        <h2 className='header-register' >
+                          Crédito
+                        </h2>
                         {descuentoQueSeAplicara !== 'nada'
                           ? (
                             <div>
@@ -634,7 +686,7 @@ const RevisarPagos = ({ datos }) => {
                           </span>
                         </div>
                       </div>
-                      <div>
+                      <div >
                         Cuota 1
                         <input
                           name='cuota1Recuperada'
@@ -1022,6 +1074,7 @@ const RevisarPagos = ({ datos }) => {
               )
             : ''}
       </div>
+
     </>
   )
 }

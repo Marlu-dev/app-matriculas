@@ -5,7 +5,7 @@ import '../style/RevisarMatricula.css'
 const RevisarMatricula = ({ datos }) => {
   console.log(datos)
   return (
-    <div className='text-vacio'>
+    <div /* className='text-vacio' */>
       {datos.length === 0
         ? 'Selecciona alguna matrícula'
         : <RevisarPagos datos={datos} />}

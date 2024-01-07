@@ -169,8 +169,10 @@ const GestionPagos = () => {
 
       <div className='container-recuperar-pagos'>
         <div className='input-seccion'>
-          <div>
-            <label>- Activo</label>
+          <div className='sub-title'>
+            <label>
+              - Activo
+            </label>
           </div>
           {
           coincidenciaMatricula.map((pago) => (
@@ -185,8 +187,10 @@ const GestionPagos = () => {
         </div>
 
         <div className='input-seccion'>
-          <div>
-            <label>- Retrasado</label>
+          <div className='sub-title'>
+            <label >
+              - Retrasado
+            </label>
           </div>
           {/* <p>Retrasado</p> */}
           {
@@ -202,8 +206,10 @@ const GestionPagos = () => {
         </div>
 
         <div className='input-seccion'>
-          <div>
-            <label>- Cancelado</label>
+          <div className='sub-title'>
+            <label>
+              - Cancelado
+            </label>
           </div>
           {/* <p>Cancelado</p> */}
           {

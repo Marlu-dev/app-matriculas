@@ -23,3 +23,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+.container-select-un-dato {
+/*   position:; */
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+    width: 70%;
+    box-shadow: 8px 8px 5px 2px var(--gris);
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.container-select-un-dato .datos-select-un-dato {
+    display: grid;
+    text-align: center;
+    /* cursor: pointer; */
+    /* margin: 0 auto; */
+    width: 100%;
+    gap: 1rem;
+    grid-template-columns: 2fr 4fr 4fr;
+    grid-template-rows: 2fr;
+    /*  max-height: 100%;
+    overflow-y: auto; */
+    color: var(--azul);
+}
+
+.container-select-un-dato.datos-select-un-dato span {
+    align-items: center;
+    text-align: center;
+    padding: 4% 1% 4% 1%;
+}
