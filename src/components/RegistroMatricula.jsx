@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { recuperarColeccion, subirDocumentoExcelencia, agregarDatosExcelencia, agregarMatricula, agregarMatriculaAColeccion } from '../../librerias/manipularDatos'
 import '../style/RegistroMatricula.css'
 import Select from './Select'
-import { userContext } from './CargarAplicacion'
+import { userContext } from './Login'
 
 const RegistroMatricula = () => {
   const [codigo, setCodigo] = useState('')
@@ -490,39 +490,35 @@ const RegistroMatricula = () => {
           REGISTRO DE MATRÍCULA
         </header>
         <div className="container-indentificar-1">
-          
-
-          <div className='container-search-identificar'>
-            <input 
-              type='text' 
-              value={dni} 
-              onChange={handleChange} 
-              maxLength={8} 
-              placeholder='Buscar con DNI...'
-            />
-            {/* <button onClick={identificarAlumno}>Identificar</button> */}
-            <div className='button-search-identificar' onClick={identificarAlumno}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                class='icon icon-tabler icon-tabler-search'
-                width='25'
-                height='25'
-                viewBox='0 0 24 24'
-                stroke-width='3.5'
-                stroke='#2c3e50'
-                fill='none'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              >
-                <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0' />
-                <path d='M21 21l-6 -6' />
-              </svg>
-            </div>
-            {/*  */}
-          </div>
-
-          
+            <div className='container-search-identificar'>
+              <input
+                type='text'
+                value={dni}
+                onChange={handleChange}
+                maxLength={8}
+                placeholder='Buscar con DNI...'
+              />
+              {/* <button onClick={identificarAlumno}>Identificar</button> */}
+              <div className='button-search-identificar' onClick={identificarAlumno}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  class='icon icon-tabler icon-tabler-search'
+                  width='25'
+                  height='25'
+                  viewBox='0 0 24 24'
+                  stroke-width='3.5'
+                  stroke='#2c3e50'
+                  fill='none'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                >
+                  <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                  <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0' />
+                  <path d='M21 21l-6 -6' />
+                </svg>
+              </div>
+              {/*  */}
+            </div>  
         </div>
 
         <div className="container-identificar-2">
@@ -544,9 +540,10 @@ const RegistroMatricula = () => {
                   Nombre:
                 </label>
                 <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].nombre : ''}
+                  {coincidencia &&
+              coincidencia.length > 0
+                    ? coincidencia[0].nombre
+                    : ''}
                 </span>
               </div>
               <div>
@@ -555,9 +552,10 @@ const RegistroMatricula = () => {
                   Apellido Paterno:
                 </label>
                 <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].apellidoPaterno : ''}
+                  {coincidencia &&
+              coincidencia.length > 0
+                    ? coincidencia[0].apellidoPaterno
+                    : ''}
                 </span>
               </div>
               <div>
@@ -566,13 +564,14 @@ const RegistroMatricula = () => {
                   Apellido Materno:
                 </label>
                 <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].apellidoMaterno : ''}
+                  {coincidencia &&
+              coincidencia.length > 0
+                    ? coincidencia[0].apellidoMaterno
+                    : ''}
                 </span>
               </div>
-          </div> {/*  */}
-
+            </div>
+          </div>
         </div>
 
       </div>
@@ -718,25 +717,22 @@ const RegistroMatricula = () => {
             <div>
               <label>Ex-alumno</label>
               <div className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 && 
+                {coincidencia &&
+                coincidencia.length > 0 &&
                   <span>
-                    {descuentoExAlumno ? 'Sí' : 'No'
-                    }
-                  </span>
-                }
+                    {descuentoExAlumno ? 'Sí' : 'No'}
+                  </span>}
               </div>
             </div>
 
             <div>
               <label>Excelencia</label>
               <div className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 && 
+                {coincidencia &&
+                coincidencia.length > 0 &&
                   <span>
                     {descuentoExcelencia ? 'Sí' : 'No'}
-                  </span>
-                }
+                  </span>}
               </div>
 
               <div className='content-dato'>
@@ -755,9 +751,8 @@ const RegistroMatricula = () => {
                     onClick={enviarDocumentoExcelencia}
                     className='btn-register'> 
                       Subir
-                  </button>
-                  </>
-                }
+                    </button>
+                  </>}
               </div>
             </div>
 
@@ -766,20 +761,22 @@ const RegistroMatricula = () => {
         </div>
       </div>
 
-
       <div className='container-ver-resumen-pagos'>
         <div className='input-seccion'>
-            <label className='title-dato'>
-              MONTO
-            </label>
-            {/* <label>Monto</label> */}
+          <label className='title-dato'>
+            MONTO
+          </label>
+          {/* <label>Monto</label> */}
           <div className='input-seccion'>
             <label>Descuentos Diponibles</label>
             <span className='content-dato'>
-              {descuentosDisponibles === 'ambos' ? 'Ex-alumno y Excelencia' : 
-              descuentosDisponibles === 'exalumno' ? 'Ex-alumno' : 
-              descuentosDisponibles === 'excelencia' ? 'Excelencia' : 
-              descuentosDisponibles === 'nada' ? 'Ninguno' : ''}
+              {descuentosDisponibles === 'ambos'
+                ? 'Ex-alumno y Excelencia'
+                : descuentosDisponibles === 'exalumno'
+                  ? 'Ex-alumno'
+                  : descuentosDisponibles === 'excelencia'
+                    ? 'Excelencia'
+                    : descuentosDisponibles === 'nada' ? 'Ninguno' : ''}
             </span>
           </div>
           <div className='input-seccion'>
@@ -815,9 +812,11 @@ const RegistroMatricula = () => {
             <label>Descueto que se aplicará</label>
             <span className='content-dato'>
               {
-                descuentoQueSeAplicara === 'exAlumno' ? 'Ex-alumno' : 
-                descuentoQueSeAplicara === 'excelencia' ? 'Excelencia' : 
-                descuentoQueSeAplicara === 'nada' ? 'Ninguno' : ''
+                descuentoQueSeAplicara === 'exAlumno'
+                  ? 'Ex-alumno'
+                  : descuentoQueSeAplicara === 'excelencia'
+                    ? 'Excelencia'
+                    : descuentoQueSeAplicara === 'nada' ? 'Ninguno' : ''
               }
             </span>
           </div>
@@ -851,9 +850,9 @@ const RegistroMatricula = () => {
             </div>
             <div className='main-dropdwon'>
               <div className='select-container'>
-                <Select 
-                onSelectChange={seleccionDeTipoDePago} 
-                arrayDeObjetos={montosOriginales} 
+                <Select
+                  onSelectChange={seleccionDeTipoDePago}
+                  arrayDeObjetos={montosOriginales}
                 />
                 <div className='select-icon'>
                   <svg
@@ -877,32 +876,32 @@ const RegistroMatricula = () => {
           </div>
           <div className='input-seccion'>
             <label>Precio Matricula: </label>
-            {montoOriginal && 
-            <span className='content-dato'>
-              {montoOriginal}
-            </span>}
+            {montoOriginal &&
+              <span className='content-dato'>
+                {montoOriginal}
+              </span>}
           </div>
 
           <div className='input-seccion'>
             <label>Precio Matricula con Descuento: </label>
-            {montoFinal && 
-            <span className='content-dato'>
-              {montoFinal}
-            </span>}
+            {montoFinal &&
+              <span className='content-dato'>
+                {montoFinal}
+              </span>}
           </div>
           <div className='input-seccion'>
             <label>Derecho a simulacros y carnet: </label>
-            {montoSimulacroCarnet && 
-            <span className='content-dato'>
-              {montoSimulacroCarnet}
-            </span>}
+            {montoSimulacroCarnet &&
+              <span className='content-dato'>
+                {montoSimulacroCarnet}
+              </span>}
           </div>
           <div className='input-seccion'>
             <label>Monto TOTAL:  </label>
-            {montoTotal && 
-            <span className='content-dato'>
-              {montoTotal}
-            </span>}
+            {montoTotal &&
+              <span className='content-dato'>
+                {montoTotal}
+              </span>}
           </div>
           <div className='input-seccion'>
             <button 

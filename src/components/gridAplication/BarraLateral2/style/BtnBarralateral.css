@@ -1,3 +1,11 @@
+.container-barra-lateral {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+}
+
 .btnBarraLateral {
     display: flex;
     align-items: center;

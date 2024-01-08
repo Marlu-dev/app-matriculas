@@ -1,0 +1,27 @@
+.container-gestionar-documentos-excelencia {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    gap: 8px;
+    background-color: #e7e4e4;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia"
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia"
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia"
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia"
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia"
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia"
+        "lista-documentos-excelencia editar-estado-documentos-excelencia editar-estado-documentos-excelencia";
+}
+
+.container-lista-documentos-excelencia {
+    background-color: #ffff;
+    grid-area: lista-documentos-excelencia;
+}
+
+.editar-estado-documentos-excelencia {
+    background-color: #ffff;
+    grid-area: editar-estado-documentos-excelencia;
+}
