@@ -4,6 +4,7 @@ import BarraTitulo from './gridAplication/BarraTitulo'
 import BarraLateral2 from './gridAplication/BarraLateral2/BarraLateral2'
 import Centro from './gridAplication/Main/Centro'
 import BarraDeHerramientas from './gridAplication/BarraDeHerramientas/BarraDeHerramientas'
+import BarraLateral from './gridAplication/BarraLateral/BarraLateral'
 
 const GridAplicacion = () => {
   const [menuSeleccionadoBarraLateral2, setMenuSeleccionadoBarraLateral2] =
@@ -18,16 +19,20 @@ const GridAplicacion = () => {
       <div className='barraTitulo'>
         <BarraTitulo />
       </div>
-      <div className='barraLateral1'>Barra Lateral 1</div>
+      <div className='barraLateral1 barraLateral2Expandido' id='barraLateral1'>
+        <BarraLateral
+          menuSeleccionado={recuperarMenuSeleccionadoBarraLateral2}
+        />
+      </div>
       <div className='barraLateral2 barraLateral2Expandido' id='barraLateral2'>
         <BarraLateral2
           menuSeleccionado={recuperarMenuSeleccionadoBarraLateral2}
         />
       </div>
 
-      <div className='header_principal'>
+      {/* <div className='header_principal'>
         <BarraDeHerramientas />
-      </div>
+      </div> */}
 
       <div className='main'>
         <Centro menuSeleccionadoBarraLateral2={menuSeleccionadoBarraLateral2} />

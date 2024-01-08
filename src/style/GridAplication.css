@@ -49,7 +49,7 @@ body {
     grid-template-rows: 30px 1fr repeat(7, minmax(0, 1fr));
     grid-template-areas:
         "barraDeTitulo barraDeTitulo"
-        "barraLateral1 header"
+        "barraLateral1 main"
         "barraLateral1 main"
         "barraLateral2 main"
         "barraLateral2 main"
@@ -71,19 +71,22 @@ body {
     background-color:var(--colorPrimario); 
     grid-area: barraLateral1;
     border-radius: 10px;
-    /* margin: 0px 0px 0px 8px; */
-    margin: 0px 0px 0px 8px;
+    margin: 0px 0px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
 }
 
 .barraLateral2{
     background-color: var(--colorPrimario); 
     grid-area: barraLateral2;
-    margin-left: 8px;
     border-radius: 10px;
     margin: 0px 0px 8px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 10px;
 }
 
 .header_principal {
