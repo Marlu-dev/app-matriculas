@@ -12,6 +12,7 @@
     justify-content: center;
     width: 90%;
     align-content: center;
+    margin: 5px auto;
 }
 
 .btnBarraLateral:hover {
