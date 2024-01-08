@@ -79,20 +79,21 @@ const GestionPagos = () => {
           GESTION DE PAGOS
         </header>
 
-        <div className="container-indentificar-1">
+        <div className='container-indentificar-1'>
           <div className='container-search-identificar'>
-            <input 
-              type='text' 
-              value={dni} 
-              onChange={handleChange} 
-              maxLength={8} 
+            <input
+              type='text'
+              value={dni}
+              onChange={handleChange}
+              maxLength={8}
               placeholder='Buscar con DNI...'
             />
             {/* <button onClick={identificarAlumno}>Identificar</button> */}
 
-            <div 
-              className='button-search-identificar' 
-              onClick={identificarAlumno}>
+            <div
+              className='button-search-identificar'
+              onClick={identificarAlumno}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 class='icon icon-tabler icon-tabler-search'
@@ -113,59 +114,61 @@ const GestionPagos = () => {
           </div>
         </div>
 
-        <div className="container-identificar-2">
+        <div className='container-identificar-2'>
           <div className='container-identificar-alumno-datos'>
-              <div>
-                {/* <label>DNI: </label> */}
-                <label className='title-dato'>
-                  DNI:
-                </label>
-                <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].dni : ''}
-                </span>
-              </div>
-              <div>
-                {/* <label>Nombre: </label> */}
-                <label className='title-dato'>
-                  Nombre:
-                </label>
-                <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].nombre : ''}
-                </span>
-              </div>
-              <div>
-                {/* <label>Apellido Paterno: </label> */}
-                <label className='title-dato'>
-                  Apellido Paterno:
-                </label>
-                <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].apellidoPaterno : ''}
-                </span>
-              </div>
-              <div>
-                {/* <label>Apellido Materno: </label> */}
-                <label className='title-dato'>
-                  Apellido Materno:
-                </label>
-                <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].apellidoMaterno : ''}
-                </span>
-              </div>
+            <div>
+              {/* <label>DNI: </label> */}
+              <label className='title-dato'>
+                DNI:
+              </label>
+              <span className='content-dato'>
+                {coincidencia &&
+                coincidencia.length > 0
+                  ? coincidencia[0].dni
+                  : ''}
+              </span>
+            </div>
+            <div>
+              {/* <label>Nombre: </label> */}
+              <label className='title-dato'>
+                Nombre:
+              </label>
+              <span className='content-dato'>
+                {coincidencia &&
+                coincidencia.length > 0
+                  ? coincidencia[0].nombre
+                  : ''}
+              </span>
+            </div>
+            <div>
+              {/* <label>Apellido Paterno: </label> */}
+              <label className='title-dato'>
+                Apellido Paterno:
+              </label>
+              <span className='content-dato'>
+                {coincidencia &&
+                coincidencia.length > 0
+                  ? coincidencia[0].apellidoPaterno
+                  : ''}
+              </span>
+            </div>
+            <div>
+              {/* <label>Apellido Materno: </label> */}
+              <label className='title-dato'>
+                Apellido Materno:
+              </label>
+              <span className='content-dato'>
+                {coincidencia &&
+                coincidencia.length > 0
+                  ? coincidencia[0].apellidoMaterno
+                  : ''}
+              </span>
+            </div>
           </div> {/*  */}
 
         </div>
-        
 
       </div>
-
 
       <div className='container-recuperar-pagos'>
         <div className='input-seccion'>
@@ -188,7 +191,7 @@ const GestionPagos = () => {
 
         <div className='input-seccion'>
           <div className='sub-title'>
-            <label >
+            <label>
               - Retrasado
             </label>
           </div>
@@ -226,9 +229,10 @@ const GestionPagos = () => {
 
       </div>
       <div className='container-revisar-pagos'>
-        <RevisarMatricula 
-        datos={coincidenciaMatricula.filter(matricula => 
-        matricula.id === codigoMatriculaEscogida)} />
+        <RevisarMatricula
+          datos={coincidenciaMatricula.filter(matricula =>
+            matricula.id === codigoMatriculaEscogida)}
+        />
       </div>
     </div>
   )

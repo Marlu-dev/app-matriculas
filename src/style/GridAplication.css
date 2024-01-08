@@ -121,10 +121,16 @@ body {
 
 
 
+.btnChat {
+    transition: all 1.3s ease-in-out;
+}
 
-
-
-
+.btnChat:hover {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.1);
+}
 
 
 
