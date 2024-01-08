@@ -1,0 +1,11 @@
+.container-menu-inicial{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url("./img/pantalla_carga.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}

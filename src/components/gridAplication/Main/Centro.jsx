@@ -7,6 +7,7 @@ import GestionPagos from '../../GestionPagos'
 import RegistroCarrera from '../../RegistroCarrera'
 import GestionarDocumentosExcelencia from '../../GestionarDocumentosExcelencia'
 import GestionarMatriculasEspeciales from '../../GestionarMatriculasEspeciales'
+import MenuInicial from '../../MenuInicial'
 
 const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
   let menu
@@ -54,6 +55,12 @@ const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
     case 'GestionarMatriculasEspeciales':
       menu = <GestionarMatriculasEspeciales />
       break
+
+    case 'MenuInicial':
+      menu = <MenuInicial />
+      break
+
+    default: menu = <MenuInicial />
   }
 
   // console.log(menu);

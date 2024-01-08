@@ -3,7 +3,9 @@ import { db } from '../../public/services/firebase/firebase.js'
 import { collection, query, onSnapshot } from 'firebase/firestore'
 import GridAplicacion from './GridAplicacion'
 import { EstadoBarraLateralProvider } from './EstadoBarraLateralProvider'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import '../style/Login.css'
+import '../style/Loader.css'
 
 export const userContext = React.createContext()
 
@@ -15,6 +17,8 @@ const Login = () => {
   const [sesionIniciada, setSesionIniciada] = useState(false)
   const [temporada, setTemporada] = useState('')
   const [error, setError] = useState('')
+  const [nivel, setNivel] = useState('')
+  const [estadoLoader, setEstadoLoader] = useState(false)
   const primerIngreso = useRef(true)
 
   const handleChange = (e) => {
@@ -28,6 +32,8 @@ const Login = () => {
   }
 
   const iniciarSesion = () => {
+    setError('')
+    setEstadoLoader(true)
     primerIngreso.current = false
     console.log('Iniciando sesión')
     const q = query(collection(db, 'usuarios'))
@@ -54,19 +60,34 @@ const Login = () => {
   , [usuariosRegistrados])
 
   useEffect(() => {
+    console.log(nivel)
+  }
+  , [nivel])
+
+  useEffect(() => {
     console.log(concidenciaUsuario)
     if (concidenciaUsuario.length > 0) {
       setError('')
+      setNivel(concidenciaUsuario[0].nivel)
       const timeout = setTimeout(() => {
         setSesionIniciada(true)
-      }, 5000)
+        setEstadoLoader(false)
+      }, 3000)
 
       return () => clearTimeout(timeout)
     } else {
       if (primerIngreso.current) {
-        setError('')
+        const timeout = setTimeout(() => {
+          setError('')
+          setEstadoLoader(false)
+        }, 1000)
+        return () => clearTimeout(timeout)
       } else {
-        setError('Usuario o contraseña incorrectos')
+        const timeout = setTimeout(() => {
+          setError('Usuario o contraseña incorrectos')
+          setEstadoLoader(false)
+        }, 1000)
+        return () => clearTimeout(timeout)
       }
     }
   }
@@ -84,28 +105,43 @@ const Login = () => {
   return (
     sesionIniciada === false
       ? (
-        <div style={{ display: 'flex', width: '100%', height: '100%', flexDirection: 'row' }}>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <h1>Inicio de Sesión</h1>
-            <div>
-              <label>Usuario</label>
-              <input type='text' id='usuario' value={usuario} onChange={handleChange} />
+        <div className='container-login-principal'>
+          <motion.div
+            className='container-login'
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.2 }}
+          >
+            <div class='container-lado-izquierdo'>
+              <h1 class='titulo-inicio-sesion'>Inicio de Sesión</h1>
+              <div class='campo-formulario'>
+                <label for='usuario' class='etiqueta-usuario'>Usuario</label>
+                <input type='text' id='usuario' class='input-usuario' value={usuario} onChange={handleChange} />
+              </div>
+              <div class='campo-formulario'>
+                <label for='contraseña' class='etiqueta-contraseña'>Contraseña</label>
+                <input type='password' id='contraseña' class='input-contraseña' value={pass} onChange={handleChange} />
+              </div>
+              <div class='mensaje-error'>
+                <label class='error'>{error}</label>
+              </div>
+              <button class='boton-iniciar-sesion' onClick={() => iniciarSesion()}>Iniciar Sesión</button>
             </div>
-            <div>
-              <label>Contraseña</label>
-              <input type='password' id='contraseña' value={pass} onChange={handleChange} />
+
+            <div className='container-lado-derecho'>
+              {}
             </div>
-            <div>
-              <label>{error}</label>
-            </div>
-            <button onClick={() => iniciarSesion()}>Iniciar Sesión</button>
-          </div>
+          </motion.div>
+          {
+            estadoLoader && <div class='custom-loader' />
+          }
 
         </div>
         )
       : (
         <AnimatePresence>
-          <userContext.Provider value={{ user: concidenciaUsuario[0].user, temporada }}>
+          <userContext.Provider value={{ user: concidenciaUsuario[0].user, temporada, nivel }}>
 
             <EstadoBarraLateralProvider>
               <GridAplicacion />

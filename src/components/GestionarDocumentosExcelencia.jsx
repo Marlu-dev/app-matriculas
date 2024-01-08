@@ -8,7 +8,6 @@ import '../style/GestionarDocumentosExcelencia.css'
 import SeleccionadorDocumentoExcelencia from './SeleccionadorDocumentoExcelencia.jsx'
 import { PDFViewer } from '@react-pdf/renderer'
 import EditarEstadoDocumentoExcelencia from './EditarEstadoDocumentoExcelencia.jsx'
-import { Document, Page } from 'react-pdf'
 
 const GestionarDocumentosExcelencia = () => {
   const [listaDeAlumnosConDocumentosDeExcelencia, setListaDeAlumnosConDocumentosDeExcelencia] = useState([])

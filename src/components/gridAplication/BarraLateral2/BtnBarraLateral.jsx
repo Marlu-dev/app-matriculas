@@ -58,7 +58,7 @@ const BtnBarraLateral = ({ name, titulo, funcion, expandido, seleccion, tituloPa
   }
 
   return (
-    <div className='container-barra-lateral' style={{ display: 'flex', flexDirection: 'row', position: 'relative' }}>
+    <div className='container-barra-lateral' style={{ display: 'flex', flexDirection: 'row', position: 'relative', marginTop: '5px' }}>
       <div
         className='btnBarraLateral'
         onClick={funcionQueRealiza}
