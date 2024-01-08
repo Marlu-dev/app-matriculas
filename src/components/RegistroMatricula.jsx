@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { recuperarColeccion, subirDocumentoExcelencia, agregarDatosExcelencia, agregarMatricula, agregarMatriculaAColeccion } from '../../librerias/manipularDatos'
+import {
+  recuperarColeccion,
+  subirDocumentoExcelencia,
+  agregarDatosExcelencia,
+  agregarMatricula,
+  agregarMatriculaAColeccion
+} from '../../librerias/manipularDatos'
 import '../style/RegistroMatricula.css'
 import Select from './Select'
 import { userContext } from './Login'
@@ -27,7 +33,8 @@ const RegistroMatricula = () => {
   const [montoSimulacroCarnet, setMontoSimulacroCarnet] = useState()
   const [montoTotal, setMontoTotal] = useState()
   const [descuentoAdicional, setDescuentoAdicional] = useState(0)
-  const [observacionDescuentoAdicional, setObservacionDescuentoAdicional] = useState('')
+  const [observacionDescuentoAdicional, setObservacionDescuentoAdicional] =
+    useState('')
   const [dniAlumnoCoincidencia, setDniAlumnoCoincidencia] = useState('')
   const [cuotas, setCuotas] = useState([])
 
@@ -38,7 +45,8 @@ const RegistroMatricula = () => {
   const [matricula, setMatricula] = useState({})
   const [referenciaMatricula, setReferenciaMatricula] = useState('')
   const [codigoMatricula, setCodigoMatricula] = useState('')
-  const [estadoDocumentoExcelencia, setEstadoDocumentoExcelencia] = useState(false)
+  const [estadoDocumentoExcelencia, setEstadoDocumentoExcelencia] =
+    useState(false)
 
   const valorDefaultCuotas = {
     1: 'sin pagar',
@@ -64,7 +72,9 @@ const RegistroMatricula = () => {
     if (/^\d+$/.test(newQuery) || newQuery === '') {
       if (newQuery > valorMaximo) {
         setDescuentoAdicional(valorMaximo)
-      } else { setDescuentoAdicional(newQuery) }
+      } else {
+        setDescuentoAdicional(newQuery)
+      }
     }
   }
 
@@ -85,7 +95,14 @@ const RegistroMatricula = () => {
         console.log(nuevoCodigoMatricula)
 
         await agregarMatriculaAColeccion(matricula, 'M' + nuevoCodigoMatricula)
-        await agregarMatricula({ codigoMatricula: 'M' + nuevoCodigoMatricula, temporada, secretaria: user }, codigo)
+        await agregarMatricula(
+          {
+            codigoMatricula: 'M' + nuevoCodigoMatricula,
+            temporada,
+            secretaria: user
+          },
+          codigo
+        )
       }
     } catch (error) {
       console.error('Error en la función registrarMatricula:', error)
@@ -134,12 +151,60 @@ const RegistroMatricula = () => {
     } else if (descuentoQueSeAplicara === 'nada') {
       setEstadoMatricula('validado')
     }
-  }, [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal, estadoDocumentoExcelencia, descuentoQueSeAplicara, estadoMatricula])
+  }, [
+    selectedCarrera,
+    selectedCiclo,
+    tipoDePagoSeleccionado,
+    montoFinal,
+    descuentoAdicional,
+    observacionDescuentoAdicional,
+    montoTotal,
+    estadoDocumentoExcelencia,
+    descuentoQueSeAplicara,
+    estadoMatricula
+  ])
 
   useEffect(() => {
-    setMatricula({ codigoAlumno: codigo, dni: dniAlumnoCoincidencia, temporada, carrera: selectedCarrera, ciclo: selectedCiclo, tipoDePago: tipoDePagoSeleccionado, monto: montoFinal, descuentoQueSeAplicara, descuentoAdicional: parseInt(descuentoAdicional), observacionDescuentoAdicional, montonTotal: montoTotal, estado: estadoMatricula, secretaria: user, estadoPago: 'activo', cuotas, estadoCuotas, fechaCuotas, montoSimulacroCarnet, estadoSimulacroCarnet: 'pendiente', montoOriginal, montoMatriculaConDescuento: montoFinal, estadoPagoMontoContado: 'sin pagar' })
-  }
-  , [selectedCarrera, selectedCiclo, tipoDePagoSeleccionado, montoFinal, descuentoAdicional, observacionDescuentoAdicional, montoTotal, estadoMatricula, descuentoQueSeAplicara, cuotas, estadoCuotas, fechaCuotas, montoSimulacroCarnet, montoOriginal])
+    setMatricula({
+      codigoAlumno: codigo,
+      dni: dniAlumnoCoincidencia,
+      temporada,
+      carrera: selectedCarrera,
+      ciclo: selectedCiclo,
+      tipoDePago: tipoDePagoSeleccionado,
+      monto: montoFinal,
+      descuentoQueSeAplicara,
+      descuentoAdicional: parseInt(descuentoAdicional),
+      observacionDescuentoAdicional,
+      montonTotal: montoTotal,
+      estado: estadoMatricula,
+      secretaria: user,
+      estadoPago: 'activo',
+      cuotas,
+      estadoCuotas,
+      fechaCuotas,
+      montoSimulacroCarnet,
+      estadoSimulacroCarnet: 'pendiente',
+      montoOriginal,
+      montoMatriculaConDescuento: montoFinal,
+      estadoPagoMontoContado: 'sin pagar'
+    })
+  }, [
+    selectedCarrera,
+    selectedCiclo,
+    tipoDePagoSeleccionado,
+    montoFinal,
+    descuentoAdicional,
+    observacionDescuentoAdicional,
+    montoTotal,
+    estadoMatricula,
+    descuentoQueSeAplicara,
+    cuotas,
+    estadoCuotas,
+    fechaCuotas,
+    montoSimulacroCarnet,
+    montoOriginal
+  ])
 
   useEffect(() => {
     console.log(infoDocumentoExcelencia)
@@ -189,10 +254,10 @@ const RegistroMatricula = () => {
   }, [listaDeCiclos, tipoDePagoSeleccionado])
 
   useEffect(() => {
-  //   console.log(descuentosDelCiclo.exAlumno)
-  //   if (descuentosDelCiclo.exAlumno !== 0) {
-  //     setDescuentosDisponibles({ ...descuentosDisponibles, exAlumno: descuentosDelCiclo.exAlumno })
-  //   }
+    //   console.log(descuentosDelCiclo.exAlumno)
+    //   if (descuentosDelCiclo.exAlumno !== 0) {
+    //     setDescuentosDisponibles({ ...descuentosDisponibles, exAlumno: descuentosDelCiclo.exAlumno })
+    //   }
 
     //   console.log(descuentosDelCiclo.excelencia)
     //   if (descuentosDelCiclo.excelencia !== 0) {
@@ -200,23 +265,38 @@ const RegistroMatricula = () => {
     //   }
     // }, [descuentosDelCiclo])
 
-    if (descuentosDelCiclo.exAlumno !== 0 && descuentosDelCiclo.excelencia !== 0) {
+    if (
+      descuentosDelCiclo.exAlumno !== 0 &&
+      descuentosDelCiclo.excelencia !== 0
+    ) {
       setDescuentosDisponibles('ambos')
     }
 
-    if (descuentosDelCiclo.exAlumno !== 0 && descuentosDelCiclo.excelencia === 0) {
+    if (
+      descuentosDelCiclo.exAlumno !== 0 &&
+      descuentosDelCiclo.excelencia === 0
+    ) {
       setDescuentosDisponibles('exAlumno')
     }
 
-    if (descuentosDelCiclo.exAlumno === 0 && descuentosDelCiclo.excelencia !== 0) {
+    if (
+      descuentosDelCiclo.exAlumno === 0 &&
+      descuentosDelCiclo.excelencia !== 0
+    ) {
       setDescuentosDisponibles('excelencia')
     }
 
-    if (descuentosDelCiclo.exAlumno === 0 && descuentosDelCiclo.excelencia === 0) {
+    if (
+      descuentosDelCiclo.exAlumno === 0 &&
+      descuentosDelCiclo.excelencia === 0
+    ) {
       setDescuentosDisponibles('nada')
     }
 
-    if (descuentosDelCiclo.exAlumno === undefined && descuentosDelCiclo.excelencia === undefined) {
+    if (
+      descuentosDelCiclo.exAlumno === undefined &&
+      descuentosDelCiclo.excelencia === undefined
+    ) {
       setDescuentosDisponibles('')
     }
     // console.log(descuentosDelCiclo
@@ -261,7 +341,10 @@ const RegistroMatricula = () => {
   }, [descuentoQueSeAplicara])
 
   useEffect(() => {
-    const montos = datosCiclo && Array.isArray(datosCiclo.precios) ? datosCiclo.precios : null
+    const montos =
+      datosCiclo && Array.isArray(datosCiclo.precios)
+        ? datosCiclo.precios
+        : null
     setMontosOriginales(montos)
   }, [selectedCiclo, datosCiclo])
 
@@ -272,8 +355,8 @@ const RegistroMatricula = () => {
 
   const identificarAlumno = () => {
     recuperarColeccion('alumnos')
-      .then(res => setAlumnos(res))
-      .catch(err => console.log(err))
+      .then((res) => setAlumnos(res))
+      .catch((err) => console.log(err))
   }
 
   const seleccionDeTipoDePago = (e) => {
@@ -296,10 +379,15 @@ const RegistroMatricula = () => {
     console.log(descuentosDelCiclo)
     console.log(descuentoQueSeAplicara)
     console.log(tipoDePagoSeleccionado)
-    const montosOriginales = datosCiclo && Array.isArray(datosCiclo.precios) ? datosCiclo.precios : null
+    const montosOriginales =
+      datosCiclo && Array.isArray(datosCiclo.precios)
+        ? datosCiclo.precios
+        : null
 
     if (montosOriginales) {
-      const montoEncontrado = montosOriginales.find((m) => m.nombre === tipoDePagoSeleccionado)
+      const montoEncontrado = montosOriginales.find(
+        (m) => m.nombre === tipoDePagoSeleccionado
+      )
 
       if (montoEncontrado) {
         setMontoOriginal(montoEncontrado.total)
@@ -307,7 +395,10 @@ const RegistroMatricula = () => {
         setMontoOriginal('')
       }
 
-      if (tipoDePagoSeleccionado === undefined || tipoDePagoSeleccionado === '') {
+      if (
+        tipoDePagoSeleccionado === undefined ||
+        tipoDePagoSeleccionado === ''
+      ) {
         setMontoFinal('')
       } else {
         if (descuentoQueSeAplicara === 'exAlumno') {
@@ -397,7 +488,17 @@ const RegistroMatricula = () => {
 
       console.log(montoEncontrado)
     }
-  }, [tipoDePagoSeleccionado, selectedCiclo, montosOriginales, descuentosDisponibles, descuentosDelCiclo, descuentoQueSeAplicara, descuentoExAlumno, descuentoExcelencia, descuentoAdicional])
+  }, [
+    tipoDePagoSeleccionado,
+    selectedCiclo,
+    montosOriginales,
+    descuentosDisponibles,
+    descuentosDelCiclo,
+    descuentoQueSeAplicara,
+    descuentoExAlumno,
+    descuentoExcelencia,
+    descuentoAdicional
+  ])
 
   useEffect(() => {
     console.log(montoFinal)
@@ -423,7 +524,7 @@ const RegistroMatricula = () => {
 
   useEffect(() => {
     // console.log('alumnos: ', alumnos)
-    setCoincidencia(alumnos.filter(alumno => alumno.dni === dni))
+    setCoincidencia(alumnos.filter((alumno) => alumno.dni === dni))
     console.log(coincidencia)
   }, [alumnos])
 
@@ -485,103 +586,91 @@ const RegistroMatricula = () => {
 
   return (
     <div className='container-registro-matricula'>
-      <div className='container-identificar-alumno' style={{ display: 'flex', flexDirection: 'column' }}>
-        <header className='header-register'>
-          REGISTRO DE MATRÍCULA
-        </header>
-        <div className="container-indentificar-1">
-            <div className='container-search-identificar'>
-              <input
-                type='text'
-                value={dni}
-                onChange={handleChange}
-                maxLength={8}
-                placeholder='Buscar con DNI...'
-              />
-              {/* <button onClick={identificarAlumno}>Identificar</button> */}
-              <div className='button-search-identificar' onClick={identificarAlumno}>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  class='icon icon-tabler icon-tabler-search'
-                  width='25'
-                  height='25'
-                  viewBox='0 0 24 24'
-                  stroke-width='3.5'
-                  stroke='#2c3e50'
-                  fill='none'
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                >
-                  <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                  <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0' />
-                  <path d='M21 21l-6 -6' />
-                </svg>
-              </div>
-              {/*  */}
-            </div>  
-        </div>
-
-        <div className="container-identificar-2">
-          <div className='container-identificar-alumno-datos'>
-              <div>
-                {/* <label>DNI: </label> */}
-                <label className='title-dato'>
-                  DNI:
-                </label>
-                <span className='content-dato'>
-                {coincidencia && 
-                coincidencia.length > 0 ? 
-                coincidencia[0].dni : ''}
-                </span>
-              </div>
-              <div>
-                {/* <label>Nombre: </label> */}
-                <label className='title-dato'>
-                  Nombre:
-                </label>
-                <span className='content-dato'>
-                  {coincidencia &&
-              coincidencia.length > 0
-                    ? coincidencia[0].nombre
-                    : ''}
-                </span>
-              </div>
-              <div>
-                {/* <label>Apellido Paterno: </label> */}
-                <label className='title-dato'>
-                  Apellido Paterno:
-                </label>
-                <span className='content-dato'>
-                  {coincidencia &&
-              coincidencia.length > 0
-                    ? coincidencia[0].apellidoPaterno
-                    : ''}
-                </span>
-              </div>
-              <div>
-                {/* <label>Apellido Materno: </label> */}
-                <label className='title-dato'>
-                  Apellido Materno:
-                </label>
-                <span className='content-dato'>
-                  {coincidencia &&
-              coincidencia.length > 0
-                    ? coincidencia[0].apellidoMaterno
-                    : ''}
-                </span>
-              </div>
+      <div
+        className='container-identificar-alumno'
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
+        <header className='header-register'>REGISTRO DE MATRÍCULA</header>
+        <div className='container-indentificar-1'>
+          <div className='container-search-identificar'>
+            <input
+              type='text'
+              value={dni}
+              onChange={handleChange}
+              maxLength={8}
+              placeholder='Buscar con DNI...'
+            />
+            {/* <button onClick={identificarAlumno}>Identificar</button> */}
+            <div
+              className='button-search-identificar'
+              onClick={identificarAlumno}
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                class='icon icon-tabler icon-tabler-search'
+                width='25'
+                height='25'
+                viewBox='0 0 24 24'
+                stroke-width='3.5'
+                stroke='#2c3e50'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0' />
+                <path d='M21 21l-6 -6' />
+              </svg>
             </div>
           </div>
         </div>
 
+        <div className='container-identificar-2'>
+          <div className='container-identificar-alumno-datos'>
+            <div>
+              {/* <label>DNI: </label> */}
+              <label className='title-dato'>DNI:</label>
+              <span className='content-dato'>
+                {coincidencia && coincidencia.length > 0
+                  ? coincidencia[0].dni
+                  : ''}
+              </span>
+            </div>
+            <div>
+              {/* <label>Nombre: </label> */}
+              <label className='title-dato'>Nombre:</label>
+              <span className='content-dato'>
+                {coincidencia && coincidencia.length > 0
+                  ? coincidencia[0].nombre
+                  : ''}
+              </span>
+            </div>
+            <div>
+              {/* <label>Apellido Paterno: </label> */}
+              <label className='title-dato'>Apellido Paterno:</label>
+              <span className='content-dato'>
+                {coincidencia && coincidencia.length > 0
+                  ? coincidencia[0].apellidoPaterno
+                  : ''}
+              </span>
+            </div>
+            <div>
+              {/* <label>Apellido Materno: </label> */}
+              <label className='title-dato'>Apellido Materno:</label>
+              <span className='content-dato'>
+                {coincidencia && coincidencia.length > 0
+                  ? coincidencia[0].apellidoMaterno
+                  : ''}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className='container-matricular-alumno'>
         <div className='form'>
           <div className='details person'>
-            <label className='title-dato'>
-              INVERSIÓN
-            </label>
+            <label className='title-dato'>INVERSIÓN</label>
             {/* <span className='title-dato'>Inversión</span> */}
             <div className='seccion-form'>
               {/* TERCER DATO: Carrera */}
@@ -717,55 +806,54 @@ const RegistroMatricula = () => {
             <div>
               <label>Ex-alumno</label>
               <div className='content-dato'>
-                {coincidencia &&
-                coincidencia.length > 0 &&
-                  <span>
-                    {descuentoExAlumno ? 'Sí' : 'No'}
-                  </span>}
+                {coincidencia && coincidencia.length > 0 && (
+                  <span>{descuentoExAlumno ? 'Sí' : 'No'}</span>
+                )}
               </div>
             </div>
 
             <div>
               <label>Excelencia</label>
               <div className='content-dato'>
-                {coincidencia &&
-                coincidencia.length > 0 &&
-                  <span>
-                    {descuentoExcelencia ? 'Sí' : 'No'}
-                  </span>}
+                {coincidencia && coincidencia.length > 0 && (
+                  <span>{descuentoExcelencia ? 'Sí' : 'No'}</span>
+                )}
               </div>
 
               <div className='content-dato'>
-                {descuentoExcelencia ? '' : <>
-                  <input 
-                  type='file' 
-                  name='' 
-                  id='uploadBtn' 
-                  onChange={actualizarInfoDocumentoExcelencia} 
-                  />
-                  {/* <label className='uploadBtn' for="uploadBtn">
+                {descuentoExcelencia
+                  ? (
+                      ''
+                    )
+                  : (
+                    <>
+                      <input
+                        type='file'
+                        name=''
+                        id='uploadBtn'
+                        onChange={actualizarInfoDocumentoExcelencia}
+                      />
+                      {/* <label className='uploadBtn' for="uploadBtn">
                     Subir Archivo
-                    Sin archivos 
+                    Sin archivos
                   </label> */}
-                  <button 
-                    onClick={enviarDocumentoExcelencia}
-                    className='btn-register'> 
-                      Subir
-                    </button>
-                  </>}
+                      <button
+                        onClick={enviarDocumentoExcelencia}
+                        className='btn-register'
+                      >
+                        Subir
+                      </button>
+                    </>
+                    )}
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
 
       <div className='container-ver-resumen-pagos'>
         <div className='input-seccion'>
-          <label className='title-dato'>
-            MONTO
-          </label>
+          <label className='title-dato'>MONTO</label>
           {/* <label>Monto</label> */}
           <div className='input-seccion'>
             <label>Descuentos Diponibles</label>
@@ -776,48 +864,44 @@ const RegistroMatricula = () => {
                   ? 'Ex-alumno'
                   : descuentosDisponibles === 'excelencia'
                     ? 'Excelencia'
-                    : descuentosDisponibles === 'nada' ? 'Ninguno' : ''}
+                    : descuentosDisponibles === 'nada'
+                      ? 'Ninguno'
+                      : ''}
             </span>
           </div>
           <div className='input-seccion'>
             <label>Descuentos a los que califica</label>
             <span className='content-dato'>
               {descuentosDisponibles === 'ambos'
-                ? (
-                    descuentoExAlumno && descuentoExcelencia
-                      ? 'Ex-alumno y Excelencia'
-                      : descuentoExAlumno
-                        ? 'Ex-alumno'
-                        : descuentoExcelencia
-                          ? 'Excelencia'
-                          : 'Ninguno'
-                  )
-                : (
-                    descuentosDisponibles === 'exAlumno'
-                      ? descuentoExAlumno
-                        ? 'Ex-alumno'
-                        : 'Ninguno'
-                      : (
-                          descuentosDisponibles === 'excelencia'
-                            ? descuentoExcelencia
-                              ? 'Excelencia'
-                              : 'Ninguno'
-                            : 'Ninguno'
-                        )
-                  )}
+                ? descuentoExAlumno && descuentoExcelencia
+                  ? 'Ex-alumno y Excelencia'
+                  : descuentoExAlumno
+                    ? 'Ex-alumno'
+                    : descuentoExcelencia
+                      ? 'Excelencia'
+                      : 'Ninguno'
+                : descuentosDisponibles === 'exAlumno'
+                  ? descuentoExAlumno
+                    ? 'Ex-alumno'
+                    : 'Ninguno'
+                  : descuentosDisponibles === 'excelencia'
+                    ? descuentoExcelencia
+                      ? 'Excelencia'
+                      : 'Ninguno'
+                    : 'Ninguno'}
             </span>
           </div>
 
           <div className='input-seccion'>
             <label>Descueto que se aplicará</label>
             <span className='content-dato'>
-              {
-                descuentoQueSeAplicara === 'exAlumno'
-                  ? 'Ex-alumno'
-                  : descuentoQueSeAplicara === 'excelencia'
-                    ? 'Excelencia'
-                    : descuentoQueSeAplicara === 'nada' ? 'Ninguno' : ''
-              }
+              {descuentoQueSeAplicara === 'exAlumno'
+                ? 'Ex-alumno'
+                : descuentoQueSeAplicara === 'excelencia'
+                  ? 'Excelencia'
+                  : descuentoQueSeAplicara === 'nada'
+                    ? 'Ninguno'
+                    : ''}
             </span>
           </div>
 
@@ -825,21 +909,25 @@ const RegistroMatricula = () => {
             <div>
               <label>Descuento Adicional</label>
             </div>
-            <input  className='input-descuento-A'
+            <input
+              className='input-descuento-A'
               name='descuentoAdicional'
               id='descuentoAdicional'
               onChange={handleChangeDescuentoAdicional}
-              placeholder='0' required
+              placeholder='0'
+              required
               value={descuentoAdicional}
             />
             <div>
               <label>Observación</label>
             </div>
-            <input className='input-descuento-Ob'
+            <input
+              className='input-descuento-Ob'
               name='observacionDescuentoAdicional'
               id='observacionDescuentoAdicional'
               onChange={handleChangeObservacionDescuentoAdicional}
-              placeholder='...' required  
+              placeholder='...'
+              required
               value={observacionDescuentoAdicional}
             />
           </div>
@@ -876,37 +964,27 @@ const RegistroMatricula = () => {
           </div>
           <div className='input-seccion'>
             <label>Precio Matricula: </label>
-            {montoOriginal &&
-              <span className='content-dato'>
-                {montoOriginal}
-              </span>}
+            {montoOriginal && (
+              <span className='content-dato'>{montoOriginal}</span>
+            )}
           </div>
 
           <div className='input-seccion'>
             <label>Precio Matricula con Descuento: </label>
-            {montoFinal &&
-              <span className='content-dato'>
-                {montoFinal}
-              </span>}
+            {montoFinal && <span className='content-dato'>{montoFinal}</span>}
           </div>
           <div className='input-seccion'>
             <label>Derecho a simulacros y carnet: </label>
-            {montoSimulacroCarnet &&
-              <span className='content-dato'>
-                {montoSimulacroCarnet}
-              </span>}
+            {montoSimulacroCarnet && (
+              <span className='content-dato'>{montoSimulacroCarnet}</span>
+            )}
           </div>
           <div className='input-seccion'>
-            <label>Monto TOTAL:  </label>
-            {montoTotal &&
-              <span className='content-dato'>
-                {montoTotal}
-              </span>}
+            <label>Monto TOTAL: </label>
+            {montoTotal && <span className='content-dato'>{montoTotal}</span>}
           </div>
           <div className='input-seccion'>
-            <button 
-            onClick={registrarMatricula}
-            className='btn-register'>
+            <button onClick={registrarMatricula} className='btn-register'>
               Registrar matrícula
             </button>
           </div>

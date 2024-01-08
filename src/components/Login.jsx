@@ -84,20 +84,23 @@ const Login = () => {
   return (
     sesionIniciada === false
       ? (
-        <div>
-          <h1>Inicio de Sesión</h1>
-          <div>
-            <label>Usuario</label>
-            <input type='text' id='usuario' value={usuario} onChange={handleChange} />
+        <div style={{ display: 'flex', width: '100%', height: '100%', flexDirection: 'row' }}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <h1>Inicio de Sesión</h1>
+            <div>
+              <label>Usuario</label>
+              <input type='text' id='usuario' value={usuario} onChange={handleChange} />
+            </div>
+            <div>
+              <label>Contraseña</label>
+              <input type='password' id='contraseña' value={pass} onChange={handleChange} />
+            </div>
+            <div>
+              <label>{error}</label>
+            </div>
+            <button onClick={() => iniciarSesion()}>Iniciar Sesión</button>
           </div>
-          <div>
-            <label>Contraseña</label>
-            <input type='password' id='contraseña' value={pass} onChange={handleChange} />
-          </div>
-          <div>
-            <label>{error}</label>
-          </div>
-          <button onClick={() => iniciarSesion()}>Iniciar Sesión</button>
+
         </div>
         )
       : (
