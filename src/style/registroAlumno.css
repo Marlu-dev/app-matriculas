@@ -285,7 +285,7 @@ input[type="checkbox"]:checked + label::after {
   outline: none;
   color: var(--blanco);
   border-radius: 50px;
- /*  margin: 25px 0; --VERIFICAR */
+  margin: 10px; 
   background-color: var(--grisClaro);
   transition: all 0.3s linear;
   cursor: pointer;

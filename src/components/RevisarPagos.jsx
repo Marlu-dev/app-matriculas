@@ -8,6 +8,7 @@ import { updateDoc, doc } from 'firebase/firestore'
 import ComprobanteDePago from './ComprobanteDePago'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { useSnackbar } from 'notistack'
+import '../style/RevisarPagos.css'
 registerLocale('es', es)
 
 const RevisarPagos = ({ datos }) => {
@@ -402,619 +403,866 @@ const RevisarPagos = ({ datos }) => {
 
   return (
     <>
+
       <div className='contenerdor-datos-recuperados-matricula'>
-        <h2>Datos de la Matrícula</h2>
-        <div>
-          <label>ID: </label>
-          <span>{id}</span>
-        </div>
+        {/* CONTAINER recuperados-matricula */}
+          <h2 className='header-register'>
+            Datos de la Matrícula
+          </h2>
+          <div className='datos-container'>
+            {/* DATOS ALUMNO */}
+            <div className='container-dato'>
+              <label className='title-dato'>
+                ID: 
+              </label>
+              <span className='content-dato'>
+                {id}
+              </span>
+            </div>
 
-        <div>
-          <label>Ciclo: </label>
-          <span>{ciclo}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Ciclo: 
+              </label>
+              <span className='content-dato'>
+                {ciclo}
+              </span>
+            </div>
 
-        <div>
-          <label>Descuento Especial: </label>
-          <span>{descuentoQueSeAplicara}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Descuento Especial: 
+              </label>
+              <span className='content-dato'>
+                {descuentoQueSeAplicara}
+              </span>
+            </div>
 
-        <div>
-          <label>Tipo de Pago: </label>
-          <span>{tipoDePago}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Tipo de Pago: 
+              </label>
+              <span className='content-dato'>
+                {tipoDePago}
+              </span>
+            </div>
 
-        <div>
-          <label>Estado del Pago: </label>
-          <span>{estadoPago}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Estado del Pago: 
+              </label>
+              <span className='content-dato'>
+                {estadoPago}
+              </span>
+            </div>
 
-        <div>
-          <label>Descuento Adicional: </label>
-          <span>{descuentoAdicional}</span>
-        </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Descuento Adicional: 
+              </label>
+              <span className='content-dato'>
+                {descuentoAdicional}
+              </span>
+            </div>
 
-        <div>
-          <label>Estado de la matrícula: </label>
-          <span>{estado}</span>
-        </div>
-      </div>
+            <div className='container-dato'>
+              <label className='title-dato'>
+                Estado de la matrícula: 
+              </label>
+              <span className='content-dato'>
+                {estado}
+              </span>
+            </div>
+          </div>
+          
+
+      </div>{/* FIN CONTAINER recuperados-matricula */}
+
+
       <div className='contenedor-de-gestion-de-pagos'>
-        <h2>Gestión de pagos</h2>
-        {estado === 'pendiente'
-          ? (
-              'No se pueden asignar pagos hasta que la matrícula sea validada por un administrador'
-            )
-          : estado === 'rechazado'
-            ? (
-                'La matrícula fue rechazada por el administrador, por favor revisa las observaciones antes de generar una nueva matrícula'
-              )
-            : estado === 'validado'
+        <h2 className='header-register'>
+          Gestión de pagos
+        </h2> 
+          <div className='datos-container'>   
+            <div className='title-dato'>
+              {estado === 'pendiente' 
               ? (
-                <div>
-                  <div>
-                    {estadoPago === 'cancelado'
-                      ? 'No se registra deuda pendiente'
-                      : estadoPago === 'retrasado'
-                        ? 'Se registra pagos atrasados pendientes'
-                        : estadoPago === 'activo'
-                          ? 'El alumno tiene pagos pendientes'
-                          : ''}
-                  </div>
-                </div>
+                  'No se pueden asignar pagos hasta que la matrícula sea validada por un administrador'
                 )
-              : (
-                  ''
-                )}
+              : estado === 'rechazado'
+                ? (
+                    'La matrícula fue rechazada por el administrador, por favor revisa las observaciones antes de generar una nueva matrícula'
+                  )
+                : estado === 'validado'
+                  ? (
+                    <div className='title-dato'>
+                      <div >
+                        {estadoPago === 'cancelado'
+                          ? 'No se registra deuda pendiente'
+                          : estadoPago === 'retrasado'
+                            ? 'Se registra pagos atrasados pendientes'
+                            : estadoPago === 'activo'
+                              ? 'El alumno tiene pagos pendientes'
+                              : ''}
+                      </div>
+                    </div>
+                    )
+                  : (
+                      ''
+                    )}
+            </div>
+          </div>
+        
       </div>
-      <div>
+
+      <div className='contenedor-de-tipo-de-pagos'>
         {activarSeccionPagos && tipoDePago === 'Contado'
           ? (
-            <div>
-              <h2>Contado</h2>
-              {descuentoQueSeAplicara !== 'nada'
-                ? (
-                  <div>
-                    <label>
-                      <del>Costo de Matrícula</del>
-                    </label>
-                    <span>
-                      <del>{montoOriginal}</del>
-                    </span>
-                  </div>
-                  )
-                : (
-                  <div>
-                    <label>Costo de Matrícula</label>
-                    <span>{montoOriginal}</span>
-                  </div>
-                  )}
-
-              <div>
+            <div> {/* TOTALL */}
+              <h2 className='header-register'>
+                Contado
+              </h2>
+              <div className="datos-container">
                 {descuentoQueSeAplicara !== 'nada'
                   ? (
-                    <>
-                      <label>
-                        Costo de Matrícula con descuento especial (
-                        {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                    <div className='container-dato'> {/* costo matricula  */}
+                      <label className='title-dato'>
+                        <del>
+                          Costo de Matrícula: 
+                        </del>
                       </label>
-                      <span>{montoMatriculaConDescuento}</span>
-                    </>
+                      <span  className='content-dato'>
+                        <del>
+                          {montoOriginal}
+                        </del>
+                      </span>
+                    </div> /* fin costo matricula */
                     )
                   : (
-                      ''
+                    <div className='container-dato'>
+                      <label className='title-dato'>
+                        Costo de Matrícula: 
+                      </label>
+                      <span className='content-dato'>
+                        {montoOriginal}
+                      </span>
+                    </div>
                     )}
+
+                <div className='container-dato'>
+                  {descuentoQueSeAplicara !== 'nada'
+                    ? (
+                      <>
+                        <label className='title-dato'>
+                          Costo de Matrícula con descuento especial, (
+                          {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                        </label>
+                        <span className='content-dato'>
+                          {montoMatriculaConDescuento}
+                        </span>
+                      </>
+                      )
+                    : (
+                        ''
+                      )}
+                </div>
+
+                <div className='container-dato'>
+                  {descuentoAdicional !== 0
+                    ? (
+                      <>
+                        <label className='title-dato'>
+                          Descuento Adicional: 
+                        </label>
+                        <span className='content-dato'>
+                          {descuentoAdicional}
+                        </span>
+                      </>
+                      )
+                    : (
+                        ''
+                      )}
+                </div>
+
+                <div className='container-dato'>
+                  <label className='title-dato'>
+                    Costo de Simulacro y Carnet: 
+                  </label>
+                  <span className='content-dato'>
+                    {simulacroCarnet}
+                  </span>
+                  {estadoSimulacroCarnet === 'pendiente'
+                    ? (
+                      <button 
+                        onClick={() => pagarSimulacroCarnet()}
+                        className='btn-register-pagar'>
+                          Pagar
+                      </button>
+                      )
+                    : (
+                        ' (Cancelado)'
+                      )}
+                </div>
+
+                <div className='container-dato'>
+                  <label className='title-dato'>
+                    Costo Matrícula Final: 
+                  </label>
+                  <span className='content-dato'>
+                    {montoMatriculaConDescuento - descuentoAdicional} 
+                    ({estadoPagoMontoContado === 'pagado' ? 'Cancelado' : ''})
+                  </span>
+                  {
+                      estadoPagoMontoContado === 'sin pagar'
+                        ? (
+                          <div>
+                            <DatePicker
+                              className='container-fechas'
+                              showIcon
+                              locale='es'
+                              dateFormat='dd/MM/yyyy'
+                              selected={diaActual}
+                              onChange={(date) => setDiaActual(date)}
+                            />
+                            <button 
+                              onClick={realizarPagoContado}
+                              className='btn-register-realizar'>
+                                Realizar pago
+                            </button>
+                          </div>
+                          )
+                        : ''
+                  }
+                </div>
+
+                <div className='container-dato'>
+                  <label className='title-dato'>
+                    Costo TOTAL: 
+                  </label>
+                  <span className='content-dato'>
+                    {montoTotal}
+                  </span>
+                </div>
+
+                <div className='container-dato'>
+                  <PDFDownloadLink
+                    className='btn-register-pdf'
+                    document={<ComprobanteDePago matriculaId={id} />}
+                    fileName={id + '_' + dni + '.pdf'}
+                  >
+                    {({ loading }) =>
+                      loading ? 'Loading document...' : 'Descargar PDF'}
+                  </PDFDownloadLink>
+                </div>
+          
               </div>
-              <div>
-                {descuentoAdicional !== 0
-                  ? (
-                    <>
-                      <label>Descuento Adicional: </label>
-                      <span>{descuentoAdicional}</span>
-                    </>
-                    )
-                  : (
-                      ''
-                    )}
-              </div>
-              <div>
-                <label>Costo de Simulacro y Carnet: </label>
-                <span>{simulacroCarnet}</span>
-                {estadoSimulacroCarnet === 'pendiente'
-                  ? (
-                    <button onClick={() => pagarSimulacroCarnet()}>Pagar</button>
-                    )
-                  : (
-                      ' (Cancelado)'
-                    )}
-              </div>
-              <div>
-                <label>Costo Matrícula Final: </label>
-                <span>{montoMatriculaConDescuento - descuentoAdicional} ({estadoPagoMontoContado === 'pagado' ? 'Cancelado' : ''})</span>
-                {
-                    estadoPagoMontoContado === 'sin pagar'
-                      ? (
-                        <div>
-                          <DatePicker
-                            showIcon
-                            locale='es'
-                            dateFormat='dd/MM/yyyy'
-                            selected={diaActual}
-                            onChange={(date) => setDiaActual(date)}
-                          />
-                          <button onClick={realizarPagoContado}>Realizar pago</button>
-                        </div>
-                        )
-                      : ''
-                }
-              </div>
-              <div>
-                <label>Costo TOTAL: </label>
-                <span>{montoTotal}</span>
-              </div>
-              <PDFDownloadLink
-                document={<ComprobanteDePago matriculaId={id} />}
-                fileName={id + '_' + dni + '.pdf'}
-              >
-                {({ loading }) =>
-                  loading ? 'Loading document...' : 'Descargar PDF'}
-              </PDFDownloadLink>
-            </div>
+              
+            </div> /* FIN TOTAL */
             )
+            /* AHORA CREDITOOO */
           : activarSeccionPagos && tipoDePago === 'Credito'
             ? (
-              <div>
+              <div >
                 {Object.keys(cuotas).length > 0
                   ? (
                     <>
-                      <div>
-                        <h2>Crédito</h2>
-                        {descuentoQueSeAplicara !== 'nada'
-                          ? (
-                            <div>
-                              <label>
-                                <del>Costo de Matrícula</del>
-                              </label>
-                              <span>
-                                <del>{montoOriginal}</del>
-                              </span>
-                            </div>
-                            )
-                          : (
-                            <div>
-                              <label>Costo de Matrícula</label>
-                              <span>{montoOriginal}</span>
-                            </div>
-                            )}
+                      <div > {/* CONTAINER GENERAL */}
+                        <h2 className='header-register' >
+                          Crédito
+                        </h2>
 
-                        <div>
+                        <div className="datos-container"> {/* PRIMER CONTAINER */}
                           {descuentoQueSeAplicara !== 'nada'
                             ? (
-                              <>
-                                <label>
-                                  Costo de Matrícula con descuento especial (
-                                  {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                              <div className='container-dato'>
+                                <label className='title-dato'>
+                                  <del>Costo de Matrícula: </del>
                                 </label>
-                                <span>{montoMatriculaConDescuento}</span>
-                              </>
+                                <span className='content-dato'>
+                                  <del>{montoOriginal}</del>
+                                </span>
+                              </div>
                               )
                             : (
-                                ''
+                              <div className='container-dato'>
+                                <label className='title-dato'>
+                                  Costo de Matrícula: 
+                                </label>
+                                <span className='content-dato'>
+                                  {montoOriginal}
+                                </span>
+                              </div>
                               )}
-                        </div>
-                        <div>
-                          {descuentoAdicional !== 0
-                            ? (
-                              <>
-                                <label>Descuento Adicional: </label>
-                                <span>{descuentoAdicional}</span>
-                              </>
-                              )
-                            : (
-                                ''
-                              )}
-                        </div>
-                        <div>
-                          <label>Costo de Simulacro y Carnet: </label>
-                          <span>{simulacroCarnet}</span>
-                          {estadoSimulacroCarnet === 'pendiente'
-                            ? (
-                              <button onClick={() => pagarSimulacroCarnet()}>
-                                Pagar
-                              </button>
-                              )
-                            : (
-                                ' (Cancelado)'
-                              )}
-                        </div>
-                        <div>
-                          <label>Costo Matrícula Final: </label>
-                          <span>
-                            {montoMatriculaConDescuento - descuentoAdicional}
-                          </span>
-                        </div>
-                      </div>
-                      <div>
-                        Cuota 1
-                        <input
-                          name='cuota1Recuperada'
-                          type=''
-                          value={cuota1Recuperada}
-                          onChange={handleChange}
-                          disabled={estadoCuota1 === 'pagado'}
-                        />
-                        {estadoCuota1 === 'sin pagar' &&
-                  fechaPrimeraCuotaRecuperada === 'sin determinar'
-                          ? (
-                              ''
-                            )
-                          : estadoCuota1 === 'sin pagar' &&
-                    fechaPrimeraCuotaRecuperada !== 'sin determinar'
-                            ? (
-                              <button onClick={() => pagarCuota(1)}>Pagar</button>
-                              )
-                            : (
-                                'Cuota Cancelada'
-                              )}
-                        {fechaPrimeraCuotaRecuperada === 'sin determinar'
-                          ? (
-                            <DatePicker
-                              showIcon
-                              locale='es'
-                              dateFormat='dd/MM/yyyy'
-                              selected={fechaPrimeraCuota}
-                              onChange={(date) => setFechaPrimeraCuota(date)}
-                            />
-                            )
-                          : (
-                            <span>
-                              Fecha de pago:
-                              {fechaPrimeraCuotaRecuperada
-                                ? fechaPrimeraCuotaRecuperada
-                                  .toDate()
-                                  .toLocaleDateString()
-                                : ''}
-                            </span>
-                            )}
-                      </div>
-                      <div>
-                        Cuota 2
-                        <input
-                          name='cuota2Recuperada'
-                          type=''
-                          value={cuota2Recuperada}
-                          onChange={handleChange}
-                          disabled={estadoCuota2 === 'pagado'}
-                        />
-                        {estadoCuota2 === 'sin pagar' &&
-                  fechaSegundaCuotaRecuperada === 'sin determinar'
-                          ? (
-                              ''
-                            )
-                          : estadoCuota2 === 'sin pagar' &&
-                    fechaSegundaCuotaRecuperada !== 'sin determinar'
-                            ? (
-                              <button onClick={() => pagarCuota(2)}>Pagar</button>
-                              )
-                            : (
-                                'Cuota Cancelada'
-                              )}
-                        {fechaSegundaCuotaRecuperada === 'sin determinar'
-                          ? (
-                            <DatePicker
-                              showIcon
-                              locale='es'
-                              dateFormat='dd/MM/yyyy'
-                              selected={fechaSegundaCuota}
-                              onChange={(date) => setFechaSegundaCuota(date)}
-                            />
-                            )
-                          : (
-                            <span>
-                              Fecha de pago:
-                              {fechaSegundaCuotaRecuperada
-                                ? fechaSegundaCuotaRecuperada
-                                  .toDate()
-                                  .toLocaleDateString()
-                                : ''}
-                            </span>
-                            )}
-                      </div>
-                      <div>
 
-                        Cuota 3
-                        <input
-                          name='cuota3Recuperada'
-                          type=''
-                          value={cuota3Recuperada}
-                          onChange={handleChange}
-                          disabled={estadoCuota3 === 'pagado'}
-                        />
+                          <div className='container-dato'>
+                            {descuentoQueSeAplicara !== 'nada'
+                              ? (
+                                <>
+                                  <label className='title-dato'>
+                                    Costo de Matrícula con descuento especial (
+                                    {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                                  </label>
+                                  <span className='content-dato'>
+                                    {montoMatriculaConDescuento}
+                                  </span>
+                                </>
+                                )
+                              : (
+                                  ''
+                                )}
+                          </div>
 
-                        {estadoCuota3 === 'sin pagar' &&
-                  fechaTerceraCuotaRecuperada === 'sin determinar'
-                          ? (
-                              ''
-                            )
-                          : estadoCuota3 === 'sin pagar' &&
-                    fechaTerceraCuotaRecuperada !== 'sin determinar'
-                            ? (
-                              <button onClick={() => pagarCuota(3)}>Pagar</button>
-                              )
-                            : (
-                                'Cuota Cancelada'
-                              )}
-                        {fechaTerceraCuotaRecuperada === 'sin determinar'
-                          ? (
-                            <DatePicker
-                              showIcon
-                              locale='es'
-                              dateFormat='dd/MM/yyyy'
-                              selected={fechaTerceraCuota}
-                              onChange={(date) => setFechaTerceraCuota(date)}
-                            />
-                            )
-                          : (
-                            <span>
-                              Fecha de pago:{' '}
-                              {fechaTerceraCuotaRecuperada
-                                ? fechaTerceraCuotaRecuperada
-                                  .toDate()
-                                  .toLocaleDateString()
-                                : ''}
+                          <div className='container-dato'>
+                            {descuentoAdicional !== 0
+                              ? (
+                                <>
+                                  <label className='title-dato'>
+                                    Descuento Adicional: 
+                                  </label>
+                                  <span className='content-dato'>
+                                    {descuentoAdicional}
+                                  </span>
+                                </>
+                                )
+                              : (
+                                  ''
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Costo de Simulacro y Carnet: 
+                            </label>
+                            <span className='content-dato'>
+                              {simulacroCarnet}
                             </span>
-                            )}
-                      </div>
+                            {estadoSimulacroCarnet === 'pendiente'
+                              ? (
+                                <button 
+                                  onClick={() => pagarSimulacroCarnet()}
+                                  className='btn-register-pagar'>
+                                    Pagar
+                                </button>
+                                )
+                              : (
+                                  ' (Cancelado)'
+                                )}
+                          </div>
 
-                      <div>
-                        {fechaPrimeraCuotaRecuperada !== 'sin determinar' &&
-                  fechaSegundaCuotaRecuperada !== 'sin determinar' &&
-                  fechaTerceraCuotaRecuperada !== 'sin determinar'
-                          ? (
-                            <PDFDownloadLink
-                              document={<ComprobanteDePago matriculaId={id} />}
-                              fileName={id + '_' + dni + '.pdf'}
-                            >
-                              {({ loading }) =>
-                                loading ? 'Loading document...' : 'Descargar PDF'}
-                            </PDFDownloadLink>
-                            )
-                          : (
-                            <button onClick={() => registrarFechasDeCuotas()}>
-                              Registrar Cuotas
-                            </button>
-                            )}
-                      </div>
-                      <div>
-                        <label>Costo TOTAL: </label>
-                        <span>{montoTotal}</span>
-                      </div>
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Costo Matrícula Final: 
+                            </label>
+                            <span className='content-dato'>
+                              {montoMatriculaConDescuento - descuentoAdicional}
+                            </span>
+                          </div>
+                        </div>  {/* FIN  PRIMER CONTAINER */}
+
+                        <div className="datos-container"> {/* SEGUNDO CONTAINER */}
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Cuota 1: 
+                            </label>
+                            {/* Cuota 1:  */}
+                            <input
+                              className='input-monto'
+                              name='cuota1Recuperada'
+                              type=''
+                              value={cuota1Recuperada}
+                              onChange={handleChange}
+                              disabled={estadoCuota1 === 'pagado'}
+                              placeholder='Monto 1' required
+                            />
+                            {estadoCuota1 === 'sin pagar' &&
+                      fechaPrimeraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                  ''
+                                )
+                              : estadoCuota1 === 'sin pagar' &&
+                        fechaPrimeraCuotaRecuperada !== 'sin determinar'
+                                ? (
+                                  <button 
+                                    onClick={() => 
+                                    pagarCuota(1)}
+                                    className='btn-register-pagar'
+                                  >
+                                    Pagar
+                                  </button>
+                                  
+                                  )
+                                : (
+                                    'Cuota Cancelada'
+                                  )}
+                            {fechaPrimeraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                <DatePicker
+                                  className='container-fechas-cuotas'
+                                  showIcon
+                                  locale='es'
+                                  dateFormat='dd/MM/yyyy'
+                                  selected={fechaPrimeraCuota}
+                                  onChange={(date) => setFechaPrimeraCuota(date)}
+                                />
+                                )
+                              : (
+                                <span className='title-dato-pago'>
+                                  Fecha de pago:
+                                  {fechaPrimeraCuotaRecuperada
+                                    ? fechaPrimeraCuotaRecuperada
+                                      .toDate()
+                                      .toLocaleDateString()
+                                    : ''}
+                                </span>
+                                )}                            
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Cuota 2: 
+                            </label>
+                            <input
+                              className='input-monto'
+                              name='cuota2Recuperada'
+                              type=''
+                              value={cuota2Recuperada}
+                              onChange={handleChange}
+                              disabled={estadoCuota2 === 'pagado'}
+                            />
+                            {estadoCuota2 === 'sin pagar' &&
+                      fechaSegundaCuotaRecuperada === 'sin determinar'
+                              ? (
+                                  ''
+                                )
+                              : estadoCuota2 === 'sin pagar' &&
+                        fechaSegundaCuotaRecuperada !== 'sin determinar'
+                                ? (
+                                  <button 
+                                    onClick={() => 
+                                    pagarCuota(2)}
+                                    className='btn-register-pagar'
+                                  >
+                                    Pagar
+                                  </button>
+                                  )
+                                : (
+                                    'Cuota Cancelada'
+                                  )}
+                            {fechaSegundaCuotaRecuperada === 'sin determinar'
+                              ? (
+                                <DatePicker
+                                  className='container-fechas-cuotas'
+                                  showIcon
+                                  locale='es'
+                                  dateFormat='dd/MM/yyyy'
+                                  selected={fechaSegundaCuota}
+                                  onChange={(date) => setFechaSegundaCuota(date)}
+                                />
+                                )
+                              : (
+                                <span className='title-dato-pago'>
+                                  Fecha de pago:
+                                  {fechaSegundaCuotaRecuperada
+                                    ? fechaSegundaCuotaRecuperada
+                                      .toDate()
+                                      .toLocaleDateString()
+                                    : ''}
+                                </span>
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Cuota 3: 
+                            </label>
+                            <input
+                              className='input-monto'
+                              name='cuota3Recuperada'
+                              type=''
+                              value={cuota3Recuperada}
+                              onChange={handleChange}
+                              disabled={estadoCuota3 === 'pagado'}
+                            />
+
+                            {estadoCuota3 === 'sin pagar' &&
+                      fechaTerceraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                  ''
+                                )
+                              : estadoCuota3 === 'sin pagar' &&
+                        fechaTerceraCuotaRecuperada !== 'sin determinar'
+                                ? (
+                                  <button 
+                                    onClick={() => 
+                                    pagarCuota(3)}
+                                    className='btn-register-pagar'
+                                  >
+                                    Pagar
+                                  </button>
+                                  )
+                                : (
+                                    'Cuota Cancelada'
+                                  )}
+                            {fechaTerceraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                <DatePicker
+                                  className='container-fechas-cuotas'
+                                  showIcon
+                                  locale='es'
+                                  dateFormat='dd/MM/yyyy'
+                                  selected={fechaTerceraCuota}
+                                  onChange={(date) => setFechaTerceraCuota(date)}
+                                />
+                                )
+                              : (
+                                <span className='title-dato-pago'>
+                                  Fecha de pago:{' '}
+                                  {fechaTerceraCuotaRecuperada
+                                    ? fechaTerceraCuotaRecuperada
+                                      .toDate()
+                                      .toLocaleDateString()
+                                    : ''}
+                                </span>
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Costo TOTAL: 
+                            </label>
+                            <span className='title-dato-pago'>
+                              {montoTotal}
+                            </span>
+
+                            {fechaPrimeraCuotaRecuperada !== 'sin determinar' &&
+                      fechaSegundaCuotaRecuperada !== 'sin determinar' &&
+                      fechaTerceraCuotaRecuperada !== 'sin determinar'
+                              ? (
+                                <PDFDownloadLink
+                                  className='btn-register-pdf'
+                                  document={<ComprobanteDePago matriculaId={id} />}
+                                  fileName={id + '_' + dni + '.pdf'}
+                                >
+                                  {({ loading }) =>
+                                    loading ? 'Loading document...' : 'Descargar PDF'}
+                                </PDFDownloadLink>
+                                )
+                              : (
+                                <button 
+                                  onClick={() => registrarFechasDeCuotas()}
+                                  className='btn-register-realizar'>
+                                    Registrar Cuotas
+                                </button>
+                                
+                                )}
+                          </div>
+                          {/* <div className='container-dato'>
+                            <label>Costo TOTAL: </label>
+                              <span>{montoTotal}</span>
+                          </div> */}
+                        </div> {/* FIN SEGUNDO CONTAINER */}
+
+                      </div> {/* FIN CONTAINER GENERAL */}
                     </>
                     )
                   : (
                     <>
                       <div>
-                        <h2>Crédito</h2>
-                        {descuentoQueSeAplicara !== 'nada'
-                          ? (
-                            <div>
-                              <label>
-                                <del>Costo de Matrícula</del>
-                              </label>
-                              <span>
-                                <del>{montoOriginal}</del>
-                              </span>
-                            </div>
-                            )
-                          : (
-                            <div>
-                              <label>Costo de Matrícula</label>
-                              <span>{montoOriginal}</span>
-                            </div>
-                            )}
+                        <h2 className='header-register' >
+                          Crédito
+                        </h2>
 
-                        <div>
+                        <div className="datos-container"> {/* PRIMER CONTAINER */}
                           {descuentoQueSeAplicara !== 'nada'
                             ? (
-                              <>
-                                <label>
-                                  Costo de Matrícula con descuento especial (
-                                  {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                              <div className='container-dato'>
+                                <label className='title-dato'>
+                                  <del>Costo de Matrícula: </del>
                                 </label>
-                                <span>{montoMatriculaConDescuento}</span>
-                              </>
+                                <span className='content-dato'>
+                                  <del>{montoOriginal}</del>
+                                </span>
+                              </div>
                               )
                             : (
-                                ''
+                              <div className='container-dato'>
+                                <label className='title-dato'>
+                                  Costo de Matrícula: 
+                                </label>
+                                <span className='content-dato'>
+                                  {montoOriginal}
+                                </span>
+                              </div>
                               )}
-                        </div>
-                        <div>
-                          {descuentoAdicional !== 0
-                            ? (
-                              <>
-                                <label>Descuento Adicional: </label>
-                                <span>{descuentoAdicional}</span>
-                              </>
-                              )
-                            : (
-                                ''
-                              )}
-                        </div>
-                        <div>
-                          <label>Costo de Simulacro y Carnet: </label>
-                          <span>{simulacroCarnet}</span>
-                          {estadoSimulacroCarnet === 'pendiente'
-                            ? (
-                              <button onClick={() => pagarSimulacroCarnet()}>
-                                Pagar
-                              </button>
-                              )
-                            : (
-                                ' (Cancelado)'
-                              )}
-                        </div>
-                        <div>
-                          <label>Costo Matrícula Final: </label>
-                          <span>
-                            {montoMatriculaConDescuento - descuentoAdicional}
-                          </span>
-                        </div>
-                      </div>
-                      <div>
-                        Cuota 1
-                        <input
-                          name='cuota1Recuperada'
-                          type=''
-                          value={cuota1Recuperada}
-                          onChange={handleChange}
-                          disabled={estadoCuota1 === 'pagado'}
-                        />
-                        {estadoCuota1 === 'sin pagar' &&
-                  fechaPrimeraCuotaRecuperada === 'sin determinar'
-                          ? (
-                              ''
-                            )
-                          : estadoCuota1 === 'sin pagar' &&
-                    fechaPrimeraCuotaRecuperada !== 'sin determinar'
-                            ? (
-                              <button onClick={() => pagarCuota(1)}>Pagar</button>
-                              )
-                            : (
-                                'Cuota Cancelada'
-                              )}
-                        {fechaPrimeraCuotaRecuperada === 'sin determinar'
-                          ? (
-                            <DatePicker
-                              showIcon
-                              locale='es'
-                              dateFormat='dd/MM/yyyy'
-                              selected={fechaPrimeraCuota}
-                              onChange={(date) => setFechaPrimeraCuota(date)}
-                            />
-                            )
-                          : (
-                            <span>
-                              Fecha de pago:
-                              {fechaPrimeraCuotaRecuperada
-                                ? fechaPrimeraCuotaRecuperada
-                                  .toDate()
-                                  .toLocaleDateString()
-                                : ''}
-                            </span>
-                            )}
-                      </div>
-                      <div>
-                        Cuota 2
-                        <input
-                          name='cuota2Recuperada'
-                          type=''
-                          value={cuota2Recuperada}
-                          onChange={handleChange}
-                          disabled={estadoCuota2 === 'pagado'}
-                        />
-                        {estadoCuota2 === 'sin pagar' &&
-                  fechaSegundaCuotaRecuperada === 'sin determinar'
-                          ? (
-                              ''
-                            )
-                          : estadoCuota2 === 'sin pagar' &&
-                    fechaSegundaCuotaRecuperada !== 'sin determinar'
-                            ? (
-                              <button onClick={() => pagarCuota(2)}>Pagar</button>
-                              )
-                            : (
-                                'Cuota Cancelada'
-                              )}
-                        {fechaSegundaCuotaRecuperada === 'sin determinar'
-                          ? (
-                            <DatePicker
-                              showIcon
-                              locale='es'
-                              dateFormat='dd/MM/yyyy'
-                              selected={fechaSegundaCuota}
-                              onChange={(date) => setFechaSegundaCuota(date)}
-                            />
-                            )
-                          : (
-                            <span>
-                              Fecha de pago:
-                              {fechaSegundaCuotaRecuperada
-                                ? fechaSegundaCuotaRecuperada
-                                  .toDate()
-                                  .toLocaleDateString()
-                                : ''}
-                            </span>
-                            )}
-                      </div>
-                      <div>
-                        <>
-                          Cuota 3
-                          <input
-                            name='cuota3Recuperada'
-                            type=''
-                            value={cuota3Recuperada}
-                            onChange={handleChange}
-                            disabled={estadoCuota3 === 'pagado'}
-                          />
 
-                          {estadoCuota3 === 'sin pagar' &&
-                    fechaTerceraCuotaRecuperada === 'sin determinar'
-                            ? (
-                                ''
-                              )
-                            : estadoCuota3 === 'sin pagar' &&
-                      fechaTerceraCuotaRecuperada !== 'sin determinar'
+                          <div className='container-dato'>
+                            {descuentoQueSeAplicara !== 'nada'
                               ? (
-                                <button onClick={() => pagarCuota(3)}>Pagar</button>
+                                <>
+                                  <label className='title-dato'>
+                                    Costo de Matrícula con descuento especial (
+                                    {descuentoQueSeAplicara.toUpperCase()}):{' '}
+                                  </label>
+                                  <span className='content-dato'>
+                                    {montoMatriculaConDescuento}
+                                  </span>
+                                </>
                                 )
                               : (
-                                  'Cuota Cancelada'
+                                  ''
                                 )}
-                          {fechaTerceraCuotaRecuperada === 'sin determinar'
-                            ? (
-                              <DatePicker
-                                showIcon
-                                locale='es'
-                                dateFormat='dd/MM/yyyy'
-                                selected={fechaTerceraCuota}
-                                onChange={(date) => setFechaTerceraCuota(date)}
-                              />
-                              )
-                            : (
-                              <span>
-                                Fecha de pago:{' '}
-                                {fechaTerceraCuotaRecuperada
-                                  ? fechaTerceraCuotaRecuperada
-                                    .toDate()
-                                    .toLocaleDateString()
-                                  : ''}
-                              </span>
-                              )}
-                        </>
-                      </div>
+                          </div>
 
-                      <div>
-                        {fechaPrimeraCuotaRecuperada !== 'sin determinar' &&
-                  fechaSegundaCuotaRecuperada !== 'sin determinar' &&
-                  fechaTerceraCuotaRecuperada !== 'sin determinar'
-                          ? (
-                            <PDFDownloadLink
-                              document={<ComprobanteDePago matriculaId={id} />}
-                              fileName={id + '_' + dni + '.pdf'}
-                            >
-                              {({ loading }) =>
-                                loading ? 'Loading document...' : 'Descargar PDF'}
-                            </PDFDownloadLink>
-                            )
-                          : (
-                            <button onClick={() => registrarFechasDeCuotas()}>
-                              Registrar Cuotas
-                            </button>
-                            )}
-                      </div>
-                      <div>
-                        <label>Costo TOTAL: </label>
-                        <span>{montoTotal}</span>
+                          <div className='container-dato'>
+                            {descuentoAdicional !== 0
+                              ? (
+                                <>
+                                  <label className='title-dato'>
+                                    Descuento Adicional: 
+                                  </label>
+                                  <span className='content-dato'>
+                                    {descuentoAdicional}
+                                  </span>
+                                </>
+                                )
+                              : (
+                                  ''
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Costo de Simulacro y Carnet: 
+                            </label>
+                            <span className='content-dato'>
+                              {simulacroCarnet}
+                            </span>
+                            {estadoSimulacroCarnet === 'pendiente'
+                              ? (
+                                <button 
+                                  onClick={() => pagarSimulacroCarnet()}
+                                  className='btn-register-pagar'>
+                                    Pagar
+                                </button>
+                                )
+                              : (
+                                  ' (Cancelado)'
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Costo Matrícula Final: 
+                            </label>
+                            <span className='content-dato'>
+                              {montoMatriculaConDescuento - descuentoAdicional}
+                            </span>
+                          </div>
+                        </div>  {/* FIN  PRIMER CONTAINER */}
+
+                        <div className="datos-container"> {/* SEGUNDO CONTAINER */}
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Cuota 1: 
+                            </label>
+                            {/* Cuota 1:  */}
+                            <input
+                              className='input-monto'
+                              name='cuota1Recuperada'
+                              type=''
+                              value={cuota1Recuperada}
+                              onChange={handleChange}
+                              disabled={estadoCuota1 === 'pagado'}
+                              placeholder='Monto 1' required
+                            />
+                            {estadoCuota1 === 'sin pagar' &&
+                      fechaPrimeraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                  ''
+                                )
+                              : estadoCuota1 === 'sin pagar' &&
+                        fechaPrimeraCuotaRecuperada !== 'sin determinar'
+                                ? (
+                                  <button 
+                                    onClick={() => 
+                                    pagarCuota(1)}
+                                    className='btn-register-pagar'
+                                  >
+                                    Pagar
+                                  </button>
+                                  
+                                  )
+                                : (
+                                    'Cuota Cancelada'
+                                  )}
+                            {fechaPrimeraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                <DatePicker
+                                  className='container-fechas-cuotas'
+                                  showIcon
+                                  locale='es'
+                                  dateFormat='dd/MM/yyyy'
+                                  selected={fechaPrimeraCuota}
+                                  onChange={(date) => setFechaPrimeraCuota(date)}
+                                />
+                                )
+                              : (
+                                <span className='title-dato-pago'>
+                                  Fecha de pago:
+                                  {fechaPrimeraCuotaRecuperada
+                                    ? fechaPrimeraCuotaRecuperada
+                                      .toDate()
+                                      .toLocaleDateString()
+                                    : ''}
+                                </span>
+                                )}                            
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Cuota 2: 
+                            </label>
+                            <input
+                              className='input-monto'
+                              name='cuota2Recuperada'
+                              type=''
+                              value={cuota2Recuperada}
+                              onChange={handleChange}
+                              disabled={estadoCuota2 === 'pagado'}
+                            />
+                            {estadoCuota2 === 'sin pagar' &&
+                      fechaSegundaCuotaRecuperada === 'sin determinar'
+                              ? (
+                                  ''
+                                )
+                              : estadoCuota2 === 'sin pagar' &&
+                        fechaSegundaCuotaRecuperada !== 'sin determinar'
+                                ? (
+                                  <button 
+                                    onClick={() => 
+                                    pagarCuota(2)}
+                                    className='btn-register-pagar'
+                                  >
+                                    Pagar
+                                  </button>
+                                  )
+                                : (
+                                    'Cuota Cancelada'
+                                  )}
+                            {fechaSegundaCuotaRecuperada === 'sin determinar'
+                              ? (
+                                <DatePicker
+                                  className='container-fechas-cuotas'
+                                  showIcon
+                                  locale='es'
+                                  dateFormat='dd/MM/yyyy'
+                                  selected={fechaSegundaCuota}
+                                  onChange={(date) => setFechaSegundaCuota(date)}
+                                />
+                                )
+                              : (
+                                <span className='title-dato-pago'>
+                                  Fecha de pago:
+                                  {fechaSegundaCuotaRecuperada
+                                    ? fechaSegundaCuotaRecuperada
+                                      .toDate()
+                                      .toLocaleDateString()
+                                    : ''}
+                                </span>
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Cuota 3: 
+                            </label>
+                            <input
+                              className='input-monto'
+                              name='cuota3Recuperada'
+                              type=''
+                              value={cuota3Recuperada}
+                              onChange={handleChange}
+                              disabled={estadoCuota3 === 'pagado'}
+                            />
+
+                            {estadoCuota3 === 'sin pagar' &&
+                      fechaTerceraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                  ''
+                                )
+                              : estadoCuota3 === 'sin pagar' &&
+                        fechaTerceraCuotaRecuperada !== 'sin determinar'
+                                ? (
+                                  <button 
+                                    onClick={() => 
+                                    pagarCuota(3)}
+                                    className='btn-register-pagar'
+                                  >
+                                    Pagar
+                                  </button>
+                                  )
+                                : (
+                                    'Cuota Cancelada'
+                                  )}
+                            {fechaTerceraCuotaRecuperada === 'sin determinar'
+                              ? (
+                                <DatePicker
+                                  className='container-fechas-cuotas'
+                                  showIcon
+                                  locale='es'
+                                  dateFormat='dd/MM/yyyy'
+                                  selected={fechaTerceraCuota}
+                                  onChange={(date) => setFechaTerceraCuota(date)}
+                                />
+                                )
+                              : (
+                                <span className='title-dato-pago'>
+                                  Fecha de pago:{' '}
+                                  {fechaTerceraCuotaRecuperada
+                                    ? fechaTerceraCuotaRecuperada
+                                      .toDate()
+                                      .toLocaleDateString()
+                                    : ''}
+                                </span>
+                                )}
+                          </div>
+
+                          <div className='container-dato'>
+                            <label className='title-dato'>
+                              Costo TOTAL: 
+                            </label>
+                            <span className='title-dato-pago'>
+                              {montoTotal}
+                            </span>
+
+                            {fechaPrimeraCuotaRecuperada !== 'sin determinar' &&
+                      fechaSegundaCuotaRecuperada !== 'sin determinar' &&
+                      fechaTerceraCuotaRecuperada !== 'sin determinar'
+                              ? (
+                                <PDFDownloadLink
+                                  className='btn-register-pdf'
+                                  document={<ComprobanteDePago matriculaId={id} />}
+                                  fileName={id + '_' + dni + '.pdf'}
+                                >
+                                  {({ loading }) =>
+                                    loading ? 'Loading document...' : 'Descargar PDF'}
+                                </PDFDownloadLink>
+                                )
+                              : (
+                                <button 
+                                  onClick={() => registrarFechasDeCuotas()}
+                                  className='btn-register-realizar'>
+                                    Registrar Cuotas
+                                </button>
+                                
+                                )}
+                          </div>
+                          {/* <div className='container-dato'>
+                            <label>Costo TOTAL: </label>
+                              <span>{montoTotal}</span>
+                          </div> */}
+                        </div> {/* FIN SEGUNDO CONTAINER */}
+
                       </div>
                     </>
                     )}
@@ -1022,6 +1270,7 @@ const RevisarPagos = ({ datos }) => {
               )
             : ''}
       </div>
+
     </>
   )
 }

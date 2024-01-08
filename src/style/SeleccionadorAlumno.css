@@ -81,7 +81,7 @@
 
 .container-select-alumno {
 /*   position:; */
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 1%;
   width: 90%;
   box-shadow: 8px 8px 5px 2px var(--gris);

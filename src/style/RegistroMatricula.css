@@ -68,55 +68,59 @@
 
 
 /* -- container-identificar-alumno -- */
-.container-indentificar{
-    display: inline-block;
-    justify-content:space-around;
+
+.container-identificar-alumno {
     max-height: 100%;
     overflow-y: auto;
 }
 
-.container-indentificar::-webkit-scrollbar{
+.container-identificar-alumno .header-register {
+    position: sticky;
+    top: 0px;
+    background: var(--blanco);
+}
+
+.container-identificar-alumno::-webkit-scrollbar{
     width: 10px;
 }
 
-.container-indentificar::-webkit-scrollbar-track{
+.container-identificar-alumno::-webkit-scrollbar-track{
 background: var(--grisClaro);
 border-radius: 20px;
 }
 
-.container-indentificar::-webkit-scrollbar-thumb{
+.container-identificar-alumno::-webkit-scrollbar-thumb{
 background: var(--gris);
 border-radius: 20px;
 }
 
-
 /* CONTAINER SEARCH */
-.container-search-identificar {
+.container-identificar-alumno .container-indentificar-1 .container-search-identificar {
     display: flex;
-    height: 8%;
-    width: 6%; 
+    height: 75%;
+    width: 5%; 
     cursor: pointer;
     /* margin: 0 auto; */
     padding: 5px;
     background: var(--blanco);
     border-radius: 30px;
     align-items: center; 
-    margin-left: 4%;
-    margin-top: 4%;
+    margin-left: 8%;
+    margin-top: 2%;
     transition: 0.8s;
     box-shadow: 0 6px 15px var(--negro);
-    margin-right: 4%;
+    /* margin-right: 6%; */
 }
 
-.container-search-identificar:hover {
-    width: 30%;
+.container-identificar-alumno .container-search-identificar:hover {
+    width: 25%;
 }
 
-.container-search-identificar:hover input{
+.container-identificar-alumno .container-search-identificar:hover input{
     width: 100%;
 }
 
-.container-search-identificar input {
+.container-identificar-alumno .container-search-identificar input {
     width: 0;
     outline: none;
     border: none;
@@ -126,23 +130,28 @@ border-radius: 20px;
     background: transparent;
 }
 
-.container-search-identificar .button-search-identificar{
+.container-identificar-alumno .container-search-identificar .button-search-identificar{
     cursor: pointer;
 }
 
-.container-identificar-alumno-datos .title-dato {
+.container-identificar-alumno .container-identificar-2 .container-identificar-alumno-datos {
+    float: right;
+    margin-top: -5%;
+    margin-right: 30%;
+
+}
+
+.container-identificar-alumno .container-identificar-alumno-datos .title-dato {
     /* display: block; */
     /* margin-bottom: 5px; */
     font-weight: bold;
     color: var(--azul);
-    position: sticky;
-    top: 0px;
     /* padding: 10px; */
 }
 
-.container-identificar-alumno-datos .content-dato {
+.container-identificar-alumno .container-identificar-alumno-datos .content-dato {
     /* width: 100%; */
-    padding: 0px 10px;
+    padding: 0px 5px;
     font-size: 14px;
     color: var(--negro);
     font-weight: 500;
@@ -188,14 +197,14 @@ border-radius: 20px;
 
 /*DROPDWON*/
 .container-matricular-alumno .select-container {
-position: relative;
-width: 150%;
-height: 100%;
-margin-left: 150px;
-/* margin: 5px 0 15px 0; */
-display: flex;
-flex-direction: column;
-justify-content: center;
+    position: relative;
+    width: 150%;
+    height: 100%;
+    margin-left: 150px;
+    /* margin: 5px 0 15px 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
@@ -212,13 +221,13 @@ justify-content: center;
 }
 
 .container-gestionar-descuentos::-webkit-scrollbar-track{
-background: var(--grisClaro);
-border-radius: 20px;
+    background: var(--grisClaro);
+    border-radius: 20px;
 }
 
 .container-gestionar-descuentos::-webkit-scrollbar-thumb{
-background: var(--gris);
-border-radius: 20px;
+    background: var(--gris);
+    border-radius: 20px;
 }
 
 .container-gestionar-descuentos .title-dato {
@@ -246,6 +255,12 @@ border-radius: 20px;
     
 }
 
+/* .container-gestionar-descuentos .content-dato input[type='file'] {
+    display: none;
+    
+} */
+
+
 .container-gestionar-descuentos .btn-register { 
     display: flex;
     align-items: center;
@@ -257,7 +272,7 @@ border-radius: 20px;
     outline: none;
     color: var(--blanco);
     border-radius: 50px;
-   /*  margin: 25px 0; --VERIFICAR */
+    margin: 10px; 
     background-color: var(--grisClaro);
     transition: all 0.3s linear;
     cursor: pointer;
@@ -265,7 +280,7 @@ border-radius: 20px;
 }
 
 .container-gestionar-descuentos .btn-register:hover { 
-background-color: var(--primario); /* CAMBIAR COLOR */
+    background-color: var(--primario); /* CAMBIAR COLOR */
 }
 
 /* -- container-ver-resumen-pagos -- */
@@ -280,13 +295,13 @@ background-color: var(--primario); /* CAMBIAR COLOR */
 }
 
 .container-ver-resumen-pagos::-webkit-scrollbar-track{
-background: var(--grisClaro);
-border-radius: 20px;
+    background: var(--grisClaro);
+    border-radius: 20px;
 }
 
 .container-ver-resumen-pagos::-webkit-scrollbar-thumb{
-background: var(--gris);
-border-radius: 20px;
+    background: var(--gris);
+    border-radius: 20px;
 }
 
 .container-ver-resumen-pagos .title-dato {
@@ -312,4 +327,40 @@ border-radius: 20px;
     /* box-sizing: border-box; */
     /* border: 1px solid var(--blanco); */
     
+}
+
+.container-ver-resumen-pagos .input-seccion .input-descuento-A {
+    /* padding: 0px 10px; */
+    margin: 10px;
+    width: 15%;
+    
+}
+
+.container-ver-resumen-pagos .input-seccion .input-descuento-Ob {
+    /* padding: 0px 10px; */
+    margin: 10px;
+    width: 70%;
+    
+}
+
+.container-ver-resumen-pagos .btn-register { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 200px;
+    height: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+    margin: 10px; 
+    background-color: var(--grisClaro);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+}
+
+.container-ver-resumen-pagos .btn-register:hover { 
+    background-color: var(--primario); /* CAMBIAR COLOR */
 }
