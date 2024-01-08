@@ -60,7 +60,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 15px 20px;
-    margin: 0 auto;
+    margin: 15px auto;
     box-shadow: 0 0 12px var(--negro);
     background-color: var(--grisClaro);
     border-radius: 10px;

@@ -24,3 +24,158 @@
     box-sizing: border-box;
 }
 
+.contenedor-de-tipo-de-pagos .btn-register-pagar { 
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    max-width: 200px;
+    height: 30px;
+    width: 25%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+    margin: 10px; 
+    background-color: var(--gris);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+}
+
+.container-dato .btn-register-pagar:hover { 
+    background-color: var(--primario); /* CAMBIAR COLOR */
+}
+
+.contenedor-de-tipo-de-pagos .btn-register-realizar { 
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    max-width: 200px;
+    height: 20%;
+    width: 40%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+    margin: 10px; 
+    background-color: var(--gris);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+}
+
+.container-dato .btn-register-realizar:hover { 
+    background-color: var(--primario); /* CAMBIAR COLOR */
+}
+
+.container-dato .container-fechas { 
+    border-radius: 10px;
+    color: var(--azul);
+    text-align: center;
+    font-weight: 600;
+}
+
+.container-dato .container-fechas:focus {
+    outline: none;
+    box-shadow: 0 0 10px -1px var(--azul);
+    /* background-color: var(--grisClaro); */
+}
+
+
+.contenedor-de-tipo-de-pagos .btn-register-pdf { 
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    max-width: 200px;
+    /* font-size: 14px; */
+    padding: 1%;
+    height: 20%;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+    margin: 15px auto; 
+    margin: 50px;
+    background-color: var(--gris);
+    transition: all 0.3s linear;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container-dato .btn-register-pdf:hover { 
+    background-color: var(--primario); /* CAMBIAR COLOR */
+}
+
+/* .datos-container .input-seccion input { 
+    height: 40px;
+    width: 30%;
+    outline: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--oscuro);
+    border-radius: 5px;
+    border: 1px solid var(--gris);
+    padding: 0 15px;
+    margin: 8px 0;
+    display: block;
+} */
+
+.contenedor-de-tipo-de-pagos .container-dato .input-monto {
+    /* padding: 0px 10px; */
+    /* padding: 2%;
+    height: 50%; */
+    width: 50%;
+    border-radius: 10px;
+    color: var(--azul);
+    text-align: center;
+    font-weight: 600;
+    margin: 10px auto;
+    
+}
+
+.contenedor-de-tipo-de-pagos .container-fechas-cuotas { 
+    border-radius: 10px;
+    color: var(--azul);
+    text-align: center;
+    font-weight: 600;
+    width: 75%;
+}
+
+.contenedor-de-tipo-de-pagos .container-fechas-cuotas:focus {
+    outline: none;
+    box-shadow: 0 0 10px -1px var(--azul);
+}
+
+.contenedor-de-tipo-de-pagos  .title-dato-pago { 
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 550;
+    color: var(--negro);
+    padding: 2px;
+}
+
+/* .datos-container-segundo {
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 15px 20px;
+    margin: 15px auto;
+    box-shadow: 0 0 12px var(--negro);
+    background-color: var(--grisClaro);
+    border-radius: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.contenedor-de-tipo-de-pagos .container-fechas-cuotas { 
+    border-radius: 10px;
+    color: var(--azul);
+    text-align: center;
+    font-weight: 600;
+}
+
+.contenedor-de-tipo-de-pagos .container-fechas-cuotas:focus {
+    outline: none;
+    box-shadow: 0 0 10px -1px var(--azul);
+}
+ */
