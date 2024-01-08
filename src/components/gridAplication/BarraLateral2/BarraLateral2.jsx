@@ -25,7 +25,7 @@ const BarraLateral2 = ({ menuSeleccionado }) => {
 
   return (
     <>
-      <div style={{ height: '20%', width: '100%' }}>
+      {/* <div style={{ height: '20%', width: '100%' }}> */}
         <BtnBarraLateral
           name={
             <svg
@@ -74,8 +74,8 @@ const BarraLateral2 = ({ menuSeleccionado }) => {
           tituloParaMostrar='Inicio'
         />
 
-      </div>
-      <div style={{ height: '60%', width: '100%' }}>
+      {/* </div> */}
+      {/* <div style={{ height: '60%', width: '100%' }}> */}
         <BtnBarraLateral
           name={
             <svg
@@ -158,9 +158,9 @@ const BarraLateral2 = ({ menuSeleccionado }) => {
           seleccion={cambioSeleccion}
           tituloParaMostrar='Gestionar Pagos'
         />
-      </div>
+      {/* </div> */}
 
-      <div style={{ height: '20%', width: '100%' }}>
+      <div style={{ height: '20%', width: '100%', margin: '25%'}}>
 
         <BtnBarraLateral
           name={

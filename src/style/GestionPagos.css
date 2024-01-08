@@ -89,7 +89,7 @@ border-radius: 20px;
 .container-identificar-alumno-gestion-de-pagos .container-indentificar-1 .container-search-identificar {
     display: flex;
     height: 75%;
-    width: 8%; 
+    width: 10%; 
     cursor: pointer;
     /* margin: 0 auto; */
     padding: 5px;
@@ -127,8 +127,8 @@ border-radius: 20px;
 
 .container-identificar-alumno-gestion-de-pagos .container-identificar-2 .container-identificar-alumno-datos {
     float: right;
-    margin-top: -8%;
-    margin-right: 20%;
+    margin-top: -14%;
+    margin-right: 18%;
 
 }
 

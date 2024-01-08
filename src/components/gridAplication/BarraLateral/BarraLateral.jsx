@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import BtnBarraLateral from '../BarraLateral2/BtnBarraLateral'
 import { useEstadoBarra, useSeleccion, useSeleccionToggle } from '../../EstadoBarraLateralProvider'
+import './style/Barralateral.css'
 
 import { userContext } from '../../Login'
 
