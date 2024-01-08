@@ -1,9 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+    --fondo: #e7e4e4;   
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container-gestionar-documentos-excelencia {
     display: grid;
     width: 100%;
     height: 100%;
     gap: 8px;
-    background-color: #e7e4e4;
+    background-color: var(--fondo);
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
@@ -17,11 +44,11 @@
 }
 
 .container-lista-documentos-excelencia {
-    background-color: #ffff;
+    background-color: var(--blanco);
     grid-area: lista-documentos-excelencia;
 }
 
 .editar-estado-documentos-excelencia {
-    background-color: #ffff;
+    background-color:  var(--blanco);
     grid-area: editar-estado-documentos-excelencia;
 }

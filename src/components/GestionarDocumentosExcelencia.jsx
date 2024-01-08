@@ -41,27 +41,53 @@ const GestionarDocumentosExcelencia = () => {
   return (
     <div className='container-gestionar-documentos-excelencia'>
       <div className='container-lista-documentos-excelencia'>
-        <h1>Documentos Excelencia</h1>
-        <div>
-          Revisados
-          {
-          listaDeAlumnosConDocumentosDeExcelencia.map((datos) => (
-            <SeleccionadorDocumentoExcelencia key={datos.id} datos={datos} estadoDocumento funcion={obtenerCodigoDocumentoEscogido} />
-          ))
-        }
-        </div>
-        <div>
-          Pendientes
-          {
-          listaDeAlumnosConDocumentosDeExcelencia.map((datos) => (
-            <SeleccionadorDocumentoExcelencia key={datos.id} datos={datos} estadoDocumento={false} funcion={obtenerCodigoDocumentoEscogido} />
-          ))
-        }
+        <div className='input-seccion'>
+          <h1 className='header-register'>
+            Documentos Excelencia
+          </h1>
+          <div className='sub-title'>
+            <label>
+              - Revisados
+            </label>
+          </div>
+            {
+            listaDeAlumnosConDocumentosDeExcelencia.map((datos) => (
+              <SeleccionadorDocumentoExcelencia 
+                key={datos.id} 
+                datos={datos} 
+                estadoDocumento 
+                funcion={obtenerCodigoDocumentoEscogido} 
+              />
+            ))
+          }
+          
         </div>
 
+        <div className='input-seccion'>
+          <div className='sub-title'>
+            <label>
+              - Pendientes
+            </label>
+          </div>
+            {
+            listaDeAlumnosConDocumentosDeExcelencia.map((datos) => (
+              <SeleccionadorDocumentoExcelencia 
+                key={datos.id} 
+                datos={datos} 
+                estadoDocumento={false} 
+                funcion={obtenerCodigoDocumentoEscogido} 
+              />
+            ))
+          }
+          
+        </div>
+        
       </div>
       <div className='editar-estado-documentos-excelencia'>
-        <EditarEstadoDocumentoExcelencia dni={dniDocumentoEscogido} codigoAlumnoEscogido={codigoAlumnoEscogido} />
+        <EditarEstadoDocumentoExcelencia 
+          dni={dniDocumentoEscogido} 
+          codigoAlumnoEscogido={codigoAlumnoEscogido} 
+        />
       </div>
     </div>
   )

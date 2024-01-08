@@ -50,7 +50,7 @@
     color: var(--azul);
 }
 
-.container-select-un-dato.datos-select-un-dato span {
+.container-select-un-dato .datos-select-un-dato span {
     align-items: center;
     text-align: center;
     padding: 4% 1% 4% 1%;

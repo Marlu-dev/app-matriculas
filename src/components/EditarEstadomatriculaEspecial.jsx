@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { doc, updateDoc, query, collection, where, onSnapshot } from 'firebase/firestore'
 import { db } from '../../public/services/firebase/firebase.js'
 import { useSnackbar } from 'notistack'
+import '../style/EditarEstadomatriculaEspecial.css'
 
 const EditarEstadoMatriculaEspecial = ({ idMatriculaEscogida }) => {
   const [alumno, setAlumno] = useState({})
@@ -113,10 +114,13 @@ const EditarEstadoMatriculaEspecial = ({ idMatriculaEscogida }) => {
   }
 
   return (
-    <div style={{ display: 'flex', width: '100%', height: '100%', flexDirection: 'column' }}>
-      <div>{
-        matriculasAlumno[0] && matriculasAlumno[0].id
-      }
+    <div  
+    style={{ display: 'flex', width: '100%', height: '100%', flexDirection: 'column' }}>
+      <div className='datos-container'>
+        <div className='title-dato-new' >{
+          matriculasAlumno[0] && matriculasAlumno[0].id
+        }
+        </div>
       </div>
       {
   alumno.docExcelencia === true && alumno.docExcelenciaValidado === false
@@ -125,17 +129,31 @@ const EditarEstadoMatriculaEspecial = ({ idMatriculaEscogida }) => {
       )
     : idMatriculaEscogida !== ''
       ? (
-        <div>
-          Matricula Especial
-          <div>
-            <label>Descuento Adicional</label>
-            <span>{matriculasAlumno[0] && matriculasAlumno[0].descuentoAdicional}</span>
+        <div className='datos-container'>
+          <label className='title-dato'>
+            Matricula Especial 
+          </label>
+
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Descuento Adicional: 
+              </label>
+            <span className='content-dato'>
+              {matriculasAlumno[0] &&
+              matriculasAlumno[0].descuentoAdicional}
+            </span>
           </div>
-          <div>
-            <label>Observación</label>
-            <span>{matriculasAlumno[0] && matriculasAlumno[0].observacionDescuentoAdicional}</span>
+
+          <div className='container-dato'>
+            <label className='title-dato'>
+              Observación: 
+            </label>
+            <span className='content-dato'>
+              {matriculasAlumno[0] && 
+              matriculasAlumno[0].observacionDescuentoAdicional}
+            </span>
           </div>
-        </div>
+        </div> 
         )
       : 'Selecciona una matrícula'
 }
@@ -143,21 +161,36 @@ const EditarEstadoMatriculaEspecial = ({ idMatriculaEscogida }) => {
       {
   matriculasAlumno[0] && matriculasAlumno[0].estado === 'pendiente'
     ? (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>
-        <button type='button' style={{ flex: '1', margin: '0 5px', maxWidth: '150px' }} onClick={() => rechazar()}>Rechazar</button>
-        <button type='button' style={{ flex: '1', margin: '0 5px', maxWidth: '150px' }} onClick={() => validar()}>Validar</button>
+      <div className='datos-container'
+      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>
+        <button 
+          type='button' 
+          style={{ flex: '1', margin: '0 5px', maxWidth: '150px' }} 
+          onClick={() => rechazar()}>
+          Rechazar
+        </button>
+        <button 
+          type='button' 
+          style={{ flex: '1', margin: '0 5px', maxWidth: '150px' }} 
+          onClick={() => validar()}>
+          Validar
+        </button>
       </div>
       )
     : matriculasAlumno[0] && matriculasAlumno[0].estado === 'rechazada'
       ? (
-        <div>
-          Matrícula Rechazada
+        <div className='datos-container'>
+          <div className='title-dato-new' >
+            Matrícula Rechazada
+          </div>
         </div>
         )
       : matriculasAlumno[0] && matriculasAlumno[0].estado === 'validado'
         ? (
-          <div>
-            Matrícula Validada
+          <div className='datos-container'>
+            <div className='title-dato-new' >
+              Matrícula Validada
+            </div>
           </div>
           )
         : ''

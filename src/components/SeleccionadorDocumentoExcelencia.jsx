@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import '../style/SeleccionadorDocumentoExcelencia.css'
 
 const SeleccionadorDocumentoExcelencia = ({ datos, estadoDocumento, funcion }) => {
   const revisarDocumento = () => {
@@ -14,22 +15,33 @@ const SeleccionadorDocumentoExcelencia = ({ datos, estadoDocumento, funcion }) =
     <>
       {datos.docExcelenciaValidado === estadoDocumento
         ? (
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', border: '2px solid black', cursor: 'pointer' }} onClick={revisarDocumento}>
-            <div>
-              <span>{datos.codigo}</span>
+          <div style={{ cursor: 'pointer' }} onClick={revisarDocumento}>
+            <div className="container-select-un-dato-new">
+              <div className="datos-select-un-dato-new">
+                <span>
+                  {datos.codigo}
+                </span>
+              
+                <span>
+                  {datos.dni}
+                </span>
+              
+                <span>
+                  {datos.nombre}
+                </span>
+              
+                <span>
+                  {datos.apellidoPaterno}
+                </span>
+              
+                <span>
+                  {datos.apellidoMaterno}
+                </span>
+              </div>
             </div>
-            <div>
-              <span>{datos.dni}</span>
-            </div>
-            <div>
-              <span>{datos.nombre}</span>
-            </div>
-            <div>
-              <span>{datos.apellidoPaterno}</span>
-            </div>
-            <div>
-              <span>{datos.apellidoMaterno}</span>
-            </div>
+
+            
+              
           </div>
           )
         : ''}

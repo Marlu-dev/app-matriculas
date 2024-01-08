@@ -138,11 +138,24 @@ const RegistroCarrera = () => {
   return (
     <div className='container-registro-carrera'>
       <div className='container-formulario-registro-carrera'>
-        <h1>Gestión de Carreras</h1>
-        <h2>Registrar Carrera</h2>
-        <div>
-          <label>Nombre de la Carrera</label>
+
+        <h1 className='header-register' >
+          Gestión de Carreras
+        </h1>
+
+        <h2 className='header-register' >
+          Registrar Carrera
+        </h2>
+
+        <div  className='input-seccion'>
+          <div className='sub-title'>
+            <label>
+              - Nombre de la Carrera
+            </label>
+          </div>
+          {/* <label>Nombre de la Carrera</label> */}
           <input
+            className='input-descuento-new'
             type='text'
             name='carrera'
             id=''
@@ -150,13 +163,23 @@ const RegistroCarrera = () => {
             onChange={(e) => setCarreraNueva(e.target.value)}
           />
         </div>
+
         <div className='container-ver-ciclos'>
-          <h4>Marque los ciclos que se incuirán en la carrera</h4>
+          <div className="input-seccion">
+            <div className='sub-title'>
+              <label>
+                - Marque los ciclos que se incuirán en la carrera
+              </label>
+            </div>
+          </div>
+          {/* <h4>Marque los ciclos que se incuirán en la carrera</h4> */}
           {listaDeCiclos.map((ciclo) => (
             <div className='container-ciclo' key={ciclo.id}>
-              <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div 
+                style={{ display: 'flex', flexDirection: 'row' }}>
                 <h5>{ciclo.nombre}</h5>
                 <input
+                  className='options-carreras'
                   type='checkbox'
                   name={ciclo.nombre}
                   id={ciclo.id}
@@ -181,24 +204,63 @@ const RegistroCarrera = () => {
             </div>
           ))}
         </div>
-        <button onClick={() => registrarCarrera()}>Registrar</button>
+        <button 
+          className='btn-register-new'
+          onClick={() => 
+          registrarCarrera()}>
+          Registrar
+          </button>
       </div>
+      
       <div className='container-eliminar-carrera'>
-        <h2>Eliminar Carrera</h2>
+        <h2 className='header-register'>
+          Eliminar Carrera
+        </h2>
+
+        <div className='main-dropdwon'>
+                  <div className='select-container'>
+                    <Select
+                      coleccion='carreritas'
+                      nombre='carrera'
+                      id='id'
+                      placeholder='Seleccione una carrera'
+                      onSelectChange={obtenerCarreraSeleccionada}
+                    />
+                    <div className='select-icon'>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        class='icon icon-tabler icon-tabler-chevron-down'
+                        width='25'
+                        height='25'
+                        viewBox='0 0 24 24'
+                        stroke-width='3.5'
+                        stroke='#2c3e50'
+                        fill='none'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      >
+                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                        <path d='M6 9l6 6l6 -6' />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+
         <div className='container-carreras'>
-          <Select
-            coleccion='carreritas'
-            nombre='carrera'
-            id='id'
-            placeholder='Seleccione una carrera'
-            onSelectChange={obtenerCarreraSeleccionada}
-          />
-          <button onClick={elminarCarrera}>Eliminar</button>
+          
+          <button
+            className='btn-register-new'
+            onClick={elminarCarrera}>
+            Eliminar
+          </button>
         </div>
       </div>
       <div className='container-ver-carreras'>
         <div>
-          <h2>Carreras Registradas</h2>
+          <h2 className='header-register'>
+            Carreras Registradas
+          </h2>
         </div>
         {listaDeCarreras.map((carrera) => {
           return (
