@@ -27,7 +27,7 @@ const RecuperarAlumnos = () => {
     return () => unsubscribe()
   }, [])
 
-  // console.log(alumnosListaCompleta)
+  console.log(alumnosListaCompleta)
 
   useEffect(() => {
     const listaDeAlumnosFinal = ordenarAlumnos(aplicarFiltroRecibidos(filtrarBusqueda(alumnosListaCompleta, ''), filtrosObtenidosGrupo, filtrosObtenidosCarrera), ordenarPor)
@@ -179,10 +179,10 @@ const RecuperarAlumnos = () => {
           </div>
 
         </div>
-        
-        <div className="mostrar-main-alumnos">
+
+        <div className='mostrar-main-alumnos'>
           <ListaDeAlumnos alumnos={resultadosAlumnos} />
-        </div> 
+        </div>
       </div> {/* FIN: CONTAINER PRINCIPAL */}
 
       {/* CONTAINER SECUNDARIO */}

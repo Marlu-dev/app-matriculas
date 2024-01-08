@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import RegistroAlumno from '../../RegistroAlumno'
 import RecuperarAlumnos from '../../RecuperarAlumnos'
 import './style/Centro.css'
 import RegistroMatricula from '../../RegistroMatricula'
 import GestionPagos from '../../GestionPagos'
+import RegistroCarrera from '../../RegistroCarrera'
+import GestionarDocumentosExcelencia from '../../GestionarDocumentosExcelencia'
+import GestionarMatriculasEspeciales from '../../GestionarMatriculasEspeciales'
 
 const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
   let menu
@@ -38,6 +41,18 @@ const Centro = ({ menuSeleccionadoBarraLateral2 }) => {
 
     case 'GestionPagos':
       menu = <GestionPagos />
+      break
+
+    case 'RegistroCarrera':
+      menu = <RegistroCarrera />
+      break
+
+    case 'GestionarDocumentosExcelencia':
+      menu = <GestionarDocumentosExcelencia />
+      break
+
+    case 'GestionarMatriculasEspeciales':
+      menu = <GestionarMatriculasEspeciales />
       break
   }
 

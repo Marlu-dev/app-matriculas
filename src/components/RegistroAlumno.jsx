@@ -249,7 +249,7 @@ function RegistroAlumno () {
                   <label>Direccion</label>
                   <label className='error-label'>{errorDireccion}</label>
                 </div>
-                <input 
+                <input
                   className={errorDireccion ? 'error-input' : ''}
                   name='direccion'
                   id='direccion'
@@ -258,7 +258,7 @@ function RegistroAlumno () {
                   value={direccion}
                   placeholder='Av. Pedro Muñiz 225' required
                 />
-                
+
               </div>
 
               {/* DECIMO DATO: Referencia */}
