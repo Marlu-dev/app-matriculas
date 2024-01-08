@@ -273,7 +273,7 @@ border-radius: 20px;
     color: var(--blanco);
     border-radius: 50px;
     margin: 10px; 
-    background-color: var(--grisClaro);
+    background-color: var(--gris);
     transition: all 0.3s linear;
     cursor: pointer;
 

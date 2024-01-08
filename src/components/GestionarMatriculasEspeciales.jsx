@@ -40,36 +40,71 @@ const GestionarMatriculasEspeciales = () => {
   return (
     <div className='container-gestionar-matriculas-especiales'>
       <div className='container-lista-de-matriculas-especiales'>
-        <h1>Solicitudes de Matrículas Especiales</h1>
-        <div>
-          Pendiente
+        <h1 className='header-register'>
+          Solicitudes de Matrículas Especiales
+        </h1>
+
+        <div className='input-seccion'>
+          <div className='sub-title'>
+            <label>
+              - Pendiente
+            </label>
+          </div>
           {
           listaDeMatriculasEspeciales.map((datos) => (
-            <SeleccionadorMatriculaEspecial key={datos.id} datos={datos} estadoMatricula='pendiente' funcion={obtenerCodigoDocumentoEscogido} />
+            <SeleccionadorMatriculaEspecial 
+              key={datos.id} 
+              datos={datos} 
+              estadoMatricula='pendiente' 
+              funcion={obtenerCodigoDocumentoEscogido} 
+            />
           ))
         }
         </div>
-        <div>
-          Validados
+
+        <div className='input-seccion'>
+          <div className='sub-title'>
+            <label>
+              - Validados
+            </label>
+          </div>
           {
           listaDeMatriculasEspeciales.map((datos) => (
-            <SeleccionadorMatriculaEspecial key={datos.id} datos={datos} estadoMatricula='validado' funcion={obtenerCodigoDocumentoEscogido} />
+            <SeleccionadorMatriculaEspecial 
+              key={datos.id} 
+              datos={datos} 
+              estadoMatricula='validado' 
+              funcion={obtenerCodigoDocumentoEscogido} 
+            />
           ))
         }
         </div>
-        <div>
-          Rechazados
+
+        <div className='input-seccion'>
+          <div className='sub-title'>
+            <label>
+              - Rechazados
+            </label>
+          </div>
           {
           listaDeMatriculasEspeciales.map((datos) => (
-            <SeleccionadorMatriculaEspecial key={datos.id} datos={datos} estadoMatricula='rechazada' funcion={obtenerCodigoDocumentoEscogido} />
+            <SeleccionadorMatriculaEspecial 
+              key={datos.id} 
+              datos={datos} 
+              estadoMatricula='rechazada' 
+              funcion={obtenerCodigoDocumentoEscogido} 
+            />
           ))
         }
         </div>
 
       </div>
+
       <div className='editar-estado-matriculas-especiales'>
-        <EditarEstadoMatriculaEspecial idMatriculaEscogida={idMatriculaEscogida} />
-        XD
+        <EditarEstadoMatriculaEspecial 
+          idMatriculaEscogida={idMatriculaEscogida} 
+        />
+        
       </div>
     </div>
   )

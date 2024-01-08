@@ -59,3 +59,81 @@
     grid-area: eliminar-carrera;
     border-radius: 10px;
 }
+
+.input-descuento-new {
+    text-align: center;
+    margin: 10px auto;
+    width: 30%;
+    height: 2%;
+    cursor: pointer;
+    
+}
+
+.options-carreras {
+    padding: 10px;
+    left: 10px;
+}
+
+.container-formulario-registro-carrera {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.container-formulario-registro-carrera::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container-formulario-registro-carrera::-webkit-scrollbar-track{
+    background: var(--grisClaro);
+    border-radius: 20px;
+}
+
+.container-formulario-registro-carrera::-webkit-scrollbar-thumb{
+    background: var(--gris);
+    border-radius: 20px;
+}
+
+.container-formulario-registro-carrera .btn-register-new { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 200px;
+    height: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+    margin: 10px; 
+    background-color: var(--gris);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+}
+
+.container-formulario-registro-carrera .btn-register-new:hover { 
+    background-color: var(--primario); /* CAMBIAR COLOR */
+}
+
+.container-carreras .btn-register-new { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 200px;
+    height: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--blanco);
+    border-radius: 50px;
+    margin: 10px; 
+    background-color: var(--gris);
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+}
+
+.container-carreras .btn-register-new:hover { 
+    background-color: var(--primario); /* CAMBIAR COLOR */
+}
+

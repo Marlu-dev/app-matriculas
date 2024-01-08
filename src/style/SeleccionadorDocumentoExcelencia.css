@@ -1,0 +1,59 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+:root {
+    --colorBody: #e7e4e4;
+    --colorPrimario: #ffffff;
+
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #02529eff;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+    --medicas: #01a7ffff;
+    --letras: #b52228ff;
+    --azul: #00167fff;
+    --rojo: #ff0000ff; 
+    --negro: #000000ff;
+    --fondo: #e7e4e4;   
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container-select-un-dato-new {
+    /*   position:; */
+        align-items: center;
+        text-align: center;
+        padding: 2%;
+        width: 95%;
+        box-shadow: 8px 8px 5px 2px var(--gris);
+        border-radius: 10px;
+        margin: 10px auto;
+    }
+    
+    .container-select-un-dato-new .datos-select-un-dato-new {
+        display: grid;
+        text-align: center;
+        /* cursor: pointer; */
+        /* margin: 0 auto; */
+        width: 100%;
+        gap: 1%;
+        grid-template-columns: 1fr 2fr  2fr 2fr 2fr; 
+        grid-template-rows: 1fr;
+        /*  max-height: 100%;
+        overflow-y: auto; */
+        color: var(--azul);
+    }
+    
+    .container-select-un-dato-new .datos-select-un-dato-new span {
+        align-items: center;
+        text-align: center;
+        padding: 4% 1% 4% 1%;
+    }
+    
