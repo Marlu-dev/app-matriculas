@@ -23,7 +23,7 @@ const BarraTitulo = () => {
         <div className='name'>Centro Preuniversitario Nobel</div>
         <div className='title' />
         <div className='controls'>
-          <div className='minimize-button' onClick={minimizeWindow}>
+          {/* <div className='minimize-button' onClick={minimizeWindow}>
             &#x2500;
           </div>
           <div className='maximize-button' onClick={maximizeWindow}>
@@ -31,7 +31,7 @@ const BarraTitulo = () => {
           </div>
           <div className='close-button' onClick={closeWindow}>
             &#x2715;
-          </div>
+          </div> */}
         </div>
       </div>
     </>
